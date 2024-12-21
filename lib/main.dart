@@ -1,13 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
 
 /// Flutter code sample for [CarouselView].
 
-void main() => runApp(const CarouselExampleApp());
+void main() => runApp(const CardAndTabApp());
 
-class CarouselExampleApp extends StatelessWidget {
-  const CarouselExampleApp({super.key});
+class CardAndTabApp extends StatelessWidget {
+  const CardAndTabApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +22,20 @@ class CarouselExampleApp extends StatelessWidget {
             ),
           ],
         ),
-        body: const CarouselExample(),
+        body: const CardAndTab(),
       ),
     );
   }
 }
 
-class CarouselExample extends StatefulWidget {
-  const CarouselExample({super.key});
+class CardAndTab extends StatefulWidget {
+  const CardAndTab({super.key});
 
   @override
-  State<CarouselExample> createState() => _CarouselExampleState();
+  State<CardAndTab> createState() => _CardAndTabState();
 }
 
-class _CarouselExampleState extends State<CarouselExample> {
+class _CardAndTabState extends State<CardAndTab> {
   final CarouselController controller = CarouselController(initialItem: 1);
 
   @override
@@ -48,210 +46,54 @@ class _CarouselExampleState extends State<CarouselExample> {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    CarouselSliderController buttonCarouselController = CarouselSliderController();
+    final double screenHeight = MediaQuery.sizeOf(context).height;
+    final double screenWidth = MediaQuery.sizeOf(context).width;
 
-    return ListView(
-      children: <Widget>[
-        ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: height / 2),
-          child: CarouselSlider(
-            carouselController: buttonCarouselController,
-            options: CarouselOptions(
-              height: 400.0,
-              enableInfiniteScroll: false,
-              ),
-            items: ImageInfo.values.map((ImageInfo image) {
-              return HeroLayoutCard(imageInfo: image);
-            }).toList(),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () => buttonCarouselController.nextPage(
-              duration: Duration(milliseconds: 300), curve: Curves.linear),
-          child: Text('→'),
-        ),
-        const SizedBox(height: 20),
-        const Padding(
-          padding: EdgeInsetsDirectional.only(top: 8.0, start: 8.0),
-          child: Text('Multi-browse layout'),
-        ),
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 50),
-          child: CarouselView.weighted(
-            flexWeights: const <int>[1, 2, 3, 2, 1],
-            consumeMaxWeight: false,
-            children: List<Widget>.generate(20, (int index) {
-              return ColoredBox(
-                color: Colors.primaries[index % Colors.primaries.length]
-                    .withOpacity(0.8),
-                child: const SizedBox.expand(),
-              );
-            }),
-          ),
-        ),
-        const SizedBox(height: 20),
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 200),
-          child: CarouselView.weighted(
-              flexWeights: const <int>[3, 3, 3, 2, 1],
-              consumeMaxWeight: false,
-              children: CardInfo.values.map((CardInfo info) {
-                return ColoredBox(
-                  color: info.backgroundColor,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(info.icon, color: info.color, size: 32.0),
-                        Text(info.label,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                            overflow: TextOverflow.clip,
-                            softWrap: false),
-                      ],
-                    ),
-                  ),
-                );
-              }).toList()),
-        ),
-        const SizedBox(height: 20),
-        const Padding(
-          padding: EdgeInsetsDirectional.only(top: 8.0, start: 8.0),
-          child: Text('Uncontained layout'),
-        ),
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 200),
-          child: CarouselView(
-            itemExtent: 330,
-            shrinkExtent: 200,
-            children: List<Widget>.generate(20, (int index) {
-              return UncontainedLayoutCard(index: index, label: 'Show $index');
-            }),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class HeroLayoutCard extends StatelessWidget {
-  const HeroLayoutCard({
-    super.key,
-    required this.imageInfo,
-  });
-
-  final ImageInfo imageInfo;
-
-  @override
-  Widget build(BuildContext context) {
-    final double width = MediaQuery.sizeOf(context).width;
-    return Stack(
-        alignment: AlignmentDirectional.bottomStart,
+    return Flexible(
+      flex: 1,
+      fit: FlexFit.tight,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          ClipRect(
-            child: OverflowBox(
-              maxWidth: width * 7 / 8,
-              minWidth: width * 7 / 8,
-              child: Image(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/material/${imageInfo.url}'),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  imageInfo.title,
-                  overflow: TextOverflow.clip,
-                  softWrap: false,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineLarge
-                      ?.copyWith(color: Colors.white),
+          Stack(
+            alignment: AlignmentDirectional.bottomStart,
+            children: [
+              Container(
+                width: 150,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(12.0),
                 ),
-                const SizedBox(height: 10),
-                Text(
-                  imageInfo.subtitle,
-                  overflow: TextOverflow.clip,
-                  softWrap: false,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: Colors.white),
-                )
-              ],
-            ),
+                constraints: BoxConstraints(
+                  minHeight: 500,
+                  minWidth: 50,
+                ),
+                margin: EdgeInsetsDirectional.fromSTEB(50, 50, 50, 50),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(12.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      spreadRadius: 0,
+                      blurRadius: 15,
+                      offset: Offset(5, 12), // changes position of shadow
+                    ),
+                  ],
+                ),
+                constraints: BoxConstraints(
+                  minHeight: 450,
+                  minWidth: 250,
+                ),
+                margin: EdgeInsetsDirectional.fromSTEB(50, 50, 50, 50),
+              ),
+            ]
           ),
-        ]);
-  }
-}
-
-class UncontainedLayoutCard extends StatelessWidget {
-  const UncontainedLayoutCard({
-    super.key,
-    required this.index,
-    required this.label,
-  });
-
-  final int index;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Colors.primaries[index % Colors.primaries.length].withOpacity(0.5),
-      child: Center(
-        child: Text(
-          label,
-          style: const TextStyle(color: Colors.white, fontSize: 20),
-          overflow: TextOverflow.clip,
-          softWrap: false,
-        ),
-      ),
+        ],
+      )
     );
   }
-}
-
-enum CardInfo {
-  camera('Cameras', Icons.video_call, Color(0xff2354C7), Color(0xffECEFFD)),
-  lighting('Lighting', Icons.lightbulb, Color(0xff806C2A), Color(0xffFAEEDF)),
-  climate('Climate', Icons.thermostat, Color(0xffA44D2A), Color(0xffFAEDE7)),
-  wifi('Wifi', Icons.wifi, Color(0xff417345), Color(0xffE5F4E0)),
-  media('Media', Icons.library_music, Color(0xff2556C8), Color(0xffECEFFD)),
-  security(
-      'Security', Icons.crisis_alert, Color(0xff794C01), Color(0xffFAEEDF)),
-  safety(
-      'Safety', Icons.medical_services, Color(0xff2251C5), Color(0xffECEFFD)),
-  more('', Icons.add, Color(0xff201D1C), Color(0xffE3DFD8));
-
-  const CardInfo(this.label, this.icon, this.color, this.backgroundColor);
-  final String label;
-  final IconData icon;
-  final Color color;
-  final Color backgroundColor;
-}
-
-enum ImageInfo {
-  image0('The Flow', 'Sponsored | Season 1 Now Streaming',
-      'content_based_color_scheme_1.png'),
-  image1('Through the Pane', 'Sponsored | Season 1 Now Streaming',
-      'content_based_color_scheme_2.png'),
-  image2('Iridescence', 'Sponsored | Season 1 Now Streaming',
-      'content_based_color_scheme_3.png'),
-  image3('Sea Change', 'Sponsored | Season 1 Now Streaming',
-      'content_based_color_scheme_4.png'),
-  image4('Blue Symphony', 'Sponsored | Season 1 Now Streaming',
-      'content_based_color_scheme_5.png'),
-  image5('When It Rains', 'Sponsored | Season 1 Now Streaming',
-      'content_based_color_scheme_6.png');
-
-  const ImageInfo(this.title, this.subtitle, this.url);
-  final String title;
-  final String subtitle;
-  final String url;
 }
