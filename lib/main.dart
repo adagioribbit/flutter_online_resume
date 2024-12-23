@@ -94,6 +94,15 @@ class _CardAndTabState extends State<CardAndTab> with WidgetsBindingObserver, Ti
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+                GestureDetector(
+                  onTap: () {
+                    if (_status == AnimationStatus.dismissed) {
+                      _controller.forward();
+                    } else {
+                      _controller.reverse();
+                    }
+                  },
+                  child:
         /* Conteneur extérieur */
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -175,15 +184,6 @@ class _CardAndTabState extends State<CardAndTab> with WidgetsBindingObserver, Ti
                 ),
               ],
             ),
-                GestureDetector(
-                  onTap: () {
-                    if (_status == AnimationStatus.dismissed) {
-                      _controller.forward();
-                    } else {
-                      _controller.reverse();
-                    }
-                  },
-                  child:
             Stack(
               children:[
                 /* Dos du dossier */
@@ -243,7 +243,7 @@ class _CardAndTabState extends State<CardAndTab> with WidgetsBindingObserver, Ti
                     ),
                 )
               ])
-            )]
+            ])
         )]
     );
   }
