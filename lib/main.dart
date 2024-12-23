@@ -1,7 +1,7 @@
 // OpeningFolder
 // 
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'dart:math' as math;
 
 void main() => runApp(const CardAndTabApp());
 
@@ -39,6 +39,7 @@ class _CardAndTabState extends State<CardAndTab> with WidgetsBindingObserver, Ti
   late Size _lastSize;
   
   Color manilla = Color(0xffceb88f);
+  Color manillaDarker = Color.fromARGB(255, 163, 145, 113);
   Color stickerLabel = Color.fromARGB(255, 241, 242, 232);
   Color background = Color(0xfffef7ff);
 
@@ -108,8 +109,15 @@ class _CardAndTabState extends State<CardAndTab> with WidgetsBindingObserver, Ti
                   width: 150,
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
+                    border: Border(
+                      left: BorderSide(color: manillaDarker),
+                      top: BorderSide(color: manillaDarker)
+                    ),
                     color: manilla,
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12.0),
+                      topRight: Radius.circular(12.0)
+                    ),
                   ),
                   constraints: BoxConstraints(
                     minHeight: 45,
@@ -121,14 +129,25 @@ class _CardAndTabState extends State<CardAndTab> with WidgetsBindingObserver, Ti
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      /* Etiquette dossier */
-                      Container(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
-                        decoration: BoxDecoration(
-                          color: stickerLabel,
-                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                        ),
-                        child:Text("Formation",style:TextStyle(fontWeight: FontWeight.bold))
+                      Transform.rotate(
+                          angle: -math.pi / 40,
+                          child:
+                          /* Etiquette dossier */
+                          Container(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
+                            decoration: BoxDecoration(
+                              color: stickerLabel,
+                              border: Border.all(color: manillaDarker),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                                bottomLeft: Radius.circular(4.0),
+                                bottomRight: Radius.circular(4.0)
+                              ),
+                            ),
+                            child:Text("Formation",style:TextStyle(fontWeight: FontWeight.bold)
+                            )
+                          )
                       )
                     ]
                   ),
@@ -170,6 +189,11 @@ class _CardAndTabState extends State<CardAndTab> with WidgetsBindingObserver, Ti
                 /* Dos du dossier */
                 Container(
                   decoration: BoxDecoration(
+                    border: Border(
+                      left: BorderSide(color: manillaDarker),
+                      right: BorderSide(color: manillaDarker),
+                      bottom: BorderSide(color: manillaDarker)
+                    ),
                     color: manilla,
                     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(4.0), bottomRight: Radius.circular(4.0), topRight: Radius.circular(4.0)),
                     boxShadow: [
@@ -193,13 +217,14 @@ class _CardAndTabState extends State<CardAndTab> with WidgetsBindingObserver, Ti
                   origin: Offset(0,200),
                   transform: Matrix4.identity()
                     ..setEntry(3, 2, 0.0005)
-                    ..rotateX(pi * _animation.value),
+                    ..rotateX(math.pi * _animation.value),
                   child: 
                     /* Rabat du dossier */
                     Container(
                       decoration: BoxDecoration(
                         color: manilla,
-                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        border: Border.all(color: manillaDarker),
+                        borderRadius: BorderRadius.all(Radius.circular(2.0)),
                         boxShadow: [
                           BoxShadow(
                             color: const Color.fromARGB(98, 75, 75, 75),
