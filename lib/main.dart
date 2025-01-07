@@ -1,9 +1,8 @@
-import 'package:dossier_de_competences_web/widgets/manila_folder.dart';
-import 'package:dossier_de_competences_web/widgets/squared_sheet.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' show pi;
-
-final Color background = Color.fromARGB(255, 249, 247, 255);
+import 'helpers/colorchart.dart';
+import 'widgets/squared_sheet.dart';
+import 'widgets/site_header.dart';
 
 void main() => runApp(const CardAndTabApp());
 
@@ -16,6 +15,49 @@ Pourquoi s\'prendre la tetê ?!
 La vie est trop courte !
 Allez, je fais du multiligne pour peindre cette page blanche de daube !''';
 
+  static Matrix4 createCylindricalProjectionTransform({
+    required double radius,
+    required double angle,
+    double perspective = 0.001,
+    Axis orientation = Axis.vertical,
+  }) {
+    assert(perspective >= 0 && perspective <= 1.0);
+
+    // Pre-multiplied matrix of a projection matrix and a view matrix.
+    //
+    // Projection matrix is a simplified perspective matrix
+    // http://web.iitd.ac.in/~hegde/cad/lecture/L9_persproj.pdf
+    // in the form of
+    // [[1.0, 0.0, 0.0, 0.0],
+    //  [0.0, 1.0, 0.0, 0.0],
+    //  [0.0, 0.0, 1.0, 0.0],
+    //  [0.0, 0.0, -perspective, 1.0]]
+    //
+    // View matrix is a simplified camera view matrix.
+    // Basically re-scales to keep object at original size at angle = 0 at
+    // any radius in the form of
+    // [[1.0, 0.0, 0.0, 0.0],
+    //  [0.0, 1.0, 0.0, 0.0],
+    //  [0.0, 0.0, 1.0, -radius],
+    //  [0.0, 0.0, 0.0, 1.0]]
+    Matrix4 result = Matrix4.identity()
+      ..setEntry(3, 2, -perspective)
+      ..setEntry(2, 3, -radius)
+      ..setEntry(3, 3, perspective * radius + 1.0);
+
+    // Model matrix by first translating the object from the origin of the world
+    // by radius in the z axis and then rotating against the world.
+    result = result *
+        (switch (orientation) {
+              Axis.horizontal => Matrix4.rotationY(angle),
+              Axis.vertical => Matrix4.rotationX(angle),
+            } *
+            Matrix4.translationValues(0.0, 0.0, radius)) as Matrix4;
+
+    // Essentially perspective * view * model.
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,12 +65,8 @@ Allez, je fais du multiligne pour peindre cette page blanche de daube !''';
       title: "Test",
       color: Colors.amber,
       home: Scaffold(
-          backgroundColor: background,
-          //backgroundColor: Colors.red,
-          appBar: AppBar(
-            title: const Text('Dossier de compétences'),
-            centerTitle: true,
-          ),
+          backgroundColor: ColorChart.appBackground,
+          appBar: SiteHeader(),
           body: Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -54,13 +92,21 @@ Allez, je fais du multiligne pour peindre cette page blanche de daube !''';
                 //        color: Colors.black,
                 //      )),
                 //),
-                SquaredSheet(
-                    scaleFactor: 25.0,
-                    child: Text(squared_paper_text,
-                        style: TextStyle(
-                            fontSize: 40.0,
-                            fontFamily: "Handwritten",
-                            color: Colors.green)))
+                Transform(
+                    alignment: FractionalOffset.center,
+                    origin: Offset(0, 221),
+                    transform: createCylindricalProjectionTransform(
+                        radius: (2 * pi),
+                        angle: (pi / 16),
+                        perspective: 0.01,
+                        orientation: Axis.vertical),
+                    child: SquaredSheet(
+                        scaleFactor: 25.0,
+                        child: Text(squared_paper_text,
+                            style: TextStyle(
+                                fontSize: 40.0,
+                                fontFamily: "Handwritten",
+                                color: Colors.green))))
               ])),
     );
   }

@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   carousel_slider: ^5.0.0
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,12 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - lib/assets/blank_squared_sheet.png
+    - lib/assets/french_flag.png
+    - lib/assets/uk_flag.png
+    - lib/assets/linkedin.png
+    - lib/assets/instagram.png
+    - lib/assets/github.png
+    - lib/assets/linkedin.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
