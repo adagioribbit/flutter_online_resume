@@ -1,6 +1,6 @@
 // FlutterFxFolder
 // https://github.com/flutterfx/flutterfx_widgets/tree/f8bde010dd4c43086e47bd8073e66c6086840eb0
-// 
+//
 import 'package:flutter/material.dart';
 
 void main() => runApp(const CardAndTabApp());
@@ -19,11 +19,15 @@ class CardAndTabApp extends StatelessWidget {
           title: const Text('Dossier de compétences'),
           centerTitle: true,
         ),
-        body: const FolderHomeWidget(title:"Test", curve: Curves.linear,),
+        body: const FolderHomeWidget(
+          title: "Test",
+          curve: Curves.linear,
+        ),
       ),
     );
   }
 }
+
 class FolderBackCoverGradientPainter extends CustomPainter {
   final Animation<double> animation;
   FolderBackCoverGradientPainter(this.animation) : super(repaint: animation);
@@ -363,7 +367,6 @@ class _FolderHomeWidgetState extends State<FolderHomeWidget>
               builder: (context, child) {
                 return GestureDetector(
                   onTap: () {
-                    print("Widget tapped!");
                     if (isOpen) {
                       _animationController.reverse().orCancel;
                       _shawdowAnimationController.reverse();

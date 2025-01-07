@@ -5,6 +5,7 @@ import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
 import '../helpers/utils.dart';
 import '../helpers/globals.dart' as globals;
+import 'wingling_button.dart';
 
 class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
   const SiteHeader({super.key});
@@ -105,65 +106,40 @@ class _SiteHeaderState extends State<SiteHeader> {
   final _socialmediaButton = Container(
       margin: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
       child: ElevatedButton(
-        style: ButtonStyle(
-            padding: WidgetStateProperty.all<EdgeInsets>(
-                EdgeInsets.fromLTRB(3, 11, 5, 15)),
-            backgroundColor: WidgetStateProperty.resolveWith<Color>(
-              (Set<WidgetState> states) {
-                if (states.contains(WidgetState.hovered)) {
-                  return const Color.fromARGB(255, 79, 98, 128);
-                } else if (states.contains(WidgetState.pressed)) {
-                  return ColorChart.appBarButtonPlusBackgroundPressed;
-                }
-                return Color.fromARGB(255, 130, 148, 179);
-              },
-            ),
-            shadowColor: WidgetStateProperty.all<Color>(
-                ColorChart.appBarButtonPlusShadow),
-            elevation: WidgetStateProperty.resolveWith<double>(
-              (Set<WidgetState> states) {
-                if (states.contains(WidgetState.pressed)) return 10;
-                return 5;
-              },
-            ),
-            animationDuration: Duration(milliseconds: 200)),
-        onPressed: () {
-          // Créer 2 états : shrinked/dilated
-          // Créer une transition animée entre les deux états
-          // Lier la transition à l'événement onPressed
+          style: ButtonStyle(
+              padding: WidgetStateProperty.all<EdgeInsets>(
+                  EdgeInsets.fromLTRB(3, 11, 5, 15)),
+              backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                (Set<WidgetState> states) {
+                  if (states.contains(WidgetState.hovered)) {
+                    return const Color.fromARGB(255, 79, 98, 128);
+                  } else if (states.contains(WidgetState.pressed)) {
+                    return ColorChart.appBarButtonPlusBackgroundPressed;
+                  }
+                  return Color.fromARGB(255, 130, 148, 179);
+                },
+              ),
+              shadowColor: WidgetStateProperty.all<Color>(
+                  ColorChart.appBarButtonPlusShadow),
+              elevation: WidgetStateProperty.resolveWith<double>(
+                (Set<WidgetState> states) {
+                  if (states.contains(WidgetState.pressed)) return 10;
+                  return 5;
+                },
+              ),
+              animationDuration: Duration(milliseconds: 200)),
+          onPressed: () {
+            // Créer 2 états : shrinked/dilated
+            // Créer une transition animée entre les deux états
+            // Lier la transition à l'événement onPressed
 
-          // Transférer les trois autres boutons dans un seul widget statefull
-          // Créer 2 états d'affichage : stacked/flourished
-          // --> bouton ? = dilated => stacked
-          // --> bouton ? = shrinked => flourished
-          // Faire un flourish vertical vers le bas
-        },
-        child: Text(
-          "🤙🏻",
-          style: TextStyle(shadows: <Shadow>[
-            Shadow(
-              color: Color.fromARGB(127, 255, 255, 255),
-              blurRadius: 7.0,
-              offset: Offset.fromDirection(-.5 * pi, 5),
-            ),
-            Shadow(
-              color: Color.fromARGB(127, 127, 127, 127),
-              blurRadius: 5.0,
-              offset: Offset.fromDirection(-0.25 * pi, 5),
-            ),
-            Shadow(
-              color: Color.fromARGB(127, 127, 127, 127),
-              blurRadius: 5.0,
-              offset: Offset.fromDirection(1.25 * pi, 5),
-            ),
-            Shadow(
-              color: Color.fromARGB(127, 0, 0, 0),
-              blurRadius: 5.0,
-              offset: Offset.fromDirection(-1.75 * pi, 5),
-            )
-          ], fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-      ));
+            // Transférer les trois autres boutons dans un seul widget statefull
+            // Créer 2 états d'affichage : stacked/flourished
+            // --> bouton ? = dilated => stacked
+            // --> bouton ? = shrinked => flourished
+            // Faire un flourish vertical vers le bas
+          },
+          child: WinglingButton()));
 
   renderActionWidgets(BuildContext context) {
     if (Utils.isDesktopScreen(context)) {
