@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 
 class Constants {
   static const double APPBAR_HEIGHT = 75.0;
+  static const double SOCIAL_BUTTON_HEIGHT = APPBAR_HEIGHT - 30.0;
+  static const double SOCIAL_BUTTON_HEIGHT_SHRUNK = SOCIAL_BUTTON_HEIGHT / 1.5;
   static const BoxConstraints TOOLBAR_ACTIONS_BOXCONTRAINTS = BoxConstraints(
     minHeight: kToolbarHeight,
     maxHeight: kToolbarHeight,
@@ -12,6 +14,10 @@ class Constants {
 }
 
 class AppStrings {
+  static const String LINKEDIN_URL =
+      "https://www.linkedin.com/in/benjamin-isra%C3%ABl-247b26124/";
+  static const String GITHUB_URL = "https://github.com/adagioribbit";
+  static const String INSTAGRAM_URL = "https://www.instagram.com/ben.7994";
   static const Map<String, String> LANGUAGE_SWITCH_IMAGE_PATH = {
     'fr': 'lib/assets/french_flag.png',
     'en': 'lib/assets/uk_flag.png',

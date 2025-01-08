@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
-import '../helpers/utils.dart';
 import '../helpers/globals.dart' as globals;
-import 'wiggling_button.dart';
+import 'social_networking.dart';
 
 class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
   const SiteHeader({super.key});
 
   @override
   Size get preferredSize => Size.fromHeight(Constants.APPBAR_HEIGHT);
+
+  Size getPreferredSize() => preferredSize;
 
   @override
   State<SiteHeader> createState() => _SiteHeaderState();
@@ -53,80 +54,6 @@ class _SiteHeaderState extends State<SiteHeader> {
     },
   );
 
-  final _linkedInButton = ValueListenableBuilder(
-    valueListenable: globals.appLanguage,
-    builder: (context, value, widget) {
-      return IconButton(
-        hoverColor: ColorChart.linkedInButtonShadowHovered,
-        constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
-        icon: Image(
-          image: AssetImage("lib/assets/linkedin.png"),
-          fit: BoxFit.fill,
-        ),
-        tooltip: AppStrings.LINKEDIN_TOOLTIP[globals.appLanguage.value],
-        onPressed: () {},
-      );
-    },
-  );
-
-  final _githubButton = ValueListenableBuilder(
-    valueListenable: globals.appLanguage,
-    builder: (context, value, widget) {
-      return IconButton(
-        hoverColor: ColorChart.githubButtonShadowHovered,
-        constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
-        icon: Image(
-          image: AssetImage("lib/assets/github.png"),
-          fit: BoxFit.fill,
-        ),
-        tooltip: AppStrings.GITHUB_TOOLTIP[globals.appLanguage.value],
-        onPressed: () {},
-      );
-    },
-  );
-
-  final _instagramButton = ValueListenableBuilder(
-    valueListenable: globals.appLanguage,
-    builder: (context, value, widget) {
-      return IconButton(
-        hoverColor: ColorChart.instagralButtonShadowHovered,
-        constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
-        icon: Image(
-          image: AssetImage("lib/assets/instagram.png"),
-          fit: BoxFit.fill,
-        ),
-        tooltip: AppStrings.INSTAGRAM_TOOLTIP[globals.appLanguage.value],
-        onPressed: () {},
-      );
-    },
-  );
-
-  final _socialmediaButton = Container(
-      margin: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-      child: WigglingButton());
-
-  renderActionWidgets(BuildContext context) {
-    if (Utils.isDesktopScreen(context)) {
-      return renderDesktopActionWidgets();
-    } else if (Utils.isTabletScreen(context)) {
-      return renderTabletActionWidgets();
-    } else {
-      return renderPhoneActionWidgets();
-    }
-  }
-
-  renderTabletActionWidgets() {
-    return renderDesktopActionWidgets();
-  }
-
-  renderPhoneActionWidgets() {
-    return <Widget>[_socialmediaButton];
-  }
-
-  renderDesktopActionWidgets() {
-    return <Widget>[_linkedInButton, _githubButton, _instagramButton];
-  }
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -153,7 +80,7 @@ class _SiteHeaderState extends State<SiteHeader> {
       shadowColor: ColorChart.appBarShadow,
       elevation: 5,
       leading: _languageSwitchButton,
-      actions: renderActionWidgets(context),
+      actions: <Widget>[SocialNetworking()],
     );
   }
 }
