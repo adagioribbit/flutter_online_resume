@@ -71,6 +71,9 @@ flutter:
     - lib/assets/instagram.png
     - lib/assets/github.png
     - lib/assets/linkedin.png
+    - lib/assets/callme_sign_shadowed.png
+    - lib/assets/love_you_sign_shadowed.png
+    - lib/assets/pointing_left_sign_shadowed.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
