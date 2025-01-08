@@ -1,11 +1,9 @@
-import 'dart:math' show pi;
-
 import 'package:flutter/material.dart';
 import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
 import '../helpers/utils.dart';
 import '../helpers/globals.dart' as globals;
-import 'wingling_button.dart';
+import 'wiggling_button.dart';
 
 class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
   const SiteHeader({super.key});
@@ -105,41 +103,7 @@ class _SiteHeaderState extends State<SiteHeader> {
 
   final _socialmediaButton = Container(
       margin: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-      child: ElevatedButton(
-          style: ButtonStyle(
-              padding: WidgetStateProperty.all<EdgeInsets>(
-                  EdgeInsets.fromLTRB(3, 11, 5, 15)),
-              backgroundColor: WidgetStateProperty.resolveWith<Color>(
-                (Set<WidgetState> states) {
-                  if (states.contains(WidgetState.hovered)) {
-                    return const Color.fromARGB(255, 79, 98, 128);
-                  } else if (states.contains(WidgetState.pressed)) {
-                    return ColorChart.appBarButtonPlusBackgroundPressed;
-                  }
-                  return Color.fromARGB(255, 130, 148, 179);
-                },
-              ),
-              shadowColor: WidgetStateProperty.all<Color>(
-                  ColorChart.appBarButtonPlusShadow),
-              elevation: WidgetStateProperty.resolveWith<double>(
-                (Set<WidgetState> states) {
-                  if (states.contains(WidgetState.pressed)) return 10;
-                  return 5;
-                },
-              ),
-              animationDuration: Duration(milliseconds: 200)),
-          onPressed: () {
-            // Créer 2 états : shrinked/dilated
-            // Créer une transition animée entre les deux états
-            // Lier la transition à l'événement onPressed
-
-            // Transférer les trois autres boutons dans un seul widget statefull
-            // Créer 2 états d'affichage : stacked/flourished
-            // --> bouton ? = dilated => stacked
-            // --> bouton ? = shrinked => flourished
-            // Faire un flourish vertical vers le bas
-          },
-          child: WinglingButton()));
+      child: WigglingButton());
 
   renderActionWidgets(BuildContext context) {
     if (Utils.isDesktopScreen(context)) {

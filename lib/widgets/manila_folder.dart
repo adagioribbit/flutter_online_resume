@@ -34,7 +34,6 @@ class _ManilaFolderState extends State<ManilaFolder>
   late AnimationController _controller;
   late Animation _animation;
   AnimationStatus _status = AnimationStatus.dismissed;
-  late Size _lastSize;
   late Color _folderBorderColor;
 
   @override
@@ -59,31 +58,13 @@ class _ManilaFolderState extends State<ManilaFolder>
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // [View.of] exposes the view from `WidgetsBinding.instance.platformDispatcher.views`
-    // into which this widget is drawn.
-    _lastSize = View.of(context).physicalSize;
-  }
-
-  @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
-  void didChangeMetrics() {
-    setState(() {
-      _lastSize = View.of(context).physicalSize;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.sizeOf(context).height;
-    final double screenWidth = MediaQuery.sizeOf(context).width;
-
     Container folderBack = Container(
       decoration: BoxDecoration(
         border: Border(
