@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html;
-
 import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
 import '../helpers/globals.dart' as globals;
@@ -16,10 +15,13 @@ class SocialNetworking extends StatefulWidget {
 
 class _SocialNetworkingState extends State<SocialNetworking>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _animation;
   late bool isShrinked;
-  late double parentHeight;
+  late double parentHeight,
+      offsetLinkedIn,
+      offsetGithub,
+      offsetInstagram,
+      wigglingButtonBottomMargin;
+  late AnimationController _animationController;
 
   final _linkedInButton = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
@@ -76,48 +78,78 @@ class _SocialNetworkingState extends State<SocialNetworking>
   );
 
   @override
+  void initState() {
+    super.initState();
+
+    offsetLinkedIn = 155;
+    offsetGithub = 100;
+    offsetInstagram = 56;
+    wigglingButtonBottomMargin = 9;
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 150));
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     isShrinked = Utils.isPhoneScreen(context);
-    parentHeight = isShrinked
-        ? Constants.SOCIAL_BUTTON_HEIGHT
-        : Constants.SOCIAL_BUTTON_HEIGHT_SHRUNK;
+    parentHeight = isShrinked ? Constants.SOCIAL_BUTTON_HEIGHT : 0;
+    _animationController.forward();
   }
 
   @override
   Widget build(BuildContext context) {
     if (Utils.isPhoneScreen(context)) {
-      return Container(
-          width: Constants.SOCIAL_BUTTON_HEIGHT_SHRUNK,
-          height: Constants.SOCIAL_BUTTON_HEIGHT_SHRUNK,
-          margin: EdgeInsets.fromLTRB(0, 0, 15, 0),
-          color: Theme.of(context).colorScheme.secondaryContainer,
-          child: OverflowBox(
-              maxWidth: Constants.SOCIAL_BUTTON_HEIGHT,
-              maxHeight: Constants.SOCIAL_BUTTON_HEIGHT,
-              child: AnimatedContainer(
-                  duration: Duration(milliseconds: 50),
-                  height: parentHeight,
-                  width: parentHeight,
-                  child: WigglingButton(
-                      isShrinked: isShrinked,
-                      onPressedClbk: () {
-                        // Créer une transition animée entre les deux états
-                        setState(() {
-                          isShrinked = !isShrinked;
-                          parentHeight = parentHeight = isShrinked
-                              ? Constants.SOCIAL_BUTTON_HEIGHT
-                              : Constants.SOCIAL_BUTTON_HEIGHT_SHRUNK;
-                        });
-
-                        // Transférer les trois autres boutons dans un seul widget statefull
-                        // Créer 2 états d'affichage : stacked/flourished
-                        // --> bouton ? = dilated => stacked
-                        // --> bouton ? = shrinked => flourished
-                        // Faire un flourish vertical vers le bas,
-                      }))));
+      return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+        AnimatedBuilder(
+            animation: _animationController,
+            builder: (context, child) {
+              return Transform.translate(
+                  offset:
+                      Offset(offsetLinkedIn * _animationController.value, 1),
+                  child: _linkedInButton);
+            }),
+        AnimatedBuilder(
+            animation: _animationController,
+            builder: (context, child) {
+              return Transform.translate(
+                  offset: Offset(offsetGithub * _animationController.value, 1),
+                  child: _githubButton);
+            }),
+        AnimatedBuilder(
+            animation: _animationController,
+            builder: (context, child) {
+              return Transform.translate(
+                  offset:
+                      Offset(offsetInstagram * _animationController.value, 1),
+                  child: _instagramButton);
+            }),
+        AnimatedContainer(
+            duration: Duration(milliseconds: 50),
+            height: parentHeight,
+            width: parentHeight,
+            transform: Matrix4.identity()
+              ..setEntry(1, 3, -5 * _animationController.value),
+            child: WigglingButton(
+                isShrinked: isShrinked,
+                onPressedClbk: () {
+                  setState(() {
+                    isShrinked = !isShrinked;
+                    parentHeight = isShrinked
+                        ? Constants.SOCIAL_BUTTON_HEIGHT
+                        : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
+                    if (isShrinked) {
+                      _animationController.forward();
+                    } else {
+                      _animationController.reverse();
+                    }
+                  });
+                })),
+      ]);
     } else {
-      return Row(children: [_linkedInButton, _githubButton, _instagramButton]);
+      return Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [_linkedInButton, _githubButton, _instagramButton]);
     }
   }
 }

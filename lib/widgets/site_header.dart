@@ -58,29 +58,43 @@ class _SiteHeaderState extends State<SiteHeader> {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: Constants.APPBAR_HEIGHT,
-      title: Center(
-          child: Column(children: <Widget>[
-        Text(AppStrings.APP_TITLE,
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25.0,
-                color: ColorChart.appBarTitleText)),
-        ValueListenableBuilder(
-          valueListenable: globals.appLanguage,
-          builder: (context, value, widget) {
-            return Text(AppStrings.APP_SUBTITLE[globals.appLanguage.value]!,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.0,
-                    color: ColorChart.appBarTitleText));
-          },
-        ),
-      ])),
+      title: Stack(children: [
+        Center(
+            child: Flex(
+                mainAxisAlignment: MainAxisAlignment.end,
+                direction: Axis.horizontal,
+                children: [
+              Expanded(
+                  flex: 2,
+                  child: Column(children: <Widget>[
+                    Text(AppStrings.APP_TITLE,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25.0,
+                            color: ColorChart.appBarTitleText)),
+                    ValueListenableBuilder(
+                      valueListenable: globals.appLanguage,
+                      builder: (context, value, widget) {
+                        return Text(
+                            AppStrings.APP_SUBTITLE[globals.appLanguage.value]!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0,
+                                color: ColorChart.appBarTitleText));
+                      },
+                    ),
+                  ])),
+              Container(
+                height: Constants.SOCIAL_BUTTON_HEIGHT,
+                width: Constants.SOCIAL_BUTTON_HEIGHT,
+              )
+            ])),
+        SocialNetworking()
+      ]),
       backgroundColor: ColorChart.appBackground,
       shadowColor: ColorChart.appBarShadow,
       elevation: 5,
       leading: _languageSwitchButton,
-      actions: <Widget>[SocialNetworking()],
     );
   }
 }
