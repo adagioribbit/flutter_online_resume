@@ -85,9 +85,9 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     super.initState();
     parent = context.findAncestorWidgetOfExactType<SiteHeader>();
 
-    offsetLinkedIn = 170;
-    offsetGithub = 120;
-    offsetInstagram = 58;
+    offsetLinkedIn = 180;
+    offsetGithub = 125;
+    offsetInstagram = 65;
     wigglingButtonBottomMargin = 9;
     _animationTranslate = Tween(begin: 0.001, end: 1.0).animate(CurvedAnimation(
         parent: widget.animationController,
@@ -101,7 +101,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     isShrinked = Utils.isPhoneScreen(context);
-    parentHeight = isShrinked ? Constants.SOCIAL_BUTTON_HEIGHT : 0;
+    parentHeight = isShrinked ? Constants.WIGGLING_BUTTON_HEIGHT : 0;
     widget.animationController.forward();
   }
 
@@ -109,7 +109,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
   Widget build(BuildContext context) {
     if (Utils.isPhoneScreen(context)) {
       return Row(
-          spacing: 5,
+          spacing: 10,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             AnimatedBuilder(
@@ -161,19 +161,22 @@ class _SocialNetworkingState extends State<SocialNetworking> {
                       child: _instagramButton);
                 }),
             AnimatedContainer(
-                duration: Duration(milliseconds: 50),
+                duration: Duration(
+                    milliseconds: Constants.WIGGLING_BUTTON_ANIMATION_DURATION),
                 height: parentHeight,
                 width: parentHeight,
                 transform: Matrix4.identity()
+                  // Translate X
                   ..setEntry(0, 3, 5)
-                  ..setEntry(1, 3, -3.0 * widget.animationController.value),
+                  // Translate Y
+                  ..setEntry(1, 3, widget.animationController.value),
                 child: WigglingButton(
                     isShrinked: isShrinked,
                     onPressedClbk: () {
                       setState(() {
                         isShrinked = !isShrinked;
                         parentHeight = isShrinked
-                            ? Constants.SOCIAL_BUTTON_HEIGHT
+                            ? Constants.WIGGLING_BUTTON_HEIGHT
                             : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
 
                         if (isShrinked) {

@@ -19,7 +19,7 @@ class _WigglingButtonState extends State<WigglingButton>
   late AnimationController _animationController;
   late Animation<double> _animation;
   late bool isTouchedOnce = false;
-  late double parentHeight, marginShrinked;
+  late double parentHeight;
 
   @override
   void initState() {
@@ -69,9 +69,8 @@ class _WigglingButtonState extends State<WigglingButton>
 
   void updateSizeAndMargin() {
     parentHeight = widget.isShrinked
-        ? Constants.SOCIAL_BUTTON_HEIGHT
+        ? Constants.WIGGLING_BUTTON_HEIGHT
         : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
-    marginShrinked = widget.isShrinked ? 5 : 10;
   }
 
   String getIcon() {
@@ -112,7 +111,6 @@ class _WigglingButtonState extends State<WigglingButton>
   Widget build(BuildContext context) {
     return AnimatedContainer(
         duration: Duration(milliseconds: 50),
-        margin: EdgeInsets.fromLTRB(marginShrinked, marginShrinked, 0, 0),
         height: parentHeight,
         width: parentHeight,
         child: ElevatedButton(

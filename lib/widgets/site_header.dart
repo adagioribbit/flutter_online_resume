@@ -49,7 +49,9 @@ class _SiteHeaderState extends State<SiteHeader>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 250));
+        vsync: this,
+        duration:
+            const Duration(milliseconds: Constants.HEADER_ANIMATION_DURATION));
 
     _animationBackgroundColor = ColorTween(
             end: ColorChart.appBarBackground,
@@ -114,8 +116,8 @@ class _SiteHeaderState extends State<SiteHeader>
                               ),
                             ]))),
                     Container(
-                      height: Constants.SOCIAL_BUTTON_HEIGHT,
-                      width: Constants.SOCIAL_BUTTON_HEIGHT,
+                      height: Constants.WIGGLING_BUTTON_HEIGHT,
+                      width: Constants.WIGGLING_BUTTON_HEIGHT,
                     )
                   ])),
               SocialNetworking(animationController: _animationController)
