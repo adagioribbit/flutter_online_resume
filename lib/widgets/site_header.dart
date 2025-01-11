@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
 import '../helpers/globals.dart' as globals;
+import '../helpers/utils.dart';
 import 'social_networking.dart';
 
 class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
@@ -18,6 +19,7 @@ class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
 
 class _SiteHeaderState extends State<SiteHeader>
     with SingleTickerProviderStateMixin {
+  late double titleFontSize, subtitleFontSize;
   late AnimationController _animationController;
   late Animation _animationBackgroundColor,
       _animationTitleColor,
@@ -72,6 +74,14 @@ class _SiteHeaderState extends State<SiteHeader>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    if (Utils.isPhoneScreen(context)) {
+      titleFontSize = 20.0;
+      subtitleFontSize = 12.0;
+    } else {
+      titleFontSize = 28.0;
+      subtitleFontSize = 16.0;
+    }
+    setState(() => {});
   }
 
   @override
@@ -100,7 +110,7 @@ class _SiteHeaderState extends State<SiteHeader>
                               Text(AppStrings.APP_TITLE,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 25.0,
+                                      fontSize: titleFontSize,
                                       color: _animationTitleColor.value)),
                               ValueListenableBuilder(
                                 valueListenable: globals.appLanguage,
@@ -110,7 +120,7 @@ class _SiteHeaderState extends State<SiteHeader>
                                           globals.appLanguage.value]!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 15.0,
+                                          fontSize: subtitleFontSize,
                                           color: _animationTitleColor.value));
                                 },
                               ),
