@@ -4,17 +4,19 @@ import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
 import '../helpers/globals.dart' as globals;
 import '../helpers/utils.dart';
+import 'site_header.dart';
 import 'wiggling_button.dart';
 
 class SocialNetworking extends StatefulWidget {
-  const SocialNetworking({super.key});
+  final AnimationController animationController;
+
+  const SocialNetworking({super.key, required this.animationController});
 
   @override
   State<SocialNetworking> createState() => _SocialNetworkingState();
 }
 
-class _SocialNetworkingState extends State<SocialNetworking>
-    with SingleTickerProviderStateMixin {
+class _SocialNetworkingState extends State<SocialNetworking> {
   late bool isShrinked;
   late double parentHeight,
       offsetLinkedIn,
@@ -22,7 +24,7 @@ class _SocialNetworkingState extends State<SocialNetworking>
       offsetInstagram,
       wigglingButtonBottomMargin;
   late Animation _animationTranslate, _animationScale;
-  late AnimationController _animationController;
+  late SiteHeader? parent;
 
   final _linkedInButton = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
@@ -81,17 +83,18 @@ class _SocialNetworkingState extends State<SocialNetworking>
   @override
   void initState() {
     super.initState();
+    parent = context.findAncestorWidgetOfExactType<SiteHeader>();
 
     offsetLinkedIn = 170;
     offsetGithub = 120;
     offsetInstagram = 58;
     wigglingButtonBottomMargin = 9;
-    _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 150));
-    _animationTranslate = Tween(end: 1.0, begin: 0.001).animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.easeInOutCubicEmphasized));
-    _animationScale = Tween(end: 1.0, begin: 1.25).animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.easeInOutCubicEmphasized));
+    _animationTranslate = Tween(begin: 0.001, end: 1.0).animate(CurvedAnimation(
+        parent: widget.animationController,
+        curve: Curves.easeInOutCubicEmphasized));
+    _animationScale = Tween(begin: 1.25, end: 1.0).animate(CurvedAnimation(
+        parent: widget.animationController,
+        curve: Curves.easeInOutCubicEmphasized));
   }
 
   @override
@@ -99,7 +102,7 @@ class _SocialNetworkingState extends State<SocialNetworking>
     super.didChangeDependencies();
     isShrinked = Utils.isPhoneScreen(context);
     parentHeight = isShrinked ? Constants.SOCIAL_BUTTON_HEIGHT : 0;
-    _animationController.forward();
+    widget.animationController.forward();
   }
 
   @override
@@ -110,7 +113,7 @@ class _SocialNetworkingState extends State<SocialNetworking>
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             AnimatedBuilder(
-                animation: _animationController,
+                animation: widget.animationController,
                 builder: (context, child) {
                   return Transform(
                       transform: Matrix4.identity()
@@ -126,7 +129,7 @@ class _SocialNetworkingState extends State<SocialNetworking>
                       child: _linkedInButton);
                 }),
             AnimatedBuilder(
-                animation: _animationController,
+                animation: widget.animationController,
                 builder: (context, child) {
                   return Transform(
                       transform: Matrix4.identity()
@@ -142,7 +145,7 @@ class _SocialNetworkingState extends State<SocialNetworking>
                       child: _githubButton);
                 }),
             AnimatedBuilder(
-                animation: _animationController,
+                animation: widget.animationController,
                 builder: (context, child) {
                   return Transform(
                       transform: Matrix4.identity()
@@ -163,7 +166,7 @@ class _SocialNetworkingState extends State<SocialNetworking>
                 width: parentHeight,
                 transform: Matrix4.identity()
                   ..setEntry(0, 3, 5)
-                  ..setEntry(1, 3, -3.0 * _animationController.value),
+                  ..setEntry(1, 3, -3.0 * widget.animationController.value),
                 child: WigglingButton(
                     isShrinked: isShrinked,
                     onPressedClbk: () {
@@ -172,10 +175,11 @@ class _SocialNetworkingState extends State<SocialNetworking>
                         parentHeight = isShrinked
                             ? Constants.SOCIAL_BUTTON_HEIGHT
                             : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
+
                         if (isShrinked) {
-                          _animationController.forward();
+                          widget.animationController.forward();
                         } else {
-                          _animationController.reverse();
+                          widget.animationController.reverse();
                         }
                       });
                     })),

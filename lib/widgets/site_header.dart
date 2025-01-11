@@ -16,21 +16,12 @@ class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
   State<SiteHeader> createState() => _SiteHeaderState();
 }
 
-class _SiteHeaderState extends State<SiteHeader> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+class _SiteHeaderState extends State<SiteHeader>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation _animationBackgroundColor,
+      _animationTitleColor,
+      _animationOpacity;
 
   final _languageSwitchButton = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
@@ -55,46 +46,85 @@ class _SiteHeaderState extends State<SiteHeader> {
   );
 
   @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 250));
+
+    _animationBackgroundColor = ColorTween(
+            end: ColorChart.appBarBackground,
+            begin: ColorChart.appBarBackgroundFaded)
+        .animate(CurvedAnimation(
+            parent: _animationController, curve: Curves.linear));
+
+    _animationTitleColor = ColorTween(
+            end: ColorChart.appBarTitleText,
+            begin: ColorChart.appBarTitleTextFaded)
+        .animate(CurvedAnimation(
+            parent: _animationController, curve: Curves.linear));
+
+    _animationOpacity = Tween(begin: 0.2, end: 1.0).animate(
+        CurvedAnimation(parent: _animationController, curve: Curves.linear));
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return AppBar(
-      toolbarHeight: Constants.APPBAR_HEIGHT,
-      title: Stack(children: [
-        Center(
-            child: Flex(
-                mainAxisAlignment: MainAxisAlignment.end,
-                direction: Axis.horizontal,
-                children: [
-              Expanded(
-                  flex: 2,
-                  child: Column(children: <Widget>[
-                    Text(AppStrings.APP_TITLE,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25.0,
-                            color: ColorChart.appBarTitleText)),
-                    ValueListenableBuilder(
-                      valueListenable: globals.appLanguage,
-                      builder: (context, value, widget) {
-                        return Text(
-                            AppStrings.APP_SUBTITLE[globals.appLanguage.value]!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                                color: ColorChart.appBarTitleText));
-                      },
-                    ),
+    return AnimatedBuilder(
+        animation: _animationController,
+        builder: (context, child) {
+          return AppBar(
+            toolbarHeight: Constants.APPBAR_HEIGHT,
+            title: Stack(children: [
+              Center(
+                  child: Flex(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      direction: Axis.horizontal,
+                      children: [
+                    Expanded(
+                        flex: 2,
+                        child: Opacity(
+                            opacity: _animationOpacity.value,
+                            child: Column(children: <Widget>[
+                              Text(AppStrings.APP_TITLE,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25.0,
+                                      color: _animationTitleColor.value)),
+                              ValueListenableBuilder(
+                                valueListenable: globals.appLanguage,
+                                builder: (context, value, widget) {
+                                  return Text(
+                                      AppStrings.APP_SUBTITLE[
+                                          globals.appLanguage.value]!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15.0,
+                                          color: _animationTitleColor.value));
+                                },
+                              ),
+                            ]))),
+                    Container(
+                      height: Constants.SOCIAL_BUTTON_HEIGHT,
+                      width: Constants.SOCIAL_BUTTON_HEIGHT,
+                    )
                   ])),
-              Container(
-                height: Constants.SOCIAL_BUTTON_HEIGHT,
-                width: Constants.SOCIAL_BUTTON_HEIGHT,
-              )
-            ])),
-        SocialNetworking()
-      ]),
-      backgroundColor: ColorChart.appBackground,
-      shadowColor: ColorChart.appBarShadow,
-      elevation: 5,
-      leading: _languageSwitchButton,
-    );
+              SocialNetworking(animationController: _animationController)
+            ]),
+            backgroundColor: _animationBackgroundColor.value,
+            shadowColor: ColorChart.appBarShadow,
+            elevation: 5,
+            leading: _languageSwitchButton,
+          );
+        });
   }
 }
