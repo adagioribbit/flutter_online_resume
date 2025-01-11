@@ -75,8 +75,8 @@ class _SiteHeaderState extends State<SiteHeader>
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (Utils.isPhoneScreen(context)) {
-      titleFontSize = 20.0;
-      subtitleFontSize = 12.0;
+      titleFontSize = 22.0;
+      subtitleFontSize = 14.0;
     } else {
       titleFontSize = 28.0;
       subtitleFontSize = 16.0;
