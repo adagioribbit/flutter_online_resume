@@ -1,4 +1,3 @@
-import 'package:dossier_de_competences_web/widgets/social_networking.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' show pi;
 import '../helpers/colorchart.dart';

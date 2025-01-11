@@ -3,6 +3,7 @@ import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
 import '../helpers/globals.dart' as globals;
 import '../helpers/utils.dart';
+import 'language_switch_button.dart';
 import 'social_networking.dart';
 
 class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
@@ -24,28 +25,6 @@ class _SiteHeaderState extends State<SiteHeader>
   late Animation _animationBackgroundColor,
       _animationTitleColor,
       _animationOpacity;
-
-  final _languageSwitchButton = ValueListenableBuilder(
-    valueListenable: globals.appLanguage,
-    builder: (context, value, widget) {
-      return IconButton(
-        hoverColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        icon: Image(
-          image: AssetImage(AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[value]!),
-          fit: BoxFit.fill,
-        ),
-        tooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[value],
-        onPressed: () {
-          if (value == 'fr') {
-            globals.appLanguage.value = 'en';
-          } else {
-            globals.appLanguage.value = 'fr';
-          }
-        },
-      );
-    },
-  );
 
   @override
   void initState() {
@@ -135,7 +114,7 @@ class _SiteHeaderState extends State<SiteHeader>
             backgroundColor: _animationBackgroundColor.value,
             shadowColor: ColorChart.appBarShadow,
             elevation: 5,
-            leading: _languageSwitchButton,
+            leading: LanguageSwitchButton(),
           );
         });
   }
