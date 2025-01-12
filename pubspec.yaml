@@ -75,6 +75,10 @@ flutter:
     - lib/assets/callme_sign_shadowed.png
     - lib/assets/love_you_sign_shadowed.png
     - lib/assets/pointing_left_sign_shadowed.png
+    - lib/assets/nocturne.png
+    - lib/assets/diurne.png
+    - lib/assets/lune.png
+    - lib/assets/soleil.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

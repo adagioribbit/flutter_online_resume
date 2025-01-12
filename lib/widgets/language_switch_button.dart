@@ -18,30 +18,18 @@ class _LanguageSwitchButtonState extends State<LanguageSwitchButton>
     return ValueListenableBuilder(
       valueListenable: globals.appLanguage,
       builder: (context, value, widget) {
-        return Container(
-            decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
-              BoxShadow(
-                color: Colors.grey[400]!,
-                blurRadius: 10.0,
-              ),
-            ]),
-            child: IconButton(
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              icon: Image(
-                image:
-                    AssetImage(AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[value]!),
-                fit: BoxFit.fill,
-              ),
-              tooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[value],
-              onPressed: () {
-                if (value == 'fr') {
-                  globals.appLanguage.value = 'en';
-                } else {
-                  globals.appLanguage.value = 'fr';
-                }
-              },
-            ));
+        return IconButton(
+          hoverColor: const Color.fromARGB(64, 244, 67, 54),
+          highlightColor: Colors.transparent,
+          icon: Image(
+            image: AssetImage(AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[value]!),
+            fit: BoxFit.fill,
+          ),
+          tooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[value],
+          onPressed: () {
+            globals.appLanguage.value = (value == 'fr' ? 'en' : 'fr');
+          },
+        );
       },
     );
   }

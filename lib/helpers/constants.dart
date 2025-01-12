@@ -25,11 +25,29 @@ class AppStrings {
     'fr': 'lib/assets/french_flag.png',
     'en': 'lib/assets/uk_flag.png',
   };
+  static const Map<bool, String> DARK_MODE_IMAGE_PATH = {
+    true: 'lib/assets/diurne.png',
+    false: 'lib/assets/nocturne.png',
+  };
+  //static const Map<bool, String> DARK_MODE_IMAGE_PATH = {
+  //  true: 'lib/assets/soleil.png',
+  //  false: 'lib/assets/lune.png',
+  //};
+  static const String APP_TITLE = 'Benjamin Israël';
+  static const Map<bool, Map<String, String>> DARK_MODE_TOOLTIP = {
+    true: {
+      'fr': 'Mode clair',
+      'en': 'Light mode',
+    },
+    false: {
+      'fr': 'Mode sombre',
+      'en': 'Dark mode',
+    },
+  };
   static const Map<String, String> LANGUAGE_SWITCH_TOOLTIP = {
     'fr': 'Switch to english',
     'en': 'Afficher en français',
   };
-  static const String APP_TITLE = 'Benjamin Israël';
   static const Map<String, String> APP_SUBTITLE = {
     'fr': 'Analyste développeur',
     'en': 'Software developer',

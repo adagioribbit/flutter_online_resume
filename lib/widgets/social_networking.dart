@@ -36,7 +36,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
           image: AssetImage("lib/assets/linkedin.png"),
           fit: BoxFit.fill,
         ),
-        tooltip: AppStrings.LINKEDIN_TOOLTIP[globals.appLanguage.value],
+        tooltip: AppStrings.LINKEDIN_TOOLTIP[value],
         onPressed: () {
           html.window.open(AppStrings.LINKEDIN_URL, '_blank');
         },
@@ -54,7 +54,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
           image: AssetImage("lib/assets/github.png"),
           fit: BoxFit.fill,
         ),
-        tooltip: AppStrings.GITHUB_TOOLTIP[globals.appLanguage.value],
+        tooltip: AppStrings.GITHUB_TOOLTIP[value],
         onPressed: () {
           html.window.open(AppStrings.GITHUB_URL, '_blank');
         },
@@ -72,7 +72,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
           image: AssetImage("lib/assets/instagram.png"),
           fit: BoxFit.fill,
         ),
-        tooltip: AppStrings.INSTAGRAM_TOOLTIP[globals.appLanguage.value],
+        tooltip: AppStrings.INSTAGRAM_TOOLTIP[value],
         onPressed: () {
           html.window.open(AppStrings.INSTAGRAM_URL, '_blank');
         },

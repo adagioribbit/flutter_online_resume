@@ -127,14 +127,6 @@ class _WigglingButtonState extends State<WigglingButton>
                     }
                   },
                 ),
-                shadowColor: WidgetStateProperty.all<Color>(
-                    ColorChart.appBarButtonPlusShadow),
-                elevation: WidgetStateProperty.resolveWith<double>(
-                  (Set<WidgetState> states) {
-                    if (states.contains(WidgetState.pressed)) return 10;
-                    return 5;
-                  },
-                ),
                 animationDuration: Duration(milliseconds: 200)),
             onPressed: () {
               isTouchedOnce = true;

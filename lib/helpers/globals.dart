@@ -1,3 +1,4 @@
 import 'package:flutter/material.dart';
 
-var appLanguage = ValueNotifier<String>('fr');
+ValueNotifier<String> appLanguage = ValueNotifier<String>('fr');
+ValueNotifier<bool> isDarkMode = ValueNotifier<bool>(false);
