@@ -26,9 +26,13 @@ class AppStrings {
     'en': 'lib/assets/uk_flag.png',
   };
   static const Map<bool, String> DARK_MODE_IMAGE_PATH = {
-    true: 'lib/assets/diurne.png',
-    false: 'lib/assets/nocturne.png',
+    true: 'lib/assets/clair.png',
+    false: 'lib/assets/sombre.png',
   };
+  //static const Map<bool, String> DARK_MODE_IMAGE_PATH = {
+  //  true: 'lib/assets/diurne.png',
+  //  false: 'lib/assets/nocturne.png',
+  //};
   //static const Map<bool, String> DARK_MODE_IMAGE_PATH = {
   //  true: 'lib/assets/soleil.png',
   //  false: 'lib/assets/lune.png',

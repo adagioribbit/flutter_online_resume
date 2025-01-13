@@ -79,6 +79,8 @@ flutter:
     - lib/assets/diurne.png
     - lib/assets/lune.png
     - lib/assets/soleil.png
+    - lib/assets/clair.png
+    - lib/assets/sombre.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
