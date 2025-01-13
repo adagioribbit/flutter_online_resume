@@ -1,10 +1,9 @@
-import 'package:dossier_de_competences_web/widgets/flipping_iconbutton.dart';
+import 'package:dossier_de_competences_web/widgets/flipping_appbar_iconbutton.dart';
 import 'package:flutter/material.dart';
 import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
 import '../helpers/globals.dart' as globals;
 import '../helpers/utils.dart';
-import 'language_switch_button.dart';
 import 'social_networking.dart';
 
 class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
@@ -26,6 +25,35 @@ class _SiteHeaderState extends State<SiteHeader>
   late Animation _animationBackgroundColor,
       _animationTitleColor,
       _animationOpacity;
+
+  var languageButton = ValueListenableBuilder(
+      valueListenable: globals.appLanguage,
+      builder: (context, language, widget) {
+        return FlippingAppBarIconButton(
+            frontImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH['fr']!,
+            backImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH['en']!,
+            frontTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[language],
+            backTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[language],
+            onPressedClbk: () =>
+                {globals.appLanguage.value = (language == 'fr' ? 'en' : 'fr')});
+      });
+
+  var darkModeButton = ValueListenableBuilder(
+      valueListenable: globals.isDarkMode,
+      builder: (context, darkMode, widget) {
+        return ValueListenableBuilder(
+            valueListenable: globals.appLanguage,
+            builder: (context, language, widget) {
+              return FlippingAppBarIconButton(
+                  frontImageFilePath: AppStrings.DARK_MODE_IMAGE_PATH[false]!,
+                  backImageFilePath: AppStrings.DARK_MODE_IMAGE_PATH[true]!,
+                  frontTooltip:
+                      AppStrings.DARK_MODE_TOOLTIP[darkMode]![language],
+                  backTooltip:
+                      AppStrings.DARK_MODE_TOOLTIP[darkMode]![language],
+                  onPressedClbk: () => {globals.isDarkMode.value = !darkMode});
+            });
+      });
 
   @override
   void initState() {
@@ -130,12 +158,7 @@ class _SiteHeaderState extends State<SiteHeader>
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                            height: Constants.APPBAR_HEIGHT,
-                            child: LanguageSwitchButton()),
-                        DarkModeFlippingIconButton(onPressedClbk: () => {})
-                      ],
+                      children: [languageButton, darkModeButton],
                     ),
                     SocialNetworking(animationController: _animationController)
                   ])
