@@ -48,12 +48,16 @@ class _FlippingAppBarIconButtonState extends State<FlippingAppBarIconButton>
 
   @override
   Widget build(BuildContext context) {
+    var componentHeight = globals.isFoldable.value
+        ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE
+        : Constants.WIGGLING_BUTTON_HEIGHT;
+
     return AnimatedBuilder(
         animation: _animationFlipping,
         builder: (context, child) {
           return Container(
-              height: Constants.WIGGLING_BUTTON_HEIGHT,
-              width: Constants.WIGGLING_BUTTON_HEIGHT,
+              height: componentHeight,
+              width: componentHeight,
               child: Transform(
                   transform: Matrix4.identity()
                     ..rotateY(pi - _animationFlipping.value),

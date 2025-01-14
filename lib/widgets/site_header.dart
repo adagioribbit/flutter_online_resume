@@ -58,6 +58,7 @@ class _SiteHeaderState extends State<SiteHeader>
   @override
   void initState() {
     super.initState();
+
     _animationController = AnimationController(
         vsync: this,
         duration:
@@ -82,11 +83,9 @@ class _SiteHeaderState extends State<SiteHeader>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (Utils.isFoldable(context)) {
-      titleFontSize = 22.0;
-      subtitleFontSize = 14.0;
-      titlePaddingTop = 10;
-    } else if (Utils.isPhoneScreen(context)) {
+    globals.isFoldable.value = Utils.isFoldable(context);
+
+    if (Utils.isPhoneScreen(context) | globals.isFoldable.value) {
       titleFontSize = 20.0;
       subtitleFontSize = 12.0;
       titlePaddingTop = 0.0;
@@ -95,6 +94,7 @@ class _SiteHeaderState extends State<SiteHeader>
       subtitleFontSize = 14.0;
       titlePaddingTop = 2.0;
     }
+
     setState(() => {});
   }
 
@@ -105,6 +105,10 @@ class _SiteHeaderState extends State<SiteHeader>
 
   @override
   Widget build(BuildContext context) {
+    var componentHeight = globals.isFoldable.value
+        ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE
+        : Constants.WIGGLING_BUTTON_HEIGHT;
+
     return AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
@@ -117,16 +121,14 @@ class _SiteHeaderState extends State<SiteHeader>
                       direction: Axis.horizontal,
                       children: [
                     Container(
-                      height: Constants.WIGGLING_BUTTON_HEIGHT,
-                      width: Constants.WIGGLING_BUTTON_HEIGHT * 2,
-                    ),
+                        height: componentHeight, width: componentHeight * 2.0),
                     Expanded(
                         child: Opacity(
                             opacity: _animationOpacity.value,
                             child: Container(
                                 padding: EdgeInsets.fromLTRB(
                                     0, titlePaddingTop, 0, 0),
-                                height: Constants.WIGGLING_BUTTON_HEIGHT,
+                                height: componentHeight,
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
