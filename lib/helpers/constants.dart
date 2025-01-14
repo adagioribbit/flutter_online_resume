@@ -3,9 +3,10 @@ import 'package:flutter/widgets.dart';
 
 class Constants {
   static const double APPBAR_HEIGHT = 75.0;
-  static const double SOCIAL_BUTTON_HEIGHT = APPBAR_HEIGHT - 25.0;
-  static const double WIGGLING_BUTTON_HEIGHT = APPBAR_HEIGHT - 15.0;
-  static const double WIGGLING_BUTTON_HEIGHT_SHRUNK = SOCIAL_BUTTON_HEIGHT * .9;
+  static const double SOCIAL_BUTTON_HEIGHT = APPBAR_HEIGHT * 0.6;
+  static const double WIGGLING_BUTTON_HEIGHT = APPBAR_HEIGHT * 0.68;
+  static const double WIGGLING_BUTTON_HEIGHT_SHRUNK =
+      WIGGLING_BUTTON_HEIGHT * .7;
   static const BoxConstraints TOOLBAR_ACTIONS_BOXCONTRAINTS = BoxConstraints(
     minHeight: SOCIAL_BUTTON_HEIGHT,
     maxHeight: SOCIAL_BUTTON_HEIGHT,
