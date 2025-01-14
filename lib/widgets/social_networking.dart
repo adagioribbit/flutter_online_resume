@@ -17,8 +17,8 @@ class SocialNetworking extends StatefulWidget {
 }
 
 class _SocialNetworkingState extends State<SocialNetworking> {
-  late bool isShrinked;
-  late double parentHeight,
+  late bool isStacked = true, isFoldable, isPhoneScreen;
+  late double wigglingButtonHeight,
       offsetLinkedIn,
       offsetGithub,
       offsetInstagram,
@@ -85,9 +85,6 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     super.initState();
     parent = context.findAncestorWidgetOfExactType<SiteHeader>();
 
-    offsetLinkedIn = 180;
-    offsetGithub = 125;
-    offsetInstagram = 65;
     wigglingButtonBottomMargin = 9;
     _animationTranslate = Tween(begin: 0.001, end: 1.0).animate(CurvedAnimation(
         parent: widget.animationController, curve: Curves.linear));
@@ -99,14 +96,107 @@ class _SocialNetworkingState extends State<SocialNetworking> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    isShrinked = Utils.isPhoneScreen(context);
-    parentHeight = isShrinked ? Constants.WIGGLING_BUTTON_HEIGHT : 0;
+    isFoldable = Utils.isFoldable(context);
+    isPhoneScreen = Utils.isPhoneScreen(context);
+
+    offsetLinkedIn = isFoldable ? 160 : 180;
+    offsetGithub = isFoldable ? 110 : 125;
+    offsetInstagram = isFoldable ? 50 : 65;
+
+    isStacked = isPhoneScreen || isFoldable;
+    if (isFoldable) {
+      wigglingButtonHeight = isStacked
+          ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE
+          : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK_FOLDABLE;
+    } else {
+      wigglingButtonHeight = isStacked ? Constants.WIGGLING_BUTTON_HEIGHT : 0;
+    }
     widget.animationController.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (Utils.isPhoneScreen(context)) {
+    if (isFoldable) {
+      return Row(
+          spacing: 5,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            AnimatedBuilder(
+                animation: widget.animationController,
+                builder: (context, child) {
+                  return Transform(
+                      transform: Matrix4.identity()
+                        //// Translate X
+                        ..setEntry(
+                            0, 3, offsetLinkedIn * _animationTranslate.value)
+                        // Translate Y
+                        ..setEntry(1, 3,
+                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
+                        // Scale
+                        ..setEntry(0, 0, _animationScale.value)
+                        ..setEntry(1, 1, _animationScale.value),
+                      child: _linkedInButton);
+                }),
+            AnimatedBuilder(
+                animation: widget.animationController,
+                builder: (context, child) {
+                  return Transform(
+                      transform: Matrix4.identity()
+                        // Translate X
+                        ..setEntry(
+                            0, 3, offsetGithub * _animationTranslate.value)
+                        // Translate Y
+                        ..setEntry(1, 3,
+                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
+                        // Scale
+                        ..setEntry(0, 0, _animationScale.value)
+                        ..setEntry(1, 1, _animationScale.value),
+                      child: _githubButton);
+                }),
+            AnimatedBuilder(
+                animation: widget.animationController,
+                builder: (context, child) {
+                  return Transform(
+                      transform: Matrix4.identity()
+                        // Translate X
+                        ..setEntry(
+                            0, 3, offsetInstagram * _animationTranslate.value)
+                        // Translate Y
+                        ..setEntry(1, 3,
+                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
+                        // Scale
+                        ..setEntry(0, 0, _animationScale.value)
+                        ..setEntry(1, 1, _animationScale.value),
+                      child: _instagramButton);
+                }),
+            AnimatedContainer(
+                duration: Duration(
+                    milliseconds: Constants.WIGGLING_BUTTON_ANIMATION_DURATION),
+                height: wigglingButtonHeight,
+                width: wigglingButtonHeight,
+                transform: Matrix4.identity()
+                  // Translate X
+                  ..setEntry(0, 3, 5)
+                  // Translate Y
+                  ..setEntry(1, 3, widget.animationController.value),
+                child: WigglingButton(
+                    isInflated: isStacked,
+                    onPressedClbk: () {
+                      setState(() {
+                        isStacked = !isStacked;
+                        wigglingButtonHeight = isStacked
+                            ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE
+                            : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK_FOLDABLE;
+
+                        if (isStacked) {
+                          widget.animationController.forward();
+                        } else {
+                          widget.animationController.reverse();
+                        }
+                      });
+                    }))
+          ]);
+    } else if (isPhoneScreen) {
       return Row(
           spacing: 10,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -162,23 +252,23 @@ class _SocialNetworkingState extends State<SocialNetworking> {
             AnimatedContainer(
                 duration: Duration(
                     milliseconds: Constants.WIGGLING_BUTTON_ANIMATION_DURATION),
-                height: parentHeight,
-                width: parentHeight,
+                height: wigglingButtonHeight,
+                width: wigglingButtonHeight,
                 transform: Matrix4.identity()
                   // Translate X
                   ..setEntry(0, 3, 5)
                   // Translate Y
                   ..setEntry(1, 3, widget.animationController.value),
                 child: WigglingButton(
-                    isShrinked: isShrinked,
+                    isInflated: isStacked,
                     onPressedClbk: () {
                       setState(() {
-                        isShrinked = !isShrinked;
-                        parentHeight = isShrinked
+                        isStacked = !isStacked;
+                        wigglingButtonHeight = isStacked
                             ? Constants.WIGGLING_BUTTON_HEIGHT
                             : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
 
-                        if (isShrinked) {
+                        if (isStacked) {
                           widget.animationController.forward();
                         } else {
                           widget.animationController.reverse();

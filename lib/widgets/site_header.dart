@@ -154,8 +154,8 @@ class _SiteHeaderState extends State<SiteHeader>
                                       ),
                                     ])))),
                     Container(
-                      height: Constants.WIGGLING_BUTTON_HEIGHT,
-                      width: Constants.WIGGLING_BUTTON_HEIGHT,
+                      height: componentHeight,
+                      width: componentHeight,
                     )
                   ])),
               Flex(

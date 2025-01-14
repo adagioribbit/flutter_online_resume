@@ -6,8 +6,8 @@ import '../helpers/utils.dart';
 
 class WigglingButton extends StatefulWidget {
   final VoidCallback? onPressedClbk;
-  bool isShrinked;
-  WigglingButton({this.isShrinked = false, this.onPressedClbk, super.key});
+  bool isInflated;
+  WigglingButton({this.isInflated = false, this.onPressedClbk, super.key});
 
   @override
   State<WigglingButton> createState() => _WigglingButtonState();
@@ -62,33 +62,48 @@ class _WigglingButtonState extends State<WigglingButton>
     updateSizeAndMargin();
   }
 
+  void updateSizeAndMargin() {
+    parentHeight = widget.isInflated
+        ? Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK
+        : Constants.WIGGLING_BUTTON_HEIGHT;
+  }
+
   void onToggleShrink() {
     setState(updateSizeAndMargin);
   }
 
-  void updateSizeAndMargin() {
-    parentHeight = widget.isShrinked
-        ? Constants.WIGGLING_BUTTON_HEIGHT
-        : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
-  }
-
   String getIcon() {
-    if (!widget.isShrinked) {
-      return "lib/assets/pointing_left_sign_shadowed.png";
-    } else if (isTouchedOnce) {
+    if (!isTouchedOnce) {
+      return "lib/assets/callme_sign_shadowed.png";
+    } else if (widget.isInflated) {
       return "lib/assets/love_you_sign_shadowed.png";
     } else {
-      return "lib/assets/callme_sign_shadowed.png";
+      return "lib/assets/pointing_left_sign_shadowed.png";
     }
   }
 
   Widget buildButtonText() {
     Widget buttonContent = Image(
       image: AssetImage(getIcon()),
-      fit: BoxFit.fitHeight,
+      fit: BoxFit.contain,
     );
 
-    if (Utils.isPhoneScreen(context)) {
+    if (Utils.isFoldable(context)) {
+      return AnimatedBuilder(
+          animation: _animationController,
+          builder: (context, _) {
+            return Transform(
+              transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.005)
+                ..setEntry(0, 0, 1.35)
+                ..setEntry(1, 1, 1.35)
+                ..rotateZ(isTouchedOnce ? 0 : -pi / 6)
+                ..rotateX(isTouchedOnce ? 0 : _animation.value),
+              alignment: FractionalOffset.center,
+              child: buttonContent,
+            );
+          });
+    } else if (Utils.isPhoneScreen(context)) {
       return AnimatedBuilder(
           animation: _animationController,
           builder: (context, _) {
@@ -130,7 +145,7 @@ class _WigglingButtonState extends State<WigglingButton>
                 animationDuration: Duration(milliseconds: 200)),
             onPressed: () {
               isTouchedOnce = true;
-              widget.isShrinked = !widget.isShrinked;
+              widget.isInflated = !widget.isInflated;
               onToggleShrink();
               widget.onPressedClbk!();
             },
