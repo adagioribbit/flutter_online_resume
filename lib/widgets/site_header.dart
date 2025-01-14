@@ -82,14 +82,18 @@ class _SiteHeaderState extends State<SiteHeader>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (Utils.isPhoneScreen(context)) {
+    if (Utils.isFoldable(context)) {
       titleFontSize = 22.0;
       subtitleFontSize = 14.0;
       titlePaddingTop = 10;
+    } else if (Utils.isPhoneScreen(context)) {
+      titleFontSize = 20.0;
+      subtitleFontSize = 12.0;
+      titlePaddingTop = 0.0;
     } else {
-      titleFontSize = 28.0;
-      subtitleFontSize = 16.0;
-      titlePaddingTop = 4.0;
+      titleFontSize = 23.0;
+      subtitleFontSize = 14.0;
+      titlePaddingTop = 2.0;
     }
     setState(() => {});
   }
