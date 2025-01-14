@@ -90,8 +90,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     offsetInstagram = 65;
     wigglingButtonBottomMargin = 9;
     _animationTranslate = Tween(begin: 0.001, end: 1.0).animate(CurvedAnimation(
-        parent: widget.animationController,
-        curve: Curves.easeInOutCubicEmphasized));
+        parent: widget.animationController, curve: Curves.linear));
     _animationScale = Tween(begin: 1.25, end: 1.0).animate(CurvedAnimation(
         parent: widget.animationController,
         curve: Curves.easeInOutCubicEmphasized));
