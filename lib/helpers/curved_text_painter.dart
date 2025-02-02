@@ -2,11 +2,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-class MyPainter extends CustomPainter {
+class CurvedTextPainter extends CustomPainter {
   final String word;
   final TextStyle style;
 
-  MyPainter(this.word, this.style);
+  CurvedTextPainter(this.word, this.style);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -34,12 +34,11 @@ class MyPainter extends CustomPainter {
   void drawTextArc(Canvas canvas, Offset arcCenter, double radius, String text,
       TextStyle style) {
     final pos = Offset(0, radius);
-    final lp = measureText(canvas, text, style);
-    double angle = (0.25 * pi) - (((lp.width / 2) / (2 * pi * radius)));
+    double angle = (.195 * pi);
 
     text.split('').forEach((letter) {
       final tp = measureText(canvas, letter, style);
-      final w = tp.width + 5.0;
+      final w = tp.width;
       final double alpha = asin(w / (2 * radius));
       canvas.save();
       canvas.translate(arcCenter.dx, arcCenter.dy);

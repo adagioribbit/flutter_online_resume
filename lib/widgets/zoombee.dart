@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:math' show pi;
-import '../helpers/colorchart.dart';
-import '../helpers/constants.dart';
-import '../helpers/utils.dart';
-import 'mypainter.dart';
+import '../helpers/curved_text_painter.dart';
 
 enum STATUS { IDLE, RADAR, CLEANING, ALARM }
 
 class Zoombee extends StatefulWidget {
   static const String _brand = "ZOOMBEE";
-  //static const String _brand = "eebmooZ";
 
   final double radius;
 
@@ -22,13 +18,20 @@ class Zoombee extends StatefulWidget {
 class _ZoombeeState extends State<Zoombee> with SingleTickerProviderStateMixin {
   late STATUS status = STATUS.IDLE;
   late double widgetScale;
-  late AnimationController _animationController;
-  late Animation<double> _animationTidyUp;
+  late AnimationController _animationSnoreController;
+  late Animation<double> _animationSnore, _animationTidyUp;
 
   @override
   void initState() {
-    _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1750));
+    _animationSnoreController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 2500));
+
+    _animationSnore = Tween<double>(begin: 0.2, end: 1.1).animate(
+      CurvedAnimation(
+          parent: _animationSnoreController, curve: Curves.easeInOutQuart),
+    );
+
+    _animationSnoreController.repeat(reverse: true);
 
     _animationTidyUp = TweenSequence(
       <TweenSequenceItem<double>>[
@@ -43,7 +46,7 @@ class _ZoombeeState extends State<Zoombee> with SingleTickerProviderStateMixin {
       ],
     ).animate(
       CurvedAnimation(
-          parent: _animationController,
+          parent: _animationSnoreController,
           curve: Interval(
             0,
             0.1,
@@ -55,8 +58,6 @@ class _ZoombeeState extends State<Zoombee> with SingleTickerProviderStateMixin {
             curve: Curves.linear,
           )),
     );
-
-    _animationController.repeat(reverse: true);
 
     widgetScale = (widget.radius / 250.0);
 
@@ -77,13 +78,13 @@ class _ZoombeeState extends State<Zoombee> with SingleTickerProviderStateMixin {
     switch (status) {
       case STATUS.IDLE:
         statusEmoji = AnimatedBuilder(
-            animation: _animationController,
+            animation: _animationSnoreController,
             builder: (context, _) {
               return Transform(
                   transform: Matrix4.identity()
                     // Scale
-                    ..setEntry(0, 0, 1)
-                    ..setEntry(1, 1, 1),
+                    ..setEntry(0, 0, _animationSnore.value)
+                    ..setEntry(1, 1, _animationSnore.value),
                   alignment: FractionalOffset.center,
                   child: Text(
                     "💤",
@@ -129,7 +130,7 @@ class _ZoombeeState extends State<Zoombee> with SingleTickerProviderStateMixin {
     return SizedBox.expand(
         child: Container(
             color: Colors.transparent,
-            child: Stack(alignment: Alignment(0.5, 1.0), children: [
+            child: Stack(alignment: Alignment(0.8, 1.0), children: [
               // Partie basse
               Transform(
                   transform: Matrix4.identity()
@@ -153,72 +154,73 @@ class _ZoombeeState extends State<Zoombee> with SingleTickerProviderStateMixin {
                           stops: [0.5, 0.92, 0.99, 1],
                           // A PRENDRE EN COMPTE DANS L'ORIENTATION :
                           //    --> doit être fonction (inverse ?) du décalage au centre du conteneur
-                          center: Alignment(-0.05, 0.05),
+                          center: Alignment(0.8, 1.0),
                         ),
                         shape: BoxShape.circle,
                       )))),
               // Partie haute
-              Stack(children: [
-                SizedBox.fromSize(
-                  size: Size(widget.radius * 2, widget.radius * 2),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: RadialGradient(
-                        colors: [
-                          Color(0xff000000),
-                          Color.fromARGB(138, 0, 0, 0),
-                          Color.fromARGB(255, 0, 0, 0),
-                          Color.fromARGB(255, 26, 26, 26)
-                        ],
-                        stops: [0.1, 0.7, 0.7, 1],
-                        center: Alignment.center,
-                      ),
-                      shape: BoxShape.circle,
+              SizedBox.fromSize(
+                size: Size(widget.radius * 2, widget.radius * 2),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: RadialGradient(
+                      colors: [
+                        Color(0xff000000),
+                        Color.fromARGB(138, 0, 0, 0),
+                        Color.fromARGB(255, 0, 0, 0),
+                        Color.fromARGB(255, 26, 26, 26)
+                      ],
+                      stops: [0.1, 0.7, 0.7, 1],
+                      center: Alignment.center,
                     ),
-                    child: CustomPaint(
-                      painter: MyPainter(
-                          Zoombee._brand,
-                          TextStyle(
-                              letterSpacing: 2.0 * (widgetScale / 2.0),
-                              color: Colors.white,
-                              shadows: [
-                                Shadow(
-                                    color: const Color.fromARGB(
-                                        192, 145, 145, 145),
-                                    offset:
-                                        // A PRENDRE EN COMPTE DANS L'ORIENTATION :
-                                        //    --> doit être fonction (inverse ?) du décalage au centre du conteneur
-                                        Offset(
-                                            2 * widgetScale, -2 * widgetScale))
-                              ],
-                              fontWeight: FontWeight.bold,
-                              fontSize: widget.radius / 7.0)),
-                    ),
+                    shape: BoxShape.circle,
+                  ),
+                  child: CustomPaint(
+                    painter: CurvedTextPainter(
+                        Zoombee._brand,
+                        TextStyle(
+                            letterSpacing: 2.0 * (widgetScale / 2.0),
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                  color:
+                                      const Color.fromARGB(192, 145, 145, 145),
+                                  offset:
+                                      // A PRENDRE EN COMPTE DANS L'ORIENTATION :
+                                      //    --> doit être fonction (inverse ?) du décalage au centre du conteneur
+                                      Offset(2 * widgetScale, -2 * widgetScale))
+                            ],
+                            fontWeight: FontWeight.bold,
+                            fontSize: widget.radius / 7.0)),
                   ),
                 ),
-                // Affichage LCD
-                Container(
-                    alignment: Alignment.center,
-                    child: SizedBox.fromSize(
-                        size: Size(widget.radius, widget.radius),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: RadialGradient(
-                              colors: [
-                                Color(0xff7a7a7a),
-                                Color(0xff545454),
-                                Color(0xff292929)
-                              ],
-                              stops: [0.05, 0.2, 0.87],
-                              // A PRENDRE EN COMPTE DANS L'ORIENTATION :
-                              //    --> doit être fonction (inverse ?) du décalage au centre du conteneur
-                              center: Alignment(0.6, -0.6),
+              ),
+              // Affichage LCD
+              SizedBox.fromSize(
+                  size: Size(widget.radius * 2, widget.radius * 2),
+                  child: Container(
+                      color: Colors.transparent,
+                      alignment: Alignment.center,
+                      child: SizedBox.fromSize(
+                          size: Size(widget.radius, widget.radius),
+                          child: Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              gradient: RadialGradient(
+                                colors: [
+                                  Color(0xff7a7a7a),
+                                  Color(0xff545454),
+                                  Color(0xff292929)
+                                ],
+                                stops: [0.05, 0.2, 0.87],
+                                // A PRENDRE EN COMPTE DANS L'ORIENTATION :
+                                //    --> doit être fonction (inverse ?) du décalage au centre du conteneur
+                                center: Alignment(0.6, -0.6),
+                              ),
+                              shape: BoxShape.circle,
                             ),
-                            shape: BoxShape.circle,
-                          ),
-                          child: getStatusDisplay(),
-                        ))),
-              ])
+                            child: getStatusDisplay(),
+                          )))),
             ])));
   }
 }

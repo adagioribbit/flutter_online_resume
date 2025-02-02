@@ -77,8 +77,8 @@ Allez, je fais du multiligne pour peindre cette page blanche de daube !''';
                 backgroundColor: ColorChart.appBackground,
                 appBar: SiteHeader(),
                 body: Zoombee(
-                  radius: 150,
-                )
+                  radius: 50,
+                    )
                 //Transform(
                 //  alignment: FractionalOffset.center,
                 //  origin: Offset(0, 50),
