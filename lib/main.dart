@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' show pi;
 import 'helpers/colorchart.dart';
 import 'helpers/settings.dart';
+import 'widgets/manila_folder.dart';
 import 'widgets/squared_sheet.dart';
 import 'widgets/site_header.dart';
 
@@ -73,55 +74,46 @@ Allez, je fais du multiligne pour peindre cette page blanche de daube !''';
             color: Colors.amber,
             theme: ThemeData(),
             home: Scaffold(
-                extendBody: true,
-                backgroundColor: ColorChart.appBackground,
-                appBar: SiteHeader(),
-                body: Zoombee(
-                  radius: 50,
-                    )
-                //Transform(
-                //  alignment: FractionalOffset.center,
-                //  origin: Offset(0, 50),
-                //  transform: Matrix4.identity()
-                //    ..setEntry(3, 2, 0.0005)
-                //    ..rotateX(pi * -0.2)
-                //    ..rotateY(pi * -0.05)
-                //    ..rotateZ(pi * -0.05),
-                //  child: const ManilaFolder(
-                //      stickerLabelText: "Formation",
-                //      stickerRotationAngle: -(pi / 60),
-                //      stickerFontSize: 20.0,
-                //      folderMainColor: Colors.teal,
-                //      hasFrontCoverMarkup: true,
-                //      frontCoverMarkupTextStyle: TextStyle(
-                //        fontSize: 100.0,
-                //        fontFamily: "Sabenya",
-                //        color: Colors.black,
-                //      )),
-                //),
-                //Transform(
-                //    alignment: FractionalOffset.center,
-                //    origin: Offset(0, 221),
-                //    transform: createCylindricalProjectionTransform(
-                //        radius: (2 * pi),
-                //        angle: (pi / 16),
-                //        perspective: 0.01,
-                //        orientation: Axis.vertical),
-                //    child:
-                //Transform(
-                //    alignment: FractionalOffset.center,
-                //    origin: Offset(0, 50),
-                //    transform: Matrix4.identity()
-                //      ..setEntry(3, 2, 0.0005)
-                //      ..rotateX(pi * -0.15),
-                //    child: SquaredSheet(
-                //        scaleFactor: 25.0,
-                //        child: Text(squared_paper_text,
-                //            style: TextStyle(
-                //                fontSize: 40.0,
-                //                fontFamily: "Handwritten",
-                //                color: Colors.green))))
-                ),
+              extendBody: true,
+              backgroundColor: ColorChart.appBackground,
+              appBar: SiteHeader(),
+              body: ManilaFolder(
+                  stickerLabelText: "Formation",
+                  stickerRotationAngle: -(pi / 60),
+                  stickerFontSize: 20.0,
+                  folderMainColor: Colors.teal,
+                  hasFrontCoverMarkup: true,
+                  frontCoverMarkupTextStyle: TextStyle(
+                    fontSize: 100.0,
+                    fontFamily: "Sabenya",
+                    color: Colors.black,
+                  )),
+            ),
+            //Zoombee(
+            //  radius: 50,
+            //)
+            //Transform(
+            //    alignment: FractionalOffset.center,
+            //    origin: Offset(0, 221),
+            //    transform: createCylindricalProjectionTransform(
+            //        radius: (2 * pi),
+            //        angle: (pi / 16),
+            //        perspective: 0.01,
+            //        orientation: Axis.vertical),
+            //    child:
+            //Transform(
+            //    alignment: FractionalOffset.center,
+            //    origin: Offset(0, 50),
+            //    transform: Matrix4.identity()
+            //      ..setEntry(3, 2, 0.0005)
+            //      ..rotateX(pi * -0.15),
+            //    child: SquaredSheet(
+            //        scaleFactor: 25.0,
+            //        child: Text(squared_paper_text,
+            //            style: TextStyle(
+            //                fontSize: 40.0,
+            //                fontFamily: "Handwritten",
+            //                color: Colors.green))))
           );
         });
   }

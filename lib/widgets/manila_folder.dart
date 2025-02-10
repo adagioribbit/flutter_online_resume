@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-import 'dart:math' show pi;
+import 'dart:math' show pi, min;
+
+import '../helpers/utils.dart';
 
 class ManilaFolder extends StatefulWidget {
+  static const BoxConstraints fixedFolderProportions = BoxConstraints(
+    maxHeight: 440,
+    minHeight: 440,
+    minWidth: 650,
+    maxWidth: 650,
+  );
+
   /// Whether the label text should also be handwritten on the folder front cover
   final bool hasFrontCoverMarkup;
   final TextStyle frontCoverMarkupTextStyle;
@@ -33,8 +42,10 @@ class _ManilaFolderState extends State<ManilaFolder>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation _animation;
-  AnimationStatus _status = AnimationStatus.dismissed;
   late Color _folderBorderColor;
+  late double fitScreenZoomFactor;
+  late BoxConstraints folderProportions;
+  AnimationStatus _status = AnimationStatus.dismissed;
 
   @override
   void initState() {
@@ -43,6 +54,7 @@ class _ManilaFolderState extends State<ManilaFolder>
 
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 500));
+
     _animation = Tween(end: 0.7, begin: 0.01).animate(CurvedAnimation(
         parent: _controller, curve: Curves.easeInOutCubicEmphasized))
       ..addListener(() {
@@ -55,6 +67,55 @@ class _ManilaFolderState extends State<ManilaFolder>
     HSLColor folderHSLColor = HSLColor.fromColor(widget.folderMainColor);
     _folderBorderColor =
         folderHSLColor.withLightness(folderHSLColor.lightness - 0.05).toColor();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    double heightRatio = ManilaFolder.fixedFolderProportions.maxHeight /
+        MediaQuery.of(context).size.height;
+    double widthRatio = ManilaFolder.fixedFolderProportions.maxWidth /
+        MediaQuery.of(context).size.width;
+
+    if (Utils.isPhoneScreen(context) || Utils.isFoldable(context)) {
+      fitScreenZoomFactor = heightRatio;
+      folderProportions = BoxConstraints(
+        maxHeight: 440 / widthRatio,
+        minHeight: 440 / widthRatio,
+        minWidth: 650 / widthRatio,
+        maxWidth: 650 / widthRatio,
+      );
+    } else {
+      fitScreenZoomFactor = min(heightRatio, widthRatio);
+      folderProportions = BoxConstraints(
+        maxHeight: 440,
+        minHeight: 440,
+        minWidth: 650,
+        maxWidth: 650,
+      );
+    }
+
+    print("$heightRatio, $widthRatio, $fitScreenZoomFactor");
+    setState(() => {});
+  }
+
+  Transform buildFolderTransform(
+      {double perspectiveAngle = 0.0005,
+      double zoomFactor = 1.0,
+      double rotationX = -0.2,
+      double rotationY = -0.05,
+      double rotationZ = -0.05,
+      required Widget child}) {
+    return Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset(0, 50),
+        transform: Matrix4.identity()
+          ..setEntry(3, 2, perspectiveAngle)
+          ..setEntry(3, 3, zoomFactor)
+          ..rotateX(pi * rotationX)
+          ..rotateY(pi * rotationY)
+          ..rotateZ(pi * rotationZ),
+        child: child);
   }
 
   @override
@@ -85,11 +146,7 @@ class _ManilaFolderState extends State<ManilaFolder>
           ),
         ],
       ),
-      constraints: BoxConstraints(
-        minHeight: 450,
-        minWidth: 250,
-        maxWidth: 650,
-      ),
+      constraints: folderProportions,
       margin: EdgeInsetsDirectional.fromSTEB(50, 0, 50, 50),
     );
 
@@ -120,12 +177,7 @@ class _ManilaFolderState extends State<ManilaFolder>
               ),
             ],
           ),
-          constraints: BoxConstraints(
-            maxHeight: 440,
-            minHeight: 440,
-            minWidth: 650,
-            maxWidth: 650,
-          ),
+          constraints: folderProportions,
           margin: EdgeInsetsDirectional.fromSTEB(50, 60, 50, 50),
           child: Container(
             decoration: BoxDecoration(
@@ -206,27 +258,45 @@ class _ManilaFolderState extends State<ManilaFolder>
             _controller.reverse();
           }
         },
-        child: Stack(children: [
-          /* Conteneur extérieur */
-          Transform(
-              alignment: FractionalOffset.center,
-              origin: Offset(0, 50),
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.0005)
-                ..rotateX(pi * -_animation.value / 5),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: buildFolderTransform(
+            zoomFactor: 4.0 * fitScreenZoomFactor,
+            rotationX: 0,
+            rotationY: 0,
+            rotationZ: 0,
+            child: Stack(fit: StackFit.passthrough, children: [
+              /* Conteneur extérieur */
+              Transform(
+                  alignment: FractionalOffset.center,
+                  origin: Offset(0, 50),
+                  transform: Matrix4.identity()
+                    ..setEntry(3, 2, 0.0005) // Inclinaison
+                    ..rotateX(pi * -_animation.value / 5),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              /* FolderTab container */
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [folderTab, folderTabConnexion],
+                              ),
+                              folderBack
+                            ])
+                      ])),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    /* FolderTab container */
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [folderTab, folderTabConnexion],
-                    ),
-                    folderBack
-                  ])),
-          folderCover
-        ]));
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [folderCover])
+                  ])
+            ])));
   }
 }
