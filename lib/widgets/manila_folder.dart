@@ -41,11 +41,45 @@ class ManilaFolder extends StatefulWidget {
 class _ManilaFolderState extends State<ManilaFolder>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation _animation;
+  late Animation _animOpenFolder;
   late Color _folderBorderColor;
   late double fitScreenZoomFactor;
   late BoxConstraints folderProportions;
   AnimationStatus _status = AnimationStatus.dismissed;
+
+  /*Extracted parameters*/
+  double beginAnimOpenFolder = 0.01;
+  double endAnimOpenFolder = 0.7;
+  int durationAnimOpenFolder = 500;
+  double folderBorderLightnessDiff = 0.05;
+
+  static const double folderTsfrm_perspectiveAngle = 0.0005;
+  static const double folderTsfrm_zoomFactor = 1.0;
+  static const double folderTsfrm_rotationX = -0.2;
+  static const double folderTsfrm_rotationY = -0.05;
+  static const double folderTsfrm_rotationZ = -0.05;
+
+  static const Color folderBackBoxShadowColor = Color.fromARGB(109, 0, 0, 0);
+  static const Offset folderBackBoxShadowOffset = Offset(5, 12);
+  EdgeInsetsDirectional folderBackMargin =
+      EdgeInsetsDirectional.fromSTEB(50, 0, 50, 50);
+
+  Offset folderCoverOrigin = Offset(0, 221);
+  double folderCoverPerspective = 0.0005;
+  double folderCoverCornerRadius = 2.0;
+  static const Color folderCoverBoxShadowColor =
+      const Color.fromARGB(98, 75, 75, 75);
+  double folderCoverBoxShadowSpreadRadius = 0;
+  double folderCoverBoxShadowBlurRadius = 10;
+  Offset folderCoverBoxShadowOffset = Offset(0, -2);
+  EdgeInsetsDirectional folderCoverMargin =
+      EdgeInsetsDirectional.fromSTEB(50, 60, 50, 50);
+  EdgeInsetsDirectional folderTabLabelPadding =
+      EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5);
+  EdgeInsetsDirectional folderTabMargin =
+      EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0);
+
+  /* ******************************* */
 
   @override
   void initState() {
@@ -53,10 +87,11 @@ class _ManilaFolderState extends State<ManilaFolder>
     WidgetsBinding.instance.addObserver(this);
 
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500));
+        vsync: this, duration: Duration(milliseconds: durationAnimOpenFolder));
 
-    _animation = Tween(end: 0.7, begin: 0.01).animate(CurvedAnimation(
-        parent: _controller, curve: Curves.easeInOutCubicEmphasized))
+    _animOpenFolder = Tween(begin: beginAnimOpenFolder, end: endAnimOpenFolder)
+        .animate(CurvedAnimation(
+            parent: _controller, curve: Curves.easeInOutCubicEmphasized))
       ..addListener(() {
         setState(() {});
       })
@@ -65,8 +100,9 @@ class _ManilaFolderState extends State<ManilaFolder>
       });
 
     HSLColor folderHSLColor = HSLColor.fromColor(widget.folderMainColor);
-    _folderBorderColor =
-        folderHSLColor.withLightness(folderHSLColor.lightness - 0.05).toColor();
+    _folderBorderColor = folderHSLColor
+        .withLightness(folderHSLColor.lightness - folderBorderLightnessDiff)
+        .toColor();
   }
 
   @override
@@ -87,12 +123,7 @@ class _ManilaFolderState extends State<ManilaFolder>
       );
     } else {
       fitScreenZoomFactor = min(heightRatio, widthRatio);
-      folderProportions = BoxConstraints(
-        maxHeight: 440,
-        minHeight: 440,
-        minWidth: 650,
-        maxWidth: 650,
-      );
+      folderProportions = ManilaFolder.fixedFolderProportions;
     }
 
     print("$heightRatio, $widthRatio, $fitScreenZoomFactor");
@@ -100,11 +131,11 @@ class _ManilaFolderState extends State<ManilaFolder>
   }
 
   Transform buildFolderTransform(
-      {double perspectiveAngle = 0.0005,
-      double zoomFactor = 1.0,
-      double rotationX = -0.2,
-      double rotationY = -0.05,
-      double rotationZ = -0.05,
+      {double perspectiveAngle = folderTsfrm_perspectiveAngle,
+      double zoomFactor = folderTsfrm_zoomFactor,
+      double rotationX = folderTsfrm_rotationX,
+      double rotationY = folderTsfrm_rotationY,
+      double rotationZ = folderTsfrm_rotationZ,
       required Widget child}) {
     return Transform(
         alignment: FractionalOffset.center,
@@ -139,15 +170,15 @@ class _ManilaFolderState extends State<ManilaFolder>
             topRight: Radius.circular(4.0)),
         boxShadow: [
           BoxShadow(
-            color: const Color.fromARGB(109, 0, 0, 0),
+            color: folderBackBoxShadowColor,
             spreadRadius: 0,
             blurRadius: 15,
-            offset: Offset(5, 12),
+            offset: folderBackBoxShadowOffset,
           ),
         ],
       ),
       constraints: folderProportions,
-      margin: EdgeInsetsDirectional.fromSTEB(50, 0, 50, 50),
+      margin: folderBackMargin,
     );
 
     Text folderCoverMarkup = Text(widget.stickerLabelText,
@@ -159,26 +190,27 @@ class _ManilaFolderState extends State<ManilaFolder>
 
     Transform folderCover = Transform(
         alignment: FractionalOffset.center,
-        origin: Offset(0, 221),
+        origin: folderCoverOrigin,
         transform: Matrix4.identity()
-          ..setEntry(3, 2, 0.0005)
-          ..rotateX(pi * _animation.value),
+          ..setEntry(3, 2, folderCoverPerspective)
+          ..rotateX(pi * _animOpenFolder.value),
         child: Container(
           decoration: BoxDecoration(
             color: widget.folderMainColor,
             border: Border.all(color: _folderBorderColor),
-            borderRadius: BorderRadius.all(Radius.circular(2.0)),
+            borderRadius:
+                BorderRadius.all(Radius.circular(folderCoverCornerRadius)),
             boxShadow: [
               BoxShadow(
-                color: const Color.fromARGB(98, 75, 75, 75),
-                spreadRadius: 0,
-                blurRadius: 10,
-                offset: Offset(0, -2),
+                color: folderCoverBoxShadowColor,
+                spreadRadius: folderCoverBoxShadowSpreadRadius,
+                blurRadius: folderCoverBoxShadowBlurRadius,
+                offset: folderCoverBoxShadowOffset,
               ),
             ],
           ),
           constraints: folderProportions,
-          margin: EdgeInsetsDirectional.fromSTEB(50, 60, 50, 50),
+          margin: folderCoverMargin,
           child: Container(
             decoration: BoxDecoration(
               color: widget.folderMainColor,
@@ -191,7 +223,7 @@ class _ManilaFolderState extends State<ManilaFolder>
     Transform folderTabLabel = Transform.rotate(
         angle: widget.stickerRotationAngle,
         child: Container(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
+            padding: folderTabLabelPadding,
             decoration: BoxDecoration(
               color: widget.stickerLabelColor,
               border: Border.all(color: _folderBorderColor),
@@ -221,7 +253,7 @@ class _ManilaFolderState extends State<ManilaFolder>
         minHeight: 45,
         minWidth: 50,
       ),
-      margin: EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
+      margin: folderTabMargin,
       child: Flex(
           direction: Axis.horizontal,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -270,7 +302,7 @@ class _ManilaFolderState extends State<ManilaFolder>
                   origin: Offset(0, 50),
                   transform: Matrix4.identity()
                     ..setEntry(3, 2, 0.0005) // Inclinaison
-                    ..rotateX(pi * -_animation.value / 5),
+                    ..rotateX(pi * -_animOpenFolder.value / 5),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
