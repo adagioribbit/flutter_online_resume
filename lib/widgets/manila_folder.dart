@@ -138,7 +138,6 @@ class _ManilaFolderState extends State<ManilaFolder>
       folderCoverTransformOrigin =
           Offset(0, folderCoverProportions.maxHeight / 1.75);
       folderBackTransformOrigin = Offset(0, folderCoverTransformOrigin.dy);
-      print("folderBackTransformOrigin = $folderBackTransformOrigin");
       _frontCoverMarkupAdjustedFontSize =
           widget.frontCoverMarkupTextStyle.fontSize! / widthToParentRatio;
     } else {
@@ -154,9 +153,6 @@ class _ManilaFolderState extends State<ManilaFolder>
       _frontCoverMarkupAdjustedFontSize =
           widget.frontCoverMarkupTextStyle.fontSize!;
     }
-
-    print(
-        "parentDimensionRatio = $parentDimensionRatio //// heightToParentRatio = $heightToParentRatio //// widthToParentRatio = $widthToParentRatio //// fitScreenZoomFactor = $fitScreenZoomFactor");
     setState(() => {});
   }
 

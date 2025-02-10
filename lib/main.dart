@@ -74,24 +74,25 @@ Allez, je fais du multiligne pour peindre cette page blanche de daube !''';
             color: Colors.amber,
             theme: ThemeData(),
             home: Scaffold(
-              extendBody: true,
-              backgroundColor: ColorChart.appBackground,
-              appBar: SiteHeader(),
-              body: ManilaFolder(
-                  stickerLabelText: "Formation",
-                  stickerRotationAngle: -(pi / 60),
-                  stickerFontSize: 20.0,
-                  folderMainColor: Colors.teal,
-                  hasFrontCoverMarkup: true,
-                  frontCoverMarkupTextStyle: TextStyle(
-                    fontSize: 100.0,
-                    fontFamily: "Sabenya",
-                    color: Colors.black,
-                  )),
-            ),
-            //Zoombee(
-            //  radius: 50,
-            //)
+                extendBody: true,
+                backgroundColor: ColorChart.appBackground,
+                appBar: SiteHeader(),
+                body: Stack(children: [
+                  Zoombee(
+                    radius: 50,
+                  ),
+                  ManilaFolder(
+                      stickerLabelText: "Formation",
+                      stickerRotationAngle: -(pi / 60),
+                      stickerFontSize: 20.0,
+                      folderMainColor: Colors.teal,
+                      hasFrontCoverMarkup: true,
+                      frontCoverMarkupTextStyle: TextStyle(
+                        fontSize: 100.0,
+                        fontFamily: "Sabenya",
+                        color: Colors.black,
+                      )),
+                ])),
             //Transform(
             //    alignment: FractionalOffset.center,
             //    origin: Offset(0, 221),
