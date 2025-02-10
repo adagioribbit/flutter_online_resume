@@ -45,6 +45,7 @@ class _ManilaFolderState extends State<ManilaFolder>
   late Color _folderBorderColor;
   late double fitScreenZoomFactor;
   late BoxConstraints folderBackProportions, folderCoverProportions;
+  late double _frontCoverMarkupAdjustedFontSize;
   AnimationStatus _status = AnimationStatus.dismissed;
 
   /* Inner tweaking parameters*/
@@ -124,17 +125,27 @@ class _ManilaFolderState extends State<ManilaFolder>
         maxWidth: 650 / widthRatio,
       );
       folderCoverProportions = BoxConstraints(
-        maxHeight: 440 / widthRatio,
-        minHeight: 440 / widthRatio,
+        maxHeight: 430 / widthRatio,
+        minHeight: 430 / widthRatio,
         minWidth: 645 / widthRatio,
         maxWidth: 645 / widthRatio,
       );
+
+      folderCoverOrigin = Offset(0, folderCoverProportions.maxHeight / 1.75);
+      _frontCoverMarkupAdjustedFontSize =
+          widget.frontCoverMarkupTextStyle.fontSize! / widthRatio;
     } else {
       fitScreenZoomFactor = min(heightRatio, widthRatio);
       folderBackProportions = ManilaFolder.fixedFolderProportions;
+      folderCoverProportions = ManilaFolder.fixedFolderProportions;
+
+      folderCoverOrigin =
+          Offset(0, ManilaFolder.fixedFolderProportions.maxHeight / 1.8);
+      _frontCoverMarkupAdjustedFontSize =
+          widget.frontCoverMarkupTextStyle.fontSize!;
     }
 
-    //print("$heightRatio, $widthRatio, $fitScreenZoomFactor");
+    print("$heightRatio, $widthRatio, $fitScreenZoomFactor");
     setState(() => {});
   }
 
@@ -191,7 +202,7 @@ class _ManilaFolderState extends State<ManilaFolder>
 
     Text folderCoverMarkup = Text(widget.stickerLabelText,
         style: TextStyle(
-            fontSize: widget.frontCoverMarkupTextStyle.fontSize,
+            fontSize: _frontCoverMarkupAdjustedFontSize,
             fontFamily: widget.frontCoverMarkupTextStyle.fontFamily,
             color: widget.frontCoverMarkupTextStyle.color,
             backgroundColor: widget.frontCoverMarkupTextStyle.backgroundColor));
