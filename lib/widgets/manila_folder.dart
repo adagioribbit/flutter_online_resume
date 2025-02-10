@@ -46,6 +46,7 @@ class _ManilaFolderState extends State<ManilaFolder>
   late double fitScreenZoomFactor;
   late BoxConstraints folderBackProportions, folderCoverProportions;
   late double _frontCoverMarkupAdjustedFontSize;
+  late double parentDimensionRatio, heightToParentRatio, widthToParentRatio;
   AnimationStatus _status = AnimationStatus.dismissed;
 
   /* Inner tweaking parameters*/
@@ -66,7 +67,8 @@ class _ManilaFolderState extends State<ManilaFolder>
       EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0);
 
   // 221 en plein écran / 200 en largeur minimale
-  Offset folderCoverOrigin = Offset(0, 200);
+  Offset folderBackTransformOrigin = Offset(0, 200);
+  Offset folderCoverTransformOrigin = Offset(0, 50);
   double folderCoverPerspective = 0.0005;
   double folderCoverCornerRadius = 2.0;
   static const Color folderCoverBoxShadowColor =
@@ -111,41 +113,50 @@ class _ManilaFolderState extends State<ManilaFolder>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    double heightRatio = ManilaFolder.fixedFolderProportions.maxHeight /
+    parentDimensionRatio =
+        MediaQuery.of(context).size.height / MediaQuery.of(context).size.width;
+    heightToParentRatio = ManilaFolder.fixedFolderProportions.maxHeight /
         MediaQuery.of(context).size.height;
-    double widthRatio = ManilaFolder.fixedFolderProportions.maxWidth /
+    widthToParentRatio = ManilaFolder.fixedFolderProportions.maxWidth /
         MediaQuery.of(context).size.width;
 
     if (Utils.isPhoneScreen(context) || Utils.isFoldable(context)) {
-      fitScreenZoomFactor = heightRatio;
+      fitScreenZoomFactor = heightToParentRatio;
       folderBackProportions = BoxConstraints(
-        maxHeight: 440 / widthRatio,
-        minHeight: 440 / widthRatio,
-        minWidth: 650 / widthRatio,
-        maxWidth: 650 / widthRatio,
+        maxHeight: 440 / widthToParentRatio,
+        minHeight: 440 / widthToParentRatio,
+        minWidth: 650 / widthToParentRatio,
+        maxWidth: 650 / widthToParentRatio,
       );
       folderCoverProportions = BoxConstraints(
-        maxHeight: 430 / widthRatio,
-        minHeight: 430 / widthRatio,
-        minWidth: 645 / widthRatio,
-        maxWidth: 645 / widthRatio,
+        maxHeight: 430 / widthToParentRatio,
+        minHeight: 430 / widthToParentRatio,
+        minWidth: 645 / widthToParentRatio,
+        maxWidth: 645 / widthToParentRatio,
       );
 
-      folderCoverOrigin = Offset(0, folderCoverProportions.maxHeight / 1.75);
+      folderCoverTransformOrigin =
+          Offset(0, folderCoverProportions.maxHeight / 1.75);
+      folderBackTransformOrigin = Offset(0, folderCoverTransformOrigin.dy);
+      print("folderBackTransformOrigin = $folderBackTransformOrigin");
       _frontCoverMarkupAdjustedFontSize =
-          widget.frontCoverMarkupTextStyle.fontSize! / widthRatio;
+          widget.frontCoverMarkupTextStyle.fontSize! / widthToParentRatio;
     } else {
-      fitScreenZoomFactor = min(heightRatio, widthRatio);
+      fitScreenZoomFactor = min(heightToParentRatio, widthToParentRatio);
       folderBackProportions = ManilaFolder.fixedFolderProportions;
       folderCoverProportions = ManilaFolder.fixedFolderProportions;
 
-      folderCoverOrigin =
-          Offset(0, ManilaFolder.fixedFolderProportions.maxHeight / 1.8);
+      folderCoverTransformOrigin = Offset(
+          0,
+          ManilaFolder.fixedFolderProportions.maxHeight /
+              (1.5 + fitScreenZoomFactor));
+      folderBackTransformOrigin = Offset(0, folderCoverTransformOrigin.dy);
       _frontCoverMarkupAdjustedFontSize =
           widget.frontCoverMarkupTextStyle.fontSize!;
     }
 
-    print("$heightRatio, $widthRatio, $fitScreenZoomFactor");
+    print(
+        "parentDimensionRatio = $parentDimensionRatio //// heightToParentRatio = $heightToParentRatio //// widthToParentRatio = $widthToParentRatio //// fitScreenZoomFactor = $fitScreenZoomFactor");
     setState(() => {});
   }
 
@@ -209,7 +220,7 @@ class _ManilaFolderState extends State<ManilaFolder>
 
     Transform folderCover = Transform(
         alignment: FractionalOffset.center,
-        origin: folderCoverOrigin,
+        origin: folderCoverTransformOrigin,
         transform: Matrix4.identity()
           ..setEntry(3, 2, folderCoverPerspective)
           ..rotateX(pi * _animOpenFolder.value),
@@ -310,7 +321,7 @@ class _ManilaFolderState extends State<ManilaFolder>
           }
         },
         child: buildFolderTransform(
-            zoomFactor: 4.0 * fitScreenZoomFactor,
+            zoomFactor: 6.0 * fitScreenZoomFactor,
             rotationX: 0,
             rotationY: 0,
             rotationZ: 0,
@@ -318,10 +329,13 @@ class _ManilaFolderState extends State<ManilaFolder>
               /* Conteneur extérieur */
               Transform(
                   alignment: FractionalOffset.center,
-                  origin: Offset(0, 50),
+                  origin: folderBackTransformOrigin,
                   transform: Matrix4.identity()
-                    ..setEntry(3, 2, 0.0005) // Inclinaison
-                    ..rotateX(pi * -_animOpenFolder.value / 5),
+                    ..setEntry(
+                        3, 2, 0.0005 * heightToParentRatio) // Inclinaison
+                    ..rotateX(pi *
+                        -_animOpenFolder.value /
+                        (12 + (parentDimensionRatio + heightToParentRatio))),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
