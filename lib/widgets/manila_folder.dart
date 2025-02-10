@@ -44,10 +44,10 @@ class _ManilaFolderState extends State<ManilaFolder>
   late Animation _animOpenFolder;
   late Color _folderBorderColor;
   late double fitScreenZoomFactor;
-  late BoxConstraints folderProportions;
+  late BoxConstraints folderBackProportions, folderCoverProportions;
   AnimationStatus _status = AnimationStatus.dismissed;
 
-  /*Extracted parameters*/
+  /* Inner tweaking parameters*/
   double beginAnimOpenFolder = 0.01;
   double endAnimOpenFolder = 0.7;
   int durationAnimOpenFolder = 500;
@@ -62,9 +62,10 @@ class _ManilaFolderState extends State<ManilaFolder>
   static const Color folderBackBoxShadowColor = Color.fromARGB(109, 0, 0, 0);
   static const Offset folderBackBoxShadowOffset = Offset(5, 12);
   EdgeInsetsDirectional folderBackMargin =
-      EdgeInsetsDirectional.fromSTEB(50, 0, 50, 50);
+      EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0);
 
-  Offset folderCoverOrigin = Offset(0, 221);
+  // 221 en plein écran / 200 en largeur minimale
+  Offset folderCoverOrigin = Offset(0, 200);
   double folderCoverPerspective = 0.0005;
   double folderCoverCornerRadius = 2.0;
   static const Color folderCoverBoxShadowColor =
@@ -73,11 +74,12 @@ class _ManilaFolderState extends State<ManilaFolder>
   double folderCoverBoxShadowBlurRadius = 10;
   Offset folderCoverBoxShadowOffset = Offset(0, -2);
   EdgeInsetsDirectional folderCoverMargin =
-      EdgeInsetsDirectional.fromSTEB(50, 60, 50, 50);
+      EdgeInsetsDirectional.fromSTEB(0, 55, 0, 0);
+
   EdgeInsetsDirectional folderTabLabelPadding =
       EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5);
   EdgeInsetsDirectional folderTabMargin =
-      EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0);
+      EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0);
 
   /* ******************************* */
 
@@ -115,18 +117,24 @@ class _ManilaFolderState extends State<ManilaFolder>
 
     if (Utils.isPhoneScreen(context) || Utils.isFoldable(context)) {
       fitScreenZoomFactor = heightRatio;
-      folderProportions = BoxConstraints(
+      folderBackProportions = BoxConstraints(
         maxHeight: 440 / widthRatio,
         minHeight: 440 / widthRatio,
         minWidth: 650 / widthRatio,
         maxWidth: 650 / widthRatio,
       );
+      folderCoverProportions = BoxConstraints(
+        maxHeight: 440 / widthRatio,
+        minHeight: 440 / widthRatio,
+        minWidth: 645 / widthRatio,
+        maxWidth: 645 / widthRatio,
+      );
     } else {
       fitScreenZoomFactor = min(heightRatio, widthRatio);
-      folderProportions = ManilaFolder.fixedFolderProportions;
+      folderBackProportions = ManilaFolder.fixedFolderProportions;
     }
 
-    print("$heightRatio, $widthRatio, $fitScreenZoomFactor");
+    //print("$heightRatio, $widthRatio, $fitScreenZoomFactor");
     setState(() => {});
   }
 
@@ -177,7 +185,7 @@ class _ManilaFolderState extends State<ManilaFolder>
           ),
         ],
       ),
-      constraints: folderProportions,
+      constraints: folderBackProportions,
       margin: folderBackMargin,
     );
 
@@ -209,7 +217,7 @@ class _ManilaFolderState extends State<ManilaFolder>
               ),
             ],
           ),
-          constraints: folderProportions,
+          constraints: folderCoverProportions,
           margin: folderCoverMargin,
           child: Container(
             decoration: BoxDecoration(
