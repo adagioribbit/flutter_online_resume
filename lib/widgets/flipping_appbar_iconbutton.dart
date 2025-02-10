@@ -25,7 +25,7 @@ class FlippingAppBarIconButton extends StatefulWidget {
 }
 
 class _FlippingAppBarIconButtonState extends State<FlippingAppBarIconButton>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation _animationFlipping;
   final ValueNotifier<bool> isFlipped = ValueNotifier(false);

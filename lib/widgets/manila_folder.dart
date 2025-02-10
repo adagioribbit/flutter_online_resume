@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' show pi, min;
 
 import '../helpers/utils.dart';
+import 'squared_sheet.dart';
 
 class ManilaFolder extends StatefulWidget {
   static const BoxConstraints fixedFolderProportions = BoxConstraints(
@@ -22,6 +23,7 @@ class ManilaFolder extends StatefulWidget {
   final double stickerFontSize;
   final String stickerLabelText;
   final Color folderMainColor, stickerLabelColor;
+  final Widget folderContent;
 
   const ManilaFolder(
       {this.stickerLabelText = "Classified",
@@ -32,6 +34,13 @@ class ManilaFolder extends StatefulWidget {
       this.hasFrontCoverMarkup = false,
       this.frontCoverMarkupTextStyle = const TextStyle(
           fontSize: 80.0, fontFamily: "Handwritten", color: Colors.black),
+      this.folderContent = const SquaredSheet(
+          scaleFactor: 25.0,
+          child: Text("Test",
+              style: TextStyle(
+                  fontSize: 40.0,
+                  fontFamily: "Handwritten",
+                  color: Colors.green))),
       super.key});
 
   @override
@@ -349,6 +358,15 @@ class _ManilaFolderState extends State<ManilaFolder>
                               folderBack
                             ])
                       ])),
+              Transform(
+                  alignment: FractionalOffset.center,
+                  origin: Offset.zero,
+                  transform: Matrix4.identity()
+                    // Translate Y
+                    ..setEntry(1, 3, -folderBackProportions.maxHeight)
+                    ..setEntry(3, 3, 0.75 / fitScreenZoomFactor)
+                    ..rotateZ(0.5 * pi),
+                  child: widget.folderContent),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

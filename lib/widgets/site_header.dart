@@ -18,8 +18,7 @@ class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
   State<SiteHeader> createState() => _SiteHeaderState();
 }
 
-class _SiteHeaderState extends State<SiteHeader>
-    with SingleTickerProviderStateMixin {
+class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
   late double titleFontSize, subtitleFontSize, titlePaddingTop;
   late AnimationController _animationController;
   late Animation _animationBackgroundColor,

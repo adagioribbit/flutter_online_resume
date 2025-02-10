@@ -14,7 +14,7 @@ class WigglingButton extends StatefulWidget {
 }
 
 class _WigglingButtonState extends State<WigglingButton>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
   late bool isTouchedOnce = false;
