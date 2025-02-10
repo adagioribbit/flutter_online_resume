@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' show pi;
 import '../helpers/curved_text_painter.dart';
 
-enum STATUS { IDLE, RADAR, CLEANING, ALARM }
+enum STATUS { IDLE, RADAR, MOVING, CLEANING, RECYCLE, ALARM }
 
 class Zoombee extends StatefulWidget {
   static const String _brand = "ZOOMBEE";
@@ -23,7 +23,7 @@ class Zoombee extends StatefulWidget {
 
 class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
   GlobalKey keyZoombee = GlobalKey(debugLabel: "robot");
-  late STATUS status = STATUS.IDLE;
+  late STATUS status = STATUS.RECYCLE;
   late double widgetScale;
   late int movementDuration;
   late Alignment destinationAlignment;
@@ -32,9 +32,12 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
       positionAlignmentY,
       destinationAlignmentX,
       destinationAlignmentY;
-  late AnimationController _animationSnoreController,
+  late AnimationController _animationStatusController,
       _animationMoveAroundController;
-  late Animation<double> _animationSnore,
+  late Animation<double> _animationStatusSnore,
+      _animationStatusMoving,
+      _animationStatusRadar,
+      _animationStatusRecycling,
       _animationMoveAroundX,
       _animationMoveAroundY,
       _animationTidyUp;
@@ -50,13 +53,33 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
     movementDuration = 5000;
     clickedPosition = Offset(destinationAlignmentX, destinationAlignmentY);
 
-    _animationSnoreController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 2500))
-      ..repeat(reverse: true);
+    _animationStatusController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1000))
+          ..repeat(reverse: true);
 
-    _animationSnore = Tween<double>(begin: 0.2, end: 1.1).animate(
+    _animationStatusMoving = Tween<double>(begin: -0.4, end: 0.6).animate(
       CurvedAnimation(
-          parent: _animationSnoreController, curve: Curves.easeInOutQuart),
+          parent: _animationStatusController, curve: Curves.elasticInOut),
+    );
+
+    _animationStatusSnore = Tween<double>(begin: 0.2, end: 1.1).animate(
+      CurvedAnimation(
+          parent: _animationStatusController, curve: Curves.easeInOutQuart),
+    );
+
+    _animationStatusRadar = Tween<double>(begin: -1.0, end: 1.0).animate(
+      CurvedAnimation(
+          parent: _animationStatusController, curve: Curves.easeInOutQuart),
+    );
+
+    _animationStatusMoving = Tween<double>(begin: -0.4, end: 0.6).animate(
+      CurvedAnimation(
+          parent: _animationStatusController, curve: Curves.elasticInOut),
+    );
+
+    _animationStatusRecycling = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+          parent: _animationStatusController, curve: Curves.easeInOutQuart),
     );
 
     _animationMoveAroundController = AnimationController(
@@ -88,7 +111,7 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
       ],
     ).animate(
       CurvedAnimation(
-          parent: _animationSnoreController,
+          parent: _animationStatusController,
           curve: Interval(
             0,
             0.1,
@@ -115,14 +138,22 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
     Widget statusEmoji;
     switch (status) {
       case STATUS.IDLE:
+        _animationStatusController = AnimationController(
+            vsync: this, duration: Duration(milliseconds: 2500))
+          ..repeat(reverse: true);
+        _animationStatusSnore = Tween<double>(begin: 0.2, end: 1.1).animate(
+          CurvedAnimation(
+              parent: _animationStatusController, curve: Curves.easeInOutQuart),
+        );
+
         statusEmoji = AnimatedBuilder(
-            animation: _animationSnoreController,
+            animation: _animationStatusController,
             builder: (context, _) {
               return Transform(
                   transform: Matrix4.identity()
                     // Scale
-                    ..setEntry(0, 0, _animationSnore.value)
-                    ..setEntry(1, 1, _animationSnore.value),
+                    ..setEntry(0, 0, _animationStatusSnore.value)
+                    ..setEntry(1, 1, _animationStatusSnore.value),
                   alignment: FractionalOffset.center,
                   child: Text(
                     "💤",
@@ -133,13 +164,76 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
                   ));
             });
       case STATUS.RADAR:
-        statusEmoji = Text(
-          "🧟",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              backgroundColor: Colors.transparent,
-              fontSize: widget.radius / 2.0),
+        _animationStatusController = AnimationController(
+            vsync: this, duration: Duration(milliseconds: 1000))
+          ..repeat(reverse: true);
+        _animationStatusRadar = Tween<double>(begin: -1.0, end: 1.0).animate(
+          CurvedAnimation(
+              parent: _animationStatusController, curve: Curves.easeInOutQuart),
         );
+
+        statusEmoji = AnimatedBuilder(
+            animation: _animationStatusController,
+            builder: (context, _) {
+              return Transform(
+                  transform: Matrix4.identity()
+                    ..rotateZ(2.0 * pi * _animationStatusRadar.value)
+                    // Scale
+                    ..setEntry(0, 0, _animationStatusRadar.value.abs())
+                    ..setEntry(1, 1, _animationStatusRadar.value.abs()),
+                  alignment: FractionalOffset.center,
+                  child: Text(
+                    "!?",
+                    textAlign: TextAlign.center,
+                    textScaler: TextScaler.linear(2.0),
+                    style: TextStyle(
+                        fontFamily: "Handwritten",
+                        color: Colors.red,
+                        backgroundColor: Colors.transparent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: widget.radius / 2.7),
+                  ));
+            });
+        break;
+      case STATUS.MOVING:
+        _animationStatusController = AnimationController(
+            vsync: this, duration: Duration(milliseconds: 1500))
+          ..repeat(reverse: true);
+        _animationStatusMoving = Tween<double>(begin: -0.4, end: 0.6).animate(
+          CurvedAnimation(
+              parent: _animationStatusController, curve: Curves.elasticInOut),
+        );
+
+        statusEmoji = AnimatedBuilder(
+            animation: _animationStatusController,
+            builder: (context, _) {
+              return Transform(
+                  transform: Matrix4.identity()
+                    ..rotateZ(0.08 * pi * _animationStatusMoving.value),
+                  alignment: FractionalOffset.center,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: RadialGradient(
+                          colors: [
+                            Colors.green,
+                            const Color.fromARGB(169, 37, 126, 40),
+                            const Color.fromARGB(169, 28, 77, 30),
+                            const Color.fromARGB(185, 76, 175, 79),
+                          ],
+                          stops: [0.5, 0.9, 0.99, 1],
+                        ),
+                      ),
+                      child: Text(
+                        "🧟",
+                        textHeightBehavior:
+                            TextHeightBehavior(applyHeightToFirstAscent: false),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            backgroundColor: Colors.transparent,
+                            fontSize: widget.radius / 1.55),
+                      )));
+            });
         break;
       case STATUS.CLEANING:
         statusEmoji = Text(
@@ -149,6 +243,32 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
               backgroundColor: Colors.transparent,
               fontSize: widget.radius / 2.0),
         );
+        break;
+      case STATUS.RECYCLE:
+        _animationStatusController = AnimationController(
+            vsync: this, duration: Duration(milliseconds: 3000))
+          ..repeat();
+        _animationStatusRecycling = Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+              parent: _animationStatusController, curve: Curves.linear),
+        );
+
+        statusEmoji = AnimatedBuilder(
+            animation: _animationStatusController,
+            builder: (context, _) {
+              return Transform(
+                  transform: Matrix4.identity()
+                    ..rotateZ(2 * pi * _animationStatusRecycling.value),
+                  alignment: FractionalOffset.center,
+                  child: Text(
+                    "♻️",
+                    textScaler: TextScaler.linear(1.1),
+                    style: TextStyle(
+                        color: Colors.green,
+                        backgroundColor: Colors.transparent,
+                        fontSize: widget.radius / 1.55),
+                  ));
+            });
         break;
       case STATUS.ALARM:
         statusEmoji = Text(
