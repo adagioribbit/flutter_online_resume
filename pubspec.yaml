@@ -123,6 +123,22 @@ flutter:
     - family: RockSalt
       fonts:
         - asset: lib/fonts/RockSalt-Regular.ttf
-    - family: Yellowtail
+
+    - family: Fuggles
       fonts:
-        - asset: lib/fonts/Yellowtail-Regular.ttf
+        - asset: lib/fonts/Fuggles-Regular.ttf
+    - family: GrapeNuts
+      fonts:
+        - asset: lib/fonts/GrapeNuts-Regular.ttf
+    - family: IngridDarling
+      fonts:
+        - asset: lib/fonts/IngridDarling-Regular.ttf
+    - family: JustMeAgainDownHere
+      fonts:
+        - asset: lib/fonts/JustMeAgainDownHere-Regular.ttf
+    - family: Mynerve
+      fonts:
+        - asset: lib/fonts/Mynerve-Regular.ttf
+    - family: OvertheRainbow
+      fonts:
+        - asset: lib/fonts/OvertheRainbow-Regular.ttf
