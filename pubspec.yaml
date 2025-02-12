@@ -117,3 +117,12 @@ flutter:
     - family: Gloria
       fonts:
         - asset: lib/fonts/GloriaHallelujah-Regular.ttf
+    - family: ReenieBeanie
+      fonts:
+        - asset: lib/fonts/ReenieBeanie-Regular.ttf
+    - family: RockSalt
+      fonts:
+        - asset: lib/fonts/RockSalt-Regular.ttf
+    - family: Yellowtail
+      fonts:
+        - asset: lib/fonts/Yellowtail-Regular.ttf

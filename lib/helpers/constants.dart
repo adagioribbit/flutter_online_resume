@@ -81,4 +81,8 @@ class AppStrings {
     'fr': 'Mon Insta',
     'en': 'My gram'
   };
+  static const Map<String, String> MANILLAFOLDER_TITLE = {
+    'fr': 'Dossier démo',
+    'en': 'Demo book'
+  };
 }

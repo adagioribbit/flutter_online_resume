@@ -15,6 +15,7 @@ class ManilaFolder extends StatefulWidget {
   /// Whether the label text should also be handwritten on the folder front cover
   final bool hasFrontCoverMarkup;
   final TextStyle frontCoverMarkupTextStyle;
+  final double frontCoverMarkupTiltAngle;
 
   /// This must be expressed in radiants like so : -(pi / 40) (with import 'dart:math' show pi;)
   final double stickerRotationAngle;
@@ -34,6 +35,7 @@ class ManilaFolder extends StatefulWidget {
       this.hasFrontCoverMarkup = false,
       this.frontCoverMarkupTextStyle = const TextStyle(
           fontSize: 80.0, fontFamily: "Handwritten", color: Colors.black),
+      this.frontCoverMarkupTiltAngle = 0.0,
       this.folderContent = const SquaredSheet(
           scaleFactor: 25.0,
           child: Text("Test",
@@ -216,12 +218,19 @@ class _ManilaFolderState extends State<ManilaFolder>
       margin: folderBackMargin,
     );
 
-    Text folderCoverMarkup = Text(widget.stickerLabelText,
-        style: TextStyle(
-            fontSize: _frontCoverMarkupAdjustedFontSize,
-            fontFamily: widget.frontCoverMarkupTextStyle.fontFamily,
-            color: widget.frontCoverMarkupTextStyle.color,
-            backgroundColor: widget.frontCoverMarkupTextStyle.backgroundColor));
+    Transform folderCoverMarkup = Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset.zero,
+        transform: Matrix4.identity()
+          ..rotateZ(pi * widget.frontCoverMarkupTiltAngle),
+        child: Text(widget.stickerLabelText,
+            style: TextStyle(
+                fontSize: _frontCoverMarkupAdjustedFontSize,
+                fontFamily: widget.frontCoverMarkupTextStyle.fontFamily,
+                color: widget.frontCoverMarkupTextStyle.color
+                    ?.withAlpha(255 - (345 * _animOpenFolder.value).round()),
+                backgroundColor:
+                    widget.frontCoverMarkupTextStyle.backgroundColor)));
 
     Transform folderCover = Transform(
         alignment: FractionalOffset.center,
@@ -358,15 +367,15 @@ class _ManilaFolderState extends State<ManilaFolder>
                               folderBack
                             ])
                       ])),
-              Transform(
-                  alignment: FractionalOffset.center,
-                  origin: Offset.zero,
-                  transform: Matrix4.identity()
-                    // Translate Y
-                    ..setEntry(1, 3, -folderBackProportions.maxHeight)
-                    ..setEntry(3, 3, 0.75 / fitScreenZoomFactor)
-                    ..rotateZ(0.5 * pi),
-                  child: widget.folderContent),
+              //Transform(
+              //    alignment: FractionalOffset.center,
+              //    origin: Offset.zero,
+              //    transform: Matrix4.identity()
+              //      // Translate Y
+              //      ..setEntry(1, 3, -folderBackProportions.maxHeight)
+              //      ..setEntry(3, 3, 0.75 / fitScreenZoomFactor)
+              //      ..rotateZ(0.5 * pi),
+              //    child: widget.folderContent),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

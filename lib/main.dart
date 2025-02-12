@@ -1,7 +1,9 @@
+import 'package:dossier_de_competences_web/helpers/constants.dart';
 import 'package:dossier_de_competences_web/widgets/zoombee.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' show pi;
 import 'helpers/colorchart.dart';
+import 'helpers/globals.dart' as globals;
 import 'helpers/settings.dart';
 import 'widgets/manila_folder.dart';
 import 'widgets/squared_sheet.dart';
@@ -81,17 +83,23 @@ Allez, je fais du multiligne pour peindre cette page blanche de daube !''';
                   Zoombee(
                     radius: 50,
                   ),
-                  ManilaFolder(
-                      stickerLabelText: "Formation",
-                      stickerRotationAngle: -(pi / 60),
-                      stickerFontSize: 20.0,
-                      folderMainColor: Colors.teal,
-                      hasFrontCoverMarkup: true,
-                      frontCoverMarkupTextStyle: TextStyle(
-                        fontSize: 100.0,
-                        fontFamily: "Sabenya",
-                        color: Colors.black,
-                      )),
+                  ValueListenableBuilder(
+                      valueListenable: globals.appLanguage,
+                      builder: (context, language, widget) {
+                        return ManilaFolder(
+                            stickerLabelText:
+                                AppStrings.MANILLAFOLDER_TITLE[language]!,
+                            stickerRotationAngle: -(pi / 60),
+                            stickerFontSize: 20.0,
+                            folderMainColor: Colors.teal,
+                            hasFrontCoverMarkup: true,
+                            frontCoverMarkupTextStyle: TextStyle(
+                              fontSize: 100.0,
+                              fontFamily: "Sabenya",
+                              color: Colors.black,
+                            ),
+                            frontCoverMarkupTiltAngle: -0.085);
+                      }),
                 ])),
             //Transform(
             //    alignment: FractionalOffset.center,
