@@ -85,4 +85,24 @@ class AppStrings {
     'fr': 'Dossier démo',
     'en': 'Demo book'
   };
+  static const Map<String, String> RESUME_PRESENTATION_PRETEXT = {
+    'fr': 'J\'ai créé ce site pour\nm\'entraîner sur Flutter.',
+    'en': 'I created this site\nto train on Flutter.'
+  };
+  static const Map<String, String> RESUME_PRESENTATION_CALL_TO_ACTION = {
+    'fr': 'Mes renseignements\nsont dispo ici',
+    'en': 'Please, download my resume'
+  };
+  static const Map<String, String> RESUME_PRESENTATION_BOREDOM = {
+    'fr': 'Je m\'ennui !!\n     J\'en ai marre !!!',
+    'en': 'I am boooored!\nI can\'t stand it any longer!'
+  };
+  static const Map<String, String> RESUME_PRESENTATION_OUTCRY = {
+    'fr': 'S\'il vous plaît,\nembauchez-moi !',
+    'en': 'Have a heart,\nemploy me!'
+  };
+  static const Map<String, String> RESUME_PRESENTATION_INSTAGRIT = {
+    'fr': 'Mes derniers posts Instagram',
+    'en': 'My latest posts on the gram'
+  };
 }
