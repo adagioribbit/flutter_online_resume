@@ -37,7 +37,9 @@ class ManilaFolder extends StatefulWidget {
       this.frontCoverMarkupTextStyle = const TextStyle(
           fontSize: 80.0, fontFamily: "Handwritten", color: Colors.black),
       this.frontCoverMarkupTiltAngle = 0.0,
-      this.folderContent = const ResumePresentation(),
+      this.folderContent = const ResumePresentation(
+        animatedScaleFactor: 45.0,
+      ),
       super.key});
 
   @override
