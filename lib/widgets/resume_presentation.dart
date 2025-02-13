@@ -36,6 +36,35 @@ class _ResumePresentationState extends State<ResumePresentation>
         (widget.animatedScaleFactor / ResumePresentation.defaultScaleFactor)
             .clamp(0.0, 0.9);
 
+    Transform vitruve = Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset.zero,
+        transform: Matrix4.identity()
+          ..rotateZ(pi * 1.6273)
+          // Translate X
+          ..setEntry(0, 3, -1 * scaleFactorRatio)
+          // Translate Y
+          ..setEntry(1, 3, -50 * scaleFactorRatio)
+          // Scale
+          ..setEntry(0, 0, 16)
+          ..setEntry(1, 1, 16),
+        child: Image(
+            height: 10 * scaleFactorRatio,
+            image: AssetImage("lib/assets/vitruve.png")));
+
+    Transform naughty = Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset.zero,
+        transform: Matrix4.identity()
+          // Translate X
+          ..setEntry(0, 3, 450 * scaleFactorRatio)
+          // Scale
+          ..setEntry(0, 0, 16)
+          ..setEntry(1, 1, 16),
+        child: Image(
+            height: 5 * scaleFactorRatio,
+            image: AssetImage("lib/assets/naughty.png")));
+
     ValueListenableBuilder boredom = ValueListenableBuilder(
         valueListenable: globals.appLanguage,
         builder: (context, language, widget) {
@@ -44,7 +73,7 @@ class _ResumePresentationState extends State<ResumePresentation>
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 180 * scaleFactorRatio)
+                ..setEntry(0, 3, 150 * scaleFactorRatio)
                 // Translate Y
                 ..setEntry(1, 3, -50 * scaleFactorRatio)
                 ..rotateZ(pi * 0.0973),
@@ -84,6 +113,18 @@ class _ResumePresentationState extends State<ResumePresentation>
                       color: const Color.fromARGB(207, 29, 114, 241))));
         });
 
+    Transform mangaCrow = Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset.zero,
+        transform: Matrix4.identity()
+          // Translate X
+          ..setEntry(0, 3, 300 * scaleFactorRatio)
+          // Translate Y
+          ..setEntry(1, 3, -40 * scaleFactorRatio),
+        child: Image(
+            width: 200 * scaleFactorRatio,
+            image: AssetImage("lib/assets/blue_manga_crow.png")));
+
     ValueListenableBuilder callToAction = ValueListenableBuilder(
         valueListenable: globals.appLanguage,
         builder: (context, language, widget) {
@@ -94,7 +135,7 @@ class _ResumePresentationState extends State<ResumePresentation>
                 // Translate X
                 ..setEntry(0, 3, -80 * scaleFactorRatio)
                 // Translate Y
-                ..setEntry(1, 3, 80 * scaleFactorRatio)
+                ..setEntry(1, 3, -20 * scaleFactorRatio)
                 ..rotateZ(pi * -0.0373),
               child: Text(
                   AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[language]!,
@@ -115,7 +156,7 @@ class _ResumePresentationState extends State<ResumePresentation>
                 // Translate X
                 ..setEntry(0, 3, 80 * scaleFactorRatio)
                 // Translate Y
-                ..setEntry(1, 3, 290 * scaleFactorRatio),
+                ..setEntry(1, 3, 125 * scaleFactorRatio),
               child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -133,8 +174,11 @@ class _ResumePresentationState extends State<ResumePresentation>
         child: SizedBox.expand(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          naughty,
           boredom,
+          vitruve,
           pretext,
+          mangaCrow,
           callToAction,
           outcry,
         ])));
