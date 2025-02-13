@@ -1,6 +1,35 @@
-- Dans SquaredSheet, corréler la taille des polices et le positionnement des textes au scaleFactor
+============= TRAVAIL EN COURS ======================
 
-- Add font size and text position correlation with scale factor in ResumePresentation
+
+- TESTER : faire varier animatedScaleFactor dans ManillaFolder, afficher les valeurs, trouver la valeur bascule sur laquelle la proportion horizontale de la feuille est perdue
+
+
+
+
+------------- BUGS ----------------------------------
 
 - TranslateY et Scale du folderContent doivent être fonction de la taille de l'écran
-- Ajuster la position du Zoombee sur un resize
+
+
+
+
+
+~~~~~~~~~~~~~ FEUILLE DE ROUTE ~~~~~~~~~~~~~~~~~~~~~~
+
+- Ajouter le FAB vers le téléchargement des contenus
+- Travailler l'animation d'ouverture du dossier déclenchée au chargement de la page
+- Supprimer le bouton du mode sombre et Zoombee
+
+==> Première mise en ligne
+
+- Ajouter des images de doodle crayonnés animés
+- Ajouter des animations sur les lettrages
+
+
+	-------------> ZOOMBEE :
+
+	- Ajouter le dépôt d'empreinte au onTap sur le conteneur
+	- Créer la machine état de déclenchement des différents statuts selon la propreté de la surface
+	- Ajuster la position du Zoombee sur un resize
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

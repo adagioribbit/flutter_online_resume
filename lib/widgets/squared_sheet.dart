@@ -1,27 +1,44 @@
 import 'package:flutter/material.dart';
 
-class SquaredSheet extends StatelessWidget {
+class SquaredSheet extends StatefulWidget {
   final dynamic child;
   final double scaleFactor;
 
   const SquaredSheet({this.child, this.scaleFactor = 5.0, super.key});
 
   @override
+  State<SquaredSheet> createState() => _SquaredSheetState();
+}
+
+class _SquaredSheetState extends State<SquaredSheet>
+    with WidgetsBindingObserver, TickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    setState(() => {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Transform(
         transform: Matrix4.identity()
           // Scale
-          ..setEntry(0, 0, scaleFactor / 40)
-          ..setEntry(1, 1, scaleFactor / 40),
+          ..setEntry(0, 0, widget.scaleFactor / 40)
+          ..setEntry(1, 1, widget.scaleFactor / 40),
         child: Container(
           margin: EdgeInsetsDirectional.all(10.0),
-          padding: EdgeInsetsDirectional.fromSTEB(
-              4.5 * scaleFactor, 3.0 * scaleFactor, 0, 2.0 * scaleFactor),
+          padding: EdgeInsetsDirectional.fromSTEB(4.5 * widget.scaleFactor,
+              3.0 * widget.scaleFactor, 0, 2.0 * widget.scaleFactor),
           constraints: BoxConstraints(
-            minWidth: 21.0 * scaleFactor,
-            minHeight: 29.7 * scaleFactor,
-            maxWidth: 21.0 * scaleFactor,
-            maxHeight: 29.7 * scaleFactor,
+            minWidth: 21.0 * widget.scaleFactor,
+            minHeight: 29.7 * widget.scaleFactor,
+            maxWidth: 21.0 * widget.scaleFactor,
+            maxHeight: 29.7 * widget.scaleFactor,
           ),
           decoration: BoxDecoration(
             color: Colors.transparent,
@@ -38,7 +55,7 @@ class SquaredSheet extends StatelessWidget {
               ),
             ],
           ),
-          child: child,
+          child: widget.child,
         ));
   }
 }
