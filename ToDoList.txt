@@ -1,0 +1,6 @@
+- Dans SquaredSheet, corréler la taille des polices et le positionnement des textes au scaleFactor
+
+- Add font size and text position correlation with scale factor in ResumePresentation
+
+- TranslateY et Scale du folderContent doivent être fonction de la taille de l'écran
+- Ajuster la position du Zoombee sur un resize
