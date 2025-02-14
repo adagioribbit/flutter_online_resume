@@ -1,12 +1,8 @@
 ============= TRAVAIL EN COURS ======================
 
-
-- TESTER : faire varier animatedScaleFactor dans ManillaFolder, afficher les valeurs, trouver la valeur bascule sur laquelle la proportion horizontale de la feuille est perdue
-
-
 ------------- BUGS ----------------------------------
 
-- TranslateY et Scale du folderContent doivent être fonction de la taille de l'écran
+- Les proportions du folderContent ne sont pas correctes pour toutes les tailles d'écran Desktop
 
 
 
