@@ -38,7 +38,7 @@ class ManilaFolder extends StatefulWidget {
           fontSize: 80.0, fontFamily: "Handwritten", color: Colors.black),
       this.frontCoverMarkupTiltAngle = 0.0,
       this.folderContent = const ResumePresentation(
-        animatedScaleFactor: 30.0,
+        animatedScaleFactor: 25.0,
       ),
       super.key});
 
@@ -323,66 +323,66 @@ class _ManilaFolderState extends State<ManilaFolder>
       ),
     );
 
-    return widget.folderContent;
-    //return GestureDetector(
-    //    onTap: () {
-    //      if (_status == AnimationStatus.dismissed) {
-    //        _controller.forward();
-    //      } else {
-    //        _controller.reverse();
-    //      }
-    //    },
-    //    child: buildFolderTransform(
-    //        zoomFactor: 6.0 * fitScreenZoomFactor,
-    //        rotationX: 0,
-    //        rotationY: 0,
-    //        rotationZ: 0,
-    //        child: Stack(fit: StackFit.passthrough, children: [
-    //          /* Conteneur extérieur */
-    //          Transform(
-    //              alignment: FractionalOffset.center,
-    //              origin: folderBackTransformOrigin,
-    //              transform: Matrix4.identity()
-    //                ..setEntry(
-    //                    3, 2, 0.0005 * heightToParentRatio) // Inclinaison
-    //                ..rotateX(pi *
-    //                    -_animOpenFolder.value /
-    //                    (12 + (parentDimensionRatio + heightToParentRatio))),
-    //              child: Row(
-    //                  mainAxisAlignment: MainAxisAlignment.center,
-    //                  crossAxisAlignment: CrossAxisAlignment.center,
-    //                  children: [
-    //                    Column(
-    //                        mainAxisAlignment: MainAxisAlignment.start,
-    //                        crossAxisAlignment: CrossAxisAlignment.start,
-    //                        children: [
-    //                          /* FolderTab container */
-    //                          Row(
-    //                            mainAxisAlignment: MainAxisAlignment.start,
-    //                            crossAxisAlignment: CrossAxisAlignment.end,
-    //                            children: [folderTab, folderTabConnexion],
-    //                          ),
-    //                          folderBack
-    //                        ])
-    //                  ])),
-    //          Transform(
-    //              alignment: FractionalOffset.center,
-    //              origin: Offset.zero,
-    //              transform: Matrix4.identity()
-    //                // Translate Y
-    //                ..setEntry(1, 3, -folderBackProportions.maxHeight)
-    //                ..setEntry(3, 3, 0.75 / fitScreenZoomFactor)
-    //                ..rotateZ(0.5 * pi),
-    //              child: widget.folderContent),
-    //          Row(
-    //              mainAxisAlignment: MainAxisAlignment.center,
-    //              crossAxisAlignment: CrossAxisAlignment.center,
-    //              children: [
-    //                Column(
-    //                    mainAxisAlignment: MainAxisAlignment.start,
-    //                    crossAxisAlignment: CrossAxisAlignment.start,
-    //                    children: [folderCover])
-    //              ])
-    //        ])));
+    //return widget.folderContent;
+    return GestureDetector(
+        onTap: () {
+          if (_status == AnimationStatus.dismissed) {
+            _controller.forward();
+          } else {
+            _controller.reverse();
+          }
+        },
+        child: buildFolderTransform(
+            zoomFactor: 6.0 * fitScreenZoomFactor,
+            rotationX: 0,
+            rotationY: 0,
+            rotationZ: 0,
+            child: Stack(fit: StackFit.passthrough, children: [
+              /* Conteneur extérieur */
+              Transform(
+                  alignment: FractionalOffset.center,
+                  origin: folderBackTransformOrigin,
+                  transform: Matrix4.identity()
+                    ..setEntry(
+                        3, 2, 0.0005 * heightToParentRatio) // Inclinaison
+                    ..rotateX(pi *
+                        -_animOpenFolder.value /
+                        (12 + (parentDimensionRatio + heightToParentRatio))),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              /* FolderTab container */
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [folderTab, folderTabConnexion],
+                              ),
+                              folderBack
+                            ])
+                      ])),
+              Transform(
+                  alignment: FractionalOffset.center,
+                  origin: Offset.zero,
+                  transform: Matrix4.identity()
+                    // Translate Y
+                    ..setEntry(1, 3, -folderBackProportions.maxHeight / 2.5)
+                    ..setEntry(3, 3, 0.6 / fitScreenZoomFactor)
+                    ..rotateZ(0.5 * pi),
+                  child: widget.folderContent),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [folderCover])
+                  ])
+            ])));
   }
 }

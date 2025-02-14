@@ -7,7 +7,7 @@ import '../helpers/globals.dart' as globals;
 import 'squared_sheet.dart';
 
 class ResumePresentation extends StatefulWidget {
-  static const double defaultScaleFactor = 30.0;
+  static const double defaultScaleFactor = 40.0;
   final double animatedScaleFactor;
 
   const ResumePresentation(
@@ -30,26 +30,22 @@ class _ResumePresentationState extends State<ResumePresentation>
     setState(() => {});
   }
 
-  @override
-  Widget build(BuildContext context) {
-    double scaleFactorRatio =
-        (widget.animatedScaleFactor / ResumePresentation.defaultScaleFactor)
-            .clamp(0.0, 0.9);
-
+  List<Widget> buildContent(
+      double scaleFactorRatio, BoxConstraints containerConstraints) {
     Transform vitruve = Transform(
         alignment: FractionalOffset.center,
         origin: Offset.zero,
         transform: Matrix4.identity()
           ..rotateZ(pi * 1.6273)
           // Translate X
-          ..setEntry(0, 3, -1 * scaleFactorRatio)
+          ..setEntry(0, 3, 150 * scaleFactorRatio)
           // Translate Y
-          ..setEntry(1, 3, -50 * scaleFactorRatio)
+          ..setEntry(1, 3, 50 * scaleFactorRatio)
           // Scale
-          ..setEntry(0, 0, 16)
-          ..setEntry(1, 1, 16),
+          ..setEntry(0, 0, 4 * scaleFactorRatio)
+          ..setEntry(1, 1, 4 * scaleFactorRatio),
         child: Image(
-            height: 10 * scaleFactorRatio,
+            height: 100 * scaleFactorRatio,
             image: AssetImage("lib/assets/vitruve.png")));
 
     Transform naughty = Transform(
@@ -57,10 +53,12 @@ class _ResumePresentationState extends State<ResumePresentation>
         origin: Offset.zero,
         transform: Matrix4.identity()
           // Translate X
-          ..setEntry(0, 3, 450 * scaleFactorRatio)
+          ..setEntry(0, 3, 700 * scaleFactorRatio)
+          // Translate Y
+          ..setEntry(1, 3, 100 * scaleFactorRatio)
           // Scale
-          ..setEntry(0, 0, 16)
-          ..setEntry(1, 1, 16),
+          ..setEntry(0, 0, 45 * scaleFactorRatio)
+          ..setEntry(1, 1, 45 * scaleFactorRatio),
         child: Image(
             height: 5 * scaleFactorRatio,
             image: AssetImage("lib/assets/naughty.png")));
@@ -73,14 +71,14 @@ class _ResumePresentationState extends State<ResumePresentation>
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 150 * scaleFactorRatio)
+                ..setEntry(0, 3, 350 * scaleFactorRatio)
                 // Translate Y
-                ..setEntry(1, 3, -50 * scaleFactorRatio)
+                ..setEntry(1, 3, 150 * scaleFactorRatio)
                 ..rotateZ(pi * 0.0973),
               child: Text(AppStrings.RESUME_PRESENTATION_BOREDOM[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 30.0 * scaleFactorRatio,
+                      fontSize: 50.0 * scaleFactorRatio,
                       fontFamily: "GrapeNuts",
                       fontWeight: FontWeight.bold,
                       color: const Color.fromARGB(127, 0, 0, 0))));
@@ -94,9 +92,9 @@ class _ResumePresentationState extends State<ResumePresentation>
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, -80 * scaleFactorRatio)
+                ..setEntry(0, 3, 75 * scaleFactorRatio)
                 // Translate Y
-                ..setEntry(1, 3, 20 * scaleFactorRatio)
+                ..setEntry(1, 3, 150 * scaleFactorRatio)
                 ..rotateZ(pi * -0.0773),
               child: Text(AppStrings.RESUME_PRESENTATION_PRETEXT[language]!,
                   strutStyle: StrutStyle.disabled,
@@ -107,7 +105,7 @@ class _ResumePresentationState extends State<ResumePresentation>
                   style: TextStyle(
                       leadingDistribution: TextLeadingDistribution.even,
                       textBaseline: TextBaseline.alphabetic,
-                      fontSize: 40.0 * scaleFactorRatio,
+                      fontSize: 60.0 * scaleFactorRatio,
                       fontFamily: "Mynerve",
                       fontWeight: FontWeight.bold,
                       color: const Color.fromARGB(207, 29, 114, 241))));
@@ -118,9 +116,12 @@ class _ResumePresentationState extends State<ResumePresentation>
         origin: Offset.zero,
         transform: Matrix4.identity()
           // Translate X
-          ..setEntry(0, 3, 300 * scaleFactorRatio)
+          ..setEntry(0, 3, 550 * scaleFactorRatio)
           // Translate Y
-          ..setEntry(1, 3, -40 * scaleFactorRatio),
+          ..setEntry(1, 3, 100 * scaleFactorRatio)
+          // Scale
+          ..setEntry(0, 0, 2.5 * scaleFactorRatio)
+          ..setEntry(1, 1, 2.5 * scaleFactorRatio),
         child: Image(
             width: 200 * scaleFactorRatio,
             image: AssetImage("lib/assets/blue_manga_crow.png")));
@@ -133,9 +134,9 @@ class _ResumePresentationState extends State<ResumePresentation>
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, -80 * scaleFactorRatio)
+                ..setEntry(0, 3, 125 * scaleFactorRatio)
                 // Translate Y
-                ..setEntry(1, 3, -20 * scaleFactorRatio)
+                ..setEntry(1, 3, 150 * scaleFactorRatio)
                 ..rotateZ(pi * -0.0373),
               child: Text(
                   AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[language]!,
@@ -154,14 +155,14 @@ class _ResumePresentationState extends State<ResumePresentation>
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 80 * scaleFactorRatio)
+                ..setEntry(0, 3, 225 * scaleFactorRatio)
                 // Translate Y
-                ..setEntry(1, 3, 125 * scaleFactorRatio),
+                ..setEntry(1, 3, 325 * scaleFactorRatio),
               child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 40.0 * scaleFactorRatio,
+                      fontSize: 60.0 * scaleFactorRatio,
                       fontFamily: "OvertheRainbow",
                       color: Colors.green,
                       decoration: TextDecoration.underline,
@@ -169,18 +170,34 @@ class _ResumePresentationState extends State<ResumePresentation>
                       decorationColor: const Color.fromARGB(225, 44, 138, 0))));
         });
 
-    return SquaredSheet(
-        scaleFactor: widget.animatedScaleFactor,
-        child: SizedBox.expand(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          naughty,
-          boredom,
-          vitruve,
-          pretext,
-          mangaCrow,
-          callToAction,
-          outcry,
-        ])));
+    return [
+      naughty,
+      boredom,
+      vitruve,
+      pretext,
+      mangaCrow,
+      callToAction,
+      outcry,
+    ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double scaleFactorRatio =
+        (widget.animatedScaleFactor / ResumePresentation.defaultScaleFactor)
+            .clamp(0.0, 1.0);
+
+    SquaredSheet resumePresentation = SquaredSheet(
+        scaleFactor: ResumePresentation.defaultScaleFactor * scaleFactorRatio,
+        child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+          return Row(children: [
+            Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: buildContent(scaleFactorRatio, constraints))
+          ]);
+        }));
+
+    return resumePresentation;
   }
 }
