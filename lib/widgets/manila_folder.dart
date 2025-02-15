@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math' show pi, min;
+import 'dart:math' show pi, min, max;
 
 import '../helpers/utils.dart';
 import 'resume_presentation.dart';
@@ -49,21 +49,27 @@ class ManilaFolder extends StatefulWidget {
 class _ManilaFolderState extends State<ManilaFolder>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   late AnimationController _controllerOpenFolder, _controllerRevealContent;
-  late Animation _animOpenFolder, _animRevealContent;
+  late Animation _animOpenFolder, _animRotateContent, _animRevealContent;
   late Color _folderBorderColor;
   late double fitScreenZoomFactor;
   late BoxConstraints folderBackProportions, folderCoverProportions;
   late double _frontCoverMarkupAdjustedFontSize;
-  late double parentDimensionRatio, heightToParentRatio, widthToParentRatio;
+  late double parentDimensionRatio,
+      heightToParentRatio,
+      widthToParentRatio,
+      folderContentScaleFactor,
+      folderContentTranslationY;
   AnimationStatus _status = AnimationStatus.dismissed;
 
   /* Inner tweaking parameters*/
   double beginAnimOpenFolder = 0.01;
   double endAnimOpenFolder = 0.7;
-  int durationAnimOpenFolder = 500;
+  int durationAnimOpenFolder = 1250;
+  double beginAnimRotateContent = 1.0;
+  double endAnimRotateContent = 0.0;
   double beginAnimRevealContent = 1.0;
-  double endAnimRevealContent = 0.0;
-  int durationAnimRevealContent = 500;
+  double endAnimRevealContent = -0.2;
+  int durationAnimRevealContent = 1000;
   double folderBorderLightnessDiff = 0.05;
 
   static const double folderTsfrm_perspectiveAngle = 0.0005;
@@ -105,10 +111,19 @@ class _ManilaFolderState extends State<ManilaFolder>
     _controllerOpenFolder = AnimationController(
         vsync: this, duration: Duration(milliseconds: durationAnimOpenFolder));
 
-    _animOpenFolder = Tween(begin: beginAnimOpenFolder, end: endAnimOpenFolder)
-        .animate(CurvedAnimation(
-            parent: _controllerOpenFolder,
-            curve: Curves.easeInOutCubicEmphasized))
+    _animOpenFolder = TweenSequence(
+      <TweenSequenceItem<double>>[
+        TweenSequenceItem<double>(
+          tween: Tween(begin: beginAnimOpenFolder, end: endAnimOpenFolder),
+          weight: 100 / 3,
+        ),
+        TweenSequenceItem<double>(
+          tween: Tween(begin: endAnimOpenFolder, end: endAnimOpenFolder),
+          weight: 200 / 3,
+        ),
+      ],
+    ).animate(CurvedAnimation(
+        parent: _controllerOpenFolder, curve: Curves.easeInOutCubicEmphasized))
       ..addListener(() {
         setState(() {});
       })
@@ -120,22 +135,59 @@ class _ManilaFolderState extends State<ManilaFolder>
         vsync: this,
         duration: Duration(milliseconds: durationAnimRevealContent));
 
-    _animRevealContent =
-        Tween(begin: beginAnimRevealContent, end: endAnimRevealContent).animate(
-            CurvedAnimation(
-                parent: _controllerRevealContent,
-                curve: Curves.easeInOutCubicEmphasized))
-          ..addListener(() {
-            setState(() {});
-          })
-          ..addStatusListener((status) {
-            _status = status;
-          });
+    _animRotateContent = TweenSequence(
+      <TweenSequenceItem<double>>[
+        TweenSequenceItem<double>(
+          tween:
+              Tween(begin: beginAnimRotateContent, end: beginAnimRotateContent),
+          weight: 250 / 3,
+        ),
+        TweenSequenceItem<double>(
+          tween:
+              Tween(begin: beginAnimRotateContent, end: endAnimRotateContent),
+          weight: 50 / 3,
+        ),
+      ],
+    ).animate(CurvedAnimation(
+        parent: _controllerRevealContent,
+        curve: Curves.easeInOutCubicEmphasized))
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        _status = status;
+      });
+
+    _animRevealContent = TweenSequence(
+      <TweenSequenceItem<double>>[
+        TweenSequenceItem<double>(
+          tween:
+              Tween(begin: beginAnimRevealContent, end: beginAnimRevealContent),
+          weight: 250 / 3,
+        ),
+        TweenSequenceItem<double>(
+          tween:
+              Tween(begin: beginAnimRevealContent, end: endAnimRevealContent),
+          weight: 50 / 3,
+        ),
+      ],
+    ).animate(CurvedAnimation(
+        parent: _controllerRevealContent,
+        curve: Curves.easeInOutCubicEmphasized))
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        _status = status;
+      });
 
     HSLColor folderHSLColor = HSLColor.fromColor(widget.folderMainColor);
     _folderBorderColor = folderHSLColor
         .withLightness(folderHSLColor.lightness - folderBorderLightnessDiff)
         .toColor();
+
+    fitScreenZoomFactor = ManilaFolder.fixedFolderProportions.maxHeight /
+        ManilaFolder.fixedFolderProportions.maxWidth;
   }
 
   @override
@@ -168,6 +220,11 @@ class _ManilaFolderState extends State<ManilaFolder>
       folderBackTransformOrigin = Offset(0, folderCoverTransformOrigin.dy);
       _frontCoverMarkupAdjustedFontSize =
           widget.frontCoverMarkupTextStyle.fontSize! / widthToParentRatio;
+
+      folderContentScaleFactor = (1 /
+          (1 -
+              ((0.8 - fitScreenZoomFactor) *
+                  (_animRevealContent.value / 0.8))));
     } else {
       fitScreenZoomFactor = min(heightToParentRatio, widthToParentRatio);
       folderBackProportions = ManilaFolder.fixedFolderProportions;
@@ -177,7 +234,9 @@ class _ManilaFolderState extends State<ManilaFolder>
           0,
           ManilaFolder.fixedFolderProportions.maxHeight /
               (1.5 + fitScreenZoomFactor));
+
       folderBackTransformOrigin = Offset(0, folderCoverTransformOrigin.dy);
+
       _frontCoverMarkupAdjustedFontSize =
           widget.frontCoverMarkupTextStyle.fontSize!;
     }
@@ -249,12 +308,44 @@ class _ManilaFolderState extends State<ManilaFolder>
                 backgroundColor:
                     widget.frontCoverMarkupTextStyle.backgroundColor)));
 
-    Transform folderCover = Transform(
+    Transform folderCoverForeground = Transform(
         alignment: FractionalOffset.center,
         origin: folderCoverTransformOrigin,
         transform: Matrix4.identity()
           //..setEntry(3, 2, folderCoverPerspective)
           ..rotateX(pi * min(_animOpenFolder.value, 0.5)),
+        child: Container(
+          decoration: BoxDecoration(
+            color: widget.folderMainColor,
+            border: Border.all(color: _folderBorderColor),
+            borderRadius:
+                BorderRadius.all(Radius.circular(folderCoverCornerRadius)),
+            boxShadow: [
+              BoxShadow(
+                color: folderCoverBoxShadowColor,
+                spreadRadius: folderCoverBoxShadowSpreadRadius,
+                blurRadius: folderCoverBoxShadowBlurRadius,
+                offset: folderCoverBoxShadowOffset,
+              ),
+            ],
+          ),
+          constraints: folderCoverProportions,
+          margin: folderCoverMargin,
+          child: Container(
+            decoration: BoxDecoration(
+              color: widget.folderMainColor,
+            ),
+            alignment: Alignment.center,
+            child: widget.hasFrontCoverMarkup ? folderCoverMarkup : null,
+          ),
+        ));
+
+    Transform folderCoverBackground = Transform(
+        alignment: FractionalOffset.center,
+        origin: folderCoverTransformOrigin,
+        transform: Matrix4.identity()
+          //..setEntry(3, 2, folderCoverPerspective)
+          ..rotateX(pi * max(0.5, _animOpenFolder.value)),
         child: Container(
           decoration: BoxDecoration(
             color: widget.folderMainColor,
@@ -343,15 +434,34 @@ class _ManilaFolderState extends State<ManilaFolder>
       ),
     );
 
-    double foldercontentTranslationYProportion =
-        (Utils.isTabletScreen(context) ? 2.45 : 1.0);
-    double folderContentTranslationY = -(folderBackProportions.maxHeight /
-            foldercontentTranslationYProportion) +
-        (220 * _animOpenFolder.value);
+    double minContentHeight = folderBackProportions.minWidth;
+    double maxContentHeight =
+        (MediaQuery.of(context).size.height * 210 / 297) - fitScreenZoomFactor;
+    double contentHeightDiffRatio = (maxContentHeight / minContentHeight);
 
-    double folderContentScaleFactor = (1 /
-        ((1 - ((0.6 / fitScreenZoomFactor) * _animRevealContent.value)) /
-            fitScreenZoomFactor));
+    if (Utils.isPhoneScreen(context)) {
+      folderContentScaleFactor =
+          0.75 + (_animRevealContent.value * contentHeightDiffRatio);
+
+      folderContentTranslationY =
+          -0.5 * folderBackProportions.maxHeight * folderContentScaleFactor;
+    } else if (Utils.isFoldable(context)) {
+      folderContentScaleFactor =
+          0.85 + (_animRevealContent.value * contentHeightDiffRatio);
+    } else if (Utils.isTabletScreen(context)) {
+      folderContentScaleFactor =
+          (fitScreenZoomFactor - _animRevealContent.value) +
+              (_animRevealContent.value / heightToParentRatio);
+
+      folderContentScaleFactor = widthToParentRatio +
+          (_animRevealContent.value *
+              (MediaQuery.of(context).size.width /
+                  folderBackProportions.minWidth));
+    } else {
+      folderContentScaleFactor =
+          (fitScreenZoomFactor - _animRevealContent.value) +
+              (_animRevealContent.value / heightToParentRatio);
+    }
 
     return GestureDetector(
         onTap: () {
@@ -396,13 +506,22 @@ class _ManilaFolderState extends State<ManilaFolder>
                               folderBack
                             ])
                       ])),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [folderCoverBackground])
+                  ]),
               Transform(
                   alignment: FractionalOffset.center,
                   origin: Offset.zero,
                   transform: Matrix4.identity()
                     ..setEntry(1, 3, folderContentTranslationY)
                     ..setEntry(3, 3, folderContentScaleFactor)
-                    ..rotateZ(8.5 * pi * _animRevealContent.value),
+                    ..rotateZ(8.5 * pi * _animRotateContent.value),
                   child: widget.folderContent),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -411,7 +530,7 @@ class _ManilaFolderState extends State<ManilaFolder>
                     Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [folderCover])
+                        children: [folderCoverForeground])
                   ])
             ])));
   }

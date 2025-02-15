@@ -19,11 +19,20 @@
 - Ajouter des images de doodle crayonnés animés
 - Ajouter des animations sur les lettrages
 
+==> Seconde mise en ligne
+
+- Ajouter Zoombee
+- Ajouter un commentaire sur Zoombee dans ResumePresentation
 
 	-------------> ZOOMBEE :
 
 	- Ajouter le dépôt d'empreinte au onTap sur le conteneur
 	- Créer la machine état de déclenchement des différents statuts selon la propreté de la surface
 	- Ajuster la position du Zoombee sur un resize
+
+==> Troisième mise en ligne
+
+- Ajouter une page dans FolderContent avec un diaporama de mes derniers posts Instagram
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
