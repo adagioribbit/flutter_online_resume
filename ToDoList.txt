@@ -2,7 +2,16 @@
 
 ------------- BUGS ----------------------------------
 
-- Les proportions du folderContent ne sont pas correctes pour toutes les tailles d'écran Desktop
+- Les proportions du folderContent doivent encore être retravaillées :
+	* sur les tablettes en mode portrait
+	* en cas de positionnement paysage sur tout type de device
+
+
+
+
+
+
+
 
 
 

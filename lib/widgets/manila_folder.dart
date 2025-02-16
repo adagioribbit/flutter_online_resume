@@ -83,7 +83,6 @@ class _ManilaFolderState extends State<ManilaFolder>
   EdgeInsetsDirectional folderBackMargin =
       EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0);
 
-  // 221 en plein écran / 200 en largeur minimale
   Offset folderBackTransformOrigin = Offset(0, 200);
   Offset folderCoverTransformOrigin = Offset(0, 50);
   double folderCoverPerspective = 0.0005;
@@ -102,6 +101,22 @@ class _ManilaFolderState extends State<ManilaFolder>
       EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0);
 
   /* ******************************* */
+
+  double getRevealAnimationBegin() {
+    if (Utils.isTabletScreen(context)) {
+      return 0.8;
+    } else {
+      return 1.0;
+    }
+  }
+
+  double getRevealAnimationEnd() {
+    if (Utils.isTabletScreen(context)) {
+      return -0.7;
+    } else {
+      return -0.2;
+    }
+  }
 
   @override
   void initState() {
@@ -200,8 +215,8 @@ class _ManilaFolderState extends State<ManilaFolder>
     widthToParentRatio = ManilaFolder.fixedFolderProportions.maxWidth /
         MediaQuery.of(context).size.width;
 
+    fitScreenZoomFactor = min(heightToParentRatio, widthToParentRatio);
     if (Utils.isPhoneScreen(context) || Utils.isFoldable(context)) {
-      fitScreenZoomFactor = heightToParentRatio;
       folderBackProportions = BoxConstraints(
         maxHeight: 440 / widthToParentRatio,
         minHeight: 440 / widthToParentRatio,
@@ -226,7 +241,6 @@ class _ManilaFolderState extends State<ManilaFolder>
               ((0.8 - fitScreenZoomFactor) *
                   (_animRevealContent.value / 0.8))));
     } else {
-      fitScreenZoomFactor = min(heightToParentRatio, widthToParentRatio);
       folderBackProportions = ManilaFolder.fixedFolderProportions;
       folderCoverProportions = ManilaFolder.fixedFolderProportions;
 
@@ -270,6 +284,162 @@ class _ManilaFolderState extends State<ManilaFolder>
 
   @override
   Widget build(BuildContext context) {
+    double minContentHeight = folderBackProportions.minWidth;
+    double maxContentHeight =
+        (MediaQuery.of(context).size.height * 210 / 297) - fitScreenZoomFactor;
+    double contentHeightDiffRatio = (maxContentHeight / minContentHeight);
+
+    if (Utils.isPhoneScreen(context)) {
+      print("       >>>>>>>>>> isPhoneScreen - $contentHeightDiffRatio");
+
+      beginAnimRevealContent = 1.0;
+      endAnimRevealContent = -0.2;
+
+      _animRevealContent = TweenSequence(
+        <TweenSequenceItem<double>>[
+          TweenSequenceItem<double>(
+            tween: Tween(
+                begin: beginAnimRevealContent, end: beginAnimRevealContent),
+            weight: 250 / 3,
+          ),
+          TweenSequenceItem<double>(
+            tween:
+                Tween(begin: beginAnimRevealContent, end: endAnimRevealContent),
+            weight: 50 / 3,
+          ),
+        ],
+      ).animate(CurvedAnimation(
+          parent: _controllerRevealContent,
+          curve: Curves.easeInOutCubicEmphasized))
+        ..addListener(() {
+          setState(() {});
+        })
+        ..addStatusListener((status) {
+          _status = status;
+        });
+
+      folderContentScaleFactor =
+          0.75 + (_animRevealContent.value * contentHeightDiffRatio);
+
+      folderContentTranslationY = -(contentHeightDiffRatio / 2) *
+          folderBackProportions.maxHeight *
+          folderContentScaleFactor;
+    } else if (Utils.isFoldable(context)) {
+      print("       >>>>>>>>>> isFoldable");
+
+      beginAnimRevealContent = 0.25;
+      endAnimRevealContent = -0.18;
+
+      _animRevealContent = TweenSequence(
+        <TweenSequenceItem<double>>[
+          TweenSequenceItem<double>(
+            tween: Tween(
+                begin: beginAnimRevealContent, end: beginAnimRevealContent),
+            weight: 250 / 3,
+          ),
+          TweenSequenceItem<double>(
+            tween:
+                Tween(begin: beginAnimRevealContent, end: endAnimRevealContent),
+            weight: 50 / 3,
+          ),
+        ],
+      ).animate(CurvedAnimation(
+          parent: _controllerRevealContent,
+          curve: Curves.easeInOutCubicEmphasized))
+        ..addListener(() {
+          setState(() {});
+        })
+        ..addStatusListener((status) {
+          _status = status;
+        });
+
+      folderContentScaleFactor =
+          0.85 + (_animRevealContent.value * contentHeightDiffRatio);
+
+      folderContentTranslationY =
+          -0.5 * folderBackProportions.maxHeight * folderContentScaleFactor;
+    } else if (Utils.isTabletScreen(context)) {
+      print("       >>>>>>>>>> isTabletScreen");
+
+      beginAnimRevealContent = 0.25;
+      endAnimRevealContent = -0.18;
+
+      _animRevealContent = TweenSequence(
+        <TweenSequenceItem<double>>[
+          TweenSequenceItem<double>(
+            tween: Tween(
+                begin: beginAnimRevealContent, end: beginAnimRevealContent),
+            weight: 250 / 3,
+          ),
+          TweenSequenceItem<double>(
+            tween:
+                Tween(begin: beginAnimRevealContent, end: endAnimRevealContent),
+            weight: 50 / 3,
+          ),
+        ],
+      ).animate(CurvedAnimation(
+          parent: _controllerRevealContent,
+          curve: Curves.easeInOutCubicEmphasized))
+        ..addListener(() {
+          setState(() {});
+        })
+        ..addStatusListener((status) {
+          _status = status;
+        });
+
+      folderContentScaleFactor =
+          (fitScreenZoomFactor - _animRevealContent.value) +
+              (_animRevealContent.value / heightToParentRatio);
+
+      folderContentScaleFactor = 0.75 +
+          (_animRevealContent.value *
+              (MediaQuery.of(context).size.height /
+                  folderBackProportions.minHeight));
+
+      folderContentTranslationY =
+          -0.4 * folderBackProportions.maxHeight * folderContentScaleFactor;
+    } else {
+      print("       >>>>>>>>>> isDesktop");
+
+      beginAnimRevealContent = 0.25;
+      endAnimRevealContent = -0.18;
+
+      _animRevealContent = TweenSequence(
+        <TweenSequenceItem<double>>[
+          TweenSequenceItem<double>(
+            tween: Tween(
+                begin: beginAnimRevealContent, end: beginAnimRevealContent),
+            weight: 250 / 3,
+          ),
+          TweenSequenceItem<double>(
+            tween:
+                Tween(begin: beginAnimRevealContent, end: endAnimRevealContent),
+            weight: 50 / 3,
+          ),
+        ],
+      ).animate(CurvedAnimation(
+          parent: _controllerRevealContent,
+          curve: Curves.easeInOutCubicEmphasized))
+        ..addListener(() {
+          setState(() {});
+        })
+        ..addStatusListener((status) {
+          _status = status;
+        });
+
+      folderContentScaleFactor =
+          (fitScreenZoomFactor - _animRevealContent.value) +
+              (_animRevealContent.value / heightToParentRatio);
+
+      folderContentScaleFactor = 0.85 +
+          (_animRevealContent.value *
+              (MediaQuery.of(context).size.height /
+                  folderBackProportions.minHeight));
+
+      folderContentTranslationY =
+          -0.35 * folderBackProportions.maxHeight * folderContentScaleFactor;
+    }
+
     Container folderBack = Container(
       decoration: BoxDecoration(
         border: Border(
@@ -433,35 +603,6 @@ class _ManilaFolderState extends State<ManilaFolder>
         minHeight: 15,
       ),
     );
-
-    double minContentHeight = folderBackProportions.minWidth;
-    double maxContentHeight =
-        (MediaQuery.of(context).size.height * 210 / 297) - fitScreenZoomFactor;
-    double contentHeightDiffRatio = (maxContentHeight / minContentHeight);
-
-    if (Utils.isPhoneScreen(context)) {
-      folderContentScaleFactor =
-          0.75 + (_animRevealContent.value * contentHeightDiffRatio);
-
-      folderContentTranslationY =
-          -0.5 * folderBackProportions.maxHeight * folderContentScaleFactor;
-    } else if (Utils.isFoldable(context)) {
-      folderContentScaleFactor =
-          0.85 + (_animRevealContent.value * contentHeightDiffRatio);
-    } else if (Utils.isTabletScreen(context)) {
-      folderContentScaleFactor =
-          (fitScreenZoomFactor - _animRevealContent.value) +
-              (_animRevealContent.value / heightToParentRatio);
-
-      folderContentScaleFactor = widthToParentRatio +
-          (_animRevealContent.value *
-              (MediaQuery.of(context).size.width /
-                  folderBackProportions.minWidth));
-    } else {
-      folderContentScaleFactor =
-          (fitScreenZoomFactor - _animRevealContent.value) +
-              (_animRevealContent.value / heightToParentRatio);
-    }
 
     return GestureDetector(
         onTap: () {
