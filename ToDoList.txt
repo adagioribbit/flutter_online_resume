@@ -3,8 +3,9 @@
 ------------- BUGS ----------------------------------
 
 - Les proportions du folderContent doivent encore être retravaillées :
-	* sur les tablettes en mode portrait
+	* sur les tablettes et foldable en mode portrait
 	* en cas de positionnement paysage sur tout type de device
+	* prendre en compte le niveau de zoom de la fenêtre du navigateur
 
 
 
