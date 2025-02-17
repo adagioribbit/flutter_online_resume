@@ -85,6 +85,9 @@ flutter:
     - lib/assets/blue_manga_crow.png
     - lib/assets/naughty.png
     - lib/assets/vitruve.png
+    - lib/assets/bachelor_hat.png
+    - lib/assets/skills_set.png
+    - lib/assets/work_experience.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
