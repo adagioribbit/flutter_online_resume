@@ -3,7 +3,8 @@ import '../helpers/constants.dart';
 import '../helpers/utils.dart' show Utils;
 
 class BubbleSlider extends StatefulWidget {
-  const BubbleSlider({super.key});
+  const BubbleSlider({required Key bubbleSliderKey})
+      : super(key: bubbleSliderKey);
 
   @override
   State<BubbleSlider> createState() => _BubbleSliderState();
@@ -18,9 +19,9 @@ class _BubbleSliderState extends State<BubbleSlider>
   @override
   void initState() {
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 150));
+        vsync: this, duration: const Duration(milliseconds: 300));
     _animationInflate = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.easeInOutCubicEmphasized))
+        parent: _animationController, curve: Curves.fastOutSlowIn))
       ..addListener(() {
         setState(() {});
       })
@@ -41,7 +42,7 @@ class _BubbleSliderState extends State<BubbleSlider>
 
   @override
   Widget build(BuildContext context) {
-    // A titre d'exemple : Offset(164.0, 915.0) pour le
+    // A titre d'exemple : Offset(145.0, 915.0) pour le positionnement du milieu du bouton "Education"
     bool isPortrait = Utils.isPortraitOrientation();
     Size screenSize = Utils.getScreenSize();
     Size containerSize = isPortrait
@@ -65,18 +66,20 @@ class _BubbleSliderState extends State<BubbleSlider>
 
     double hailerSize = 5.0 + 50.0 * _animationInflate.value;
     Offset hailerOffset = Offset(
-        133.3 -
-            ((133.3 + 25.0 + (containerSize.width / 2.0)) *
-                _animationInflate.value),
+        (containerSize.width / 2.0) - (hailerSize / 2.0),
         containerSize.height - hailerSize);
+
     double animatedBubbleMargin = 10.0 * _animationInflate.value;
     EdgeInsets marginBubble = EdgeInsets.fromLTRB(
         animatedBubbleMargin, animatedBubbleMargin, animatedBubbleMargin, 0);
     double bubbleHeight =
         (containerSize.height - hailerSize - marginBubble.vertical) *
             _animationInflate.value;
-    double bubbleWidth = (containerSize.width - marginBubble.horizontal) *
-        _animationInflate.value;
+    double bubbleWidth = (containerSize.width * _animationInflate.value) -
+        marginBubble.horizontal;
+    Offset bubbleOffset = Offset(
+        (hailerOffset.dx + marginBubble.horizontal) - (bubbleWidth / 2.0),
+        hailerOffset.dy - (hailerOffset.dy * _animationInflate.value));
 
     return AnimatedBuilder(
         key: widget.key,
@@ -89,11 +92,8 @@ class _BubbleSliderState extends State<BubbleSlider>
                   height: hailerSize, width: hailerSize, child: bubbleHailer));
 
           Positioned portraitBubble = Positioned(
-              top:
-                  hailerOffset.dy - (hailerOffset.dy * _animationInflate.value),
-              left: ((hailerSize / 2.0) - hailerOffset.dx) -
-                  (((hailerSize / 2.0) - hailerOffset.dx) *
-                      _animationInflate.value),
+              top: bubbleOffset.dy,
+              left: bubbleOffset.dx,
               child: Container(
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(25)),

@@ -46,7 +46,7 @@ class CardAndTabApp extends StatelessWidget {
                       ),
                       frontCoverMarkupTiltAngle: -0.085);
                 }),
-            BubbleSlider(key: globals.bubbleSliderKey),
+            BubbleSlider(bubbleSliderKey: globals.bubbleSliderKey),
             Toolbar()
           ])),
     );
