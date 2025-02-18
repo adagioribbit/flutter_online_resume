@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 
 class Constants {
   static const double APPBAR_HEIGHT = 75.0;
+  static const double TOOLBAR_HEIGHT = 75.0;
   static const double SOCIAL_BUTTON_HEIGHT = APPBAR_HEIGHT * 0.6;
   static const double SOCIAL_BUTTON_HEIGHT_FOLDABLE = APPBAR_HEIGHT * 0.58;
   static const double WIGGLING_BUTTON_HEIGHT = APPBAR_HEIGHT * 0.68;
@@ -80,6 +81,18 @@ class AppStrings {
   static const Map<String, String> INSTAGRAM_TOOLTIP = {
     'fr': 'Mon Insta',
     'en': 'My gram'
+  };
+  static const Map<String, String> EDUCATION_TOOLTIP = {
+    'fr': 'Formation',
+    'en': 'Education'
+  };
+  static const Map<String, String> SKILL_SETS_TOOLTIP = {
+    'fr': 'Compétences',
+    'en': 'Skill sets'
+  };
+  static const Map<String, String> WORK_EXPERIENCE_TOOLTIP = {
+    'fr': 'Expériences',
+    'en': 'Work experience'
   };
   static const Map<String, String> MANILLAFOLDER_TITLE = {
     'fr': 'Dossier démo',

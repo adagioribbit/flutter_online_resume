@@ -4,126 +4,50 @@ import 'package:flutter/material.dart';
 import 'dart:math' show pi;
 import 'helpers/colorchart.dart';
 import 'helpers/globals.dart' as globals;
-import 'helpers/settings.dart';
 import 'widgets/manila_folder.dart';
 import 'widgets/squared_sheet.dart';
 import 'widgets/site_header.dart';
-
-Settings appSettings = Settings();
+import 'widgets/toolbar.dart';
 
 void main() => runApp(const CardAndTabApp());
 
 class CardAndTabApp extends StatelessWidget {
   const CardAndTabApp({super.key});
-  final String squared_paper_text = '''tralala
-lalalalal
-Et puis merdre !
-Pourquoi s\'prendre la tetê ?!
-La vie est trop courte !
-Allez, je fais du multiligne pour peindre cette page blanche de daube !''';
-
-  static Matrix4 createCylindricalProjectionTransform({
-    required double radius,
-    required double angle,
-    double perspective = 0.001,
-    Axis orientation = Axis.vertical,
-  }) {
-    assert(perspective >= 0 && perspective <= 1.0);
-
-    // Pre-multiplied matrix of a projection matrix and a view matrix.
-    //
-    // Projection matrix is a simplified perspective matrix
-    // http://web.iitd.ac.in/~hegde/cad/lecture/L9_persproj.pdf
-    // in the form of
-    // [[1.0, 0.0, 0.0, 0.0],
-    //  [0.0, 1.0, 0.0, 0.0],
-    //  [0.0, 0.0, 1.0, 0.0],
-    //  [0.0, 0.0, -perspective, 1.0]]
-    //
-    // View matrix is a simplified camera view matrix.
-    // Basically re-scales to keep object at original size at angle = 0 at
-    // any radius in the form of
-    // [[1.0, 0.0, 0.0, 0.0],
-    //  [0.0, 1.0, 0.0, 0.0],
-    //  [0.0, 0.0, 1.0, -radius],
-    //  [0.0, 0.0, 0.0, 1.0]]
-    Matrix4 result = Matrix4.identity()
-      ..setEntry(3, 2, -perspective)
-      ..setEntry(2, 3, -radius)
-      ..setEntry(3, 3, perspective * radius + 1.0);
-
-    // Model matrix by first translating the object from the origin of the world
-    // by radius in the z axis and then rotating against the world.
-    result = result *
-        (switch (orientation) {
-              Axis.horizontal => Matrix4.rotationY(angle),
-              Axis.vertical => Matrix4.rotationX(angle),
-            } *
-            Matrix4.translationValues(0.0, 0.0, radius)) as Matrix4;
-
-    // Essentially perspective * view * model.
-    return result;
-  }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-        animation: appSettings,
-        builder: (context, snapshot) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: "Test",
-            color: Colors.amber,
-            theme: ThemeData(),
-            home: Scaffold(
-                extendBody: true,
-                backgroundColor: ColorChart.appBackground,
-                appBar: SiteHeader(),
-                body: Stack(children: [
-                  Zoombee(
-                    radius: 50,
-                  ),
-                  ValueListenableBuilder(
-                      valueListenable: globals.appLanguage,
-                      builder: (context, language, widget) {
-                        return ManilaFolder(
-                            stickerLabelText:
-                                AppStrings.MANILLAFOLDER_TITLE[language]!,
-                            stickerRotationAngle: -(pi / 60),
-                            stickerFontSize: 20.0,
-                            folderMainColor: Colors.teal,
-                            hasFrontCoverMarkup: true,
-                            frontCoverMarkupTextStyle: TextStyle(
-                              fontSize: 100.0,
-                              fontFamily: "Sabenya",
-                              color: Colors.black,
-                            ),
-                            frontCoverMarkupTiltAngle: -0.085);
-                      }),
-                ])),
-            //Transform(
-            //    alignment: FractionalOffset.center,
-            //    origin: Offset(0, 221),
-            //    transform: createCylindricalProjectionTransform(
-            //        radius: (2 * pi),
-            //        angle: (pi / 16),
-            //        perspective: 0.01,
-            //        orientation: Axis.vertical),
-            //    child:
-            //Transform(
-            //    alignment: FractionalOffset.center,
-            //    origin: Offset(0, 50),
-            //    transform: Matrix4.identity()
-            //      ..setEntry(3, 2, 0.0005)
-            //      ..rotateX(pi * -0.15),
-            //    child: SquaredSheet(
-            //        scaleFactor: 25.0,
-            //        child: Text(squared_paper_text,
-            //            style: TextStyle(
-            //                fontSize: 40.0,
-            //                fontFamily: "Handwritten",
-            //                color: Colors.green))))
-          );
-        });
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Test",
+      color: Colors.amber,
+      theme: ThemeData(),
+      home: Scaffold(
+          extendBody: true,
+          backgroundColor: ColorChart.appBackground,
+          appBar: SiteHeader(),
+          bottomNavigationBar: Toolbar(),
+          body: Stack(children: [
+            Zoombee(
+              radius: 50,
+            ),
+            ValueListenableBuilder(
+                valueListenable: globals.appLanguage,
+                builder: (context, language, widget) {
+                  return ManilaFolder(
+                      stickerLabelText:
+                          AppStrings.MANILLAFOLDER_TITLE[language]!,
+                      stickerRotationAngle: -(pi / 60),
+                      stickerFontSize: 20.0,
+                      folderMainColor: Colors.teal,
+                      hasFrontCoverMarkup: true,
+                      frontCoverMarkupTextStyle: TextStyle(
+                        fontSize: 100.0,
+                        fontFamily: "Sabenya",
+                        color: Colors.black,
+                      ),
+                      frontCoverMarkupTiltAngle: -0.085);
+                }),
+          ])),
+    );
   }
 }
