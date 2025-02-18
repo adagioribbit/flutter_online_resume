@@ -47,7 +47,17 @@ class Utils {
     return Platform.Other;
   }
 
-  static bool isPortraitOrientation(BuildContext context) {
+  static Size getScreenSize() {
+    return WidgetsBinding.instance.platformDispatcher.views.first.physicalSize;
+  }
+
+  static bool isPortraitOrientation() {
+    Size screenSize = getScreenSize();
+    bool isPortrait = screenSize.height >= screenSize.width;
+    return isPortrait;
+  }
+
+  static bool isPortraitContext(BuildContext context) {
     return MediaQuery.of(context).orientation == Orientation.portrait;
   }
 
@@ -57,7 +67,7 @@ class Utils {
 
   static bool isTabletScreen(BuildContext context) {
     double widthOverHeightRatio = getWidthOverHeightRatio();
-    bool isPortrait = isPortraitOrientation(context);
+    bool isPortrait = isPortraitContext(context);
     return (isPortrait &&
             widthOverHeightRatio > 0.56 &&
             widthOverHeightRatio < 0.75) ||
@@ -68,7 +78,7 @@ class Utils {
 
   static bool isPhoneScreen(BuildContext context) {
     double widthOverHeightRatio = getWidthOverHeightRatio();
-    bool isPortrait = isPortraitOrientation(context);
+    bool isPortrait = isPortraitContext(context);
     return (isPortrait &&
             widthOverHeightRatio > 0.45 &&
             widthOverHeightRatio < 0.56) ||
@@ -91,7 +101,7 @@ class Utils {
 
   static bool isFoldable(BuildContext context) {
     double widthOverHeightRatio = getWidthOverHeightRatio();
-    bool isPortrait = isPortraitOrientation(context);
+    bool isPortrait = isPortraitContext(context);
     return (isPortrait && widthOverHeightRatio < 0.45) ||
         (!isPortrait && widthOverHeightRatio > 2.22);
   }
