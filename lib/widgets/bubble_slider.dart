@@ -1,8 +1,14 @@
 import 'dart:async';
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dossier_de_competences_web/widgets/content/education/greta.dart';
+import 'package:dossier_de_competences_web/widgets/content/education/lecnam.dart';
+import 'package:dossier_de_competences_web/widgets/content/education/lewagon.dart';
+import 'package:dossier_de_competences_web/widgets/content/education/upec.dart';
 import 'package:flutter/material.dart';
 import '../helpers/constants.dart';
 import '../helpers/global_streams.dart';
+import '../helpers/globals.dart' show bubbleContainerKey;
 import '../helpers/utils.dart' show Utils;
 import 'bubble_hailer.dart';
 
@@ -22,6 +28,7 @@ class BubbleSlider extends StatefulWidget implements PreferredSizeWidget {
 
 class _BubbleSliderState extends State<BubbleSlider>
     with TickerProviderStateMixin {
+  CarouselSliderController carouselController = CarouselSliderController();
   CustomPaint bubbleHailer = CustomPaint(
     painter: BubbleHailerPainter(),
   );
@@ -145,6 +152,7 @@ class _BubbleSliderState extends State<BubbleSlider>
             height: hailerSize, width: hailerSize, child: bubbleHailer));
 
     Positioned portraitBubble = Positioned(
+        key: bubbleContainerKey,
         top: bubbleOffset.dy,
         left: bubbleOffset.dx,
         child: Container(
@@ -159,10 +167,43 @@ class _BubbleSliderState extends State<BubbleSlider>
             child: AnimatedOpacity(
                 duration: BubbleSlider.animationDuration,
                 opacity: 1.0 * _animationInflate.value,
-                child: Text(
-                  "Pouetpouet",
-                  textAlign: TextAlign.center,
-                ))));
+                child: Stack(children: [
+                  LayoutBuilder(builder:
+                      (BuildContext context, BoxConstraints constraints) {
+                    return CarouselSlider(
+                        carouselController: carouselController,
+                        options: CarouselOptions(
+                            aspectRatio:
+                                constraints.maxWidth / constraints.maxHeight,
+                            enlargeCenterPage: true),
+                        items: [
+                          content_lewagon,
+                          content_lecnam,
+                          content_greta,
+                          content_upec
+                        ]);
+                  }),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                      onPressed: () {
+                        // Use the controller to change the current page
+                        carouselController.previousPage();
+                      },
+                      icon: Icon(Icons.arrow_back),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: IconButton(
+                      onPressed: () {
+                        // Use the controller to change the current page
+                        carouselController.nextPage();
+                      },
+                      icon: Icon(Icons.arrow_forward),
+                    ),
+                  )
+                ]))));
 
     Container stackContainer = Container(
         decoration: BoxDecoration(boxShadow: [

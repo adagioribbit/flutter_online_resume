@@ -8,3 +8,5 @@ ValueNotifier<bool> isFoldable = ValueNotifier<bool>(false);
 
 GlobalKey<State<BubbleSlider>> bubbleSliderKey =
     GlobalKey<State<BubbleSlider>>();
+
+GlobalKey bubbleContainerKey = GlobalKey();
