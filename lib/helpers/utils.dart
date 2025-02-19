@@ -51,6 +51,10 @@ class Utils {
     return WidgetsBinding.instance.platformDispatcher.views.first.physicalSize;
   }
 
+  static Size getContextSize(BuildContext context) {
+    return MediaQuery.of(context).size;
+  }
+
   static bool isPortraitOrientation() {
     Size screenSize = getScreenSize();
     bool isPortrait = screenSize.height >= screenSize.width;

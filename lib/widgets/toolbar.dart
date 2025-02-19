@@ -1,10 +1,8 @@
-import 'package:dossier_de_competences_web/widgets/flipping_appbar_iconbutton.dart';
 import 'package:flutter/material.dart';
 import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
+import '../helpers/global_streams.dart';
 import '../helpers/globals.dart' as globals;
-import '../helpers/utils.dart';
-import 'social_networking.dart';
 
 class Toolbar extends StatefulWidget implements PreferredSizeWidget {
   const Toolbar({super.key});
@@ -123,14 +121,14 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                               image: AssetImage("lib/assets/bachelor_hat.png")),
                           tooltip: AppStrings.EDUCATION_TOOLTIP[value],
                           onPressed: () {
-                            print(AppStrings.EDUCATION_TOOLTIP[value]);
                             Offset positionCenter = (_educationBtnKey
                                     .currentContext
                                     ?.findRenderObject() as RenderBox)
                                 .localToGlobal(Offset(
-                                    Constants.TOOLBAR_HEIGHT * 0.4,
+                                    Constants.TOOLBAR_HEIGHT * 0.3,
                                     Constants.TOOLBAR_HEIGHT * 0.4));
-                            print(positionCenter);
+                            globalStreams.triggerBubbleSlider(
+                                [positionCenter.dx, positionCenter.dy]);
                           },
                         )),
                     Container(
@@ -181,14 +179,14 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                               image: AssetImage("lib/assets/skills_set.png")),
                           tooltip: AppStrings.SKILL_SETS_TOOLTIP[value],
                           onPressed: () {
-                            print(AppStrings.SKILL_SETS_TOOLTIP[value]);
                             Offset positionCenter = (_skillsSetBtnKey
                                     .currentContext
                                     ?.findRenderObject() as RenderBox)
                                 .localToGlobal(Offset(
-                                    Constants.TOOLBAR_HEIGHT * 0.4,
+                                    Constants.TOOLBAR_HEIGHT * 0.3,
                                     Constants.TOOLBAR_HEIGHT * 0.4));
-                            print(positionCenter);
+                            globalStreams.triggerBubbleSlider(
+                                [positionCenter.dx, positionCenter.dy]);
                           },
                         )),
                     Container(
@@ -246,8 +244,9 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                                     ?.findRenderObject() as RenderBox)
                                 .localToGlobal(Offset(
                                     Constants.TOOLBAR_HEIGHT * 0.4,
-                                    Constants.TOOLBAR_HEIGHT * 0.4));
-                            print(positionCenter);
+                                    Constants.TOOLBAR_HEIGHT * 0.55));
+                            globalStreams.triggerBubbleSlider(
+                                [positionCenter.dx, positionCenter.dy]);
                           },
                         ))
                   ],
