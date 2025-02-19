@@ -62,7 +62,7 @@ class _BubbleSliderState extends State<BubbleSlider>
         : Size((screenSize.width - Constants.TOOLBAR_HEIGHT),
             (screenSize.height - Constants.APPBAR_HEIGHT));
 
-    hailerSize = 50.0 * _animationInflate.value;
+    hailerSize = (Utils.isPhoneView() ? 20.0 : 50.0) * _animationInflate.value;
     hailerOffset = Offset((containerSize.width / 2.0) - (hailerSize / 2.0),
         containerSize.height - hailerSize);
     bubbleOrigin = Offset.zero;
@@ -85,6 +85,11 @@ class _BubbleSliderState extends State<BubbleSlider>
                   Constants.APPBAR_HEIGHT))
           : Size((screenSize.width - Constants.TOOLBAR_HEIGHT),
               (screenSize.height - Constants.APPBAR_HEIGHT));
+
+      hailerSize = (Utils.isPhoneScreen(context) ? 20.0 : 50.0) *
+          _animationInflate.value;
+      hailerOffset = Offset((containerSize.width / 2.0) - (hailerSize / 2.0),
+          containerSize.height - hailerSize);
     });
     super.didChangeDependencies();
   }
@@ -106,10 +111,15 @@ class _BubbleSliderState extends State<BubbleSlider>
   @override
   Widget build(BuildContext context) {
     int bubbleShadowOpacity = (76 * _animationInflate.value).round();
-    hailerSize = 50.0 * _animationInflate.value;
+    hailerSize =
+        (Utils.isPhoneScreen(context) ? 20.0 : 50.0) * _animationInflate.value;
 
-    hailerOffset = Offset(bubbleOrigin.dx - (hailerSize / 2.0),
-        bubbleOrigin.dy - Constants.TOOLBAR_HEIGHT - 50.0 - hailerSize);
+    hailerOffset = Offset(
+        bubbleOrigin.dx - (hailerSize / 2.0),
+        bubbleOrigin.dy -
+            Constants.TOOLBAR_HEIGHT -
+            (Constants.TOOLBAR_HEIGHT * 0.6) -
+            hailerSize);
 
     animatedBubbleMargin = 10.0 * _animationInflate.value;
     marginBubble = EdgeInsets.fromLTRB(

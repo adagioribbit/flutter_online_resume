@@ -3,8 +3,6 @@ import 'dart:ui' show DisplayFeature, DisplayFeatureType, FlutterView;
 import 'package:flutter/widgets.dart';
 import 'package:web/web.dart';
 
-import 'flutter_device_type.dart';
-
 enum WebBrower { Chrome, Safari, Firefox, Edge, IE, Opera, Other }
 
 enum Platform { Linux, Windows, MacOS, Android, iOS, Other }
@@ -47,6 +45,32 @@ class Utils {
     return Platform.Other;
   }
 
+  static updateViewData() {
+    view = WidgetsBinding.instance.platformDispatcher.views.first;
+    devicePixelRatio = view.devicePixelRatio;
+    features = view.displayFeatures;
+
+    size = getScreenSize();
+    width = size.width;
+    height = size.height;
+    screenWidth = width / devicePixelRatio;
+    screenHeight = height / devicePixelRatio;
+    screenSize = Size(screenWidth, screenHeight);
+  }
+
+  static bool isPhoneView() {
+    updateViewData();
+    double widthOverHeightRatio = getWidthOverHeightRatio();
+    bool isPortrait = isPortraitOrientation();
+    bool isPhone = (isPortrait &&
+            widthOverHeightRatio > 0.45 &&
+            widthOverHeightRatio < 0.57) ||
+        (!isPortrait &&
+            widthOverHeightRatio > 1.77 &&
+            widthOverHeightRatio < 2.22);
+    return isPhone;
+  }
+
   static Size getScreenSize() {
     return WidgetsBinding.instance.platformDispatcher.views.first.physicalSize;
   }
@@ -62,6 +86,7 @@ class Utils {
   }
 
   static bool isPortraitContext(BuildContext context) {
+    updateScreenData(context);
     return MediaQuery.of(context).orientation == Orientation.portrait;
   }
 
@@ -70,10 +95,11 @@ class Utils {
   }
 
   static bool isTabletScreen(BuildContext context) {
+    updateScreenData(context);
     double widthOverHeightRatio = getWidthOverHeightRatio();
     bool isPortrait = isPortraitContext(context);
     return (isPortrait &&
-            widthOverHeightRatio > 0.56 &&
+            widthOverHeightRatio > 0.57 &&
             widthOverHeightRatio < 0.75) ||
         (!isPortrait &&
             widthOverHeightRatio > 1.77 &&
@@ -81,14 +107,16 @@ class Utils {
   }
 
   static bool isPhoneScreen(BuildContext context) {
+    updateScreenData(context);
     double widthOverHeightRatio = getWidthOverHeightRatio();
     bool isPortrait = isPortraitContext(context);
-    return (isPortrait &&
+    bool isPhone = (isPortrait &&
             widthOverHeightRatio > 0.45 &&
-            widthOverHeightRatio < 0.56) ||
+            widthOverHeightRatio < 0.57) ||
         (!isPortrait &&
             widthOverHeightRatio > 1.77 &&
             widthOverHeightRatio < 2.22);
+    return isPhone;
   }
 
   static bool hasNotch() {
@@ -104,9 +132,23 @@ class Utils {
   }
 
   static bool isFoldable(BuildContext context) {
+    updateScreenData(context);
     double widthOverHeightRatio = getWidthOverHeightRatio();
     bool isPortrait = isPortraitContext(context);
     return (isPortrait && widthOverHeightRatio < 0.45) ||
         (!isPortrait && widthOverHeightRatio > 2.22);
+  }
+
+  static updateScreenData(BuildContext context) {
+    view = WidgetsBinding.instance.platformDispatcher.views.first;
+    devicePixelRatio = view.devicePixelRatio;
+    features = view.displayFeatures;
+
+    size = getContextSize(context);
+    width = size.width;
+    height = size.height;
+    screenWidth = width / devicePixelRatio;
+    screenHeight = height / devicePixelRatio;
+    screenSize = Size(screenWidth, screenHeight);
   }
 }
