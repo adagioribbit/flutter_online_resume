@@ -126,7 +126,7 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                                     ?.findRenderObject() as RenderBox)
                                 .localToGlobal(Offset(
                                     Constants.TOOLBAR_HEIGHT * 0.3,
-                                    Constants.TOOLBAR_HEIGHT * 0.4));
+                                    Constants.TOOLBAR_HEIGHT * 0.8));
                             globalStreams.triggerBubbleSlider(
                                 [positionCenter.dx, positionCenter.dy]);
                           },
@@ -184,13 +184,12 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                                     ?.findRenderObject() as RenderBox)
                                 .localToGlobal(Offset(
                                     Constants.TOOLBAR_HEIGHT * 0.3,
-                                    Constants.TOOLBAR_HEIGHT * 0.4));
+                                    Constants.TOOLBAR_HEIGHT * 0.8));
                             globalStreams.triggerBubbleSlider(
                                 [positionCenter.dx, positionCenter.dy]);
                           },
                         )),
                     Container(
-                        key: _workExpBtnKey,
                         decoration: BoxDecoration(
                             gradient: RadialGradient(
                               center: Alignment(-0.035, -0.035),
@@ -233,7 +232,7 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                             maxWidth: Constants.TOOLBAR_HEIGHT * 0.8,
                           ),
                           icon: Image(
-                              height: Constants.TOOLBAR_HEIGHT * 0.5,
+                              key: _workExpBtnKey,
                               color: Color.fromARGB(255, 0, 137, 179),
                               image:
                                   AssetImage("lib/assets/work_experience.png")),
@@ -243,8 +242,8 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                                     .currentContext
                                     ?.findRenderObject() as RenderBox)
                                 .localToGlobal(Offset(
-                                    Constants.TOOLBAR_HEIGHT * 0.4,
-                                    Constants.TOOLBAR_HEIGHT * 0.55));
+                                    Constants.TOOLBAR_HEIGHT * 0.3,
+                                    Constants.TOOLBAR_HEIGHT * 0.8));
                             globalStreams.triggerBubbleSlider(
                                 [positionCenter.dx, positionCenter.dy]);
                           },

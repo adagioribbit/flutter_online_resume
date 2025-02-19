@@ -71,6 +71,15 @@ class Utils {
     return isPhone;
   }
 
+  static bool isFoldableView() {
+    updateViewData();
+    double widthOverHeightRatio = getWidthOverHeightRatio();
+    bool isPortrait = isPortraitOrientation();
+    bool isFoldable = (isPortrait && widthOverHeightRatio < 0.45) ||
+        (!isPortrait && widthOverHeightRatio > 2.22);
+    return isFoldable;
+  }
+
   static Size getScreenSize() {
     return WidgetsBinding.instance.platformDispatcher.views.first.physicalSize;
   }
