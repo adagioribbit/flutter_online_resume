@@ -118,4 +118,57 @@ class AppStrings {
     'fr': 'Mes derniers posts Instagram',
     'en': 'My latest posts on the gram'
   };
+
+  static const Map<String, String> LANGUAGES = {
+    'fr': 'Langages',
+    'en': 'Languages'
+  };
+  static const Map<String, String> TOOLS = {'fr': 'Outils', 'en': 'Tools'};
+  static const Map<String, String> LEWAGON_PERIOD = {
+    'fr': '\nJuillet 2024 à Septembre 2024',
+    'en': '\nJuly to September 2024'
+  };
+  static const String LEWAGON_DEGREE = '\nBootcamp Data Science & IA';
+  static const Map<String, String> LEWAGON_CURRICULUM = {
+    'fr':
+        'Dans la continuité de ma licence, cette formation m\'a appris à mettre en œuvre les librairies Python de référence dans le domaine du big data pour la construction de tableaux de bord financiers, d\'algorithmes de recommandations et autres modèles prédictifs utilisés dans la création et l\'entraînement d\'intelligences artificielles capables notamment d\'analyser et classifier automatiquement des données textuelles, des images, voire des vidéos.',
+    'en':
+        'Following on from my previous degree, I have studied data science and AI hands-on for three months, using the most known Python libraries in the field of big data on a day to day basis  in order to produce financial dashboards, recommendation algorithms and predictive models, laying the basis for training both supervised and unsupervised artificial intelligence agents capable of automatically analyse and classify data from sources as various as texts, images and videos.'
+  };
+
+  static const Map<String, String> LECNAM_PERIOD = {
+    'fr': '\nSeptembre 2016 à Juillet 2017 ',
+    'en': '\nSeptember 2016 to July 2017'
+  };
+  static const String LECNAM_DEGREE = '\nLicence Professionnelle ACSID – OLAP';
+  static const Map<String, String> LECNAM_CURRICULUM = {
+    'fr':
+        'Axée principalement sur l\'apprentissage de l\'exploitation statistique de bases de données relationnelles, cette formation m\'a permis d\'acquérir des bases solides en modélisation UML et en optimisation de schémas et de requêtes SQL, mais également de découvrir les langages C et Java ainsi que les techniques et outils nécessaires au développement d\'applications web et Android, et au DevOps avec le scripting Shell et Docker.',
+    'en':
+        'Mainly focused on statistical exploitation of relational databases, this bachelor\'s degree curriculum offers a thorough overview of UML, an insight in SQL schemas and queries optimization, as well as an introduction to C and Java languages, both web and Android applications development, and basic DevOps skills with shell scripting and Docker.'
+  };
+
+  static const Map<String, String> GRETA_PERIOD = {
+    'fr': '\nSeptembre 2015 à Juillet 2016',
+    'en': '\nSeptember 2015 to July 2016'
+  };
+  static const String GRETA_DEGREE = '\nBTS SIO SLAM';
+  static const Map<String, String> GRETA_CURRICULUM = {
+    'fr':
+        'Pendant cette préparation d\'un an à l\'épreuve nationale, j\'ai appris la programmation orientée objet en Python et PHP ainsi que les bases du SQL et du développement web.',
+    'en':
+        'During this one year preparation for the associate degree national exam, I learned object oriented programming in both Python and PHP, as well as basic SQL and web development.'
+  };
+
+  static const Map<String, String> UPEC_PERIOD = {
+    'fr': '\nSeptembre 2004 à Juillet 2009',
+    'en': '\nSeptember 2004 to July 2009'
+  };
+  static const String UPEC_DEGREE = '\nLicence LLCE anglais';
+  static const Map<String, String> UPEC_CURRICULUM = {
+    'fr':
+        'Ma première tentative de carrière s\'est faite dans le milieu de la traduction littéraire.\n\tLe manque de contacts dans le milieu de l\'édition a été un frein au développement de mon activité et j\'ai du renoncer à cet objectif.\n\tMes études en langue, littérature et civilisation étrangère m\'ont tout de même permis d\'aquérir un niveau d\'anglais C2 qui m\'est utile tous les jours dans mon activité actuelle.',
+    'en':
+        'My first attempt at a career was in literary translation.\n\tLacking insider contacts in publishing houses, I ultimately had to give up on that dream.\n\tOn the bright side, my studies allowed me to acquire a C2 level in English which is a really useful asset in my current activity.'
+  };
 }
