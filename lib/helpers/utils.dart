@@ -67,7 +67,7 @@ class Utils {
             widthOverHeightRatio < 0.57) ||
         (!isPortrait &&
             widthOverHeightRatio > 1.77 &&
-            widthOverHeightRatio < 2.22);
+            (width < 890 && widthOverHeightRatio < 2.22));
     return isPhone;
   }
 
@@ -76,7 +76,7 @@ class Utils {
     double widthOverHeightRatio = getWidthOverHeightRatio();
     bool isPortrait = isPortraitOrientation();
     bool isFoldable = (isPortrait && widthOverHeightRatio < 0.45) ||
-        (!isPortrait && widthOverHeightRatio > 2.22);
+        (!isPortrait && width < 890 && widthOverHeightRatio > 2.22);
     return isFoldable;
   }
 
@@ -107,12 +107,13 @@ class Utils {
     updateScreenData(context);
     double widthOverHeightRatio = getWidthOverHeightRatio();
     bool isPortrait = isPortraitContext(context);
-    return (isPortrait &&
+    bool isTablet = (isPortrait &&
             widthOverHeightRatio > 0.57 &&
             widthOverHeightRatio < 0.75) ||
         (!isPortrait &&
             widthOverHeightRatio > 1.77 &&
             widthOverHeightRatio < 2.22);
+    return isTablet;
   }
 
   static bool isPhoneScreen(BuildContext context) {
@@ -123,6 +124,7 @@ class Utils {
             widthOverHeightRatio > 0.45 &&
             widthOverHeightRatio < 0.57) ||
         (!isPortrait &&
+            screenWidth <= 915 &&
             widthOverHeightRatio > 1.77 &&
             widthOverHeightRatio < 2.22);
     return isPhone;
@@ -144,8 +146,9 @@ class Utils {
     updateScreenData(context);
     double widthOverHeightRatio = getWidthOverHeightRatio();
     bool isPortrait = isPortraitContext(context);
-    return (isPortrait && widthOverHeightRatio < 0.45) ||
+    bool isFoldable = (isPortrait && widthOverHeightRatio < 0.45) ||
         (!isPortrait && widthOverHeightRatio > 2.22);
+    return isFoldable;
   }
 
   static updateScreenData(BuildContext context) {

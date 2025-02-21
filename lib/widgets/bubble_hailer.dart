@@ -38,17 +38,18 @@ class BubbleHailerPainter extends CustomPainter {
     //  ..quadraticBezierTo(x * 0.25, y * 0.4, x * 0.7, 0);
     //return pathPointingDown;
 
-    Path pathPointingLeft = Path()
+    Path pathPointingDown = Path()
       ..moveTo(x, 0)
       ..lineTo(x / 2, y)
       ..lineTo(0, 0)
       ..lineTo(x, 0);
-    Path pathPointingDown = Path()
+    Path pathPointingLeft = Path()
       ..moveTo(x, 0)
       ..lineTo(x, y)
       ..lineTo(0, y / 2)
       ..lineTo(x, 0);
-    return isPortrait ? pathPointingLeft : pathPointingDown;
+    //return isPortrait ? pathPointingLeft : pathPointingDown;
+    return pathPointingDown;
   }
 
   @override

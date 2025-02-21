@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' show pi;
 import 'helpers/colorchart.dart';
 import 'helpers/globals.dart' as globals;
-import 'widgets/bubble_slider.dart';
+import 'widgets/bubble_carousel.dart';
 import 'widgets/manila_folder.dart';
 import 'widgets/site_header.dart';
 import 'widgets/toolbar.dart';
@@ -46,7 +46,7 @@ class CardAndTabApp extends StatelessWidget {
             //          ),
             //          frontCoverMarkupTiltAngle: -0.085);
             //    }),
-            BubbleSlider(bubbleSliderKey: globals.bubbleSliderKey),
+            BubbleCarousel(),
             Toolbar()
           ])),
     );

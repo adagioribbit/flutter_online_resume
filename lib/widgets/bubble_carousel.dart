@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' show max;
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dossier_de_competences_web/widgets/content/education/greta.dart';
@@ -8,14 +9,14 @@ import 'package:dossier_de_competences_web/widgets/content/education/upec.dart';
 import 'package:flutter/material.dart';
 import '../helpers/constants.dart';
 import '../helpers/global_streams.dart';
-import '../helpers/globals.dart' show bubbleContainerKey;
+import '../helpers/globals.dart' show GlobalKeyRing;
 import '../helpers/utils.dart' show Utils;
 import 'bubble_hailer.dart';
 
-class BubbleSlider extends StatefulWidget implements PreferredSizeWidget {
+class BubbleCarousel extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 300);
-  const BubbleSlider({required Key bubbleSliderKey})
-      : super(key: bubbleSliderKey);
+  static const double bubbleMaxWidth = 1000.0;
+  const BubbleCarousel({super.key});
 
   @override
   Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
@@ -23,10 +24,10 @@ class BubbleSlider extends StatefulWidget implements PreferredSizeWidget {
   Size getPreferredSize() => preferredSize;
 
   @override
-  State<BubbleSlider> createState() => _BubbleSliderState();
+  State<BubbleCarousel> createState() => _BubbleCarouselState();
 }
 
-class _BubbleSliderState extends State<BubbleSlider>
+class _BubbleCarouselState extends State<BubbleCarousel>
     with TickerProviderStateMixin {
   CarouselSliderController carouselController = CarouselSliderController();
   CustomPaint bubbleHailer = CustomPaint(
@@ -34,8 +35,10 @@ class _BubbleSliderState extends State<BubbleSlider>
   );
   AnimationStatus _status = AnimationStatus.dismissed;
 
+  late String originButtonKeyString;
   late EdgeInsets marginBubble;
   late double animatedBubbleMargin, bubbleHeight, bubbleWidth, hailerSize;
+  late int _currentIndex;
   late Offset bubbleOffset, bubbleOrigin, hailerOffset;
   late bool isPortrait;
   late Size screenSize, containerSize;
@@ -46,36 +49,44 @@ class _BubbleSliderState extends State<BubbleSlider>
   @override
   void initState() {
     super.initState();
+    _currentIndex = 0;
 
     _animationController = AnimationController(
-        vsync: this, duration: BubbleSlider.animationDuration);
+        vsync: this, duration: BubbleCarousel.animationDuration);
     _animationInflate = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: _animationController, curve: Curves.fastOutSlowIn))
       ..addListener(() {
         setState(() {});
       })
       ..addStatusListener((status) {
+        if (_status == AnimationStatus.dismissed) _currentIndex = 0;
         _status = status;
       });
 
     screenSize = Utils.getScreenSize();
     isPortrait = Utils.isPortraitOrientation();
-    containerSize = isPortrait
-        ? Size(
-            screenSize.width,
-            (screenSize.height -
-                Constants.TOOLBAR_HEIGHT -
-                Constants.APPBAR_HEIGHT))
-        : Size((screenSize.width - Constants.TOOLBAR_HEIGHT),
-            (screenSize.height - Constants.APPBAR_HEIGHT));
+    //containerSize = isPortrait
+    //    ? Size(
+    //        screenSize.width,
+    //        (screenSize.height -
+    //            Constants.TOOLBAR_HEIGHT -
+    //            Constants.APPBAR_HEIGHT))
+    //    : Size((screenSize.width - Constants.TOOLBAR_HEIGHT),
+    //        (screenSize.height - Constants.APPBAR_HEIGHT));
+    containerSize = Size(
+        screenSize.width,
+        (screenSize.height -
+            Constants.TOOLBAR_HEIGHT -
+            Constants.APPBAR_HEIGHT));
 
     hailerSize = (Utils.isPhoneView() || Utils.isFoldableView() ? 20.0 : 50.0) *
         _animationInflate.value;
     hailerOffset = Offset((containerSize.width / 2.0) - (hailerSize / 2.0),
         containerSize.height - hailerSize);
+    originButtonKeyString = "";
     bubbleOrigin = Offset.zero;
 
-    subscription = globalStreams.eventBubbleSlider.listen((value) async {
+    subscription = globalStreams.eventBubbleCarousel.listen((value) async {
       toggleInflation(value);
     });
   }
@@ -83,29 +94,41 @@ class _BubbleSliderState extends State<BubbleSlider>
   @override
   void didChangeDependencies() {
     isPortrait = Utils.isPortraitOrientation();
+    if (_animationInflate.value == 0) _currentIndex = 0;
+
+    if (originButtonKeyString.length > 0) {
+      bubbleOrigin = (GlobalKeyRing.key[originButtonKeyString]?.currentContext
+              ?.findRenderObject() as RenderBox)
+          .localToGlobal(Offset(
+              Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
+    }
     setState(() {
       screenSize = Utils.getContextSize(context);
-      containerSize = isPortrait
-          ? Size(
-              screenSize.width,
-              (screenSize.height -
-                  Constants.TOOLBAR_HEIGHT -
-                  Constants.APPBAR_HEIGHT))
-          : Size((screenSize.width - Constants.TOOLBAR_HEIGHT),
-              (screenSize.height - Constants.APPBAR_HEIGHT));
 
-      hailerSize = (Utils.isPhoneScreen(context) || Utils.isFoldable(context)
-              ? 20.0
-              : 50.0) *
-          _animationInflate.value;
-      hailerOffset = Offset((containerSize.width / 2.0) - (hailerSize / 2.0),
-          containerSize.height - hailerSize);
+      containerSize = Size(
+          screenSize.width,
+          (screenSize.height -
+              Constants.TOOLBAR_HEIGHT -
+              Constants.APPBAR_HEIGHT));
+
+      //containerSize = isPortrait
+      //    ? Size(
+      //        screenSize.width,
+      //        (screenSize.height -
+      //            Constants.TOOLBAR_HEIGHT -
+      //            Constants.APPBAR_HEIGHT))
+      //    : Size((screenSize.width - Constants.TOOLBAR_HEIGHT),
+      //        (screenSize.height - Constants.APPBAR_HEIGHT));
     });
     super.didChangeDependencies();
   }
 
-  Future<void> toggleInflation(List<double>? value) async {
-    Offset newOrigin = Offset(value![0], value[1]);
+  Future<void> toggleInflation(String value) async {
+    originButtonKeyString = value;
+    Offset newOrigin = (GlobalKeyRing.key[originButtonKeyString]?.currentContext
+            ?.findRenderObject() as RenderBox)
+        .localToGlobal(Offset(
+            Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
     if (_status == AnimationStatus.completed) {
       await _animationController.reverse();
       if (bubbleOrigin != newOrigin) {
@@ -139,11 +162,30 @@ class _BubbleSliderState extends State<BubbleSlider>
     bubbleHeight = (containerSize.height * _animationInflate.value) -
         hailerSize -
         marginBubble.vertical;
-    bubbleWidth = (containerSize.width * _animationInflate.value) -
-        marginBubble.horizontal;
-    bubbleOffset = Offset(
-        bubbleOrigin.dx - (bubbleOrigin.dx * _animationInflate.value),
-        hailerOffset.dy - bubbleHeight);
+    bubbleWidth = ((containerSize.width * _animationInflate.value) -
+            marginBubble.horizontal)
+        .clamp(50, BubbleCarousel.bubbleMaxWidth);
+
+    double bubbleOffsetX =
+        bubbleOrigin.dx - (bubbleOrigin.dx * _animationInflate.value);
+    if (screenSize.width > BubbleCarousel.bubbleMaxWidth) {
+      if (originButtonKeyString == "btnSkillsSet") {
+        bubbleOffsetX = (bubbleOrigin.dx - bubbleWidth / 2);
+      } else if (originButtonKeyString == "btnWorkExperience") {
+        bubbleOffsetX =
+            screenSize.width - bubbleWidth - marginBubble.horizontal;
+      } else if (originButtonKeyString == "btnEducation") {
+        bubbleOffsetX = max(0, (bubbleOrigin.dx - bubbleWidth / 3));
+      }
+    }
+    bubbleOffset = Offset(bubbleOffsetX, hailerOffset.dy - bubbleHeight);
+
+    List<Widget> carouselContent = [
+      content_lewagon,
+      content_lecnam,
+      content_greta,
+      content_upec
+    ];
 
     Positioned portraitHailer = Positioned(
         top: hailerOffset.dy,
@@ -152,7 +194,6 @@ class _BubbleSliderState extends State<BubbleSlider>
             height: hailerSize, width: hailerSize, child: bubbleHailer));
 
     Positioned portraitBubble = Positioned(
-        key: bubbleContainerKey,
         top: bubbleOffset.dy,
         left: bubbleOffset.dx,
         child: Container(
@@ -165,7 +206,7 @@ class _BubbleSliderState extends State<BubbleSlider>
             height: bubbleHeight,
             width: bubbleWidth,
             child: AnimatedOpacity(
-                duration: BubbleSlider.animationDuration,
+                duration: BubbleCarousel.animationDuration,
                 opacity: 1.0 * _animationInflate.value,
                 child: Stack(children: [
                   LayoutBuilder(builder:
@@ -173,33 +214,32 @@ class _BubbleSliderState extends State<BubbleSlider>
                     return CarouselSlider(
                         carouselController: carouselController,
                         options: CarouselOptions(
+                            initialPage: _currentIndex,
+                            onPageChanged: (index, reason) {
+                              _currentIndex = index;
+                              setState(() {});
+                            },
+                            enableInfiniteScroll: false,
                             aspectRatio:
                                 constraints.maxWidth / constraints.maxHeight,
                             enlargeCenterPage: true),
-                        items: [
-                          content_lewagon,
-                          content_lecnam,
-                          content_greta,
-                          content_upec
-                        ]);
+                        items: carouselContent);
                   }),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: IconButton(
-                      onPressed: () {
-                        // Use the controller to change the current page
-                        carouselController.previousPage();
-                      },
+                      onPressed: _currentIndex == 0
+                          ? null
+                          : carouselController.previousPage,
                       icon: Icon(Icons.arrow_back),
                     ),
                   ),
                   Align(
                     alignment: Alignment.centerRight,
                     child: IconButton(
-                      onPressed: () {
-                        // Use the controller to change the current page
-                        carouselController.nextPage();
-                      },
+                      onPressed: (_currentIndex == carouselContent.length - 1)
+                          ? null
+                          : carouselController.nextPage,
                       icon: Icon(Icons.arrow_forward),
                     ),
                   )

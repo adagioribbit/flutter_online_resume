@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../helpers/colorchart.dart';
 import '../helpers/constants.dart';
 import '../helpers/global_streams.dart';
-import '../helpers/globals.dart' as globals;
+import '../helpers/globals.dart' show appLanguage, GlobalKeyRing;
 
 class Toolbar extends StatefulWidget implements PreferredSizeWidget {
   const Toolbar({super.key});
@@ -17,10 +17,6 @@ class Toolbar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
-  final GlobalKey<FormState> _educationBtnKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _skillsSetBtnKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _workExpBtnKey = GlobalKey<FormState>();
-
   @override
   void initState() {
     super.initState();
@@ -41,7 +37,7 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
         bottom: 0,
         width: MediaQuery.of(context).size.width,
         child: ValueListenableBuilder(
-            valueListenable: globals.appLanguage,
+            valueListenable: appLanguage,
             builder: (context, value, widget) {
               return Container(
                 height: Constants.TOOLBAR_HEIGHT,
@@ -116,19 +112,12 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                             maxWidth: Constants.TOOLBAR_HEIGHT * 0.8,
                           ),
                           icon: Image(
-                              key: _educationBtnKey,
+                              key: GlobalKeyRing.key['btnEducation'],
                               color: Color.fromARGB(255, 98, 173, 0),
                               image: AssetImage("lib/assets/bachelor_hat.png")),
                           tooltip: AppStrings.EDUCATION_TOOLTIP[value],
                           onPressed: () {
-                            Offset positionCenter = (_educationBtnKey
-                                    .currentContext
-                                    ?.findRenderObject() as RenderBox)
-                                .localToGlobal(Offset(
-                                    Constants.TOOLBAR_HEIGHT * 0.3,
-                                    Constants.TOOLBAR_HEIGHT * 0.8));
-                            globalStreams.triggerBubbleSlider(
-                                [positionCenter.dx, positionCenter.dy]);
+                            globalStreams.triggerBubbleCarousel('btnEducation');
                           },
                         )),
                     Container(
@@ -174,19 +163,12 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                             maxWidth: Constants.TOOLBAR_HEIGHT * 0.8,
                           ),
                           icon: Image(
-                              key: _skillsSetBtnKey,
+                              key: GlobalKeyRing.key['btnSkillsSet'],
                               color: Color.fromARGB(255, 185, 105, 0),
                               image: AssetImage("lib/assets/skills_set.png")),
                           tooltip: AppStrings.SKILL_SETS_TOOLTIP[value],
                           onPressed: () {
-                            Offset positionCenter = (_skillsSetBtnKey
-                                    .currentContext
-                                    ?.findRenderObject() as RenderBox)
-                                .localToGlobal(Offset(
-                                    Constants.TOOLBAR_HEIGHT * 0.3,
-                                    Constants.TOOLBAR_HEIGHT * 0.8));
-                            globalStreams.triggerBubbleSlider(
-                                [positionCenter.dx, positionCenter.dy]);
+                            globalStreams.triggerBubbleCarousel('btnSkillsSet');
                           },
                         )),
                     Container(
@@ -232,20 +214,14 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                             maxWidth: Constants.TOOLBAR_HEIGHT * 0.8,
                           ),
                           icon: Image(
-                              key: _workExpBtnKey,
+                              key: GlobalKeyRing.key['btnWorkExperience'],
                               color: Color.fromARGB(255, 0, 137, 179),
                               image:
                                   AssetImage("lib/assets/work_experience.png")),
                           tooltip: AppStrings.WORK_EXPERIENCE_TOOLTIP[value],
                           onPressed: () {
-                            Offset positionCenter = (_workExpBtnKey
-                                    .currentContext
-                                    ?.findRenderObject() as RenderBox)
-                                .localToGlobal(Offset(
-                                    Constants.TOOLBAR_HEIGHT * 0.3,
-                                    Constants.TOOLBAR_HEIGHT * 0.8));
-                            globalStreams.triggerBubbleSlider(
-                                [positionCenter.dx, positionCenter.dy]);
+                            globalStreams
+                                .triggerBubbleCarousel('btnWorkExperience');
                           },
                         ))
                   ],
