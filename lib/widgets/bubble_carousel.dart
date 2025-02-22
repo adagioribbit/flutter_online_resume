@@ -200,13 +200,25 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     double bubbleOffsetX =
         bubbleOrigin.dx - (bubbleOrigin.dx * _animationInflate.value);
     if (screenSize.width > BubbleCarousel.bubbleMaxWidth) {
-      if (originButtonKeyString == "btnSkillsSet") {
-        bubbleOffsetX = (bubbleOrigin.dx - bubbleWidth / 2);
-      } else if (originButtonKeyString == "btnWorkExperience") {
-        bubbleOffsetX =
-            screenSize.width - bubbleWidth - marginBubble.horizontal;
-      } else if (originButtonKeyString == "btnEducation") {
-        bubbleOffsetX = max(0, (bubbleOrigin.dx - bubbleWidth / 3));
+      if (originButtonKeyString != prevButtonKeyString &&
+          _prevStatus == AnimationStatus.reverse) {
+        if (prevButtonKeyString == "btnSkillsSet") {
+          bubbleOffsetX = (bubbleOrigin.dx - bubbleWidth / 2);
+        } else if (prevButtonKeyString == "btnWorkExperience") {
+          bubbleOffsetX =
+              screenSize.width - bubbleWidth - marginBubble.horizontal;
+        } else if (prevButtonKeyString == "btnEducation") {
+          bubbleOffsetX = max(0, (bubbleOrigin.dx - bubbleWidth / 3));
+        }
+      } else {
+        if (originButtonKeyString == "btnSkillsSet") {
+          bubbleOffsetX = (bubbleOrigin.dx - bubbleWidth / 2);
+        } else if (originButtonKeyString == "btnWorkExperience") {
+          bubbleOffsetX =
+              screenSize.width - bubbleWidth - marginBubble.horizontal;
+        } else if (originButtonKeyString == "btnEducation") {
+          bubbleOffsetX = max(0, (bubbleOrigin.dx - bubbleWidth / 3));
+        }
       }
     }
     bubbleOffset = Offset(bubbleOffsetX, hailerOffset.dy - bubbleHeight);
