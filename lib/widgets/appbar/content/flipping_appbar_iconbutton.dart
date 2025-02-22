@@ -1,8 +1,7 @@
 import 'dart:math' show pi;
 import 'package:flutter/material.dart';
-import '../helpers/constants.dart';
-import '../helpers/globals.dart' as globals;
-import 'site_header.dart';
+import '../../../helpers/constants.dart';
+import '../../../helpers/globals.dart' as globals;
 
 class FlippingAppBarIconButton extends StatefulWidget {
   final VoidCallback? onPressedClbk;
@@ -55,7 +54,7 @@ class _FlippingAppBarIconButtonState extends State<FlippingAppBarIconButton>
     return AnimatedBuilder(
         animation: _animationFlipping,
         builder: (context, child) {
-          return Container(
+          return SizedBox(
               height: componentHeight,
               width: componentHeight,
               child: Transform(

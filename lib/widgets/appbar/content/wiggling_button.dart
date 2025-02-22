@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math' show pi;
-import '../helpers/colorchart.dart';
-import '../helpers/constants.dart';
-import '../helpers/utils.dart';
+import '../../../helpers/colorchart.dart';
+import '../../../helpers/constants.dart';
+import '../../../helpers/utils.dart';
 
 class WigglingButton extends StatefulWidget {
   final VoidCallback? onPressedClbk;

@@ -1,10 +1,10 @@
-import 'package:dossier_de_competences_web/widgets/flipping_appbar_iconbutton.dart';
+import 'package:dossier_de_competences_web/widgets/appbar/content/flipping_appbar_iconbutton.dart';
 import 'package:flutter/material.dart';
-import '../helpers/colorchart.dart';
-import '../helpers/constants.dart';
-import '../helpers/globals.dart' as globals;
-import '../helpers/utils.dart';
-import 'social_networking.dart';
+import '../../helpers/colorchart.dart';
+import '../../helpers/constants.dart';
+import '../../helpers/globals.dart' as globals;
+import '../../helpers/utils.dart';
+import 'content/social_networking.dart';
 
 class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
   const SiteHeader({super.key});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html;
-import '../helpers/colorchart.dart';
-import '../helpers/constants.dart';
-import '../helpers/globals.dart' as globals;
-import '../helpers/utils.dart';
-import 'site_header.dart';
+import '../../../helpers/colorchart.dart';
+import '../../../helpers/constants.dart';
+import '../../../helpers/globals.dart' as globals;
+import '../../../helpers/utils.dart';
+import '../site_header.dart';
 import 'wiggling_button.dart';
 
 class SocialNetworking extends StatefulWidget {

@@ -1,13 +1,8 @@
-import 'package:dossier_de_competences_web/helpers/constants.dart';
-import 'package:dossier_de_competences_web/widgets/zoombee.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' show pi;
 import 'helpers/colorchart.dart';
-import 'helpers/globals.dart' as globals;
-import 'widgets/bubble_carousel.dart';
-import 'widgets/manila_folder.dart';
-import 'widgets/site_header.dart';
-import 'widgets/toolbar.dart';
+import 'widgets/bubble/bubble_carousel.dart';
+import 'widgets/appbar/site_header.dart';
+import 'widgets/toolbar/toolbar.dart';
 
 void main() => runApp(const CardAndTabApp());
 

@@ -1,9 +1,9 @@
+import 'package:dossier_de_competences_web/helpers/colorchart.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' show pi, min, max;
 
 import '../helpers/utils.dart';
 import 'resume_presentation.dart';
-import 'squared_sheet.dart';
 
 class ManilaFolder extends StatefulWidget {
   static const BoxConstraints fixedFolderProportions = BoxConstraints(
@@ -29,8 +29,8 @@ class ManilaFolder extends StatefulWidget {
 
   const ManilaFolder(
       {this.stickerLabelText = "Classified",
-      this.folderMainColor = const Color.fromARGB(255, 206, 184, 143),
-      this.stickerLabelColor = const Color.fromARGB(255, 241, 242, 232),
+      this.folderMainColor = ColorChart.folderMainColor,
+      this.stickerLabelColor = ColorChart.stickerLabelColor,
       this.stickerRotationAngle = -(pi / 40),
       this.stickerFontSize = 10.0,
       this.hasFrontCoverMarkup = false,
@@ -72,14 +72,12 @@ class _ManilaFolderState extends State<ManilaFolder>
   int durationAnimRevealContent = 1000;
   double folderBorderLightnessDiff = 0.05;
 
-  static const double folderTsfrm_perspectiveAngle = 0.0005;
-  static const double folderTsfrm_zoomFactor = 1.0;
-  static const double folderTsfrm_rotationX = -0.2;
-  static const double folderTsfrm_rotationY = -0.05;
-  static const double folderTsfrm_rotationZ = -0.05;
+  static const double folderTransformPerspectiveAngle = 0.0005,
+      folderTransformZoomFactor = 1.0,
+      folderTransformRotationX = -0.2,
+      folderTransformRotationY = -0.05,
+      folderTransformRotationZ = -0.05;
 
-  static const Color folderBackBoxShadowColor = Color.fromARGB(109, 0, 0, 0);
-  static const Offset folderBackBoxShadowOffset = Offset(5, 12);
   EdgeInsetsDirectional folderBackMargin =
       EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0);
 
@@ -87,8 +85,7 @@ class _ManilaFolderState extends State<ManilaFolder>
   Offset folderCoverTransformOrigin = Offset(0, 50);
   double folderCoverPerspective = 0.0005;
   double folderCoverCornerRadius = 2.0;
-  static const Color folderCoverBoxShadowColor =
-      const Color.fromARGB(98, 75, 75, 75);
+  static const Offset folderBackBoxShadowOffset = Offset(5, 12);
   double folderCoverBoxShadowSpreadRadius = 0;
   double folderCoverBoxShadowBlurRadius = 10;
   Offset folderCoverBoxShadowOffset = Offset(0, -2);
@@ -258,11 +255,11 @@ class _ManilaFolderState extends State<ManilaFolder>
   }
 
   Transform buildFolderTransform(
-      {double perspectiveAngle = folderTsfrm_perspectiveAngle,
-      double zoomFactor = folderTsfrm_zoomFactor,
-      double rotationX = folderTsfrm_rotationX,
-      double rotationY = folderTsfrm_rotationY,
-      double rotationZ = folderTsfrm_rotationZ,
+      {double perspectiveAngle = folderTransformPerspectiveAngle,
+      double zoomFactor = folderTransformZoomFactor,
+      double rotationX = folderTransformRotationX,
+      double rotationY = folderTransformRotationY,
+      double rotationZ = folderTransformRotationZ,
       required Widget child}) {
     return Transform(
         alignment: FractionalOffset.center,
@@ -290,8 +287,6 @@ class _ManilaFolderState extends State<ManilaFolder>
     double contentHeightDiffRatio = (maxContentHeight / minContentHeight);
 
     if (Utils.isPhoneScreen(context)) {
-      print("       >>>>>>>>>> isPhoneScreen - $contentHeightDiffRatio");
-
       beginAnimRevealContent = 1.0;
       endAnimRevealContent = -0.2;
 
@@ -325,8 +320,6 @@ class _ManilaFolderState extends State<ManilaFolder>
           folderBackProportions.maxHeight *
           folderContentScaleFactor;
     } else if (Utils.isFoldable(context)) {
-      print("       >>>>>>>>>> isFoldable");
-
       beginAnimRevealContent = 0.25;
       endAnimRevealContent = -0.18;
 
@@ -359,8 +352,6 @@ class _ManilaFolderState extends State<ManilaFolder>
       folderContentTranslationY =
           -0.5 * folderBackProportions.maxHeight * folderContentScaleFactor;
     } else if (Utils.isTabletScreen(context)) {
-      print("       >>>>>>>>>> isTabletScreen");
-
       beginAnimRevealContent = 0.25;
       endAnimRevealContent = -0.18;
 
@@ -399,8 +390,6 @@ class _ManilaFolderState extends State<ManilaFolder>
       folderContentTranslationY =
           -0.4 * folderBackProportions.maxHeight * folderContentScaleFactor;
     } else {
-      print("       >>>>>>>>>> isDesktop");
-
       beginAnimRevealContent = 0.25;
       endAnimRevealContent = -0.18;
 
@@ -453,7 +442,7 @@ class _ManilaFolderState extends State<ManilaFolder>
             topRight: Radius.circular(4.0)),
         boxShadow: [
           BoxShadow(
-            color: folderBackBoxShadowColor,
+            color: ColorChart.folderBackBoxShadowColor,
             spreadRadius: 0,
             blurRadius: 15,
             offset: folderBackBoxShadowOffset,
@@ -492,7 +481,7 @@ class _ManilaFolderState extends State<ManilaFolder>
                 BorderRadius.all(Radius.circular(folderCoverCornerRadius)),
             boxShadow: [
               BoxShadow(
-                color: folderCoverBoxShadowColor,
+                color: ColorChart.folderCoverBoxShadowColor,
                 spreadRadius: folderCoverBoxShadowSpreadRadius,
                 blurRadius: folderCoverBoxShadowBlurRadius,
                 offset: folderCoverBoxShadowOffset,
@@ -524,7 +513,7 @@ class _ManilaFolderState extends State<ManilaFolder>
                 BorderRadius.all(Radius.circular(folderCoverCornerRadius)),
             boxShadow: [
               BoxShadow(
-                color: folderCoverBoxShadowColor,
+                color: ColorChart.folderCoverBoxShadowColor,
                 spreadRadius: folderCoverBoxShadowSpreadRadius,
                 blurRadius: folderCoverBoxShadowBlurRadius,
                 offset: folderCoverBoxShadowOffset,

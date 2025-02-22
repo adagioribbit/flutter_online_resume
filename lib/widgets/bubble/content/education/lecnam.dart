@@ -2,8 +2,8 @@ import 'dart:ui' show Color;
 
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
-import '../../../helpers/constants.dart' show AppStrings;
-import '../../../helpers/globals.dart' as globals;
+import '../../../../helpers/constants.dart' show AppStrings;
+import '../../../../helpers/globals.dart' as globals;
 import 'education_content.dart';
 
 ValueListenableBuilder content_lecnam = ValueListenableBuilder(

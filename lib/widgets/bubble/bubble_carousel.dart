@@ -2,16 +2,16 @@ import 'dart:async';
 import 'dart:math' show max;
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dossier_de_competences_web/widgets/content/education/greta.dart';
-import 'package:dossier_de_competences_web/widgets/content/education/lecnam.dart';
-import 'package:dossier_de_competences_web/widgets/content/education/lewagon.dart';
-import 'package:dossier_de_competences_web/widgets/content/education/upec.dart';
 import 'package:flutter/material.dart';
-import '../helpers/constants.dart';
-import '../helpers/global_streams.dart';
-import '../helpers/globals.dart' show GlobalKeyRing;
-import '../helpers/utils.dart' show Utils;
+import '../../helpers/constants.dart';
+import '../../helpers/global_streams.dart';
+import '../../helpers/globals.dart' show GlobalKeyRing;
+import '../../helpers/utils.dart' show Utils;
 import 'bubble_hailer.dart';
+import 'content/education/greta.dart';
+import 'content/education/lecnam.dart';
+import 'content/education/lewagon.dart';
+import 'content/education/upec.dart';
 
 class BubbleCarousel extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 300);

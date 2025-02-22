@@ -3,8 +3,10 @@ import 'dart:ui' show DisplayFeature, DisplayFeatureType, FlutterView;
 import 'package:flutter/widgets.dart';
 import 'package:web/web.dart';
 
+// ignore: constant_identifier_names
 enum WebBrower { Chrome, Safari, Firefox, Edge, IE, Opera, Other }
 
+// ignore: constant_identifier_names
 enum Platform { Linux, Windows, MacOS, Android, iOS, Other }
 
 class Utils {

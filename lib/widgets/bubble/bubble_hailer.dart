@@ -2,7 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-import '../helpers/utils.dart';
+import '../../helpers/utils.dart';
 
 class BubbleHailerPainter extends CustomPainter {
   final Color strokeColor, fillColor;

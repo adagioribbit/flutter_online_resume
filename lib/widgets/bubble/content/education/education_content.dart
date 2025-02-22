@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../../../helpers/constants.dart';
-import '../../../helpers/globals.dart' as globals;
-import '../../../helpers/utils.dart';
+import '../../../../helpers/constants.dart';
+import '../../../../helpers/globals.dart' as globals;
+import '../../../../helpers/utils.dart';
 
 class EducationContent extends StatefulWidget implements PreferredSizeWidget {
-  Color boxShadowColor, boxBorderColor;
-  String academicLogoAssetPath, languages, tools;
-  String? periodDescription, degreeDescription, curriculumDescription;
+  final Color boxShadowColor, boxBorderColor;
+  final String academicLogoAssetPath, languages, tools;
+  final String? periodDescription, degreeDescription, curriculumDescription;
 
-  EducationContent(
+  const EducationContent(
       {required this.boxShadowColor,
       required this.boxBorderColor,
       required this.academicLogoAssetPath,
@@ -89,7 +89,7 @@ class _EducationContentState extends State<EducationContent>
           }))
     ];
 
-    if (widget.languages.length > 0) {
+    if (widget.languages.isNotEmpty) {
       content.add(ValueListenableBuilder(
           valueListenable: globals.appLanguage,
           builder: (context, value, widget) {
@@ -107,7 +107,7 @@ class _EducationContentState extends State<EducationContent>
               textAlign: TextAlign.center, style: TextStyle(fontSize: 16))));
     }
 
-    if (widget.tools.length > 0) {
+    if (widget.tools.isNotEmpty) {
       content.add(ValueListenableBuilder(
           valueListenable: globals.appLanguage,
           builder: (context, value, widget) {
