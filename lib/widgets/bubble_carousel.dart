@@ -33,8 +33,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   CustomPaint bubbleHailer = CustomPaint(
     painter: BubbleHailerPainter(),
   );
-  AnimationStatus _status = AnimationStatus.dismissed;
+  AnimationStatus _prevStatus = AnimationStatus.dismissed;
 
+  late List<Widget> carouselContent;
   late String originButtonKeyString;
   late EdgeInsets marginBubble;
   late double animatedBubbleMargin, bubbleHeight, bubbleWidth, hailerSize;
@@ -58,9 +59,22 @@ class _BubbleCarouselState extends State<BubbleCarousel>
       ..addListener(() {
         setState(() {});
       })
-      ..addStatusListener((status) {
-        if (_status == AnimationStatus.dismissed) _currentIndex = 0;
-        _status = status;
+      ..addStatusListener((currStatus) {
+        if (_prevStatus == AnimationStatus.reverse) carouselContent = [];
+        if (_prevStatus == AnimationStatus.forward) {
+          if (originButtonKeyString == "btnEducation") {
+            carouselContent = [
+              content_lewagon,
+              content_lecnam,
+              content_greta,
+              content_upec
+            ];
+            if (_currentIndex != 0)
+              carouselController.jumpToPage(_currentIndex);
+          } else if (originButtonKeyString == "btnWorkExperience") {
+          } else if (originButtonKeyString == "btnEducation") {}
+        }
+        _prevStatus = currStatus;
       });
 
     screenSize = Utils.getScreenSize();
@@ -79,6 +93,8 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             Constants.TOOLBAR_HEIGHT -
             Constants.APPBAR_HEIGHT));
 
+    carouselContent = [];
+
     hailerSize = (Utils.isPhoneView() || Utils.isFoldableView() ? 20.0 : 50.0) *
         _animationInflate.value;
     hailerOffset = Offset((containerSize.width / 2.0) - (hailerSize / 2.0),
@@ -87,6 +103,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     bubbleOrigin = Offset.zero;
 
     subscription = globalStreams.eventBubbleCarousel.listen((value) async {
+      carouselContent = [];
       toggleInflation(value);
     });
   }
@@ -96,7 +113,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     isPortrait = Utils.isPortraitOrientation();
     if (_animationInflate.value == 0) _currentIndex = 0;
 
-    if (originButtonKeyString.length > 0) {
+    if (originButtonKeyString.isNotEmpty) {
       bubbleOrigin = (GlobalKeyRing.key[originButtonKeyString]?.currentContext
               ?.findRenderObject() as RenderBox)
           .localToGlobal(Offset(
@@ -129,15 +146,21 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             ?.findRenderObject() as RenderBox)
         .localToGlobal(Offset(
             Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
-    if (_status == AnimationStatus.completed) {
-      await _animationController.reverse();
+
+    if (_prevStatus == AnimationStatus.completed) {
+      await _animationController.reverse().then((value) async {
+        if (bubbleOrigin != newOrigin) {
+          bubbleOrigin = newOrigin;
+          _currentIndex = 0;
+          await _animationController.forward();
+        }
+      }).then((value) => setState(() {}));
+    } else {
       if (bubbleOrigin != newOrigin) {
         bubbleOrigin = newOrigin;
-        await _animationController.forward();
+        _currentIndex = 0;
       }
-    } else {
-      if (bubbleOrigin != newOrigin) bubbleOrigin = newOrigin;
-      await _animationController.forward();
+      await _animationController.forward().then((value) => setState(() {}));
     }
   }
 
@@ -179,13 +202,6 @@ class _BubbleCarouselState extends State<BubbleCarousel>
       }
     }
     bubbleOffset = Offset(bubbleOffsetX, hailerOffset.dy - bubbleHeight);
-
-    List<Widget> carouselContent = [
-      content_lewagon,
-      content_lecnam,
-      content_greta,
-      content_upec
-    ];
 
     Positioned portraitHailer = Positioned(
         top: hailerOffset.dy,
