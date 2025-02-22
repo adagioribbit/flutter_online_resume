@@ -36,7 +36,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   AnimationStatus _prevStatus = AnimationStatus.dismissed;
 
   late List<Widget> carouselContent;
-  late String originButtonKeyString;
+  late String prevButtonKeyString, originButtonKeyString;
   late EdgeInsets marginBubble;
   late double animatedBubbleMargin, bubbleHeight, bubbleWidth, hailerSize;
   late int _currentIndex;
@@ -61,6 +61,10 @@ class _BubbleCarouselState extends State<BubbleCarousel>
       })
       ..addStatusListener((currStatus) {
         if (_prevStatus == AnimationStatus.reverse) carouselContent = [];
+        if (_prevStatus == AnimationStatus.reverse &&
+            currStatus == AnimationStatus.dismissed) {
+          _currentIndex = 0;
+        }
         if (_prevStatus == AnimationStatus.forward) {
           if (originButtonKeyString == "btnEducation") {
             carouselContent = [
@@ -69,8 +73,11 @@ class _BubbleCarouselState extends State<BubbleCarousel>
               content_greta,
               content_upec
             ];
-            if (_currentIndex != 0)
+            if (_currentIndex != 0) {
+              var idx = _currentIndex;
               carouselController.jumpToPage(_currentIndex);
+              _currentIndex = idx;
+            }
           } else if (originButtonKeyString == "btnWorkExperience") {
           } else if (originButtonKeyString == "btnEducation") {}
         }
@@ -99,7 +106,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
         _animationInflate.value;
     hailerOffset = Offset((containerSize.width / 2.0) - (hailerSize / 2.0),
         containerSize.height - hailerSize);
-    originButtonKeyString = "";
+    prevButtonKeyString = originButtonKeyString = "";
     bubbleOrigin = Offset.zero;
 
     subscription = globalStreams.eventBubbleCarousel.listen((value) async {
@@ -111,7 +118,6 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   @override
   void didChangeDependencies() {
     isPortrait = Utils.isPortraitOrientation();
-    if (_animationInflate.value == 0) _currentIndex = 0;
 
     if (originButtonKeyString.isNotEmpty) {
       bubbleOrigin = (GlobalKeyRing.key[originButtonKeyString]?.currentContext
@@ -149,14 +155,16 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
     if (_prevStatus == AnimationStatus.completed) {
       await _animationController.reverse().then((value) async {
-        if (bubbleOrigin != newOrigin) {
+        if (originButtonKeyString != prevButtonKeyString) {
+          prevButtonKeyString = originButtonKeyString;
           bubbleOrigin = newOrigin;
           _currentIndex = 0;
           await _animationController.forward();
         }
       }).then((value) => setState(() {}));
     } else {
-      if (bubbleOrigin != newOrigin) {
+      if (originButtonKeyString != prevButtonKeyString) {
+        prevButtonKeyString = originButtonKeyString;
         bubbleOrigin = newOrigin;
         _currentIndex = 0;
       }
@@ -230,7 +238,6 @@ class _BubbleCarouselState extends State<BubbleCarousel>
                     return CarouselSlider(
                         carouselController: carouselController,
                         options: CarouselOptions(
-                            initialPage: _currentIndex,
                             onPageChanged: (index, reason) {
                               _currentIndex = index;
                               setState(() {});
@@ -253,7 +260,8 @@ class _BubbleCarouselState extends State<BubbleCarousel>
                   Align(
                     alignment: Alignment.centerRight,
                     child: IconButton(
-                      onPressed: (_currentIndex == carouselContent.length - 1)
+                      onPressed: (carouselContent.isEmpty ||
+                              _currentIndex == carouselContent.length - 1)
                           ? null
                           : carouselController.nextPage,
                       icon: Icon(Icons.arrow_forward),
