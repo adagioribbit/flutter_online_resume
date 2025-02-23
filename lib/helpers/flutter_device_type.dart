@@ -105,7 +105,7 @@ class DeviceInfo {
 
   static int get _ppi => Platform.operatingSystem == "android"
       ? 160
-      : Platform.operatingSystem == "i"
+      : Platform.operatingSystem == "ios"
           ? 150
           : 96;
 

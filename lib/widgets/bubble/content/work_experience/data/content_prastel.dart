@@ -1,0 +1,43 @@
+import 'dart:ui' show Color;
+
+import 'package:dossier_de_competences_web/helpers/constants.dart'
+    show AppStrings;
+import 'package:flutter/material.dart' show ValueListenableBuilder;
+
+import '../../../../../helpers/globals.dart' as globals;
+import '../employer_header.dart';
+import '../work_experience_content.dart';
+
+ValueListenableBuilder content_prastel_Mobile = ValueListenableBuilder(
+    valueListenable: globals.appLanguage,
+    builder: (context, value, widget) {
+      return WorkExperienceContent(
+          periodDescription: AppStrings.PRASTEL_MOBILE_PERIOD[value],
+          projectTitle: AppStrings.PRASTEL_MOBILE_PROJECT[value],
+          projectDescription:
+              AppStrings.PRASTEL_MOBILE_DESCRIPTION[value]!.first,
+          boxBorderColor: Color.fromARGB(255, 1, 40, 91),
+          boxShadowColor: Color.fromARGB(127, 1, 40, 91),
+          employerHeader:
+              EmployerHeader(employerLogoAssetPath: "lib/assets/prastel.png"));
+    });
+
+ValueListenableBuilder content_prastel_CR15NM = ValueListenableBuilder(
+    valueListenable: globals.appLanguage,
+    builder: (context, value, widget) {
+      return WorkExperienceContent(
+          boxBorderColor: Color.fromARGB(255, 1, 40, 91),
+          boxShadowColor: Color.fromARGB(127, 1, 40, 91),
+          employerHeader:
+              EmployerHeader(employerLogoAssetPath: "lib/assets/prastel.png"));
+    });
+
+ValueListenableBuilder content_prastel_site_interne = ValueListenableBuilder(
+    valueListenable: globals.appLanguage,
+    builder: (context, value, widget) {
+      return WorkExperienceContent(
+          boxBorderColor: Color.fromARGB(255, 1, 40, 91),
+          boxShadowColor: Color.fromARGB(127, 1, 40, 91),
+          employerHeader:
+              EmployerHeader(employerLogoAssetPath: "lib/assets/prastel.png"));
+    });

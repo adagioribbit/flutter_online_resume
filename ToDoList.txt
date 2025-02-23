@@ -1,28 +1,34 @@
+
 ============= TRAVAIL EN COURS ======================
 
+
+- LANGUES : Ajouter les titres de section
+- Ajuster la taille de la période
+- Ajuster la taille de la description du projet
+- Travailler la liste des réalisations
+- Traduire les nouvelles chaînes en anglais
+
+- Clamp la taille des boutons de navigation
+
+
+
 ------------- BUGS ----------------------------------
+
+- Pendant un switch entre deux Bubble content, lorsque la Bubble apparaît avec le nouveau contenu, les flèches de navigation apparaissent brièvement avec la couleur du contenu précédent
 
 - Les proportions du folderContent doivent encore être retravaillées :
 	* sur les tablettes et foldable en mode portrait
 	* en cas de positionnement paysage sur tout type de device
 	* prendre en compte le niveau de zoom de la fenêtre du navigateur
 
-
-
-User agent de Chrome
-	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like  
-               Gecko) Chrome/132.0.0.0 Safari/537.36
-
-Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0
-
-
-
+- La suppression de la vérification de la taille de l'écran dans Utils a biaisé la vérification pour les SocialMediaButtons
 
 
 
 
 ~~~~~~~~~~~~~ FEUILLE DE ROUTE ~~~~~~~~~~~~~~~~~~~~~~
 
+- Terminer la navigation thématique
 - Ajouter le FAB vers le téléchargement des contenus
 - Travailler l'animation d'ouverture du dossier déclenchée au chargement de la page
 - Supprimer le bouton du mode sombre et Zoombee

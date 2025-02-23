@@ -31,27 +31,13 @@ class EducationContent extends StatefulWidget implements PreferredSizeWidget {
 
 class _EducationContentState extends State<EducationContent>
     with TickerProviderStateMixin {
-  late bool isNarrowScreen;
-  late double marginContainer,
-      paddingHorizontalListView,
-      paddingVerticalListView;
-
   @override
   void initState() {
     super.initState();
-
-    isNarrowScreen = Utils.isPhoneView() || Utils.isFoldableView();
-    marginContainer = isNarrowScreen ? 10.0 : 50.0;
-    paddingHorizontalListView = isNarrowScreen ? 10.0 : 50.0;
-    paddingVerticalListView = isNarrowScreen ? 10.0 : 25.0;
   }
 
   @override
   void didChangeDependencies() {
-    isNarrowScreen = Utils.isPhoneView() || Utils.isFoldableView();
-    marginContainer = isNarrowScreen ? 10.0 : 50.0;
-    paddingHorizontalListView = isNarrowScreen ? 10.0 : 50.0;
-    paddingVerticalListView = isNarrowScreen ? 10.0 : 25.0;
     super.didChangeDependencies();
   }
 
@@ -125,33 +111,38 @@ class _EducationContentState extends State<EducationContent>
               textAlign: TextAlign.center, style: TextStyle(fontSize: 16))));
     }
 
-    return SizedBox.expand(
-        child: Container(
-            margin: EdgeInsets.fromLTRB(0, marginContainer, 0, marginContainer),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: widget.boxShadowColor,
-                    spreadRadius: 2,
-                    blurRadius: 3,
-                    offset: Offset(-2, -2),
-                  ),
-                  BoxShadow(
-                    color: widget.boxShadowColor,
-                    spreadRadius: 2,
-                    blurRadius: 3,
-                    offset: Offset(2, 2),
-                  ),
-                ],
-                borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                border: Border.all(color: widget.boxBorderColor, width: 0.5)),
-            child: ListView(
-                padding: EdgeInsets.fromLTRB(
-                    paddingHorizontalListView,
-                    paddingVerticalListView,
-                    paddingHorizontalListView,
-                    paddingVerticalListView),
-                children: content)));
+    return SizedBox.expand(child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      double paddingHorizontalListView = constraints.maxWidth * 0.05;
+      double paddingVerticalListView = constraints.maxWidth * 0.05;
+      double marginContainer = constraints.maxHeight * 0.025;
+      return Container(
+          margin: EdgeInsets.fromLTRB(0, marginContainer, 0, marginContainer),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: widget.boxShadowColor,
+                  spreadRadius: 2,
+                  blurRadius: 3,
+                  offset: Offset(-2, -2),
+                ),
+                BoxShadow(
+                  color: widget.boxShadowColor,
+                  spreadRadius: 2,
+                  blurRadius: 3,
+                  offset: Offset(2, 2),
+                ),
+              ],
+              borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              border: Border.all(color: widget.boxBorderColor, width: 0.5)),
+          child: ListView(
+              padding: EdgeInsets.fromLTRB(
+                  paddingHorizontalListView,
+                  paddingVerticalListView,
+                  paddingHorizontalListView,
+                  paddingVerticalListView),
+              children: content));
+    }));
   }
 }

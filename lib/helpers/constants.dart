@@ -173,4 +173,24 @@ class AppStrings {
     'en':
         'My first attempt at a career was in literary translation.\n\tLacking insider contacts in publishing houses, I ultimately had to give up on that dream.\n\tOn the bright side, my studies allowed me to acquire a C2 level in English which is a really useful asset in my current activity.'
   };
+
+  static const Map<String, String> PRASTEL_MOBILE_PERIOD = {
+    'fr': '\nJuin 2022 - Avril 2024',
+    'en': '\nJune 2022 - April 2024'
+  };
+  static const Map<String, String> PRASTEL_MOBILE_PROJECT = {
+    'fr':
+        'Intégration de la gestion des nouvelles centrales d\'accès UNIK2E230-BT aux applications mobile PrastelBT et Télécommande Virtuelle Slim+BT, ainsi qu\'à leurs déclinaisons client (MProxBLE Control Configurator, MProxBT).',
+    'en': ''
+  };
+  static const Map<String, List<String>> PRASTEL_MOBILE_DESCRIPTION = {
+    'fr': [
+      'Création de nouvelles interfaces utilisateurs à partir de l\'existant',
+      'Intégration de différents modèles de portails 3D interactifs à l\'interface de programmation',
+      'Correction de dysfonctionnements\n● Correction de problèmes d\'affichage et extension de la compatibilité aux tablettes',
+      'Mise à disposition des produits sur les plateformes en ligne et auprès des clients',
+      'Mise en place d\'un suivi de projet et d\'un système de gestion de versions\n● Assainissement de la base de code existante'
+    ],
+    'en': []
+  };
 }

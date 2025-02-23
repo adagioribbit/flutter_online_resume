@@ -93,6 +93,9 @@ flutter:
     - lib/assets/le_cnam_paris.png
     - lib/assets/greta_94.png
     - lib/assets/upec.png
+    - lib/assets/evolucare.png
+    - lib/assets/amiltone.png
+    - lib/assets/prastel.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
