@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import '../../helpers/colorchart.dart';
 import '../../helpers/constants.dart';
 import '../../helpers/global_streams.dart' show globalStreams;
-import '../../helpers/globals.dart' show GlobalKeyRing;
+import '../../helpers/globals.dart' show GlobalKeyRing, ToolbarMenu;
 
 class ToolbarButton extends StatefulWidget {
   final ToolbarButtonPalette palette;
-  final String idString, imageAssetPath;
+  final ToolbarMenu idMenu;
+  final String imageAssetPath;
   final String? tooltip;
 
   const ToolbarButton(
-      {required this.idString,
+      {required this.idMenu,
       this.tooltip,
       required this.imageAssetPath,
       required this.palette,
@@ -34,7 +35,8 @@ class _ToolbarButtonState extends State<ToolbarButton> {
 
   @override
   Widget build(BuildContext context) {
-    String idString = widget.idString, imageAssetPath = widget.imageAssetPath;
+    ToolbarMenu idMenu = widget.idMenu;
+    String imageAssetPath = widget.imageAssetPath;
     ToolbarButtonPalette palette = widget.palette;
 
     return Container(
@@ -77,12 +79,12 @@ class _ToolbarButtonState extends State<ToolbarButton> {
             maxWidth: Constants.TOOLBAR_HEIGHT * 0.8,
           ),
           icon: Image(
-              key: GlobalKeyRing.key[idString],
+              key: GlobalKeyRing.key[idMenu],
               color: palette.icon,
               image: AssetImage(imageAssetPath)),
           tooltip: widget.tooltip,
           onPressed: () {
-            globalStreams.triggerBubbleCarousel(idString);
+            globalStreams.triggerBubbleCarousel(idMenu);
           },
         ));
   }

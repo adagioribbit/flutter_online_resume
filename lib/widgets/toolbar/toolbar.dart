@@ -7,8 +7,7 @@ import '../../helpers/colorchart.dart'
         workExperienceButtonPalette,
         ColorChart;
 import '../../helpers/constants.dart';
-import '../../helpers/global_streams.dart' show globalStreams;
-import '../../helpers/globals.dart' show GlobalKeyRing, appLanguage;
+import '../../helpers/globals.dart' show ToolbarMenu, appLanguage;
 
 class Toolbar extends StatefulWidget implements PreferredSizeWidget {
   const Toolbar({super.key});
@@ -70,19 +69,19 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ToolbarButton(
-                      idString: 'btnEducation',
+                      idMenu: ToolbarMenu.btnEducation,
                       tooltip: AppStrings.EDUCATION_TOOLTIP[value],
                       imageAssetPath: "lib/assets/bachelor_hat.png",
                       palette: educationButtonPalette,
                     ),
                     ToolbarButton(
-                      idString: 'btnSkillsSet',
+                      idMenu: ToolbarMenu.btnSkillsSet,
                       tooltip: AppStrings.SKILL_SETS_TOOLTIP[value],
                       imageAssetPath: "lib/assets/skills_set.png",
                       palette: skillsSetButtonPalette,
                     ),
                     ToolbarButton(
-                      idString: 'btnWorkExperience',
+                      idMenu: ToolbarMenu.btnWorkExperience,
                       tooltip: AppStrings.WORK_EXPERIENCE_TOOLTIP[value],
                       imageAssetPath: "lib/assets/work_experience.png",
                       palette: workExperienceButtonPalette,

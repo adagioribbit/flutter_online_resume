@@ -7,13 +7,16 @@ ValueNotifier<bool> isDarkMode = ValueNotifier<bool>(false);
 ValueNotifier<bool> isFoldable = ValueNotifier<bool>(false);
 
 CarouselSliderController carouselController = CarouselSliderController();
+ScrollController bubbleContentScrollController = ScrollController();
 ValueNotifier<int> carouselIndex = ValueNotifier<int>(0);
 
+enum ToolbarMenu { None, btnEducation, btnSkillsSet, btnWorkExperience }
+
 class GlobalKeyRing {
-  static Map<String, GlobalKey<State<StatefulWidget>>> key =
-      <String, GlobalKey<State<StatefulWidget>>>{
-    "btnEducation": GlobalKey(),
-    "btnSkillsSet": GlobalKey(),
-    "btnWorkExperience": GlobalKey()
+  static Map<ToolbarMenu, GlobalKey<State<StatefulWidget>>> key =
+      <ToolbarMenu, GlobalKey<State<StatefulWidget>>>{
+    ToolbarMenu.btnEducation: GlobalKey(),
+    ToolbarMenu.btnSkillsSet: GlobalKey(),
+    ToolbarMenu.btnWorkExperience: GlobalKey()
   };
 }

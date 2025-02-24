@@ -1,9 +1,6 @@
-
-
 ============= TRAVAIL EN COURS ======================
 
 
-- Travailler la liste des réalisations
 - Traduire les nouvelles chaînes en anglais
 
 - Clamp la taille des boutons de navigation

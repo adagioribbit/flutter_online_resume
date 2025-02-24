@@ -1,7 +1,7 @@
 import 'package:dossier_de_competences_web/helpers/colorchart.dart'
-    show ColorChart, workExperienceButtonPalette;
+    show workExperienceButtonPalette;
 import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show carouselController, carouselIndex;
+    show bubbleContentScrollController, carouselController, carouselIndex;
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
@@ -100,13 +100,16 @@ class _EmployerHeaderState extends State<EmployerHeader>
                       onPressed: carouselIndex.value == 0
                           ? null
                           : () {
-                              carouselIndex.value <= 3
-                                  ? carouselController.animateToPage(0)
+                              int pageNumber = carouselIndex.value <= 3
+                                  ? 0
                                   : carouselIndex.value <= 8
-                                      ? carouselController.animateToPage(3)
+                                      ? 3
                                       : carouselIndex.value > 8
-                                          ? carouselController.animateToPage(8)
-                                          : null;
+                                          ? 8
+                                          : 0;
+                              carouselController.animateToPage(pageNumber,
+                                  curve: Curves.fastOutSlowIn,
+                                  duration: Duration(milliseconds: 1000));
                             },
                       icon: Icon(Icons.arrow_circle_left_rounded),
                     )),
@@ -128,9 +131,10 @@ class _EmployerHeaderState extends State<EmployerHeader>
                       onPressed: carouselIndex.value > 7
                           ? null
                           : () {
-                              carouselIndex.value < 3
-                                  ? carouselController.animateToPage(3)
-                                  : carouselController.animateToPage(8);
+                              int pageNumber = carouselIndex.value < 3 ? 3 : 8;
+                              carouselController.animateToPage(pageNumber,
+                                  curve: Curves.fastOutSlowIn,
+                                  duration: Duration(milliseconds: 1000));
                             },
                       icon: Icon(Icons.arrow_circle_right_rounded),
                     )),

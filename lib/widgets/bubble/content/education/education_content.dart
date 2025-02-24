@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
-import '../../../../helpers/globals.dart' as globals;
-import '../../../../helpers/utils.dart';
+import '../../../../helpers/globals.dart'
+    show appLanguage, bubbleContentScrollController;
 
 class EducationContent extends StatefulWidget implements PreferredSizeWidget {
   final Color boxShadowColor, boxBorderColor;
@@ -77,7 +77,7 @@ class _EducationContentState extends State<EducationContent>
 
     if (widget.languages.isNotEmpty) {
       content.add(ValueListenableBuilder(
-          valueListenable: globals.appLanguage,
+          valueListenable: appLanguage,
           builder: (context, value, widget) {
             return Text(AppStrings.TITLE_LANGUAGES[value].toString(),
                 textAlign: TextAlign.center,
@@ -95,7 +95,7 @@ class _EducationContentState extends State<EducationContent>
 
     if (widget.tools.isNotEmpty) {
       content.add(ValueListenableBuilder(
-          valueListenable: globals.appLanguage,
+          valueListenable: appLanguage,
           builder: (context, value, widget) {
             return Text(AppStrings.TITLE_TOOLS[value].toString(),
                 textAlign: TextAlign.center,
@@ -137,6 +137,7 @@ class _EducationContentState extends State<EducationContent>
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
               border: Border.all(color: widget.boxBorderColor, width: 0.5)),
           child: ListView(
+              controller: bubbleContentScrollController,
               padding: EdgeInsets.fromLTRB(
                   paddingHorizontalListView,
                   paddingVerticalListView,

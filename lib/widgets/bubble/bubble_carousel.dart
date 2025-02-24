@@ -12,7 +12,12 @@ import 'package:flutter/material.dart';
 import '../../helpers/constants.dart';
 import '../../helpers/global_streams.dart';
 import '../../helpers/globals.dart'
-    show GlobalKeyRing, carouselController, carouselIndex;
+    show
+        GlobalKeyRing,
+        ToolbarMenu,
+        bubbleContentScrollController,
+        carouselController,
+        carouselIndex;
 import '../../helpers/utils.dart' show Utils;
 import 'bubble_hailer.dart';
 import 'content/education/data/greta.dart';
@@ -46,7 +51,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   AnimationStatus _prevStatus = AnimationStatus.dismissed;
 
   late List<Widget> carouselContent;
-  late String prevButtonKeyString, originButtonKeyString;
+  late ToolbarMenu preButton, originButton;
   late EdgeInsets marginBubble;
   late double animatedBubbleMargin, bubbleHeight, bubbleWidth, hailerSize;
   late Offset bubbleOffset, bubbleOrigin, hailerOffset;
@@ -76,7 +81,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           carouselIndex.value = 0;
         }
         if (_prevStatus == AnimationStatus.forward) {
-          if (originButtonKeyString == "btnEducation") {
+          if (originButton == ToolbarMenu.btnEducation) {
             navigationButtonPalette = educationButtonPalette;
             carouselContent = [
               content_lewagon,
@@ -87,9 +92,10 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             if (carouselIndex.value != 0) {
               var idx = carouselIndex.value;
               carouselController.jumpToPage(carouselIndex.value);
+              bubbleContentScrollController.jumpTo(0.0);
               carouselIndex.value = idx;
             }
-          } else if (originButtonKeyString == "btnWorkExperience") {
+          } else if (originButton == ToolbarMenu.btnWorkExperience) {
             navigationButtonPalette = workExperienceButtonPalette;
             carouselContent = [
               content_prastel_Mobile,
@@ -103,7 +109,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
               content_evolucare_imaging,
               content_evolucare_mobile
             ];
-          } else if (originButtonKeyString == "btnSkillsSet") {
+          } else if (originButton == ToolbarMenu.btnSkillsSet) {
             navigationButtonPalette = skillsSetButtonPalette;
           }
         }
@@ -132,7 +138,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
         _animationInflate.value;
     hailerOffset = Offset((containerSize.width / 2.0) - (hailerSize / 2.0),
         containerSize.height - hailerSize);
-    prevButtonKeyString = originButtonKeyString = "";
+    preButton = originButton = ToolbarMenu.None;
     bubbleOrigin = Offset.zero;
     navigationButtonPalette = educationButtonPalette;
 
@@ -146,12 +152,13 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   void didChangeDependencies() {
     isPortrait = Utils.isPortraitOrientation();
 
-    if (originButtonKeyString.isNotEmpty) {
-      bubbleOrigin = (GlobalKeyRing.key[originButtonKeyString]?.currentContext
+    if (originButton != ToolbarMenu.None) {
+      bubbleOrigin = (GlobalKeyRing.key[originButton]?.currentContext
               ?.findRenderObject() as RenderBox)
           .localToGlobal(Offset(
               Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
     }
+
     setState(() {
       screenSize = Utils.getContextSize(context);
 
@@ -173,25 +180,25 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     super.didChangeDependencies();
   }
 
-  Future<void> toggleInflation(String value) async {
-    originButtonKeyString = value;
-    Offset newOrigin = (GlobalKeyRing.key[originButtonKeyString]?.currentContext
+  Future<void> toggleInflation(ToolbarMenu value) async {
+    originButton = value;
+    Offset newOrigin = (GlobalKeyRing.key[originButton]?.currentContext
             ?.findRenderObject() as RenderBox)
         .localToGlobal(Offset(
             Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
 
     if (_prevStatus == AnimationStatus.completed) {
       await _animationController.reverse().then((value) async {
-        if (originButtonKeyString != prevButtonKeyString) {
-          prevButtonKeyString = originButtonKeyString;
+        if (originButton != preButton) {
+          preButton = originButton;
           bubbleOrigin = newOrigin;
           carouselIndex.value = 0;
           await _animationController.forward();
         }
       }).then((value) => setState(() {}));
     } else {
-      if (originButtonKeyString != prevButtonKeyString) {
-        prevButtonKeyString = originButtonKeyString;
+      if (originButton != preButton) {
+        preButton = originButton;
         bubbleOrigin = newOrigin;
         carouselIndex.value = 0;
       }
@@ -227,23 +234,22 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     double bubbleOffsetX =
         bubbleOrigin.dx - (bubbleOrigin.dx * _animationInflate.value);
     if (screenSize.width > BubbleCarousel.bubbleMaxWidth) {
-      if (originButtonKeyString != prevButtonKeyString &&
-          _prevStatus == AnimationStatus.reverse) {
-        if (prevButtonKeyString == "btnSkillsSet") {
+      if (originButton != preButton && _prevStatus == AnimationStatus.reverse) {
+        if (preButton == ToolbarMenu.btnSkillsSet) {
           bubbleOffsetX = (bubbleOrigin.dx - bubbleWidth / 2);
-        } else if (prevButtonKeyString == "btnWorkExperience") {
+        } else if (preButton == ToolbarMenu.btnWorkExperience) {
           bubbleOffsetX =
               screenSize.width - bubbleWidth - marginBubble.horizontal;
-        } else if (prevButtonKeyString == "btnEducation") {
+        } else if (preButton == ToolbarMenu.btnEducation) {
           bubbleOffsetX = max(0, (bubbleOrigin.dx - bubbleWidth / 3));
         }
       } else {
-        if (originButtonKeyString == "btnSkillsSet") {
+        if (originButton == ToolbarMenu.btnSkillsSet) {
           bubbleOffsetX = (bubbleOrigin.dx - bubbleWidth / 2);
-        } else if (originButtonKeyString == "btnWorkExperience") {
+        } else if (originButton == ToolbarMenu.btnWorkExperience) {
           bubbleOffsetX =
               screenSize.width - bubbleWidth - marginBubble.horizontal;
-        } else if (originButtonKeyString == "btnEducation") {
+        } else if (originButton == ToolbarMenu.btnEducation) {
           bubbleOffsetX = max(0, (bubbleOrigin.dx - bubbleWidth / 3));
         }
       }
@@ -281,6 +287,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
                         options: CarouselOptions(
                             onPageChanged: (index, reason) {
                               carouselIndex.value = index;
+                              bubbleContentScrollController.jumpTo(0.0);
                               setState(() {});
                             },
                             enableInfiniteScroll: false,
@@ -312,7 +319,11 @@ class _BubbleCarouselState extends State<BubbleCarousel>
                             iconSize: constraints.maxWidth * 0.08,
                             onPressed: carouselIndex.value == 0
                                 ? null
-                                : carouselController.previousPage,
+                                : () {
+                                    carouselController.previousPage(
+                                        curve: Curves.fastOutSlowIn,
+                                        duration: Duration(milliseconds: 500));
+                                  },
                             icon: Icon(Icons.arrow_circle_left_sharp),
                           ),
                         )),
@@ -340,7 +351,11 @@ class _BubbleCarouselState extends State<BubbleCarousel>
                                     carouselIndex.value ==
                                         carouselContent.length - 1)
                                 ? null
-                                : carouselController.nextPage,
+                                : () {
+                                    carouselController.nextPage(
+                                        curve: Curves.fastOutSlowIn,
+                                        duration: Duration(milliseconds: 500));
+                                  },
                             icon: Icon(Icons.arrow_circle_right_sharp),
                           ),
                         ))

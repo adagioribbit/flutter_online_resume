@@ -1,17 +1,21 @@
+import 'package:dossier_de_competences_web/helpers/globals.dart'
+    show ToolbarMenu;
 import 'package:rxdart/rxdart.dart';
 
 class GlobalStreams {
-  final BehaviorSubject<String> _streamBubbleCarousel =
-      BehaviorSubject<String>();
+  final BehaviorSubject<ToolbarMenu> _streamBubbleCarousel =
+      BehaviorSubject<ToolbarMenu>();
   final BehaviorSubject<List<double>> _streamSkillGauge =
       BehaviorSubject<List<double>>();
 
   // Retrieve event from streams
-  ValueStream<String> get eventBubbleCarousel => _streamBubbleCarousel.stream;
+  ValueStream<ToolbarMenu> get eventBubbleCarousel =>
+      _streamBubbleCarousel.stream;
   ValueStream<List<double>> get eventSkillGauge => _streamSkillGauge.stream;
 
   // Add event to streams
-  Function(String) get triggerBubbleCarousel => _streamBubbleCarousel.sink.add;
+  Function(ToolbarMenu) get triggerBubbleCarousel =>
+      _streamBubbleCarousel.sink.add;
   Function(List<double>) get triggerSkillGauge => _streamSkillGauge.sink.add;
 
   void dispose() {
