@@ -37,6 +37,7 @@ class AppStrings {
       "https://www.linkedin.com/in/benjamin-isra%C3%ABl-247b26124/";
   static const String GITHUB_URL = "https://github.com/adagioribbit";
   static const String INSTAGRAM_URL = "https://www.instagram.com/ben.7994";
+
   static const Map<String, String> LANGUAGE_SWITCH_IMAGE_PATH = {
     'fr': 'lib/assets/french_flag.png',
     'en': 'lib/assets/uk_flag.png',
@@ -54,6 +55,16 @@ class AppStrings {
   //  false: 'lib/assets/lune.png',
   //};
   static const String APP_TITLE = 'Benjamin Israël';
+  static const Map<String, String> APP_SUBTITLE = {
+    'fr': 'Analyste développeur',
+    'en': 'Software developer',
+  };
+
+  /// TOOLTIPS
+  static const Map<String, String> LANGUAGE_SWITCH_TOOLTIP = {
+    'fr': 'Switch to english',
+    'en': 'Afficher en français',
+  };
   static const Map<bool, Map<String, String>> DARK_MODE_TOOLTIP = {
     true: {
       'fr': 'Mode clair',
@@ -63,14 +74,6 @@ class AppStrings {
       'fr': 'Mode sombre',
       'en': 'Dark mode',
     },
-  };
-  static const Map<String, String> LANGUAGE_SWITCH_TOOLTIP = {
-    'fr': 'Switch to english',
-    'en': 'Afficher en français',
-  };
-  static const Map<String, String> APP_SUBTITLE = {
-    'fr': 'Analyste développeur',
-    'en': 'Software developer',
   };
   static const Map<String, String> LINKEDIN_TOOLTIP = {
     'fr': 'Me contacter sur LinkedIn',
@@ -96,6 +99,8 @@ class AppStrings {
     'fr': 'Expériences',
     'en': 'Work experience'
   };
+
+  /// MANILLA FOLDER CONTENT
   static const Map<String, String> MANILLAFOLDER_TITLE = {
     'fr': 'Dossier démo',
     'en': 'Demo book'
@@ -121,11 +126,24 @@ class AppStrings {
     'en': 'My latest posts on the gram'
   };
 
-  static const Map<String, String> LANGUAGES = {
+  /// BUBBLE CONTENT
+  static const Map<String, String> TITLE_PROJECT_DESCRIPTION = {
+    'fr': 'Projet',
+    'en': 'Project'
+  };
+  static const Map<String, String> TITLE_PROJECT_TASKS = {
+    'fr': 'Réalisations',
+    'en': 'Tasks'
+  };
+  static const Map<String, String> TITLE_LANGUAGES = {
     'fr': 'Langages',
     'en': 'Languages'
   };
-  static const Map<String, String> TOOLS = {'fr': 'Outils', 'en': 'Tools'};
+  static const Map<String, String> TITLE_TOOLS = {
+    'fr': 'Outils',
+    'en': 'Tools'
+  };
+
   static const Map<String, String> LEWAGON_PERIOD = {
     'fr': '\nJuillet 2024 à Septembre 2024',
     'en': '\nJuly to September 2024'
@@ -187,9 +205,179 @@ class AppStrings {
     'fr': [
       'Création de nouvelles interfaces utilisateurs à partir de l\'existant',
       'Intégration de différents modèles de portails 3D interactifs à l\'interface de programmation',
-      'Correction de dysfonctionnements\n● Correction de problèmes d\'affichage et extension de la compatibilité aux tablettes',
+      'Correction de dysfonctionnements',
+      'Correction de problèmes d\'affichage et extension de la compatibilité aux tablettes',
       'Mise à disposition des produits sur les plateformes en ligne et auprès des clients',
-      'Mise en place d\'un suivi de projet et d\'un système de gestion de versions\n● Assainissement de la base de code existante'
+      'Mise en place d\'un suivi de projet et d\'un système de gestion de versions',
+      'Assainissement de la base de code existante'
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> PRASTEL_CR15NM_PERIOD = {
+    'fr': '\nDécembre 2023',
+    'en': '\nDecember 2023'
+  };
+  static const Map<String, String> PRASTEL_CR15NM_PROJECT = {
+    'fr':
+        'Correction et mise à jour de l\'application Android CR15NM pour la calibration de cellules photo-réceptrices.',
+    'en': ''
+  };
+  static const Map<String, List<String>> PRASTEL_CR15NM_DESCRIPTION = {
+    'fr': [
+      "Recueil des nouveaux besoins",
+      "Validation fonctionnelle de la mise à jour sur un banc de tests dédié",
+      "Mise à disposition de la mise à jour sur Google Play"
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> PRASTEL_SITE_INTERNE_PERIOD = {
+    'fr': '\nSeptembre 2023',
+    'en': '\nSeptember 2023'
+  };
+  static const Map<String, String> PRASTEL_SITE_INTERNE_PROJECT = {
+    'fr':
+        'Refonte d\'un site web interne de gestion des licences clients pour les centrales d\'accès M200-BT et UNIK2E230-BT.',
+    'en': ''
+  };
+  static const Map<String, List<String>> PRASTEL_SITE_INTERNE_DESCRIPTION = {
+    'fr': [
+      "Analyse des dysfonctionnements du site web existant codé en WebDev",
+      "Recueil des nouveaux besoins",
+      "Réalisation d'un site équivalent avec une stack LAMP et des composants open source",
+      "Intégration de l'impression d'étiquettes produits"
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> AMILTONE_MIGRATION_PERIOD = {
+    'fr': '\nDécembre 2021 - Avril 2022',
+    'en': '\nDecember 2021 - April 2022'
+  };
+  static const Map<String, String> AMILTONE_MIGRATION_PROJECT = {
+    'fr':
+        'Préparation de la migration d\'une série d\'applications SharePoint 2013 et Access 2007 dans le cadre de la mise à jour d\'une infrastructure sous Windows Server.',
+    'en': ''
+  };
+  static const Map<String, List<String>> AMILTONE_MIGRATION_DESCRIPTION = {
+    'fr': [
+      'Analyse de l\'existant',
+      'Réalisation des tests de migration sur un ensemble de machines virtuelles',
+      'Résolution des problèmes de compatibilité rencontrés',
+      'Rédaction d\'une procédure de migration pour chacune des applications éligibles'
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> AMILTONE_IOT_PERIOD = {
+    'fr': '\nDécembre 2021 - Avril 2022',
+    'en': '\nDecember 2021 - April 2022'
+  };
+  static const Map<String, String> AMILTONE_IOT_PROJECT = {
+    'fr':
+        'Mise en place du traitement des données issues d\'un réseau de capteurs IoT LoRaWan.',
+    'en': ''
+  };
+  static const Map<String, List<String>> AMILTONE_IOT_DESCRIPTION = {
+    'fr': [
+      'Analyse et correction de la solution Python existante',
+      'Développement d\'un équivalent PowerShell',
+      'Réalisation d\'un test de charge comparatif des deux solutions'
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> AMILTONE_POWERBI_PERIOD = {
+    'fr': '\nMars 2022',
+    'en': '\nMarch 2022'
+  };
+  static const Map<String, String> AMILTONE_POWERBI_PROJECT = {
+    'fr':
+        'Création de tableaux de bord financiers à partir des bases de données client.',
+    'en': ''
+  };
+  static const Map<String, List<String>> AMILTONE_POWERBI_DESCRIPTION = {
+    'fr': [
+      'Recueil des besoins client',
+      'Création des traitements de données dans Power Query',
+      'Création des tableaux de bord dans Microsoft Power BI Desktop'
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> AMILTONE_WSO2_PERIOD = {
+    'fr': '\nOctobre 2021 - Novembre 2021',
+    'en': '\nOctober 2021 - November 2021'
+  };
+  static const Map<String, String> AMILTONE_WSO2_PROJECT = {
+    'fr': 'Test d\'évaluation de la solution WSO2 API Manager.',
+    'en': ''
+  };
+  static const Map<String, List<String>> AMILTONE_WSO2_DESCRIPTION = {
+    'fr': [
+      'Auto-formation sur l\'outil',
+      'Développement d\'une API interne de traitement des données Jira'
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> AMILTONE_ANDROID_PERIOD = {
+    'fr': '\nSeptembre 2021 - Octobre 2021',
+    'en': '\nSeptember 2021 - October 2021'
+  };
+  static const Map<String, String> AMILTONE_ANDROID_PROJECT = {
+    'fr':
+        'Maintenance corrective d\'applications Android grand public et professionnelles pour la factory mobile Amiltone.',
+    'en': ''
+  };
+  static const Map<String, List<String>> AMILTONE_ANDROID_DESCRIPTION = {
+    'fr': [
+      'Analyse et correction de bugs',
+      'Migration d\'une application vers AndroidX',
+      'Refonte partielle du front-end d\'une application'
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> EVOLUCARE_IMAGING_PERIOD = {
+    'fr': '\nOctobre 2017 - Septembre 2021',
+    'en': '\nOctober 2017 - September 2021'
+  };
+  static const Map<String, String> EVOLUCARE_IMAGING_PROJECT = {
+    'fr':
+        'Projet Evolucare Imaging d\'application web de gestion à destination des professionnels de l\'imagerie médicale (solution RIS et PACS).',
+    'en': ''
+  };
+  static const Map<String, List<String>> EVOLUCARE_IMAGING_DESCRIPTION = {
+    'fr': [
+      'Développement full-stack de nouvelles fonctionnalités à partir de maquettes',
+      'Mise en œuvre des normes DICOM / HL7 / SESAM-Vitale',
+      'Portage de composants externes sous MacOS',
+      'Création d\'interfaces vers des API externes REST (Doctolib, opérateurs SMS)',
+      'Implémentation du Dossier Médical Personnel (API SOAP)',
+      'Implémentation d\'un suivi patient par code barre',
+      'Création et mise à jour de documentations internes'
+    ],
+    'en': []
+  };
+
+  static const Map<String, String> EVOLUCARE_MOBILE_PERIOD = {
+    'fr': '\nOctobre 2017 - Septembre 2021',
+    'en': '\nOctober 2017 - September 2021'
+  };
+  static const Map<String, String> EVOLUCARE_MOBILE_PROJECT = {
+    'fr':
+        'Développement de l\'application mobile hybride Evolucare Imaging Mobile à destination des professionnels de l\'imagerie médicale.',
+    'en': ''
+  };
+  static const Map<String, List<String>> EVOLUCARE_MOBILE_DESCRIPTION = {
+    'fr': [
+      'Résoudre des dysfonctionnements sur le projet prototype',
+      'Implémentation de la refonte graphique du projet prototype',
+      'Développer de nouvelles fonctionnalités à partir de maquettes',
+      'Créer des plugins multiplateformes en code mobile natif',
+      'Créer et mettre à jour de la documentation interne'
     ],
     'en': []
   };

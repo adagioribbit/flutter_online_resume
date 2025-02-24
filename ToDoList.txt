@@ -1,10 +1,8 @@
 
+
 ============= TRAVAIL EN COURS ======================
 
 
-- LANGUES : Ajouter les titres de section
-- Ajuster la taille de la période
-- Ajuster la taille de la description du projet
 - Travailler la liste des réalisations
 - Traduire les nouvelles chaînes en anglais
 

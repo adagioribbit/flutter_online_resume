@@ -13,9 +13,8 @@ ValueListenableBuilder content_prastel_Mobile = ValueListenableBuilder(
     builder: (context, value, widget) {
       return WorkExperienceContent(
           periodDescription: AppStrings.PRASTEL_MOBILE_PERIOD[value],
-          projectTitle: AppStrings.PRASTEL_MOBILE_PROJECT[value],
-          projectDescription:
-              AppStrings.PRASTEL_MOBILE_DESCRIPTION[value]!.first,
+          projectDescription: AppStrings.PRASTEL_MOBILE_PROJECT[value],
+          projectTasks: AppStrings.PRASTEL_MOBILE_DESCRIPTION[value],
           boxBorderColor: Color.fromARGB(255, 1, 40, 91),
           boxShadowColor: Color.fromARGB(127, 1, 40, 91),
           employerHeader:
@@ -26,6 +25,9 @@ ValueListenableBuilder content_prastel_CR15NM = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
+          periodDescription: AppStrings.PRASTEL_CR15NM_PERIOD[value],
+          projectDescription: AppStrings.PRASTEL_CR15NM_PROJECT[value],
+          projectTasks: AppStrings.PRASTEL_CR15NM_DESCRIPTION[value],
           boxBorderColor: Color.fromARGB(255, 1, 40, 91),
           boxShadowColor: Color.fromARGB(127, 1, 40, 91),
           employerHeader:
@@ -36,6 +38,9 @@ ValueListenableBuilder content_prastel_site_interne = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
+          periodDescription: AppStrings.PRASTEL_SITE_INTERNE_PERIOD[value],
+          projectDescription: AppStrings.PRASTEL_SITE_INTERNE_PROJECT[value],
+          projectTasks: AppStrings.PRASTEL_SITE_INTERNE_DESCRIPTION[value],
           boxBorderColor: Color.fromARGB(255, 1, 40, 91),
           boxShadowColor: Color.fromARGB(127, 1, 40, 91),
           employerHeader:

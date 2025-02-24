@@ -79,7 +79,7 @@ class _EducationContentState extends State<EducationContent>
       content.add(ValueListenableBuilder(
           valueListenable: globals.appLanguage,
           builder: (context, value, widget) {
-            return Text(AppStrings.LANGUAGES[value].toString(),
+            return Text(AppStrings.TITLE_LANGUAGES[value].toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold));
           }));
@@ -97,7 +97,7 @@ class _EducationContentState extends State<EducationContent>
       content.add(ValueListenableBuilder(
           valueListenable: globals.appLanguage,
           builder: (context, value, widget) {
-            return Text(AppStrings.TOOLS[value].toString(),
+            return Text(AppStrings.TITLE_TOOLS[value].toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold));
           }));
