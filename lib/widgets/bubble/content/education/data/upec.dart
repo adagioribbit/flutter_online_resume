@@ -12,7 +12,7 @@ ValueListenableBuilder content_upec = ValueListenableBuilder(
       return EducationContent(
           boxShadowColor: Color.fromARGB(75, 231, 34, 48),
           boxBorderColor: Color.fromARGB(94, 231, 34, 48),
-          academicLogoAssetPath: "lib/assets/upec.png",
+          academicLogoAssetPath: "lib/assets/bubble_content/school/upec.png",
           periodDescription: AppStrings.UPEC_PERIOD[value],
           degreeDescription: AppStrings.UPEC_DEGREE,
           curriculumDescription: AppStrings.UPEC_CURRICULUM[value],

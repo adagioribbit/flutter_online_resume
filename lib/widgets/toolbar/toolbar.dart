@@ -71,19 +71,19 @@ class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
                     ToolbarButton(
                       idMenu: ToolbarMenu.btnEducation,
                       tooltip: AppStrings.EDUCATION_TOOLTIP[value],
-                      imageAssetPath: "lib/assets/bachelor_hat.png",
+                      imageAssetPath: "lib/assets/toolbar/bachelor_hat.png",
                       palette: educationButtonPalette,
                     ),
                     ToolbarButton(
                       idMenu: ToolbarMenu.btnSkillsSet,
                       tooltip: AppStrings.SKILL_SETS_TOOLTIP[value],
-                      imageAssetPath: "lib/assets/skills_set.png",
+                      imageAssetPath: "lib/assets/toolbar/skills_set.png",
                       palette: skillsSetButtonPalette,
                     ),
                     ToolbarButton(
                       idMenu: ToolbarMenu.btnWorkExperience,
                       tooltip: AppStrings.WORK_EXPERIENCE_TOOLTIP[value],
-                      imageAssetPath: "lib/assets/work_experience.png",
+                      imageAssetPath: "lib/assets/toolbar/work_experience.png",
                       palette: workExperienceButtonPalette,
                     ),
                   ],

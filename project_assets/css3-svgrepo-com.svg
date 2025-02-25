@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   height="512"
+   width="512"
+   aria-label="CSS3"
+   role="img"
+   viewBox="0 0 327.68 327.68"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="css3-svgrepo-com.svg"
+   inkscape:export-filename="css3.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.97125"
+     inkscape:cx="305.79151"
+     inkscape:cy="347.49035"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="1341"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <rect
+     width="327.67999"
+     height="327.67999"
+     rx="9.6000004%"
+     fill="#ffffff"
+     id="rect1-4"
+     inkscape:export-filename="rect1.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96"
+     x="0"
+     y="0"
+     style="stroke-width:0.64;fill:#ffffff;fill-opacity:0" />
+  <g
+     id="g1"
+     transform="matrix(0.63809868,0,0,0.63809868,0.8057836,0.48673426)"
+     inkscape:export-filename="..\PNG\css3.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96">
+    <path
+       fill="#264de4"
+       d="M 72,460 30,0 h 451 l -41,460 -184,52"
+       id="path1" />
+    <path
+       fill="#2965f1"
+       d="M 256,37 V 472 L 405,431 440,37"
+       id="path2" />
+    <path
+       fill="#ebebeb"
+       d="m 114,94 h 142 v 56 H 119 m 5,58 h 132 v 57 H 129 m 3,28 h 56 l 4,45 64,17 v 59 L 139,382"
+       id="path3" />
+    <path
+       fill="#ffffff"
+       d="m 256,208 v 57 h 69 l -7,73 -62,17 v 59 L 371,382 397,94 H 256 v 56 h 80 l -5.5,58 z"
+       id="path4" />
+  </g>
+</svg>

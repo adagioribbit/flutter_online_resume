@@ -16,7 +16,8 @@ ValueListenableBuilder content_evolucare_imaging = ValueListenableBuilder(
           boxBorderColor: Color.fromARGB(255, 235, 90, 15),
           boxShadowColor: Color.fromARGB(127, 235, 90, 15),
           employerHeader: EmployerHeader(
-              employerLogoAssetPath: "lib/assets/evolucare.png"));
+              employerLogoAssetPath:
+                  "lib/assets/bubble_content/employer/evolucare.png"));
     });
 
 ValueListenableBuilder content_evolucare_mobile = ValueListenableBuilder(
@@ -29,5 +30,6 @@ ValueListenableBuilder content_evolucare_mobile = ValueListenableBuilder(
           boxBorderColor: Color.fromARGB(255, 235, 90, 15),
           boxShadowColor: Color.fromARGB(127, 235, 90, 15),
           employerHeader: EmployerHeader(
-              employerLogoAssetPath: "lib/assets/evolucare.png"));
+              employerLogoAssetPath:
+                  "lib/assets/bubble_content/employer/evolucare.png"));
     });

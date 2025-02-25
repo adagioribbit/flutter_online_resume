@@ -74,11 +74,11 @@ class _WigglingButtonState extends State<WigglingButton>
 
   String getIcon() {
     if (!isTouchedOnce) {
-      return "lib/assets/callme_sign_shadowed.png";
+      return "lib/assets/appbar/callme_sign_shadowed.png";
     } else if (widget.isInflated) {
-      return "lib/assets/love_you_sign_shadowed.png";
+      return "lib/assets/appbar/love_you_sign_shadowed.png";
     } else {
-      return "lib/assets/pointing_left_sign_shadowed.png";
+      return "lib/assets/appbar/pointing_left_sign_shadowed.png";
     }
   }
 

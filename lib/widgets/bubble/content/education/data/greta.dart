@@ -12,7 +12,8 @@ ValueListenableBuilder content_greta = ValueListenableBuilder(
       return EducationContent(
           boxShadowColor: Color.fromARGB(76, 87, 112, 190),
           boxBorderColor: Color.fromARGB(94, 87, 112, 190),
-          academicLogoAssetPath: "lib/assets/greta_94.png",
+          academicLogoAssetPath:
+              "lib/assets/bubble_content/school/greta_94.png",
           periodDescription: AppStrings.GRETA_PERIOD[value],
           degreeDescription: AppStrings.GRETA_DEGREE,
           curriculumDescription: AppStrings.GRETA_CURRICULUM[value],

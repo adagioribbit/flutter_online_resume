@@ -12,7 +12,7 @@ ValueListenableBuilder content_lewagon = ValueListenableBuilder(
       return EducationContent(
           boxShadowColor: Color.fromARGB(76, 255, 0, 0),
           boxBorderColor: Color.fromARGB(94, 255, 0, 0),
-          academicLogoAssetPath: "lib/assets/lewagon.png",
+          academicLogoAssetPath: "lib/assets/bubble_content/school/lewagon.png",
           periodDescription: AppStrings.LEWAGON_PERIOD[value],
           degreeDescription: AppStrings.LEWAGON_DEGREE,
           curriculumDescription: AppStrings.LEWAGON_CURRICULUM[value],

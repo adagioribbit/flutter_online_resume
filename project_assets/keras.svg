@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512mm"
+   height="512mm"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="keras.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.17304819"
+     inkscape:cx="-63.566108"
+     inkscape:cy="1655.6082"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="1341"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs1" /><g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-41.843616,-77.727745)"><rect
+       style="fill:#d00000;fill-opacity:1;stroke:none;stroke-width:1.13181;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:692.411;stroke-opacity:1"
+       id="rect1"
+       width="512"
+       height="512"
+       x="41.843616"
+       y="77.727745" /><path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.13181;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:692.411;stroke-opacity:1"
+       d="m 193.42067,187.90845 30.3586,-0.29185 4.00962,4.66756 0.5728,132.88033 134.46566,-137.25617 h 41.0987 l 3.72321,7.73068 -106.8279,108.81309 114.13115,168.61653 -4.15283,7.73069 -39.52346,-0.14593 -98.23584,-148.04997 -44.82189,45.21724 0.14322,98.16513 -4.58242,4.37588 -29.21299,0.29185 -5.01204,-4.6676 V 192.72184 Z"
+       id="path2"
+       inkscape:export-filename="..\PNG\keras.png"
+       inkscape:export-xdpi="25.4"
+       inkscape:export-ydpi="25.4" /></g></svg>

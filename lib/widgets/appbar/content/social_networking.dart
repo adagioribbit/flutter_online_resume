@@ -33,7 +33,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
         hoverColor: ColorChart.linkedInButtonShadowHovered,
         constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
         icon: Image(
-          image: AssetImage("lib/assets/linkedin.png"),
+          image: AssetImage("lib/assets/appbar/linkedin.png"),
           fit: BoxFit.fill,
         ),
         tooltip: AppStrings.LINKEDIN_TOOLTIP[value],
@@ -51,7 +51,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
         hoverColor: ColorChart.githubButtonShadowHovered,
         constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
         icon: Image(
-          image: AssetImage("lib/assets/github.png"),
+          image: AssetImage("lib/assets/appbar/github.png"),
           fit: BoxFit.fill,
         ),
         tooltip: AppStrings.GITHUB_TOOLTIP[value],
@@ -69,7 +69,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
         hoverColor: ColorChart.instagralButtonShadowHovered,
         constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
         icon: Image(
-          image: AssetImage("lib/assets/instagram.png"),
+          image: AssetImage("lib/assets/appbar/instagram.png"),
           fit: BoxFit.fill,
         ),
         tooltip: AppStrings.INSTAGRAM_TOOLTIP[value],

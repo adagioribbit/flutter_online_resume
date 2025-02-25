@@ -39,20 +39,20 @@ class AppStrings {
   static const String INSTAGRAM_URL = "https://www.instagram.com/ben.7994";
 
   static const Map<String, String> LANGUAGE_SWITCH_IMAGE_PATH = {
-    'fr': 'lib/assets/french_flag.png',
-    'en': 'lib/assets/uk_flag.png',
+    'fr': 'lib/assets/appbar/french_flag.png',
+    'en': 'lib/assets/appbar/uk_flag.png',
   };
   static const Map<bool, String> DARK_MODE_IMAGE_PATH = {
-    true: 'lib/assets/clair.png',
-    false: 'lib/assets/sombre.png',
+    true: 'lib/assets/appbar/clair.png',
+    false: 'lib/assets/appbar/sombre.png',
   };
   //static const Map<bool, String> DARK_MODE_IMAGE_PATH = {
-  //  true: 'lib/assets/diurne.png',
-  //  false: 'lib/assets/nocturne.png',
+  //  true: 'lib/assets/appbar/diurne.png',
+  //  false: 'lib/assets/appbar/nocturne.png',
   //};
   //static const Map<bool, String> DARK_MODE_IMAGE_PATH = {
-  //  true: 'lib/assets/soleil.png',
-  //  false: 'lib/assets/lune.png',
+  //  true: 'lib/assets/appbar/soleil.png',
+  //  false: 'lib/assets/appbar/lune.png',
   //};
   static const String APP_TITLE = 'Benjamin Israël';
   static const Map<String, String> APP_SUBTITLE = {

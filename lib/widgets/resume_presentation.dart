@@ -46,7 +46,7 @@ class _ResumePresentationState extends State<ResumePresentation>
           ..setEntry(1, 1, 4 * scaleFactorRatio),
         child: Image(
             height: 100 * scaleFactorRatio,
-            image: AssetImage("lib/assets/vitruve.png")));
+            image: AssetImage("lib/assets/toolbar/vitruve.png")));
 
     Transform naughty = Transform(
         alignment: FractionalOffset.center,
@@ -61,7 +61,7 @@ class _ResumePresentationState extends State<ResumePresentation>
           ..setEntry(1, 1, 45 * scaleFactorRatio),
         child: Image(
             height: 5 * scaleFactorRatio,
-            image: AssetImage("lib/assets/naughty.png")));
+            image: AssetImage("lib/assets/toolbar/naughty.png")));
 
     ValueListenableBuilder boredom = ValueListenableBuilder(
         valueListenable: globals.appLanguage,
@@ -124,7 +124,7 @@ class _ResumePresentationState extends State<ResumePresentation>
           ..setEntry(1, 1, 2.5 * scaleFactorRatio),
         child: Image(
             width: 200 * scaleFactorRatio,
-            image: AssetImage("lib/assets/blue_manga_crow.png")));
+            image: AssetImage("lib/assets/toolbar/blue_manga_crow.png")));
 
     ValueListenableBuilder callToAction = ValueListenableBuilder(
         valueListenable: globals.appLanguage,

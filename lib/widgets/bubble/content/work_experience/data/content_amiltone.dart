@@ -15,8 +15,9 @@ ValueListenableBuilder content_amiltone_migration = ValueListenableBuilder(
           projectTasks: AppStrings.AMILTONE_MIGRATION_DESCRIPTION[value],
           boxBorderColor: Color.fromARGB(255, 206, 48, 137),
           boxShadowColor: Color.fromARGB(127, 206, 48, 137),
-          employerHeader:
-              EmployerHeader(employerLogoAssetPath: "lib/assets/amiltone.png"));
+          employerHeader: EmployerHeader(
+              employerLogoAssetPath:
+                  "lib/assets/bubble_content/employer/amiltone.png"));
     });
 
 ValueListenableBuilder content_amiltone_iot = ValueListenableBuilder(
@@ -28,8 +29,9 @@ ValueListenableBuilder content_amiltone_iot = ValueListenableBuilder(
           projectTasks: AppStrings.AMILTONE_IOT_DESCRIPTION[value],
           boxBorderColor: Color.fromARGB(255, 206, 48, 137),
           boxShadowColor: Color.fromARGB(127, 206, 48, 137),
-          employerHeader:
-              EmployerHeader(employerLogoAssetPath: "lib/assets/amiltone.png"));
+          employerHeader: EmployerHeader(
+              employerLogoAssetPath:
+                  "lib/assets/bubble_content/employer/amiltone.png"));
     });
 
 ValueListenableBuilder content_amiltone_powerbi = ValueListenableBuilder(
@@ -41,8 +43,9 @@ ValueListenableBuilder content_amiltone_powerbi = ValueListenableBuilder(
           projectTasks: AppStrings.AMILTONE_POWERBI_DESCRIPTION[value],
           boxBorderColor: Color.fromARGB(255, 206, 48, 137),
           boxShadowColor: Color.fromARGB(127, 206, 48, 137),
-          employerHeader:
-              EmployerHeader(employerLogoAssetPath: "lib/assets/amiltone.png"));
+          employerHeader: EmployerHeader(
+              employerLogoAssetPath:
+                  "lib/assets/bubble_content/employer/amiltone.png"));
     });
 
 ValueListenableBuilder content_amiltone_wso2 = ValueListenableBuilder(
@@ -54,8 +57,9 @@ ValueListenableBuilder content_amiltone_wso2 = ValueListenableBuilder(
           projectTasks: AppStrings.AMILTONE_WSO2_DESCRIPTION[value],
           boxBorderColor: Color.fromARGB(255, 206, 48, 137),
           boxShadowColor: Color.fromARGB(127, 206, 48, 137),
-          employerHeader:
-              EmployerHeader(employerLogoAssetPath: "lib/assets/amiltone.png"));
+          employerHeader: EmployerHeader(
+              employerLogoAssetPath:
+                  "lib/assets/bubble_content/employer/amiltone.png"));
     });
 
 ValueListenableBuilder content_amiltone_android = ValueListenableBuilder(
@@ -67,6 +71,7 @@ ValueListenableBuilder content_amiltone_android = ValueListenableBuilder(
           projectTasks: AppStrings.AMILTONE_ANDROID_DESCRIPTION[value],
           boxBorderColor: Color.fromARGB(255, 206, 48, 137),
           boxShadowColor: Color.fromARGB(127, 206, 48, 137),
-          employerHeader:
-              EmployerHeader(employerLogoAssetPath: "lib/assets/amiltone.png"));
+          employerHeader: EmployerHeader(
+              employerLogoAssetPath:
+                  "lib/assets/bubble_content/employer/amiltone.png"));
     });

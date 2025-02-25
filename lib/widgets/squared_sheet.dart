@@ -53,7 +53,8 @@ class _SquaredSheetState extends State<SquaredSheet>
               ),
               child: Stack(children: [
                 Image(
-                    image: AssetImage("lib/assets/blank_squared_sheet.png"),
+                    image: AssetImage(
+                        "lib/assets/resume_presentation/blank_squared_sheet.png"),
                     fit: BoxFit.cover,
                     alignment: Alignment.topLeft
                     // Cover = léger resize, mais sûrement du aux marges

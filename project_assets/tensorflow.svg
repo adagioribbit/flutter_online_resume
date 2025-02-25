@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="tensorflow.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   width="512"
+   height="512"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8">
+    <clipPath
+       id="SVGID_2_">
+      <use
+         xlink:href="#SVGID_1_"
+         overflow="visible"
+         id="use1" />
+    </clipPath>
+    <linearGradient
+       id="SVGID_3_"
+       gradientUnits="userSpaceOnUse"
+       x1="-1.6"
+       y1="335.04999"
+       x2="53.599998"
+       y2="335.04999"
+       gradientTransform="translate(0,-304)">
+      <stop
+         offset="0"
+         stop-color="#ff6f00"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#ffa800"
+         id="stop2" />
+    </linearGradient>
+    <clipPath
+       id="SVGID_5_">
+      <use
+         xlink:href="#SVGID_4_"
+         overflow="visible"
+         id="use4" />
+    </clipPath>
+    <linearGradient
+       id="SVGID_6_"
+       gradientUnits="userSpaceOnUse"
+       x1="-1.9"
+       y1="335.04999"
+       x2="53.299999"
+       y2="335.04999"
+       gradientTransform="translate(0,-304)">
+      <stop
+         offset="0"
+         stop-color="#ff6f00"
+         id="stop4" />
+      <stop
+         offset="1"
+         stop-color="#ffa800"
+         id="stop5" />
+    </linearGradient>
+    <path
+       id="SVGID_1_"
+       d="M 47.5,17.6 25,4.8 v 52.6 l 9,-5.2 V 37.4 L 40.8,41.3 40.7,31.2 34,27.3 v -5.9 l 13.5,7.9 z" />
+    <path
+       id="SVGID_4_"
+       d="M 0.5,17.6 23,4.8 V 57.4 L 14,52.2 V 21.4 L 0.5,29.3 Z" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.2658695"
+     inkscape:cx="335.73762"
+     inkscape:cy="261.87534"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="1341"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <rect
+     width="512"
+     height="512"
+     rx="15.000004%"
+     fill="#f7df1e"
+     id="rect1"
+     x="0"
+     y="0"
+     style="fill:#f7ffff;fill-opacity:0;stroke-width:0.999994"
+     inkscape:export-filename="..\PNG\tensorflow.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <g
+     id="g11"
+     transform="matrix(1.5034592,0,0,1.5034592,-267.43744,51.992262)"
+     inkscape:export-filename="..\PNG\tensorflow.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96">
+    <g
+       id="g10"
+       transform="translate(-2.8248829,14.385537)">
+      <g
+         id="g4"
+         transform="matrix(6.4732266,0,0,6.4732266,195.62284,-80.010654)">
+        <g
+           id="g3">
+          <defs
+             id="defs2">
+            <path
+               id="path9"
+               d="M 47.5,17.6 25,4.8 v 52.6 l 9,-5.2 V 37.4 L 40.8,41.3 40.7,31.2 34,27.3 v -5.9 l 13.5,7.9 z" />
+          </defs>
+          <clipPath
+             id="clipPath2">
+            <use
+               xlink:href="#SVGID_1_"
+               overflow="visible"
+               id="use2" />
+          </clipPath>
+          <g
+             clip-path="url(#SVGID_2_)"
+             id="g2">
+            <linearGradient
+               id="linearGradient6"
+               gradientUnits="userSpaceOnUse"
+               x1="-1.6"
+               y1="335.04999"
+               x2="53.599998"
+               y2="335.04999"
+               gradientTransform="translate(0,-304)">
+              <stop
+                 offset="0"
+                 stop-color="#ff6f00"
+                 id="stop3" />
+              <stop
+                 offset="1"
+                 stop-color="#ffa800"
+                 id="stop6" />
+            </linearGradient>
+            <path
+               d="M -1.6,4.6 H 53.6 V 57.5 H -1.6 Z"
+               fill="url(#SVGID_3_)"
+               id="path2"
+               style="fill:url(#SVGID_3_)" />
+          </g>
+        </g>
+      </g>
+      <g
+         id="g7"
+         transform="matrix(6.4732266,0,0,6.4732266,195.62284,-80.010654)">
+        <g
+           id="g6">
+          <defs
+             id="defs4">
+            <path
+               id="path10"
+               d="M 0.5,17.6 23,4.8 V 57.4 L 14,52.2 V 21.4 L 0.5,29.3 Z" />
+          </defs>
+          <clipPath
+             id="clipPath6">
+            <use
+               xlink:href="#SVGID_4_"
+               overflow="visible"
+               id="use6" />
+          </clipPath>
+          <g
+             clip-path="url(#SVGID_5_)"
+             id="g5">
+            <linearGradient
+               id="linearGradient8"
+               gradientUnits="userSpaceOnUse"
+               x1="-1.9"
+               y1="335.04999"
+               x2="53.299999"
+               y2="335.04999"
+               gradientTransform="translate(0,-304)">
+              <stop
+                 offset="0"
+                 stop-color="#ff6f00"
+                 id="stop7" />
+              <stop
+                 offset="1"
+                 stop-color="#ffa800"
+                 id="stop8" />
+            </linearGradient>
+            <path
+               d="M -1.9,4.6 H 53.3 V 57.5 H -1.9 Z"
+               fill="url(#SVGID_6_)"
+               id="path5"
+               style="fill:url(#SVGID_6_)" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

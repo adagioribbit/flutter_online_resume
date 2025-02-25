@@ -18,7 +18,7 @@ ValueListenableBuilder content_prastel_Mobile = ValueListenableBuilder(
           boxBorderColor: Color.fromARGB(255, 1, 40, 91),
           boxShadowColor: Color.fromARGB(127, 1, 40, 91),
           employerHeader:
-              EmployerHeader(employerLogoAssetPath: "lib/assets/prastel.png"));
+              EmployerHeader(employerLogoAssetPath: "lib/assets/bubble_content/employer/prastel.png"));
     });
 
 ValueListenableBuilder content_prastel_CR15NM = ValueListenableBuilder(
@@ -31,7 +31,7 @@ ValueListenableBuilder content_prastel_CR15NM = ValueListenableBuilder(
           boxBorderColor: Color.fromARGB(255, 1, 40, 91),
           boxShadowColor: Color.fromARGB(127, 1, 40, 91),
           employerHeader:
-              EmployerHeader(employerLogoAssetPath: "lib/assets/prastel.png"));
+              EmployerHeader(employerLogoAssetPath: "lib/assets/bubble_content/employer/prastel.png"));
     });
 
 ValueListenableBuilder content_prastel_site_interne = ValueListenableBuilder(
@@ -44,5 +44,5 @@ ValueListenableBuilder content_prastel_site_interne = ValueListenableBuilder(
           boxBorderColor: Color.fromARGB(255, 1, 40, 91),
           boxShadowColor: Color.fromARGB(127, 1, 40, 91),
           employerHeader:
-              EmployerHeader(employerLogoAssetPath: "lib/assets/prastel.png"));
+              EmployerHeader(employerLogoAssetPath: "lib/assets/bubble_content/employer/prastel.png"));
     });
