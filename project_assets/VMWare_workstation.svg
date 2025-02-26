@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   preserveAspectRatio="none"
+   x="0px"
+   y="0px"
+   width="512"
+   height="511.99997"
+   viewBox="0 0 512 511.99997"
+   id="svg14"
+   sodipodi:docname="VMWare_workstation.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview14"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.45481951"
+     inkscape:cx="46.172162"
+     inkscape:cy="440.83421"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="1341"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <defs
+     id="defs1" />
+  <g
+     id="_____1"
+     transform="matrix(0.84290286,0,0,0.84290286,0.98609828,1.4429516)">
+    <g
+       id="______________"
+       transform="matrix(2.0140076,0,0,2.0140076,-5.5,0)">
+      <g
+         id="g4">
+        <g
+           id="g2">
+          <g
+             id="g1">
+            <path
+               fill="#f38b00"
+               stroke="none"
+               d="m 168.45,116.9 q 12.95,3.95 16.95,16.95 v 48.45 h 38.35 v -0.05 h 5.9 v -0.1 h 0.55 v -82.2 q -6.6,-21.45 -27.95,-28 H 30.6 q -21.3544922,6.525 -27.95,28 v 172.8 q 6.6,21.45 28.55,27.15 h 170.45 q 21.95,-5.7 28.55,-27.15 V 227.7 h -44.8 v 10.85 q -4,13 -17.3,16.45 h 1.15 -1.15 -103.3 -1.2 1.2 Q 51.5,251.55 47.5,238.55 v -104.7 q 4,-13 16.95,-16.95 z"
+               id="path1" />
+          </g>
+        </g>
+        <g
+           id="g3">
+          <path
+             stroke="#f28c00"
+             stroke-width="1"
+             stroke-linejoin="round"
+             stroke-linecap="round"
+             fill="none"
+             d="M 64.8,255 Q 51.5,251.55 47.5,238.55 v -104.7 q 4,-13 16.95,-16.95 h 104 q 12.95,3.95 16.95,16.95 v 48.45 m 44.8,-0.15 v -82.2 q -6.6,-21.45 -27.95,-28 H 30.6 q -21.3544922,6.525 -27.95,28 v 172.8 q 6.6,21.45 28.55,27.15 h 170.45 q 21.95,-5.7 28.55,-27.15 V 227.7 m -44.8,0 v 10.85 q -4,13 -17.3,16.45 h 1.15 M 63.6,255 h 1.2 103.3 M 29.25,299.9 h 1.95 m 170.45,0 h 1.95"
+             id="path2" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g9"
+       transform="matrix(2.0140076,0,0,2.0140076,-5.5,0)">
+      <g
+         id="g8">
+        <g
+           id="g6">
+          <g
+             id="g5">
+            <path
+               fill="#0097d3"
+               stroke="none"
+               d="M 303.25,28 Q 296.65,6.55 275.3,0 H 103.65 Q 82.3,6.55 75.7,28 v 43.95 h 44.8 V 61.9 q 4,-13 16.95,-16.95 h 104 Q 254.4,48.9 258.4,61.9 v 104.7 q -4,13 -17.3,16.45 h 1.2 -1.2 -103.3 -1.15 1.15 Q 124.5,179.6 120.5,166.6 V 116.9 H 75.7 v 83.9 q 6.6,21.45 28.55,27.15 H 274.7 q 21.95,-5.7 28.55,-27.15 z"
+               id="path4" />
+          </g>
+        </g>
+        <g
+           id="g7">
+          <path
+             stroke="#0097d3"
+             stroke-width="1"
+             stroke-linejoin="round"
+             stroke-linecap="round"
+             fill="none"
+             d="m 75.7,116.9 v 83.9 q 6.6,21.45 28.55,27.15 H 274.7 q 21.95,-5.7 28.55,-27.15 V 28 Q 296.65,6.55 275.3,0 H 103.65 Q 82.3,6.55 75.7,28 v 43.95 m 44.8,0 V 61.9 q 4,-13 16.95,-16.95 h 104 Q 254.4,48.9 258.4,61.9 v 104.7 q -4,13 -17.3,16.45 h 1.2 m -104.5,0 h -1.15 M 120.5,116.9 v 49.7 q 4,13 17.3,16.45 h 103.3 m -136.85,44.9 h -1.95 m 174.35,0 h -1.95"
+             id="path6" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="____"
+       transform="matrix(2.0140076,0,0,2.0140076,-5.5,0)">
+      <g
+         id="g14">
+        <g
+           id="g11">
+          <g
+             id="g10">
+            <path
+               fill="#c96d00"
+               stroke="none"
+               d="m 230.2,246.9 v -19.2 l -42.25,0.25 z"
+               id="path9" />
+            <path
+               fill="#0077a9"
+               stroke="none"
+               d="m 75.7,118.15 v 18 l 42.75,-18.2 z"
+               id="path10" />
+          </g>
+        </g>
+        <g
+           id="g12">
+          <path
+             stroke="#0077a9"
+             stroke-width="1"
+             stroke-linejoin="round"
+             stroke-linecap="round"
+             fill="none"
+             d="m 118.45,117.95 -42.75,18.2 v -18 z"
+             id="path11" />
+        </g>
+        <g
+           id="g13">
+          <path
+             stroke="#c96d00"
+             stroke-width="1"
+             stroke-linejoin="round"
+             stroke-linecap="round"
+             fill="none"
+             d="M 187.95,227.95 230.2,246.9 V 227.7 Z"
+             id="path12" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <rect
+     width="511.99997"
+     height="511.99997"
+     rx="15.000002%"
+     fill="#ffffff"
+     id="rect1"
+     style="fill:#ffffff;fill-opacity:0;stroke-width:1"
+     x="1.260417e-05"
+     y="0"
+     inkscape:export-filename="..\PNG\vmware_workstation.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+</svg>

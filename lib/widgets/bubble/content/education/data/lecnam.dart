@@ -1,5 +1,6 @@
 import 'dart:ui' show Color;
 
+import 'package:dossier_de_competences_web/widgets/badge.dart';
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
@@ -17,6 +18,24 @@ ValueListenableBuilder content_lecnam = ValueListenableBuilder(
           periodDescription: AppStrings.LECNAM_PERIOD[value],
           degreeDescription: AppStrings.LECNAM_DEGREE,
           curriculumDescription: AppStrings.LECNAM_CURRICULUM[value],
-          languages: "UML, SQL, C, Java,\nHTML5, CSS3, PHP5, JavaScript ES5",
-          tools: "Linux, PhpMyAdmin, NetBeans,\nAndroid Studio, Docker");
+          languages: [
+            badgeUML,
+            badgeSQL,
+            badgeCplusplus,
+            badgePhp,
+            badgeJava,
+            badgeHtml5,
+            badgeCSS3,
+            badgeJavascript,
+            badgeJson
+          ],
+          tools: [
+            badgeDebian,
+            badgeChrome,
+            badgeMySQL,
+            badgeAndroidStudio,
+            badgeNetBeans,
+            badgeBash,
+            badgeDocker
+          ]);
     });

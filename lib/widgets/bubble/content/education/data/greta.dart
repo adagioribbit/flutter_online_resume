@@ -1,5 +1,23 @@
 import 'dart:ui' show Color;
 
+import 'package:dossier_de_competences_web/widgets/badge.dart'
+    show
+        badgeCSS3,
+        badgeChrome,
+        badgeGoogleDocs,
+        badgeHtml5,
+        badgeJavascript,
+        badgeJson,
+        badgeMySQL,
+        badgePhp,
+        badgePhpMyAdmin,
+        badgePython,
+        badgeSQL,
+        badgeSlack,
+        badgeTrello,
+        badgeVMWareWorkstation,
+        badgeWindows,
+        badgeWordpress;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
@@ -17,7 +35,24 @@ ValueListenableBuilder content_greta = ValueListenableBuilder(
           periodDescription: AppStrings.GRETA_PERIOD[value],
           degreeDescription: AppStrings.GRETA_DEGREE,
           curriculumDescription: AppStrings.GRETA_CURRICULUM[value],
-          languages:
-              "Python, HTML5, CSS3, PHP5, JavaScript ES5,\nSQL, Google Apps Script",
-          tools: "WordPress, PHPMyAdmin,\nVMWare Workstation, Google Docs");
+          languages: [
+            badgePython,
+            badgeHtml5,
+            badgeCSS3,
+            badgeJavascript,
+            badgeJson,
+            badgePhp,
+            badgeSQL
+          ],
+          tools: [
+            badgeWordpress,
+            badgeWindows,
+            badgeChrome,
+            badgeMySQL,
+            badgePhpMyAdmin,
+            badgeVMWareWorkstation,
+            badgeGoogleDocs,
+            badgeSlack,
+            badgeTrello,
+          ]);
     });

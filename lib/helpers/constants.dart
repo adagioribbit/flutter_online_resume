@@ -160,7 +160,7 @@ class AppStrings {
     'fr': '\nSeptembre 2016 à Juillet 2017 ',
     'en': '\nSeptember 2016 to July 2017'
   };
-  static const String LECNAM_DEGREE = '\nLicence Professionnelle ACSID – OLAP';
+  static const String LECNAM_DEGREE = '\nLicence Professionnelle\nACSID – OLAP';
   static const Map<String, String> LECNAM_CURRICULUM = {
     'fr':
         'Axée principalement sur l\'apprentissage de l\'exploitation statistique de bases de données relationnelles, cette formation m\'a permis d\'acquérir des bases solides en modélisation UML et en optimisation de schémas et de requêtes SQL, mais également de découvrir les langages C et Java ainsi que les techniques et outils nécessaires au développement d\'applications web et Android, et au DevOps avec le scripting Shell et Docker.',

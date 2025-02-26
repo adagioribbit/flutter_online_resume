@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="135.46666mm"
+   height="135.46666mm"
+   viewBox="0 0 135.46666 135.46666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="Confluence.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.69219276"
+     inkscape:cx="329.38802"
+     inkscape:cy="46.952239"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="1341"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linear-gradient"
+       x1="59.68"
+       y1="67.650002"
+       x2="20.35"
+       y2="45.049999"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0.18"
+         stop-color="#0052cc"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#2684ff"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient-2"
+       x1="279.76001"
+       y1="-1616.34"
+       x2="240.42"
+       y2="-1638.95"
+       gradientTransform="matrix(-0.26458333,0,0,-0.26458333,305.03251,-242.39506)"
+       xlink:href="#linear-gradient" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linear-gradient"
+       id="linearGradient5"
+       gradientUnits="userSpaceOnUse"
+       x1="59.68"
+       y1="67.650002"
+       x2="20.35"
+       y2="45.049999"
+       gradientTransform="matrix(0.26458333,0,0,0.26458333,230.20041,185.35946)" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-201.61251,-136.25699)">
+    <g
+       id="g1"
+       transform="matrix(8.1466928,0,0,8.1466928,-1673.6543,-1378.551)">
+      <path
+         class="cls-2"
+         d="m 230.79043,198.46427 c -0.17198,0.28046 -0.36512,0.6059 -0.52917,0.86519 a 0.52916666,0.52916666 0 0 0 0.17727,0.71967 l 3.43959,2.11666 a 0.52916666,0.52916666 0 0 0 0.73289,-0.17991 c 0.13759,-0.23019 0.31486,-0.52917 0.508,-0.84932 1.36261,-2.24895 2.73315,-1.97379 5.20436,-0.79375 l 3.41048,1.6219 a 0.52916666,0.52916666 0 0 0 0.71173,-0.26458 l 1.63777,-3.70417 a 0.52916666,0.52916666 0 0 0 -0.26459,-0.69321 c -0.71966,-0.33867 -2.15106,-1.01335 -3.43958,-1.63512 -4.6355,-2.25161 -8.57515,-2.10609 -11.58875,2.79664 z"
+         id="path12"
+         style="fill:url(#linearGradient5);stroke-width:0.264583" />
+      <path
+         class="cls-3"
+         d="m 246.21299,190.05846 c 0.17198,-0.28046 0.36513,-0.6059 0.52917,-0.86519 a 0.52916666,0.52916666 0 0 0 -0.17727,-0.71966 l -3.43958,-2.11667 a 0.52916666,0.52916666 0 0 0 -0.75407,0.17462 c -0.13758,0.23019 -0.31485,0.52917 -0.508,0.84932 -1.3626,2.24895 -2.73314,1.97379 -5.20435,0.79375 l -3.3999,-1.61396 a 0.52916666,0.52916666 0 0 0 -0.71173,0.26458 l -1.63777,3.70417 a 0.52916666,0.52916666 0 0 0 0.26459,0.69321 c 0.71966,0.33866 2.15106,1.01335 3.43958,1.63512 4.64608,2.24896 8.58573,2.09815 11.59933,-2.79929 z"
+         id="path13"
+         style="fill:url(#linear-gradient-2);stroke-width:0.264583" />
+    </g>
+    <rect
+       width="135.46666"
+       height="135.46666"
+       rx="3.9687507%"
+       fill="#ffffff"
+       id="rect1"
+       style="fill:#ffffff;fill-opacity:0;stroke-width:0.264583"
+       x="201.61252"
+       y="136.25699"
+       inkscape:export-filename="..\PNG\confluence.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

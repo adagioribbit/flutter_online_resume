@@ -87,48 +87,92 @@ flutter:
     - lib/assets/bubble_content/school/le_cnam_paris.png
     - lib/assets/bubble_content/school/lewagon.png
     - lib/assets/bubble_content/school/upec.png
+    - lib/assets/bubble_content/skill_badge/access.png
     - lib/assets/bubble_content/skill_badge/adobe.png
     - lib/assets/bubble_content/skill_badge/android.png
+    - lib/assets/bubble_content/skill_badge/android_studio.png
+    - lib/assets/bubble_content/skill_badge/apache_server.png
+    - lib/assets/bubble_content/skill_badge/appstore.png
     - lib/assets/bubble_content/skill_badge/angular.png
+    - lib/assets/bubble_content/skill_badge/bash.png
+    - lib/assets/bubble_content/skill_badge/blender.png
     - lib/assets/bubble_content/skill_badge/bluetooth.png
+    - lib/assets/bubble_content/skill_badge/bootstrap.png
     - lib/assets/bubble_content/skill_badge/chrome.png
     - lib/assets/bubble_content/skill_badge/colaboratory.png
+    - lib/assets/bubble_content/skill_badge/confluence.png
+    - lib/assets/bubble_content/skill_badge/cordova.png
     - lib/assets/bubble_content/skill_badge/cplusplus.png
+    - lib/assets/bubble_content/skill_badge/csharp.png
     - lib/assets/bubble_content/skill_badge/css3.png
+    - lib/assets/bubble_content/skill_badge/dbeaver.png
     - lib/assets/bubble_content/skill_badge/debian.png
     - lib/assets/bubble_content/skill_badge/docker.png
+    - lib/assets/bubble_content/skill_badge/excel.png
     - lib/assets/bubble_content/skill_badge/fastapi.png
     - lib/assets/bubble_content/skill_badge/flutter.png
     - lib/assets/bubble_content/skill_badge/git.png
     - lib/assets/bubble_content/skill_badge/github.png
     - lib/assets/bubble_content/skill_badge/gitlab.png
     - lib/assets/bubble_content/skill_badge/google_docs.png
+    - lib/assets/bubble_content/skill_badge/google_play.png
     - lib/assets/bubble_content/skill_badge/gradle.png
     - lib/assets/bubble_content/skill_badge/html5.png
     - lib/assets/bubble_content/skill_badge/huggingface.png
+    - lib/assets/bubble_content/skill_badge/ios.png
     - lib/assets/bubble_content/skill_badge/java.png
     - lib/assets/bubble_content/skill_badge/javascript.png
+    - lib/assets/bubble_content/skill_badge/jira.png
+    - lib/assets/bubble_content/skill_badge/jquery.png
     - lib/assets/bubble_content/skill_badge/json.png
     - lib/assets/bubble_content/skill_badge/jupyter.png
     - lib/assets/bubble_content/skill_badge/kaggle.png
     - lib/assets/bubble_content/skill_badge/keras.png
+    - lib/assets/bubble_content/skill_badge/lerobert.png
     - lib/assets/bubble_content/skill_badge/macos.png
     - lib/assets/bubble_content/skill_badge/mailchimp.png
+    - lib/assets/bubble_content/skill_badge/mariadb.png
     - lib/assets/bubble_content/skill_badge/matplotlib.png
     - lib/assets/bubble_content/skill_badge/microsoft.png
+    - lib/assets/bubble_content/skill_badge/mysql.png
+    - lib/assets/bubble_content/skill_badge/netbeans.png
+    - lib/assets/bubble_content/skill_badge/net_maui.png
     - lib/assets/bubble_content/skill_badge/npm.png
+    - lib/assets/bubble_content/skill_badge/objectivec.png
+    - lib/assets/bubble_content/skill_badge/pandas.png
     - lib/assets/bubble_content/skill_badge/php.png
+    - lib/assets/bubble_content/skill_badge/php.png
+    - lib/assets/bubble_content/skill_badge/phpmyadmin.png
+    - lib/assets/bubble_content/skill_badge/phpstorm.png
+    - lib/assets/bubble_content/skill_badge/powerbi.png
+    - lib/assets/bubble_content/skill_badge/powershell.png
     - lib/assets/bubble_content/skill_badge/python.png
+    - lib/assets/bubble_content/skill_badge/qt.png
     - lib/assets/bubble_content/skill_badge/react.png
     - lib/assets/bubble_content/skill_badge/safari.png
     - lib/assets/bubble_content/skill_badge/seaborn.png
+    - lib/assets/bubble_content/skill_badge/sharepoint.png
     - lib/assets/bubble_content/skill_badge/slack.png
     - lib/assets/bubble_content/skill_badge/stackoverflow.png
+    - lib/assets/bubble_content/skill_badge/sql.png
+    - lib/assets/bubble_content/skill_badge/sqlserver.png
+    - lib/assets/bubble_content/skill_badge/sqlite.png
     - lib/assets/bubble_content/skill_badge/tensorflow.png
+    - lib/assets/bubble_content/skill_badge/thingsboard.png
     - lib/assets/bubble_content/skill_badge/trello.png
+    - lib/assets/bubble_content/skill_badge/tomcat.png
+    - lib/assets/bubble_content/skill_badge/uml.png
+    - lib/assets/bubble_content/skill_badge/visual_studio_2022.png
+    - lib/assets/bubble_content/skill_badge/vmware_workstation.png
+    - lib/assets/bubble_content/skill_badge/vscode.png
+    - lib/assets/bubble_content/skill_badge/wso2.png
     - lib/assets/bubble_content/skill_badge/wikipedia.png
     - lib/assets/bubble_content/skill_badge/windows.png
+    - lib/assets/bubble_content/skill_badge/windowsserver.png
     - lib/assets/bubble_content/skill_badge/wordpress.png
+    - lib/assets/bubble_content/skill_badge/xamarin.png
+    - lib/assets/bubble_content/skill_badge/xcode.png
+    - lib/assets/bubble_content/skill_badge/xml.png
     - lib/assets/resume_presentation/blank_squared_sheet.png
     - lib/assets/resume_presentation/blue_manga_crow.png
     - lib/assets/resume_presentation/manga_crow.png

@@ -1,46 +1,4 @@
-import 'package:dossier_de_competences_web/widgets/badge.dart'
-    show
-        badgeAdobe,
-        badgeAndroid,
-        badgeAngular,
-        badgeBluetooth,
-        badgeColaboratory,
-        badgeCplusplus,
-        badgeCSS3,
-        badgeDebian,
-        badgeDocker,
-        badgeFastapi,
-        badgeFlutter,
-        badgeGit,
-        badgeGithub,
-        badgeGitlab,
-        badgeGoogle_docs,
-        badgeGradle,
-        badgeHtml5,
-        badgeHuggingface,
-        badgeJava,
-        badgeJavascript,
-        badgeJson,
-        badgeJupyter,
-        badgeKaggle,
-        badgeKeras,
-        badgeMacos,
-        badgeMailchimp,
-        badgeMatplotlib,
-        badgeMicrosoft,
-        badgeNpm,
-        badgePhp,
-        badgePython,
-        badgeReact,
-        badgeSafari,
-        badgeSeaborn,
-        badgeSlack,
-        badgeStackoverflow,
-        badgeTensorflow,
-        badgeTrello,
-        badgeWikipedia,
-        badgeWindows,
-        badgeWordpress;
+import 'package:dossier_de_competences_web/widgets/badge.dart' show SkillBadge;
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
@@ -49,7 +7,8 @@ import '../../../../helpers/globals.dart'
 
 class EducationContent extends StatefulWidget implements PreferredSizeWidget {
   final Color boxShadowColor, boxBorderColor;
-  final String academicLogoAssetPath, languages, tools;
+  final List<SkillBadge> languages, tools;
+  final String academicLogoAssetPath;
   final String? periodDescription, degreeDescription, curriculumDescription;
 
   const EducationContent(
@@ -86,128 +45,98 @@ class _EducationContentState extends State<EducationContent>
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> content = [
-      Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-          child: Image(
-              height: 100.0, image: AssetImage(widget.academicLogoAssetPath))),
-      Text(widget.periodDescription.toString(),
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic)),
-      Text(widget.degreeDescription.toString(),
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-      Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.fromLTRB(5, 25, 5, 25),
-          child: Builder(builder: (BuildContext context) {
-            List<String> sentences =
-                widget.curriculumDescription.toString().split('\t');
-
-            List<InlineSpan> richTextChildren = [];
-            for (String sentence in sentences) {
-              richTextChildren.add(WidgetSpan(child: SizedBox(width: 40.0)));
-              richTextChildren.add(TextSpan(
-                  text: sentence,
-                  style: TextStyle(fontSize: 16, fontFamily: "Courier")));
-            }
-            return RichText(
-                textAlign: TextAlign.justify,
-                text: TextSpan(children: richTextChildren));
-          }))
-    ];
-
-    if (widget.languages.isNotEmpty) {
-      content.add(ValueListenableBuilder(
-          valueListenable: appLanguage,
-          builder: (context, value, widget) {
-            return Text(AppStrings.TITLE_LANGUAGES[value].toString(),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold));
-          }));
-      content.add(Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: widget.boxBorderColor, width: 0.5),
-          ),
-          alignment: Alignment.center,
-          margin: EdgeInsets.all(5),
-          child: Column(children: [
-            Wrap(
-              direction: Axis.horizontal,
-              alignment: WrapAlignment.center,
-              children: [
-                badgeAdobe,
-                badgeAndroid,
-                badgeAngular,
-                badgeBluetooth,
-                badgeColaboratory,
-                badgeCplusplus,
-                badgeCSS3,
-                badgeDebian,
-                badgeDocker,
-                badgeFastapi,
-                badgeFlutter,
-                badgeGit,
-                badgeGithub,
-                badgeGitlab,
-                badgeGoogle_docs,
-                badgeGradle,
-                badgeHtml5,
-                badgeHuggingface,
-                badgeJava,
-                badgeJavascript,
-                badgeJson,
-                badgeJupyter,
-                badgeKaggle,
-                badgeKeras,
-                badgeMacos,
-                badgeMailchimp,
-                badgeMatplotlib,
-                badgeMicrosoft,
-                badgeNpm,
-                badgePhp,
-                badgePython,
-                badgeReact,
-                badgeSafari,
-                badgeSeaborn,
-                badgeSlack,
-                badgeStackoverflow,
-                badgeTensorflow,
-                badgeTrello,
-                badgeWikipedia,
-                badgeWindows,
-                badgeWordpress
-              ],
-            ),
-            Text(widget.languages,
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 16))
-          ])));
-    }
-
-    if (widget.tools.isNotEmpty) {
-      content.add(ValueListenableBuilder(
-          valueListenable: appLanguage,
-          builder: (context, value, widget) {
-            return Text(AppStrings.TITLE_TOOLS[value].toString(),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold));
-          }));
-      content.add(Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: widget.boxBorderColor, width: 0.5),
-          ),
-          alignment: Alignment.center,
-          margin: EdgeInsets.all(5),
-          child: Text(widget.tools,
-              textAlign: TextAlign.center, style: TextStyle(fontSize: 16))));
-    }
-
     return SizedBox.expand(child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      double paddingHorizontalListView = constraints.maxWidth * 0.05;
-      double paddingVerticalListView = constraints.maxWidth * 0.05;
-      double marginContainer = constraints.maxHeight * 0.025;
+      double paddingHorizontalListView = constraints.maxWidth * 0.05,
+          paddingVerticalListView = constraints.maxWidth * 0.05,
+          marginContainer = constraints.maxHeight * 0.025,
+          titleFontSize = constraints.maxHeight * 0.03,
+          contentFontSize = constraints.maxHeight * 0.02;
+
+      List<Widget> content = [
+        Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+            child: Image(
+                height: 100.0,
+                image: AssetImage(widget.academicLogoAssetPath))),
+        Text(widget.periodDescription.toString(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: titleFontSize, fontStyle: FontStyle.italic)),
+        Text(widget.degreeDescription.toString(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: titleFontSize, fontWeight: FontWeight.bold)),
+        Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.fromLTRB(5, 25, 5, 25),
+            child: Builder(builder: (BuildContext context) {
+              List<String> sentences =
+                  widget.curriculumDescription.toString().split('\t');
+
+              List<InlineSpan> richTextChildren = [];
+              for (String sentence in sentences) {
+                richTextChildren.add(WidgetSpan(child: SizedBox(width: 40.0)));
+                richTextChildren.add(TextSpan(
+                    text: sentence,
+                    style: TextStyle(
+                        fontSize: contentFontSize, fontFamily: "Courier")));
+              }
+              return RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(children: richTextChildren));
+            }))
+      ];
+
+      if (widget.languages.isNotEmpty) {
+        content.add(ValueListenableBuilder(
+            valueListenable: appLanguage,
+            builder: (context, value, widget) {
+              return Text(AppStrings.TITLE_LANGUAGES[value].toString(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: titleFontSize, fontWeight: FontWeight.bold));
+            }));
+        content.add(Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: widget.boxBorderColor, width: 0.5),
+            ),
+            alignment: Alignment.center,
+            margin: EdgeInsets.all(5),
+            child: Column(children: [
+              Wrap(
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.center,
+                children: widget.languages,
+              )
+            ])));
+      }
+
+      if (widget.tools.isNotEmpty) {
+        content.add(ValueListenableBuilder(
+            valueListenable: appLanguage,
+            builder: (context, value, widget) {
+              return Text(AppStrings.TITLE_TOOLS[value].toString(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: titleFontSize, fontWeight: FontWeight.bold));
+            }));
+        content.add(Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: widget.boxBorderColor, width: 0.5),
+            ),
+            alignment: Alignment.center,
+            margin: EdgeInsets.all(5),
+            child: Column(children: [
+              Wrap(
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.center,
+                children: widget.tools,
+              )
+            ])));
+      }
+
       return Container(
           margin: EdgeInsets.fromLTRB(0, marginContainer, 0, marginContainer),
           decoration: BoxDecoration(

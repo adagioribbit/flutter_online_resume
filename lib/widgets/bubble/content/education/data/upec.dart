@@ -1,5 +1,7 @@
 import 'dart:ui' show Color;
 
+import 'package:dossier_de_competences_web/widgets/badge.dart'
+    show badgeEnglish, badgeRobertCollins;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
@@ -16,6 +18,6 @@ ValueListenableBuilder content_upec = ValueListenableBuilder(
           periodDescription: AppStrings.UPEC_PERIOD[value],
           degreeDescription: AppStrings.UPEC_DEGREE,
           curriculumDescription: AppStrings.UPEC_CURRICULUM[value],
-          languages: "English",
-          tools: "Le Robert & Collins");
+          languages: [badgeEnglish],
+          tools: [badgeRobertCollins]);
     });

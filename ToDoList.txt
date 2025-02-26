@@ -1,8 +1,7 @@
 ============= TRAVAIL EN COURS ======================
 
-
+- Régler le problème de disproportion de fonte entre les libellés des badges et le contenu littéral sur mobile (iphoneSE notamment)
 - Traduire les nouvelles chaînes en anglais
-
 - Clamp la taille des boutons de navigation
 
 

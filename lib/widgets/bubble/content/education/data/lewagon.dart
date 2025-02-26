@@ -1,5 +1,25 @@
 import 'dart:ui' show Color;
 
+import 'package:dossier_de_competences_web/widgets/badge.dart'
+    show
+        badgeColaboratory,
+        badgeDBeaver,
+        badgeDebian,
+        badgeDocker,
+        badgeFastapi,
+        badgeGithub,
+        badgeHuggingface,
+        badgeJson,
+        badgeJupyter,
+        badgeKaggle,
+        badgeKeras,
+        badgeMatplotlib,
+        badgePandas,
+        badgePython,
+        badgeSQL,
+        badgeSeaborn,
+        badgeTensorflow,
+        badgeWindows;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
@@ -16,7 +36,26 @@ ValueListenableBuilder content_lewagon = ValueListenableBuilder(
           periodDescription: AppStrings.LEWAGON_PERIOD[value],
           degreeDescription: AppStrings.LEWAGON_DEGREE,
           curriculumDescription: AppStrings.LEWAGON_CURRICULUM[value],
-          languages: "Python",
-          tools:
-              "Jupyter, Pandas, Matplotlib, Seaborn\nKeras, TensorFlow, HuggingFace\nFastAPI, Docker, Google Cloud Platform");
+          languages: [
+            badgePython,
+            badgeJson,
+            badgeSQL
+          ],
+          tools: [
+            badgeWindows,
+            badgeDebian,
+            badgeGithub,
+            badgeJupyter,
+            badgeMatplotlib,
+            badgePandas,
+            badgeDBeaver,
+            badgeSeaborn,
+            badgeKeras,
+            badgeTensorflow,
+            badgeFastapi,
+            badgeKaggle,
+            badgeHuggingface,
+            badgeDocker,
+            badgeColaboratory
+          ]);
     });

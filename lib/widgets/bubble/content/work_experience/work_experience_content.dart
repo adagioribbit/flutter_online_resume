@@ -1,5 +1,6 @@
 import 'package:dossier_de_competences_web/helpers/globals.dart'
     show appLanguage, bubbleContentScrollController;
+import 'package:dossier_de_competences_web/widgets/badge.dart' show SkillBadge;
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
@@ -9,19 +10,19 @@ class WorkExperienceContent extends StatefulWidget
     implements PreferredSizeWidget {
   final Color boxShadowColor, boxBorderColor;
   final EmployerHeader employerHeader;
-  final String languages, tools;
+  final List<SkillBadge> languages, tools;
   final String? periodDescription, projectDescription;
   final List<String>? projectTasks;
 
   const WorkExperienceContent(
-      {this.boxShadowColor = Colors.red,
-      this.boxBorderColor = Colors.red,
+      {required this.boxShadowColor,
+      required this.boxBorderColor,
       required this.employerHeader,
-      this.periodDescription = "Test",
-      this.projectDescription = "Test",
-      this.projectTasks = const ["Test"],
-      this.languages = "Test",
-      this.tools = "Test",
+      required this.periodDescription,
+      required this.projectDescription,
+      required this.languages,
+      required this.tools,
+      required this.projectTasks,
       super.key});
 
   @override
@@ -95,7 +96,7 @@ class _WorkExperienceContentState extends State<WorkExperienceContent>
                             fontStyle: FontStyle.italic)),
                     Container(
                         alignment: Alignment.center,
-                        margin: EdgeInsets.fromLTRB(0, titleFontSize, 0, 5),
+                        margin: EdgeInsets.fromLTRB(0, contentFontSize, 0, 0),
                         child: Text(
                             AppStrings.TITLE_PROJECT_DESCRIPTION[value]
                                 .toString(),
@@ -110,21 +111,86 @@ class _WorkExperienceContentState extends State<WorkExperienceContent>
                         ),
                         alignment: Alignment.center,
                         padding: EdgeInsets.all(contentFontSize),
+                        margin: EdgeInsets.all(5),
                         child: Text(widgetContent.projectDescription.toString(),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: contentFontSize,
-                                fontFamily: "Courier"))),
-                    Container(
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.fromLTRB(0, titleFontSize, 0, 5),
-                        child: Text(
-                            AppStrings.TITLE_PROJECT_TASKS[value].toString(),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: titleFontSize,
-                                fontWeight: FontWeight.bold)))
+                                fontFamily: "Courier")))
                   ];
+
+                  if (widgetContent.languages.isNotEmpty) {
+                    listViewChildren.add(ValueListenableBuilder(
+                        valueListenable: appLanguage,
+                        builder: (context, value, widget) {
+                          return Container(
+                              alignment: Alignment.center,
+                              margin:
+                                  EdgeInsets.fromLTRB(0, contentFontSize, 0, 0),
+                              child: Text(
+                                  AppStrings.TITLE_LANGUAGES[value].toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: titleFontSize,
+                                      fontWeight: FontWeight.bold)));
+                        }));
+                    listViewChildren.add(Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: widgetContent.boxBorderColor, width: 0.5),
+                        ),
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.all(5),
+                        child: Column(children: [
+                          Wrap(
+                            direction: Axis.horizontal,
+                            alignment: WrapAlignment.center,
+                            children: widgetContent.languages,
+                          )
+                        ])));
+                  }
+
+                  if (widgetContent.tools.isNotEmpty) {
+                    listViewChildren.add(ValueListenableBuilder(
+                        valueListenable: appLanguage,
+                        builder: (context, value, widget) {
+                          return Container(
+                              alignment: Alignment.center,
+                              margin:
+                                  EdgeInsets.fromLTRB(0, contentFontSize, 0, 0),
+                              child: Text(
+                                  AppStrings.TITLE_TOOLS[value].toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: titleFontSize,
+                                      fontWeight: FontWeight.bold)));
+                        }));
+                    listViewChildren.add(Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: widgetContent.boxBorderColor, width: 0.5),
+                        ),
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.all(5),
+                        child: Column(children: [
+                          Wrap(
+                            direction: Axis.horizontal,
+                            alignment: WrapAlignment.center,
+                            children: widgetContent.tools,
+                          )
+                        ])));
+                  }
+
+                  listViewChildren.add(Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.fromLTRB(
+                          0, contentFontSize, 0, contentFontSize),
+                      child: Text(
+                          AppStrings.TITLE_PROJECT_TASKS[value].toString(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: titleFontSize,
+                              fontWeight: FontWeight.bold))));
 
                   for (String sentence in widgetContent.projectTasks!) {
                     listViewChildren.add(Column(
