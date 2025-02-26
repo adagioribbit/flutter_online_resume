@@ -1,4 +1,4 @@
-import 'package:dossier_de_competences_web/widgets/badge.dart' show SkillBadge;
+import 'package:dossier_de_competences_web/widgets/bubble/badge.dart' show SkillBadge;
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';

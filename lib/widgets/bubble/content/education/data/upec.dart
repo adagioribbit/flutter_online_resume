@@ -1,6 +1,6 @@
 import 'dart:ui' show Color;
 
-import 'package:dossier_de_competences_web/widgets/badge.dart'
+import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
     show badgeEnglish, badgeRobertCollins;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 

@@ -1,3 +1,5 @@
+import 'dart:math' show min;
+
 import 'package:dossier_de_competences_web/helpers/colorchart.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +19,13 @@ class SkillBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
+      double titleFontSize = (constraints.maxWidth * 0.023).clamp(13, 18),
+          imageHeight = constraints.maxWidth * 0.08;
       return Container(
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(width: .5, color: skillsSetButtonPalette.icon),
-            borderRadius: BorderRadius.all(Radius.circular(16.0)),
+            borderRadius: BorderRadius.all(Radius.circular(titleFontSize)),
             boxShadow: [
               BoxShadow(
                 color: skillsSetButtonPalette.iconHover,
@@ -34,13 +38,13 @@ class SkillBadge extends StatelessWidget {
           padding: EdgeInsets.all(5),
           child: Column(children: [
             IconButton(
-              icon: Image(
-                  height: constraints.maxWidth * 0.08,
-                  image: AssetImage(iconAssetPath)),
+              icon:
+                  Image(height: imageHeight, image: AssetImage(iconAssetPath)),
               onPressed: onPressedClbk,
             ),
             Text(title,
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 16))
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: titleFontSize))
           ]));
     });
   }

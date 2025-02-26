@@ -1,6 +1,7 @@
 import 'package:dossier_de_competences_web/helpers/globals.dart'
     show appLanguage, bubbleContentScrollController;
-import 'package:dossier_de_competences_web/widgets/badge.dart' show SkillBadge;
+import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
+    show SkillBadge;
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
@@ -55,7 +56,7 @@ class _WorkExperienceContentState extends State<WorkExperienceContent>
       double marginContainer = constraints.maxHeight * 0.025,
           periodFontSize = constraints.maxHeight * 0.025,
           titleFontSize = constraints.maxHeight * 0.03,
-          contentFontSize = constraints.maxHeight * 0.02;
+          contentFontSize = (constraints.maxWidth * 0.023).clamp(12, 18);
 
       return ValueListenableBuilder(
           valueListenable: appLanguage,
