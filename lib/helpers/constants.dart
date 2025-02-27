@@ -199,19 +199,28 @@ class AppStrings {
   static const Map<String, String> PRASTEL_MOBILE_PROJECT = {
     'fr':
         'Intégration de la gestion des nouvelles centrales d\'accès UNIK2E230-BT aux applications mobile PrastelBT et Télécommande Virtuelle Slim+BT, ainsi qu\'à leurs déclinaisons client (MProxBLE Control Configurator, MProxBT).',
-    'en': ''
+    'en':
+        'Update menus and features in the all-purpose PrastlBT and Télécommande Virtuelle Slim+BT hybrid apps to allow the management of the Bluetooth-enabled UNIK2E230-BT access central model, and keep their branded equivalent for wholesale clients up-to-date (MProxBLE Control Configurator, MProxBT).'
   };
   static const Map<String, List<String>> PRASTEL_MOBILE_DESCRIPTION = {
     'fr': [
       'Création de nouvelles interfaces utilisateurs à partir de l\'existant',
-      'Intégration de différents modèles de portails 3D interactifs à l\'interface de programmation',
+      'Création et intégration de différents modèles de portails 3D interactifs à l\'interface de programmation',
       'Correction de dysfonctionnements',
       'Correction de problèmes d\'affichage et extension de la compatibilité aux tablettes',
       'Mise à disposition des produits sur les plateformes en ligne et auprès des clients',
       'Mise en place d\'un suivi de projet et d\'un système de gestion de versions',
       'Assainissement de la base de code existante'
     ],
-    'en': []
+    'en': [
+      'Develop new user interfaces based on legacy codebase',
+      'Create and integrate real time and interactive 3D gate models animations',
+      'Fix bugs on both back and front end',
+      'Develop an adaptative layout for tablets',
+      'Publish updates on online stores and provide wholesale clients with updated branded versions',
+      'Introduce Git version tracking and Excel project monitoring',
+      'Clean legacy codebase'
+    ]
   };
 
   static const Map<String, String> PRASTEL_CR15NM_PERIOD = {
@@ -221,15 +230,20 @@ class AppStrings {
   static const Map<String, String> PRASTEL_CR15NM_PROJECT = {
     'fr':
         'Correction et mise à jour de l\'application Android CR15NM pour la calibration de cellules photo-réceptrices.',
-    'en': ''
+    'en':
+        'Fix and update the CR15NM Android app used by automated gate professionals for photo-receptors calibration.'
   };
   static const Map<String, List<String>> PRASTEL_CR15NM_DESCRIPTION = {
     'fr': [
-      "Recueil des nouveaux besoins",
-      "Validation fonctionnelle de la mise à jour sur un banc de tests dédié",
-      "Mise à disposition de la mise à jour sur Google Play"
+      'Recueil des nouveaux besoins',
+      'Validation fonctionnelle de la mise à jour sur un banc de tests dédié',
+      'Mise à disposition de la mise à jour sur Google Play'
     ],
-    'en': []
+    'en': [
+      'Assess legacy code relevance and collect new requirements',
+      'Validate the update on a dedicated electronic bench test',
+      'Publish the update on Google Play'
+    ]
   };
 
   static const Map<String, String> PRASTEL_SITE_INTERNE_PERIOD = {
@@ -239,16 +253,22 @@ class AppStrings {
   static const Map<String, String> PRASTEL_SITE_INTERNE_PROJECT = {
     'fr':
         'Refonte d\'un site web interne de gestion des licences clients pour les centrales d\'accès M200-BT et UNIK2E230-BT.',
-    'en': ''
+    'en':
+        'Redesign an internal website used for product labeling and licence management of M200-BT and UNIK2E230-BT access central products.'
   };
   static const Map<String, List<String>> PRASTEL_SITE_INTERNE_DESCRIPTION = {
     'fr': [
-      "Analyse des dysfonctionnements du site web existant codé en WebDev",
-      "Recueil des nouveaux besoins",
-      "Réalisation d'un site équivalent avec une stack LAMP et des composants open source",
-      "Intégration de l'impression d'étiquettes produits"
+      'Analyse des dysfonctionnements du site web existant codé en WebDev',
+      'Recueil des nouveaux besoins',
+      'Réalisation d\'un site équivalent avec une stack LAMP et des composants open source',
+      'Intégration de l\'impression semi-automatique d\'étiquettes produits'
     ],
-    'en': []
+    'en': [
+      'Analyze WebDev coded legacy website to assess malfunctions',
+      'Collect new requirements',
+      'Develop an improved version with open source web components on a LAMP stack',
+      'Integration of semi-automated product labels printing',
+    ]
   };
 
   static const Map<String, String> AMILTONE_MIGRATION_PERIOD = {
@@ -258,7 +278,8 @@ class AppStrings {
   static const Map<String, String> AMILTONE_MIGRATION_PROJECT = {
     'fr':
         'Préparation de la migration d\'une série d\'applications SharePoint 2013 et Access 2007 dans le cadre de la mise à jour d\'une infrastructure sous Windows Server.',
-    'en': ''
+    'en':
+        'Establish a migration plan for a series of SharePoint 2013 and Access 2007 applications to run on an updated Windows Server virtualized infrastructure.'
   };
   static const Map<String, List<String>> AMILTONE_MIGRATION_DESCRIPTION = {
     'fr': [
@@ -267,7 +288,12 @@ class AppStrings {
       'Résolution des problèmes de compatibilité rencontrés',
       'Rédaction d\'une procédure de migration pour chacune des applications éligibles'
     ],
-    'en': []
+    'en': [
+      'Analyze legacy codebase',
+      'Run applications migration on virtualized test servers',
+      'Solve arising compatibility issues or look for alternatives',
+      'Write an exhaustive migration procedure for each application',
+    ]
   };
 
   static const Map<String, String> AMILTONE_IOT_PERIOD = {
@@ -277,7 +303,7 @@ class AppStrings {
   static const Map<String, String> AMILTONE_IOT_PROJECT = {
     'fr':
         'Mise en place du traitement des données issues d\'un réseau de capteurs IoT LoRaWan.',
-    'en': ''
+    'en': 'Set up a data treatment chain for a LoRaWan IoT sensors network.'
   };
   static const Map<String, List<String>> AMILTONE_IOT_DESCRIPTION = {
     'fr': [
@@ -285,7 +311,11 @@ class AppStrings {
       'Développement d\'un équivalent PowerShell',
       'Réalisation d\'un test de charge comparatif des deux solutions'
     ],
-    'en': []
+    'en': [
+      'Review existing Python solution',
+      'Develop an equivalent solution in PowerShell',
+      'Test both solutions on a scalability and latency benchmark',
+    ]
   };
 
   static const Map<String, String> AMILTONE_POWERBI_PERIOD = {
@@ -295,7 +325,7 @@ class AppStrings {
   static const Map<String, String> AMILTONE_POWERBI_PROJECT = {
     'fr':
         'Création de tableaux de bord financiers à partir des bases de données client.',
-    'en': ''
+    'en': 'Design financial dashboards in connection with client databases.'
   };
   static const Map<String, List<String>> AMILTONE_POWERBI_DESCRIPTION = {
     'fr': [
@@ -303,7 +333,11 @@ class AppStrings {
       'Création des traitements de données dans Power Query',
       'Création des tableaux de bord dans Microsoft Power BI Desktop'
     ],
-    'en': []
+    'en': [
+      'Collect client requirements',
+      'Create relevant data processing pipelines in Power Query',
+      'Create adequate dashboards in Power BI Desktop',
+    ]
   };
 
   static const Map<String, String> AMILTONE_WSO2_PERIOD = {
@@ -312,14 +346,17 @@ class AppStrings {
   };
   static const Map<String, String> AMILTONE_WSO2_PROJECT = {
     'fr': 'Test d\'évaluation de la solution WSO2 API Manager.',
-    'en': ''
+    'en': 'Internal evaluation of WSO2 API Manager.'
   };
   static const Map<String, List<String>> AMILTONE_WSO2_DESCRIPTION = {
     'fr': [
       'Auto-formation sur l\'outil',
       'Développement d\'une API interne de traitement des données Jira'
     ],
-    'en': []
+    'en': [
+      'Self-train on the software',
+      'Develop an internal data pipeline connected to a Jira database'
+    ]
   };
 
   static const Map<String, String> AMILTONE_ANDROID_PERIOD = {
@@ -329,7 +366,8 @@ class AppStrings {
   static const Map<String, String> AMILTONE_ANDROID_PROJECT = {
     'fr':
         'Maintenance corrective d\'applications Android grand public et professionnelles pour la factory mobile Amiltone.',
-    'en': ''
+    'en':
+        'Corrective maintenance of general public and professional Android apps for Amiltone mobile apps factory.'
   };
   static const Map<String, List<String>> AMILTONE_ANDROID_DESCRIPTION = {
     'fr': [
@@ -337,7 +375,11 @@ class AppStrings {
       'Migration d\'une application vers AndroidX',
       'Refonte partielle du front-end d\'une application'
     ],
-    'en': []
+    'en': [
+      'Analyze and fix bugs',
+      'Migrate an app to AndroidX',
+      'Implement new designs on an existing app',
+    ]
   };
 
   static const Map<String, String> EVOLUCARE_IMAGING_PERIOD = {
@@ -347,19 +389,28 @@ class AppStrings {
   static const Map<String, String> EVOLUCARE_IMAGING_PROJECT = {
     'fr':
         'Projet Evolucare Imaging d\'application web de gestion à destination des professionnels de l\'imagerie médicale (solution RIS et PACS).',
-    'en': ''
+    'en':
+        'Development of Evolucare Imaging web application, a RIS and PACS solution for medical imaging professionals.'
   };
   static const Map<String, List<String>> EVOLUCARE_IMAGING_DESCRIPTION = {
     'fr': [
       'Développement full-stack de nouvelles fonctionnalités à partir de maquettes',
       'Mise en œuvre des normes DICOM / HL7 / SESAM-Vitale',
       'Portage de composants externes sous MacOS',
-      'Création d\'interfaces vers des API externes REST (Doctolib, opérateurs SMS)',
+      'Création d\'interfaces vers des API externes REST d\'opérateurs SMS',
       'Implémentation du Dossier Médical Personnel (API SOAP)',
-      'Implémentation d\'un suivi patient par code barre',
+      'Implémentation d\'un suivi patient par code barre dans la worklist du RIS',
       'Création et mise à jour de documentations internes'
     ],
-    'en': []
+    'en': [
+      'Develop both back and front end functionalities based on mockups',
+      'Improve PACS worklist respecting the DICOM norm',
+      'Port C# external components on MacOS using Java',
+      'Implement both back and front end interfaces with the Dossier Médical Personnel SOAP API (HL7 / SESAM-Vitale)',
+      'Implement both back and front end interfaces with SMS providers REST APIs',
+      'Implement a barcode patient follow-up system in the RIS worklist',
+      'Write and update internal documentation',
+    ]
   };
 
   static const Map<String, String> EVOLUCARE_MOBILE_PERIOD = {
@@ -369,7 +420,8 @@ class AppStrings {
   static const Map<String, String> EVOLUCARE_MOBILE_PROJECT = {
     'fr':
         'Développement de l\'application mobile hybride Evolucare Imaging Mobile à destination des professionnels de l\'imagerie médicale.',
-    'en': ''
+    'en':
+        'Development of Evolucare Imaging Mobile, a partial Android and iOS hybrid app port of Evolucare Imaging RIS functionnalities.'
   };
   static const Map<String, List<String>> EVOLUCARE_MOBILE_DESCRIPTION = {
     'fr': [
@@ -379,6 +431,12 @@ class AppStrings {
       'Créer des plugins multiplateformes en code mobile natif',
       'Créer et mettre à jour de la documentation interne'
     ],
-    'en': []
+    'en': [
+      'Resolve prototype project bugs',
+      'Implement a graphic redesign of prototype functionalities',
+      'Full stack development of new functionalities based on mockup',
+      'Create multiplatform plugins in native code',
+      'Write and update internal documentation',
+    ]
   };
 }
