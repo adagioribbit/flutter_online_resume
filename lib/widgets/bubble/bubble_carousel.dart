@@ -98,7 +98,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           } else if (originButton == ToolbarMenu.btnWorkExperience) {
             navigationButtonPalette = workExperienceButtonPalette;
             carouselContent = [
-              content_prastel_Mobile,
+              content_prastel_mobile,
               content_prastel_CR15NM,
               content_prastel_site_interne,
               content_amiltone_migration,
@@ -153,7 +153,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     isPortrait = Utils.isPortraitOrientation();
 
     if (originButton != ToolbarMenu.None) {
-      bubbleOrigin = (GlobalKeyRing.key[originButton]?.currentContext
+      bubbleOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
               ?.findRenderObject() as RenderBox)
           .localToGlobal(Offset(
               Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
@@ -182,7 +182,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
   Future<void> toggleInflation(ToolbarMenu value) async {
     originButton = value;
-    Offset newOrigin = (GlobalKeyRing.key[originButton]?.currentContext
+    Offset newOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
             ?.findRenderObject() as RenderBox)
         .localToGlobal(Offset(
             Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
@@ -292,8 +292,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
                             },
                             enableInfiniteScroll: false,
                             viewportFraction: 0.85,
-                            aspectRatio:
-                                constraints.maxWidth / constraints.maxHeight,
+                            aspectRatio: bubbleWidth / bubbleHeight,
                             enlargeCenterPage: true),
                         items: carouselContent),
                     Align(

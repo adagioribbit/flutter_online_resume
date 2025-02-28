@@ -1,3 +1,5 @@
+import 'package:dossier_de_competences_web/helpers/globals.dart'
+    show GlobalKeyRing;
 import 'package:flutter/material.dart';
 import 'helpers/colorchart.dart';
 import 'widgets/bubble/bubble_carousel.dart';
@@ -41,7 +43,9 @@ class CardAndTabApp extends StatelessWidget {
             //          ),
             //          frontCoverMarkupTiltAngle: -0.085);
             //    }),
-            BubbleCarousel(),
+            BubbleCarousel(
+              key: GlobalKeyRing.bubbleCarousel,
+            ),
             Toolbar()
           ])),
     );

@@ -2,6 +2,7 @@ import 'package:dossier_de_competences_web/helpers/globals.dart'
     show appLanguage, bubbleContentScrollController;
 import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
     show SkillBadge;
+import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
@@ -11,8 +12,9 @@ class WorkExperienceContent extends StatefulWidget
     implements PreferredSizeWidget {
   final Color boxShadowColor, boxBorderColor;
   final EmployerHeader employerHeader;
-  final List<SkillBadge> languages, tools;
   final String? periodDescription, projectDescription;
+  final List<ExternalLink> externalLinks;
+  final List<SkillBadge> languages, tools;
   final List<String>? projectTasks;
 
   const WorkExperienceContent(
@@ -21,6 +23,7 @@ class WorkExperienceContent extends StatefulWidget
       required this.employerHeader,
       required this.periodDescription,
       required this.projectDescription,
+      this.externalLinks = const [],
       required this.languages,
       required this.tools,
       required this.projectTasks,
@@ -56,7 +59,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent>
       double marginContainer = constraints.maxHeight * 0.025,
           periodFontSize = constraints.maxHeight * 0.025,
           titleFontSize = constraints.maxHeight * 0.03,
-          contentFontSize = (constraints.maxWidth * 0.023).clamp(12, 18);
+          contentFontSize = (constraints.maxWidth * 0.023).clamp(12, 18),
+          externalLinkHeight = constraints.maxWidth * 0.15;
 
       return ValueListenableBuilder(
           valueListenable: appLanguage,
@@ -119,6 +123,16 @@ class _WorkExperienceContentState extends State<WorkExperienceContent>
                                 fontSize: contentFontSize,
                                 fontFamily: "Courier")))
                   ];
+
+                  if (widgetContent.externalLinks.isNotEmpty) {
+                    listViewChildren.add(Container(
+                        height: externalLinkHeight,
+                        child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            spacing: titleFontSize,
+                            children: widgetContent.externalLinks)));
+                  }
 
                   if (widgetContent.languages.isNotEmpty) {
                     listViewChildren.add(ValueListenableBuilder(

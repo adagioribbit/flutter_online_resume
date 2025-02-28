@@ -15,13 +15,13 @@ class Constants {
       WIGGLING_BUTTON_HEIGHT * .7;
   static const double WIGGLING_BUTTON_HEIGHT_SHRUNK_FOLDABLE =
       WIGGLING_BUTTON_HEIGHT_FOLDABLE * .8;
-  static const BoxConstraints TOOLBAR_ACTIONS_BOXCONTRAINTS = BoxConstraints(
+  static const BoxConstraints APPBAR_ACTIONS_BOXCONTRAINTS = BoxConstraints(
     minHeight: SOCIAL_BUTTON_HEIGHT,
     maxHeight: SOCIAL_BUTTON_HEIGHT,
     minWidth: SOCIAL_BUTTON_HEIGHT,
     maxWidth: SOCIAL_BUTTON_HEIGHT,
   );
-  static const BoxConstraints TOOLBAR_ACTIONS_BOXCONTRAINTS_FOLDABLE =
+  static const BoxConstraints APPBAR_ACTIONS_BOXCONTRAINTS_FOLDABLE =
       BoxConstraints(
     minHeight: SOCIAL_BUTTON_HEIGHT_FOLDABLE,
     maxHeight: SOCIAL_BUTTON_HEIGHT_FOLDABLE,
@@ -153,7 +153,7 @@ class AppStrings {
     'fr':
         'Dans la continuité de ma licence, cette formation m\'a appris à mettre en œuvre les librairies Python de référence dans le domaine du big data pour la construction de tableaux de bord financiers, d\'algorithmes de recommandations et autres modèles prédictifs utilisés dans la création et l\'entraînement d\'intelligences artificielles capables notamment d\'analyser et classifier automatiquement des données textuelles, des images, voire des vidéos.',
     'en':
-        'Following on from my previous degree, I have studied data science and AI hands-on for three months, using the most known Python libraries in the field of big data on a day to day basis  in order to produce financial dashboards, recommendation algorithms and predictive models, laying the basis for training both supervised and unsupervised artificial intelligence agents capable of automatically analyse and classify data from sources as various as texts, images and videos.'
+        'Following on from my previous degree, I have studied data science and AI hands-on for three months, using the reknown cutting-edge Python libraries in the field of big data on a day to day basis  in order to produce financial dashboards, recommendation algorithms and predictive models, laying the basis for training both supervised and unsupervised artificial intelligence agents capable of automatically analyse and classify data from sources as various as texts, images and videos.'
   };
 
   static const Map<String, String> LECNAM_PERIOD = {
@@ -187,9 +187,9 @@ class AppStrings {
   static const String UPEC_DEGREE = '\nLicence LLCE anglais';
   static const Map<String, String> UPEC_CURRICULUM = {
     'fr':
-        'Ma première tentative de carrière s\'est faite dans le milieu de la traduction littéraire.\n\tLe manque de contacts dans le milieu de l\'édition a été un frein au développement de mon activité et j\'ai du renoncer à cet objectif.\n\tMes études en langue, littérature et civilisation étrangère m\'ont tout de même permis d\'aquérir un niveau d\'anglais C2 qui m\'est utile tous les jours dans mon activité actuelle.',
+        'Ma première tentative de carrière s\'est faite dans le milieu de la traduction littéraire. J\'ai passé plusieurs années à tenter de me faire une clientèle, mais le manque de contacts dans le milieu de l\'édition a été un frein au développement de mon activité et j\'ai du renoncer à cet objectif.\n\tMes études en langue, littérature et civilisation étrangère ainsi qu\'un séjour d\'un an en Ecosse m\'ont tout de même permis d\'aquérir un niveau d\'anglais C2 qui m\'est utile tous les jours dans mon activité actuelle.',
     'en':
-        'My first attempt at a career was in literary translation.\n\tLacking insider contacts in publishing houses, I ultimately had to give up on that dream.\n\tOn the bright side, my studies allowed me to acquire a C2 level in English which is a really useful asset in my current activity.'
+        'My first attempt at a career was in literary translation. I spent a few years trying to build a clientele but, lacking insider contacts in publishing houses, I ultimately had to give up on that dream.\n\tOn the bright side, my studies, which where followed by a one year work experience as a teaching assistant in a Scottish private scool, allowed me to reach a C2 level in English which is a really useful asset in my current activity.'
   };
 
   static const Map<String, String> PRASTEL_MOBILE_PERIOD = {

@@ -13,10 +13,11 @@ ValueNotifier<int> carouselIndex = ValueNotifier<int>(0);
 enum ToolbarMenu { None, btnEducation, btnSkillsSet, btnWorkExperience }
 
 class GlobalKeyRing {
-  static Map<ToolbarMenu, GlobalKey<State<StatefulWidget>>> key =
+  static Map<ToolbarMenu, GlobalKey<State<StatefulWidget>>> toolbar =
       <ToolbarMenu, GlobalKey<State<StatefulWidget>>>{
     ToolbarMenu.btnEducation: GlobalKey(),
     ToolbarMenu.btnSkillsSet: GlobalKey(),
     ToolbarMenu.btnWorkExperience: GlobalKey()
   };
+  static GlobalKey bubbleCarousel = GlobalKey();
 }

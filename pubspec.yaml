@@ -80,19 +80,25 @@ flutter:
     - lib/assets/appbar/soleil.png
     - lib/assets/appbar/sombre.png
     - lib/assets/appbar/uk_flag.png
+
+    - lib/assets/bubble_content/appstore.png
+    - lib/assets/bubble_content/google_play.png
+    - lib/assets/bubble_content/external_link.png
+
     - lib/assets/bubble_content/employer/amiltone.png
     - lib/assets/bubble_content/employer/evolucare.png
     - lib/assets/bubble_content/employer/prastel.png
+
     - lib/assets/bubble_content/school/greta_94.png
     - lib/assets/bubble_content/school/le_cnam_paris.png
     - lib/assets/bubble_content/school/lewagon.png
     - lib/assets/bubble_content/school/upec.png
+
     - lib/assets/bubble_content/skill_badge/access.png
     - lib/assets/bubble_content/skill_badge/adobe.png
     - lib/assets/bubble_content/skill_badge/android.png
     - lib/assets/bubble_content/skill_badge/android_studio.png
     - lib/assets/bubble_content/skill_badge/apache_server.png
-    - lib/assets/bubble_content/skill_badge/appstore.png
     - lib/assets/bubble_content/skill_badge/angular.png
     - lib/assets/bubble_content/skill_badge/bash.png
     - lib/assets/bubble_content/skill_badge/blender.png
@@ -115,7 +121,6 @@ flutter:
     - lib/assets/bubble_content/skill_badge/github.png
     - lib/assets/bubble_content/skill_badge/gitlab.png
     - lib/assets/bubble_content/skill_badge/google_docs.png
-    - lib/assets/bubble_content/skill_badge/google_play.png
     - lib/assets/bubble_content/skill_badge/gradle.png
     - lib/assets/bubble_content/skill_badge/html5.png
     - lib/assets/bubble_content/skill_badge/huggingface.png
@@ -173,11 +178,13 @@ flutter:
     - lib/assets/bubble_content/skill_badge/xamarin.png
     - lib/assets/bubble_content/skill_badge/xcode.png
     - lib/assets/bubble_content/skill_badge/xml.png
+
     - lib/assets/resume_presentation/blank_squared_sheet.png
     - lib/assets/resume_presentation/blue_manga_crow.png
     - lib/assets/resume_presentation/manga_crow.png
     - lib/assets/resume_presentation/naughty.png
     - lib/assets/resume_presentation/vitruve.png
+    
     - lib/assets/toolbar/bachelor_hat.png
     - lib/assets/toolbar/skills_set.png
     - lib/assets/toolbar/work_experience.png

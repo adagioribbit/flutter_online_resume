@@ -79,7 +79,7 @@ class _ToolbarButtonState extends State<ToolbarButton> {
             maxWidth: Constants.TOOLBAR_HEIGHT * 0.8,
           ),
           icon: Image(
-              key: GlobalKeyRing.key[idMenu],
+              key: GlobalKeyRing.toolbar[idMenu],
               color: palette.icon,
               image: AssetImage(imageAssetPath)),
           tooltip: widget.tooltip,

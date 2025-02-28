@@ -31,7 +31,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     builder: (context, value, widget) {
       return IconButton(
         hoverColor: ColorChart.linkedInButtonShadowHovered,
-        constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
+        constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
         icon: Image(
           image: AssetImage("lib/assets/appbar/linkedin.png"),
           fit: BoxFit.fill,
@@ -49,7 +49,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     builder: (context, value, widget) {
       return IconButton(
         hoverColor: ColorChart.githubButtonShadowHovered,
-        constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
+        constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
         icon: Image(
           image: AssetImage("lib/assets/appbar/github.png"),
           fit: BoxFit.fill,
@@ -67,7 +67,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     builder: (context, value, widget) {
       return IconButton(
         hoverColor: ColorChart.instagralButtonShadowHovered,
-        constraints: Constants.TOOLBAR_ACTIONS_BOXCONTRAINTS,
+        constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
         icon: Image(
           image: AssetImage("lib/assets/appbar/instagram.png"),
           fit: BoxFit.fill,

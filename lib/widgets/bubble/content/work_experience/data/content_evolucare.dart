@@ -30,6 +30,7 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
         badgeQt,
         badgeXCode,
         badgeXML;
+import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart' show Color, ValueListenableBuilder;
 
 import '../../../../../helpers/globals.dart' as globals;
@@ -50,6 +51,12 @@ ValueListenableBuilder content_evolucare_imaging = ValueListenableBuilder(
                 "lib/assets/bubble_content/employer/evolucare.png"),
         periodDescription: AppStrings.EVOLUCARE_IMAGING_PERIOD[value],
         projectDescription: AppStrings.EVOLUCARE_IMAGING_PROJECT[value],
+        externalLinks: [
+          ExternalLink(
+              assetImagePath: "lib/assets/bubble_content/external_link.png",
+              url:
+                  "https://www.evolucare.com/$value/logiciel-imagerie-medicale/"),
+        ],
         languages: [
           badgePhp,
           badgeHtml5,
@@ -90,6 +97,12 @@ ValueListenableBuilder content_evolucare_mobile = ValueListenableBuilder(
                   "lib/assets/bubble_content/employer/evolucare.png"),
           periodDescription: AppStrings.EVOLUCARE_MOBILE_PERIOD[value],
           projectDescription: AppStrings.EVOLUCARE_MOBILE_PROJECT[value],
+          externalLinks: [
+            ExternalLink(
+                assetImagePath: "lib/assets/bubble_content/appstore.png",
+                url:
+                    "https://apps.apple.com/fr/app/evolucare-imaging-mobile/id1469915229"),
+          ],
           languages: [
             badgeHtml5,
             badgeCSS3,

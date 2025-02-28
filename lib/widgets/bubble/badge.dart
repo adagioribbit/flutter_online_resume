@@ -82,7 +82,7 @@ SkillBadge badgeApacheServer = SkillBadge(
 
 SkillBadge badgeAppStore = SkillBadge(
     title: "App Store",
-    iconAssetPath: "lib/assets/bubble_content/skill_badge/appstore.png",
+    iconAssetPath: "lib/assets/bubble_content/appstore.png",
     onPressedClbk: () {});
 
 SkillBadge badgeBash = SkillBadge(
@@ -197,7 +197,7 @@ SkillBadge badgeGoogleDocs = SkillBadge(
 
 SkillBadge badgeGooglePlay = SkillBadge(
     title: "Google Play",
-    iconAssetPath: "lib/assets/bubble_content/skill_badge/google_play.png",
+    iconAssetPath: "lib/assets/bubble_content/google_play.png",
     onPressedClbk: () {});
 
 SkillBadge badgeGradle = SkillBadge(

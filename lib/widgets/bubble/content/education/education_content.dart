@@ -1,4 +1,5 @@
-import 'package:dossier_de_competences_web/widgets/bubble/badge.dart' show SkillBadge;
+import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
+    show SkillBadge;
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
@@ -51,7 +52,8 @@ class _EducationContentState extends State<EducationContent>
           paddingVerticalListView = constraints.maxWidth * 0.05,
           marginContainer = constraints.maxHeight * 0.025,
           titleFontSize = constraints.maxHeight * 0.03,
-          contentFontSize = constraints.maxHeight * 0.02;
+          contentFontSize = constraints.maxHeight * 0.02,
+          externalLinkHeight = constraints.maxHeight * 0.1;
 
       List<Widget> content = [
         Container(
