@@ -20,6 +20,8 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
         badgeSeaborn,
         badgeTensorflow,
         badgeWindows;
+import 'package:dossier_de_competences_web/widgets/external_link.dart'
+    show ExternalLink;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
@@ -36,6 +38,11 @@ ValueListenableBuilder content_lewagon = ValueListenableBuilder(
           periodDescription: AppStrings.LEWAGON_PERIOD[value],
           degreeDescription: AppStrings.LEWAGON_DEGREE,
           curriculumDescription: AppStrings.LEWAGON_CURRICULUM[value],
+          externalLinks: [
+            ExternalLink(
+                assetImagePath: "lib/assets/bubble_content/external_link.png",
+                url: "https://www.lewagon.com/online/data-science-course"),
+          ],
           languages: [
             badgePython,
             badgeJson,

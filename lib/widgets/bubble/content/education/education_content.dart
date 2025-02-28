@@ -1,5 +1,6 @@
 import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
     show SkillBadge;
+import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
@@ -11,6 +12,7 @@ class EducationContent extends StatefulWidget implements PreferredSizeWidget {
   final List<SkillBadge> languages, tools;
   final String academicLogoAssetPath;
   final String? periodDescription, degreeDescription, curriculumDescription;
+  final List<ExternalLink> externalLinks;
 
   const EducationContent(
       {required this.boxShadowColor,
@@ -18,6 +20,7 @@ class EducationContent extends StatefulWidget implements PreferredSizeWidget {
       required this.academicLogoAssetPath,
       required this.periodDescription,
       required this.degreeDescription,
+      this.externalLinks = const [],
       required this.curriculumDescription,
       required this.languages,
       required this.tools,
@@ -90,6 +93,24 @@ class _EducationContentState extends State<EducationContent>
                   text: TextSpan(children: richTextChildren));
             }))
       ];
+
+      if (widget.externalLinks.isNotEmpty) {
+        content.add(ValueListenableBuilder(
+            valueListenable: appLanguage,
+            builder: (context, value, widget) {
+              return Text(AppStrings.TITLE_DETAILS[value].toString(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: titleFontSize, fontWeight: FontWeight.bold));
+            }));
+        content.add(Container(
+            height: externalLinkHeight,
+            child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: titleFontSize,
+                children: widget.externalLinks)));
+      }
 
       if (widget.languages.isNotEmpty) {
         content.add(ValueListenableBuilder(

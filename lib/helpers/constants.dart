@@ -135,6 +135,10 @@ class AppStrings {
     'fr': 'Réalisations',
     'en': 'Tasks'
   };
+  static const Map<String, String> TITLE_DETAILS = {
+    'fr': 'Programme complet',
+    'en': 'Curriculum details'
+  };
   static const Map<String, String> TITLE_LANGUAGES = {
     'fr': 'Langages',
     'en': 'Languages'

@@ -1,6 +1,8 @@
 import 'dart:ui' show Color;
 
 import 'package:dossier_de_competences_web/widgets/bubble/badge.dart';
+import 'package:dossier_de_competences_web/widgets/external_link.dart'
+    show ExternalLink;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
@@ -18,6 +20,12 @@ ValueListenableBuilder content_lecnam = ValueListenableBuilder(
           periodDescription: AppStrings.LECNAM_PERIOD[value],
           degreeDescription: AppStrings.LECNAM_DEGREE,
           curriculumDescription: AppStrings.LECNAM_CURRICULUM[value],
+          externalLinks: [
+            ExternalLink(
+                assetImagePath: "lib/assets/bubble_content/external_link.png",
+                url:
+                    "https://formation.cnam.fr/rechercher-par-discipline/licence-professionnelle-en-informatique-web-mobile-et-business-intelligence-813212.kjsp"),
+          ],
           languages: [
             badgeUML,
             badgeSQL,
