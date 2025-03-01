@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart'
     show CarouselSliderController;
-import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_gauge.dart'
-    show SkillGauge;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_list_item.dart'
+    show SkillListItem;
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ItemScrollController;
@@ -32,7 +32,7 @@ class GlobalKeyRing {
 ValueListenableBuilder gaugeAccess = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Microsoft Access",
           iconAssetPath: "lib/assets/bubble_content/skill/access.png");
     });
@@ -40,7 +40,7 @@ ValueListenableBuilder gaugeAccess = ValueListenableBuilder(
 ValueListenableBuilder gaugeAdobe = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Adobe",
           iconAssetPath: "lib/assets/bubble_content/skill/adobe.png");
     });
@@ -48,7 +48,7 @@ ValueListenableBuilder gaugeAdobe = ValueListenableBuilder(
 ValueListenableBuilder gaugeAndroid = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Android",
           iconAssetPath: "lib/assets/bubble_content/skill/android.png");
     });
@@ -56,7 +56,7 @@ ValueListenableBuilder gaugeAndroid = ValueListenableBuilder(
 ValueListenableBuilder gaugeAndroidStudio = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Android Studio",
           iconAssetPath: "lib/assets/bubble_content/skill/android_studio.png");
     });
@@ -64,7 +64,7 @@ ValueListenableBuilder gaugeAndroidStudio = ValueListenableBuilder(
 ValueListenableBuilder gaugeAngular = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Angular",
           iconAssetPath: "lib/assets/bubble_content/skill/angular.png");
     });
@@ -72,7 +72,7 @@ ValueListenableBuilder gaugeAngular = ValueListenableBuilder(
 ValueListenableBuilder gaugeApacheServer = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Apache Server",
           iconAssetPath: "lib/assets/bubble_content/skill/apache_server.png");
     });
@@ -80,7 +80,7 @@ ValueListenableBuilder gaugeApacheServer = ValueListenableBuilder(
 ValueListenableBuilder gaugeAppstore = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "App Store",
           iconAssetPath: "lib/assets/bubble_content/appstore.png");
     });
@@ -88,7 +88,7 @@ ValueListenableBuilder gaugeAppstore = ValueListenableBuilder(
 ValueListenableBuilder gaugeBash = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Bash",
           iconAssetPath: "lib/assets/bubble_content/skill/bash.png");
     });
@@ -96,7 +96,7 @@ ValueListenableBuilder gaugeBash = ValueListenableBuilder(
 ValueListenableBuilder gaugeBlender = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Blender",
           iconAssetPath: "lib/assets/bubble_content/skill/blender.png");
     });
@@ -104,7 +104,7 @@ ValueListenableBuilder gaugeBlender = ValueListenableBuilder(
 ValueListenableBuilder gaugeBluetooth = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Bluetooth",
           iconAssetPath: "lib/assets/bubble_content/skill/bluetooth.png");
     });
@@ -112,7 +112,7 @@ ValueListenableBuilder gaugeBluetooth = ValueListenableBuilder(
 ValueListenableBuilder gaugeBootstrap = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Bootstrap",
           iconAssetPath: "lib/assets/bubble_content/skill/bootstrap.png");
     });
@@ -120,7 +120,7 @@ ValueListenableBuilder gaugeBootstrap = ValueListenableBuilder(
 ValueListenableBuilder gaugeChrome = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Chrome",
           iconAssetPath: "lib/assets/bubble_content/skill/chrome.png");
     });
@@ -128,7 +128,7 @@ ValueListenableBuilder gaugeChrome = ValueListenableBuilder(
 ValueListenableBuilder gaugeColaboratory = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Colaboratory",
           iconAssetPath: "lib/assets/bubble_content/skill/colaboratory.png");
     });
@@ -136,7 +136,7 @@ ValueListenableBuilder gaugeColaboratory = ValueListenableBuilder(
 ValueListenableBuilder gaugeConfluence = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Confluence",
           iconAssetPath: "lib/assets/bubble_content/skill/confluence.png");
     });
@@ -144,7 +144,7 @@ ValueListenableBuilder gaugeConfluence = ValueListenableBuilder(
 ValueListenableBuilder gaugeCordova = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Cordova",
           iconAssetPath: "lib/assets/bubble_content/skill/cordova.png");
     });
@@ -152,7 +152,7 @@ ValueListenableBuilder gaugeCordova = ValueListenableBuilder(
 ValueListenableBuilder gaugeCplusplus = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "C++",
           iconAssetPath: "lib/assets/bubble_content/skill/cplusplus.png");
     });
@@ -160,7 +160,7 @@ ValueListenableBuilder gaugeCplusplus = ValueListenableBuilder(
 ValueListenableBuilder gaugeCsharp = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "C#",
           iconAssetPath: "lib/assets/bubble_content/skill/csharp.png");
     });
@@ -168,7 +168,7 @@ ValueListenableBuilder gaugeCsharp = ValueListenableBuilder(
 ValueListenableBuilder gaugeCss3 = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "CSS 3",
           iconAssetPath: "lib/assets/bubble_content/skill/css3.png");
     });
@@ -176,7 +176,7 @@ ValueListenableBuilder gaugeCss3 = ValueListenableBuilder(
 ValueListenableBuilder gaugeDbeaver = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "DBeaver",
           iconAssetPath: "lib/assets/bubble_content/skill/dbeaver.png");
     });
@@ -184,7 +184,7 @@ ValueListenableBuilder gaugeDbeaver = ValueListenableBuilder(
 ValueListenableBuilder gaugeDebian = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Debian",
           iconAssetPath: "lib/assets/bubble_content/skill/debian.png");
     });
@@ -192,7 +192,7 @@ ValueListenableBuilder gaugeDebian = ValueListenableBuilder(
 ValueListenableBuilder gaugeDocker = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Docker",
           iconAssetPath: "lib/assets/bubble_content/skill/docker.png");
     });
@@ -200,14 +200,14 @@ ValueListenableBuilder gaugeDocker = ValueListenableBuilder(
 ValueListenableBuilder gaugeUkFlag = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "English", iconAssetPath: "lib/assets/appbar/uk_flag.png");
     });
 
 ValueListenableBuilder gaugeExcel = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Excel",
           iconAssetPath: "lib/assets/bubble_content/skill/excel.png");
     });
@@ -215,7 +215,7 @@ ValueListenableBuilder gaugeExcel = ValueListenableBuilder(
 ValueListenableBuilder gaugeFastapi = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "FastAPI",
           iconAssetPath: "lib/assets/bubble_content/skill/fastapi.png");
     });
@@ -223,7 +223,7 @@ ValueListenableBuilder gaugeFastapi = ValueListenableBuilder(
 ValueListenableBuilder gaugeFlutter = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Flutter",
           iconAssetPath: "lib/assets/bubble_content/skill/flutter.png");
     });
@@ -231,7 +231,7 @@ ValueListenableBuilder gaugeFlutter = ValueListenableBuilder(
 ValueListenableBuilder gaugeGit = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Git",
           iconAssetPath: "lib/assets/bubble_content/skill/git.png");
     });
@@ -239,7 +239,7 @@ ValueListenableBuilder gaugeGit = ValueListenableBuilder(
 ValueListenableBuilder gaugeGithub = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Github",
           iconAssetPath: "lib/assets/bubble_content/skill/github.png");
     });
@@ -247,7 +247,7 @@ ValueListenableBuilder gaugeGithub = ValueListenableBuilder(
 ValueListenableBuilder gaugeGitlab = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Gitlab",
           iconAssetPath: "lib/assets/bubble_content/skill/gitlab.png");
     });
@@ -255,7 +255,7 @@ ValueListenableBuilder gaugeGitlab = ValueListenableBuilder(
 ValueListenableBuilder gaugeGoogleDocs = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Google Docs",
           iconAssetPath: "lib/assets/bubble_content/skill/google_docs.png");
     });
@@ -263,7 +263,7 @@ ValueListenableBuilder gaugeGoogleDocs = ValueListenableBuilder(
 ValueListenableBuilder gaugeGooglePlay = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Google Play",
           iconAssetPath: "lib/assets/bubble_content/google_play.png");
     });
@@ -271,7 +271,7 @@ ValueListenableBuilder gaugeGooglePlay = ValueListenableBuilder(
 ValueListenableBuilder gaugeGradle = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Gradle",
           iconAssetPath: "lib/assets/bubble_content/skill/gradle.png");
     });
@@ -279,7 +279,7 @@ ValueListenableBuilder gaugeGradle = ValueListenableBuilder(
 ValueListenableBuilder gaugeHtml5 = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Html 5",
           iconAssetPath: "lib/assets/bubble_content/skill/html5.png");
     });
@@ -287,7 +287,7 @@ ValueListenableBuilder gaugeHtml5 = ValueListenableBuilder(
 ValueListenableBuilder gaugeHuggingface = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Huggingface",
           iconAssetPath: "lib/assets/bubble_content/skill/huggingface.png");
     });
@@ -295,7 +295,7 @@ ValueListenableBuilder gaugeHuggingface = ValueListenableBuilder(
 ValueListenableBuilder gaugeIos = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "iOS",
           iconAssetPath: "lib/assets/bubble_content/skill/ios.png");
     });
@@ -303,7 +303,7 @@ ValueListenableBuilder gaugeIos = ValueListenableBuilder(
 ValueListenableBuilder gaugeJava = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Java",
           iconAssetPath: "lib/assets/bubble_content/skill/java.png");
     });
@@ -311,7 +311,7 @@ ValueListenableBuilder gaugeJava = ValueListenableBuilder(
 ValueListenableBuilder gaugeJavascript = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Javascript",
           iconAssetPath: "lib/assets/bubble_content/skill/javascript.png");
     });
@@ -319,7 +319,7 @@ ValueListenableBuilder gaugeJavascript = ValueListenableBuilder(
 ValueListenableBuilder gaugeJira = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Jira",
           iconAssetPath: "lib/assets/bubble_content/skill/jira.png");
     });
@@ -327,7 +327,7 @@ ValueListenableBuilder gaugeJira = ValueListenableBuilder(
 ValueListenableBuilder gaugeJquery = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "JQuery",
           iconAssetPath: "lib/assets/bubble_content/skill/jquery.png");
     });
@@ -335,7 +335,7 @@ ValueListenableBuilder gaugeJquery = ValueListenableBuilder(
 ValueListenableBuilder gaugeJson = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Json",
           iconAssetPath: "lib/assets/bubble_content/skill/json.png");
     });
@@ -343,7 +343,7 @@ ValueListenableBuilder gaugeJson = ValueListenableBuilder(
 ValueListenableBuilder gaugeJupyter = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Jupyter",
           iconAssetPath: "lib/assets/bubble_content/skill/jupyter.png");
     });
@@ -351,7 +351,7 @@ ValueListenableBuilder gaugeJupyter = ValueListenableBuilder(
 ValueListenableBuilder gaugeKaggle = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Kaggle",
           iconAssetPath: "lib/assets/bubble_content/skill/kaggle.png");
     });
@@ -359,7 +359,7 @@ ValueListenableBuilder gaugeKaggle = ValueListenableBuilder(
 ValueListenableBuilder gaugeKeras = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Keras",
           iconAssetPath: "lib/assets/bubble_content/skill/keras.png");
     });
@@ -367,7 +367,7 @@ ValueListenableBuilder gaugeKeras = ValueListenableBuilder(
 ValueListenableBuilder gaugeLerobert = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Le Robert & Collins",
           iconAssetPath: "lib/assets/bubble_content/skill/lerobert.png");
     });
@@ -375,7 +375,7 @@ ValueListenableBuilder gaugeLerobert = ValueListenableBuilder(
 ValueListenableBuilder gaugeMacos = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Macos",
           iconAssetPath: "lib/assets/bubble_content/skill/macos.png");
     });
@@ -383,7 +383,7 @@ ValueListenableBuilder gaugeMacos = ValueListenableBuilder(
 ValueListenableBuilder gaugeMailchimp = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Mailchimp",
           iconAssetPath: "lib/assets/bubble_content/skill/mailchimp.png");
     });
@@ -391,7 +391,7 @@ ValueListenableBuilder gaugeMailchimp = ValueListenableBuilder(
 ValueListenableBuilder gaugeMariadb = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "MariaDB",
           iconAssetPath: "lib/assets/bubble_content/skill/mariadb.png");
     });
@@ -399,7 +399,7 @@ ValueListenableBuilder gaugeMariadb = ValueListenableBuilder(
 ValueListenableBuilder gaugeMatplotlib = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Matplotlib",
           iconAssetPath: "lib/assets/bubble_content/skill/matplotlib.png");
     });
@@ -407,7 +407,7 @@ ValueListenableBuilder gaugeMatplotlib = ValueListenableBuilder(
 ValueListenableBuilder gaugeMicrosoft = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Microsoft",
           iconAssetPath: "lib/assets/bubble_content/skill/microsoft.png");
     });
@@ -415,7 +415,7 @@ ValueListenableBuilder gaugeMicrosoft = ValueListenableBuilder(
 ValueListenableBuilder gaugeMysql = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "MySQL",
           iconAssetPath: "lib/assets/bubble_content/skill/mysql.png");
     });
@@ -423,7 +423,7 @@ ValueListenableBuilder gaugeMysql = ValueListenableBuilder(
 ValueListenableBuilder gaugeNetbeans = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "NetBeans",
           iconAssetPath: "lib/assets/bubble_content/skill/netbeans.png");
     });
@@ -431,7 +431,7 @@ ValueListenableBuilder gaugeNetbeans = ValueListenableBuilder(
 ValueListenableBuilder gaugeNetMaui = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: ".NET MAUI",
           iconAssetPath: "lib/assets/bubble_content/skill/net_maui.png");
     });
@@ -439,7 +439,7 @@ ValueListenableBuilder gaugeNetMaui = ValueListenableBuilder(
 ValueListenableBuilder gaugeNpm = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "NPM",
           iconAssetPath: "lib/assets/bubble_content/skill/npm.png");
     });
@@ -447,7 +447,7 @@ ValueListenableBuilder gaugeNpm = ValueListenableBuilder(
 ValueListenableBuilder gaugeObjectivec = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Objective C",
           iconAssetPath: "lib/assets/bubble_content/skill/objectivec.png");
     });
@@ -455,7 +455,7 @@ ValueListenableBuilder gaugeObjectivec = ValueListenableBuilder(
 ValueListenableBuilder gaugePandas = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Pandas",
           iconAssetPath: "lib/assets/bubble_content/skill/pandas.png");
     });
@@ -463,7 +463,7 @@ ValueListenableBuilder gaugePandas = ValueListenableBuilder(
 ValueListenableBuilder gaugePhp = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "PHP 7",
           iconAssetPath: "lib/assets/bubble_content/skill/php.png");
     });
@@ -471,7 +471,7 @@ ValueListenableBuilder gaugePhp = ValueListenableBuilder(
 ValueListenableBuilder gaugePhpmyadmin = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "PhpMyAdmin",
           iconAssetPath: "lib/assets/bubble_content/skill/phpmyadmin.png");
     });
@@ -479,7 +479,7 @@ ValueListenableBuilder gaugePhpmyadmin = ValueListenableBuilder(
 ValueListenableBuilder gaugePhpstorm = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "PhpStorm",
           iconAssetPath: "lib/assets/bubble_content/skill/phpstorm.png");
     });
@@ -487,7 +487,7 @@ ValueListenableBuilder gaugePhpstorm = ValueListenableBuilder(
 ValueListenableBuilder gaugePowerbi = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Power BI",
           iconAssetPath: "lib/assets/bubble_content/skill/powerbi.png");
     });
@@ -495,7 +495,7 @@ ValueListenableBuilder gaugePowerbi = ValueListenableBuilder(
 ValueListenableBuilder gaugePowershell = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "PowerShell",
           iconAssetPath: "lib/assets/bubble_content/skill/powershell.png");
     });
@@ -503,7 +503,7 @@ ValueListenableBuilder gaugePowershell = ValueListenableBuilder(
 ValueListenableBuilder gaugePowerQuery = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Power Query",
           iconAssetPath: "lib/assets/bubble_content/skill/microsoft.png");
     });
@@ -511,7 +511,7 @@ ValueListenableBuilder gaugePowerQuery = ValueListenableBuilder(
 ValueListenableBuilder gaugePython = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           key: GlobalKeyRing.pythonGauge,
           title: "Python",
           iconAssetPath: "lib/assets/bubble_content/skill/python.png");
@@ -520,14 +520,14 @@ ValueListenableBuilder gaugePython = ValueListenableBuilder(
 ValueListenableBuilder gaugeQt = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Qt", iconAssetPath: "lib/assets/bubble_content/skill/qt.png");
     });
 
 ValueListenableBuilder gaugeReact = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "React",
           iconAssetPath: "lib/assets/bubble_content/skill/react.png");
     });
@@ -535,7 +535,7 @@ ValueListenableBuilder gaugeReact = ValueListenableBuilder(
 ValueListenableBuilder gaugeSafari = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Safari",
           iconAssetPath: "lib/assets/bubble_content/skill/safari.png");
     });
@@ -543,7 +543,7 @@ ValueListenableBuilder gaugeSafari = ValueListenableBuilder(
 ValueListenableBuilder gaugeSeaborn = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Seaborn",
           iconAssetPath: "lib/assets/bubble_content/skill/seaborn.png");
     });
@@ -551,7 +551,7 @@ ValueListenableBuilder gaugeSeaborn = ValueListenableBuilder(
 ValueListenableBuilder gaugeSharepoint = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "SharePoint",
           iconAssetPath: "lib/assets/bubble_content/skill/sharepoint.png");
     });
@@ -559,7 +559,7 @@ ValueListenableBuilder gaugeSharepoint = ValueListenableBuilder(
 ValueListenableBuilder gaugeSlack = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Slack",
           iconAssetPath: "lib/assets/bubble_content/skill/slack.png");
     });
@@ -567,7 +567,7 @@ ValueListenableBuilder gaugeSlack = ValueListenableBuilder(
 ValueListenableBuilder gaugeSql = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "SQL",
           iconAssetPath: "lib/assets/bubble_content/skill/sql.png");
     });
@@ -575,7 +575,7 @@ ValueListenableBuilder gaugeSql = ValueListenableBuilder(
 ValueListenableBuilder gaugeSqlserver = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "SQL Server",
           iconAssetPath: "lib/assets/bubble_content/skill/sqlserver.png");
     });
@@ -583,7 +583,7 @@ ValueListenableBuilder gaugeSqlserver = ValueListenableBuilder(
 ValueListenableBuilder gaugeSqlite = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "SQLite",
           iconAssetPath: "lib/assets/bubble_content/skill/sqlite.png");
     });
@@ -591,7 +591,7 @@ ValueListenableBuilder gaugeSqlite = ValueListenableBuilder(
 ValueListenableBuilder gaugeStackoverflow = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Stackoverflow",
           iconAssetPath: "lib/assets/bubble_content/skill/stackoverflow.png");
     });
@@ -599,7 +599,7 @@ ValueListenableBuilder gaugeStackoverflow = ValueListenableBuilder(
 ValueListenableBuilder gaugeTensorflow = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Tensorflow",
           iconAssetPath: "lib/assets/bubble_content/skill/tensorflow.png");
     });
@@ -607,7 +607,7 @@ ValueListenableBuilder gaugeTensorflow = ValueListenableBuilder(
 ValueListenableBuilder gaugeThingsboard = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Thingsboard",
           iconAssetPath: "lib/assets/bubble_content/skill/thingsboard.png");
     });
@@ -615,7 +615,7 @@ ValueListenableBuilder gaugeThingsboard = ValueListenableBuilder(
 ValueListenableBuilder gaugeTomcat = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Tomcat",
           iconAssetPath: "lib/assets/bubble_content/skill/tomcat.png");
     });
@@ -623,7 +623,7 @@ ValueListenableBuilder gaugeTomcat = ValueListenableBuilder(
 ValueListenableBuilder gaugeTrello = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Trello",
           iconAssetPath: "lib/assets/bubble_content/skill/trello.png");
     });
@@ -631,7 +631,7 @@ ValueListenableBuilder gaugeTrello = ValueListenableBuilder(
 ValueListenableBuilder gaugeUml = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "UML",
           iconAssetPath: "lib/assets/bubble_content/skill/uml.png");
     });
@@ -639,7 +639,7 @@ ValueListenableBuilder gaugeUml = ValueListenableBuilder(
 ValueListenableBuilder gaugeVisualStudio2022 = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Visual Studio 2022",
           iconAssetPath:
               "lib/assets/bubble_content/skill/visual_studio_2022.png");
@@ -648,7 +648,7 @@ ValueListenableBuilder gaugeVisualStudio2022 = ValueListenableBuilder(
 ValueListenableBuilder gaugeVmwareWorkstation = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "VMWare Workstation",
           iconAssetPath:
               "lib/assets/bubble_content/skill/vmware_workstation.png");
@@ -657,7 +657,7 @@ ValueListenableBuilder gaugeVmwareWorkstation = ValueListenableBuilder(
 ValueListenableBuilder gaugeVscode = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Visual Studio Code",
           iconAssetPath: "lib/assets/bubble_content/skill/vscode.png");
     });
@@ -665,7 +665,7 @@ ValueListenableBuilder gaugeVscode = ValueListenableBuilder(
 ValueListenableBuilder gaugeWikipedia = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Wikipedia",
           iconAssetPath: "lib/assets/bubble_content/skill/wikipedia.png");
     });
@@ -673,7 +673,7 @@ ValueListenableBuilder gaugeWikipedia = ValueListenableBuilder(
 ValueListenableBuilder gaugeWindows = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Windows",
           iconAssetPath: "lib/assets/bubble_content/skill/windows.png");
     });
@@ -681,7 +681,7 @@ ValueListenableBuilder gaugeWindows = ValueListenableBuilder(
 ValueListenableBuilder gaugeWindowsserver = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Windows Server",
           iconAssetPath: "lib/assets/bubble_content/skill/windowsserver.png");
     });
@@ -689,7 +689,7 @@ ValueListenableBuilder gaugeWindowsserver = ValueListenableBuilder(
 ValueListenableBuilder gaugeWordpress = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Wordpress",
           iconAssetPath: "lib/assets/bubble_content/skill/wordpress.png");
     });
@@ -697,7 +697,7 @@ ValueListenableBuilder gaugeWordpress = ValueListenableBuilder(
 ValueListenableBuilder gaugeWso2 = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "WSO2",
           iconAssetPath: "lib/assets/bubble_content/skill/wso2.png");
     });
@@ -705,7 +705,7 @@ ValueListenableBuilder gaugeWso2 = ValueListenableBuilder(
 ValueListenableBuilder gaugeXamarin = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "Xamarin",
           iconAssetPath: "lib/assets/bubble_content/skill/xamarin.png");
     });
@@ -713,7 +713,7 @@ ValueListenableBuilder gaugeXamarin = ValueListenableBuilder(
 ValueListenableBuilder gaugeXcode = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "XCode",
           iconAssetPath: "lib/assets/bubble_content/skill/xcode.png");
     });
@@ -721,7 +721,7 @@ ValueListenableBuilder gaugeXcode = ValueListenableBuilder(
 ValueListenableBuilder gaugeXml = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, value, widget) {
-      return SkillGauge(
+      return SkillListItem(
           title: "XML",
           iconAssetPath: "lib/assets/bubble_content/skill/xml.png");
     });

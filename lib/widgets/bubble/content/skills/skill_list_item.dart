@@ -10,12 +10,12 @@ import '../../../../helpers/constants.dart';
 import '../../../../helpers/global_streams.dart';
 import '../../bubble_hailer.dart';
 
-class SkillGauge extends StatefulWidget implements PreferredSizeWidget {
+class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 300);
   final String iconAssetPath, title;
   final VoidCallback? onPressedClbk;
 
-  const SkillGauge(
+  const SkillListItem(
       {required this.iconAssetPath,
       required this.title,
       this.onPressedClbk,
@@ -27,10 +27,11 @@ class SkillGauge extends StatefulWidget implements PreferredSizeWidget {
   Size getPreferredSize() => preferredSize;
 
   @override
-  State<SkillGauge> createState() => _SkillGaugeState();
+  State<SkillListItem> createState() => _SkillListItemState();
 }
 
-class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
+class _SkillListItemState extends State<SkillListItem>
+    with TickerProviderStateMixin {
   CarouselSliderController carouselController = CarouselSliderController();
   CustomPaint bubbleHailer = CustomPaint(
     painter: BubbleHailerPainter(),
@@ -45,7 +46,7 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
     super.initState();
 
     _animationController = AnimationController(
-        vsync: this, duration: SkillGauge.animationDuration);
+        vsync: this, duration: SkillListItem.animationDuration);
     _animationLevelUp = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: _animationController, curve: Curves.fastOutSlowIn))
       ..addListener(() {
@@ -55,7 +56,7 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
         _status = status;
       });
 
-    subscription = globalStreams.eventSkillGauge.listen((value) async {
+    subscription = globalStreams.eventSkillListItem.listen((value) async {
       _animationController.forward();
     });
   }
@@ -70,22 +71,48 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      double titleFontSize = (constraints.maxWidth * 0.023).clamp(13, 18),
-          imageHeight = constraints.maxHeight * 0.5;
+      double titleFontSize = (constraints.maxWidth * 0.03).clamp(15, 18);
 
       return ExpansionTile(
-          tilePadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+          tilePadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
           collapsedShape: RoundedRectangleBorder(
+            side: BorderSide(width: .5),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          shape: RoundedRectangleBorder(
             side: BorderSide(width: .5),
             borderRadius: BorderRadius.circular(8),
           ),
           leading: Image(
             image: AssetImage(widget.iconAssetPath),
-            height: imageHeight,
           ),
-          title: Text(widget.title,
+          title: Container(height: titleFontSize * 2, color: Colors.red),
+          subtitle: Text(widget.title,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: titleFontSize)));
+              style: TextStyle(fontSize: titleFontSize)),
+          children: [
+            Text(widget.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: titleFontSize)),
+            Text(widget.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: titleFontSize)),
+            Text(widget.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: titleFontSize)),
+            Text(widget.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: titleFontSize)),
+            Text(widget.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: titleFontSize)),
+            Text(widget.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: titleFontSize)),
+            Text(widget.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: titleFontSize)),
+          ]);
     });
   }
 }

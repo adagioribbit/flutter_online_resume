@@ -2,8 +2,8 @@ import 'package:dossier_de_competences_web/helpers/colorchart.dart';
 import 'package:dossier_de_competences_web/helpers/global_streams.dart'
     show globalStreams;
 import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show ToolbarMenu, skillList, skillListScrollController;
-import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_gauge.dart';
+    show ToolbarMenu, gaugePython, skillList, skillListScrollController;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_list_item.dart';
 import 'package:flutter/material.dart';
 
 class SkillBadge extends StatelessWidget {
