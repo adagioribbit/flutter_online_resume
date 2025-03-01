@@ -1,3 +1,5 @@
+import 'package:dossier_de_competences_web/helpers/colorchart.dart'
+    show skillsSetButtonPalette;
 import 'package:dossier_de_competences_web/helpers/globals.dart'
     show skillList, skillListScrollController;
 import 'package:flutter/material.dart';
@@ -34,19 +36,7 @@ class _SkillSetsContentState extends State<SkillSetsContent>
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      //double paddingHorizontalListView = constraints.maxWidth * 0.05,
-      //    paddingVerticalListView = constraints.maxWidth * 0.05,
-      //    titleFontSize = constraints.maxHeight * 0.03;
-
-      //return ListView(
-      //    controller: skillListScrollController,
-      //
-      //    padding: EdgeInsets.fromLTRB(
-      //        paddingHorizontalListView,
-      //        paddingVerticalListView,
-      //        paddingHorizontalListView,
-      //        paddingVerticalListView),
-      //    children: skillList);
+      double listItemSpacing = constraints.maxWidth * 0.0125;
 
       return Container(
           constraints: BoxConstraints(
@@ -56,7 +46,9 @@ class _SkillSetsContentState extends State<SkillSetsContent>
               itemCount: skillList.length,
               itemScrollController: skillListScrollController,
               itemBuilder: (context, index) {
-                return skillList[index];
+                return Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, listItemSpacing),
+                    child: skillList[index]);
               }));
     });
   }

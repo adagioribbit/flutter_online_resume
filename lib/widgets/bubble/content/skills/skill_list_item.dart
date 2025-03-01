@@ -1,17 +1,13 @@
 import 'dart:async';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dossier_de_competences_web/helpers/colorchart.dart'
     show skillsSetButtonPalette;
-import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show GlobalKeyRing, appLanguage;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_gauge.dart';
 import 'package:flutter/material.dart';
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/global_streams.dart';
-import '../../bubble_hailer.dart';
 
 class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
-  static const Duration animationDuration = Duration(milliseconds: 300);
   final String iconAssetPath, title;
   final VoidCallback? onPressedClbk;
 
@@ -32,33 +28,13 @@ class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
 
 class _SkillListItemState extends State<SkillListItem>
     with TickerProviderStateMixin {
-  CarouselSliderController carouselController = CarouselSliderController();
-  CustomPaint bubbleHailer = CustomPaint(
-    painter: BubbleHailerPainter(),
-  );
-  AnimationStatus _status = AnimationStatus.dismissed;
   late StreamSubscription subscription;
-  late AnimationController _animationController;
-  late Animation _animationLevelUp;
 
   @override
   void initState() {
     super.initState();
 
-    _animationController = AnimationController(
-        vsync: this, duration: SkillListItem.animationDuration);
-    _animationLevelUp = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.fastOutSlowIn))
-      ..addListener(() {
-        setState(() {});
-      })
-      ..addStatusListener((status) {
-        _status = status;
-      });
-
-    subscription = globalStreams.eventSkillListItem.listen((value) async {
-      _animationController.forward();
-    });
+    subscription = globalStreams.eventSkillListItem.listen((value) async {});
   }
 
   @override
@@ -74,19 +50,21 @@ class _SkillListItemState extends State<SkillListItem>
       double titleFontSize = (constraints.maxWidth * 0.03).clamp(15, 18);
 
       return ExpansionTile(
+          backgroundColor: skillsSetButtonPalette.radientStop2,
+          collapsedBackgroundColor: skillsSetButtonPalette.radientStop3,
           tilePadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
           collapsedShape: RoundedRectangleBorder(
-            side: BorderSide(width: .5),
+            side: BorderSide(color: skillsSetButtonPalette.border, width: 1.5),
             borderRadius: BorderRadius.circular(8),
           ),
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: .5),
+            side: BorderSide(color: skillsSetButtonPalette.border, width: 1.5),
             borderRadius: BorderRadius.circular(8),
           ),
           leading: Image(
             image: AssetImage(widget.iconAssetPath),
           ),
-          title: Container(height: titleFontSize * 2, color: Colors.red),
+          title: SkillGauge(),
           subtitle: Text(widget.title,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: titleFontSize)),
