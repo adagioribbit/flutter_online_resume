@@ -1,8 +1,38 @@
+======================================================================
+============= PROCEDURE DE DEPLOIEMENT VERS IIS EN LOCAL =============
+======================================================================
+
+----- Compilation du projet
+Lancer la commande suivante dans un termina powershell dans VSCode : flutter build web
+
+----- Intégration des icônes Material design (Pour les flèches de navigation entre autres)
+Ouvrir C:\Users\r0y4l\source\repos\dossier_de_competences_web\build\web\assets\FontManifest.json
+Remplacer fonts/MaterialIcons-Regular.otf par fonts/MaterialIcons-Extended.otf
+
+----- Déploiement vers le serveur
+Ouvrir PowerShell en administrateur
+Lancer la commande suivante :
+
+Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -ArgumentList ""Copy-Item -Path ""C:\Users\r0y4l\source\repos\dossier_de_competences_web\build\web\"" -Destination ""C:\inetpub\dossier_competences"" -Recurse""" -Verb
+
+======================================================================
+======================================================================
+======================================================================
+
+
 ============= TRAVAIL EN COURS ======================
 
 
-- Traduire les nouvelles chaînes en anglais
-- Clamp la taille des boutons de navigation
+- Modifier la police du titre des skills
+- Passer le title en subtitle dans les skills
+- Ajouter une jauge pour signifier le nombre d'années d'expérience dans le titre des skills
+- Déplacer l'appel à skillListScrollController.scrollTo() dans toggleInflation en cas d'ouverture de la SkillsList
+	--> Mettre à jour une valeur globale avant le déclenchement de l'ouverture pour indiquer l'index de l'objet à afficher (voir l'index d'un objet au-dessus pour centrer le scroll sur la cible en prenant en compte la hauteur du conteneur de la liste)
+
+- Ajouter un bandeau statique en haut de la SkillsList :
+	- Ajouter un mécanisme de filtrage par catégories (Web, Mobile, BI, IA, autres, projet ou formation spécifique en cas d'ouverture depuis une autre bulle)
+	- Ajouter un mécanisme de tri (alphabétique, catégoriel, nombre d'années d'utilisation)
+- Clamp la taille des boutons de navigation et des badges de compétence pour les écrans étendus
 
 
 

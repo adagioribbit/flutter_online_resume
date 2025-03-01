@@ -1,10 +1,9 @@
-import 'dart:math' show min;
-
 import 'package:dossier_de_competences_web/helpers/colorchart.dart';
 import 'package:dossier_de_competences_web/helpers/global_streams.dart'
     show globalStreams;
 import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show ToolbarMenu;
+    show ToolbarMenu, skillList, skillListScrollController;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_gauge.dart';
 import 'package:flutter/material.dart';
 
 class SkillBadge extends StatelessWidget {
@@ -486,7 +485,14 @@ SkillBadge badgePython = SkillBadge(
     title: "Python",
     iconAssetPath: "lib/assets/bubble_content/skill/python.png",
     onPressedClbk: () {
+      int idxPython = skillList.indexOf(gaugePython);
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnSkillsSet);
+      skillListScrollController.scrollTo(
+          alignment: idxPython - 5,
+          index: idxPython,
+          duration: Duration(milliseconds: 5000),
+          curve: Curves.easeInOutBack,
+          opacityAnimationWeights: [5, 80, 15]);
     });
 
 SkillBadge badgeQt = SkillBadge(

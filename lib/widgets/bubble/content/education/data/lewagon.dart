@@ -23,7 +23,6 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
 import 'package:dossier_de_competences_web/widgets/external_link.dart'
     show ExternalLink;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
-
 import '../../../../../helpers/constants.dart' show AppStrings;
 import '../../../../../helpers/globals.dart' as globals;
 import '../education_content.dart';

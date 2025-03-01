@@ -8,6 +8,7 @@ import 'package:dossier_de_competences_web/helpers/colorchart.dart'
         educationButtonPalette,
         skillsSetButtonPalette,
         workExperienceButtonPalette;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_sets_content.dart';
 import 'package:flutter/material.dart';
 import '../../helpers/constants.dart';
 import '../../helpers/global_streams.dart';
@@ -17,7 +18,9 @@ import '../../helpers/globals.dart'
         ToolbarMenu,
         bubbleContentScrollController,
         carouselController,
-        carouselIndex;
+        carouselIndex,
+        gaugePython,
+        skillList;
 import '../../helpers/utils.dart' show Utils;
 import 'bubble_hailer.dart';
 import 'content/education/data/greta.dart';
@@ -111,6 +114,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             ];
           } else if (originButton == ToolbarMenu.btnSkillsSet) {
             navigationButtonPalette = skillsSetButtonPalette;
+            carouselContent = [SkillSetsContent()];
           }
         }
         _prevStatus = currStatus;
@@ -144,8 +148,16 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
     subscription = globalStreams.eventBubbleCarousel.listen((value) async {
       carouselContent = [];
-      toggleInflation(value);
+      toggleInflation(value).then((v) {
+        if (value == ToolbarMenu.btnSkillsSet) {
+          int pythinIndex = skillList.indexOf(gaugePython);
+          carouselController.animateToPage(pythinIndex,
+              duration: Duration(milliseconds: 500), curve: Curves.linear);
+        }
+      });
     });
+
+    //globalStreams.triggerBubbleCarousel(ToolbarMenu.btnSkillsSet);
   }
 
   @override
@@ -167,15 +179,6 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           (screenSize.height -
               Constants.TOOLBAR_HEIGHT -
               Constants.APPBAR_HEIGHT));
-
-      //containerSize = isPortrait
-      //    ? Size(
-      //        screenSize.width,
-      //        (screenSize.height -
-      //            Constants.TOOLBAR_HEIGHT -
-      //            Constants.APPBAR_HEIGHT))
-      //    : Size((screenSize.width - Constants.TOOLBAR_HEIGHT),
-      //        (screenSize.height - Constants.APPBAR_HEIGHT));
     });
     super.didChangeDependencies();
   }
@@ -208,6 +211,10 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
   @override
   Widget build(BuildContext context) {
+    bool isPortraitPhoneScreen = Utils.isPortraitContext(context) &&
+        (Utils.isPhoneScreen(context) || Utils.isFoldable(context));
+    double screenRatio = Utils.getWidthOverHeightRatio();
+
     int bubbleShadowOpacity = (76 * _animationInflate.value).round();
     hailerSize = (Utils.isPhoneScreen(context) || Utils.isFoldable(context)
             ? 20.0
@@ -278,87 +285,123 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             width: bubbleWidth,
             child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
+              bool isSkillsSetContent =
+                  originButton == ToolbarMenu.btnSkillsSet;
+
+              List<Widget> stackChildren = isSkillsSetContent
+                  ? carouselContent
+                  : [
+                      CarouselSlider(
+                          carouselController: carouselController,
+                          options: CarouselOptions(
+                              enlargeFactor: 0.3,
+                              pageSnapping: !isSkillsSetContent,
+                              height: isSkillsSetContent
+                                  ? bubbleHeight * 0.9
+                                  : bubbleHeight,
+                              padEnds: !isSkillsSetContent,
+                              scrollDirection: isSkillsSetContent
+                                  ? Axis.vertical
+                                  : Axis.horizontal,
+                              onPageChanged: isSkillsSetContent
+                                  ? null
+                                  : (index, reason) {
+                                      carouselIndex.value = index;
+                                      bubbleContentScrollController.jumpTo(0.0);
+                                      setState(() {});
+                                    },
+                              enableInfiniteScroll: false,
+                              viewportFraction: isSkillsSetContent
+                                  ? (isPortraitPhoneScreen && screenRatio > 0.55
+                                      ? 0.135
+                                      : 0.075)
+                                  : 0.85,
+                              aspectRatio: isSkillsSetContent
+                                  ? 16 / 9
+                                  : bubbleWidth / bubbleHeight,
+                              enlargeCenterPage: !isSkillsSetContent),
+                          items: carouselContent)
+                    ];
+
+              if (originButton != ToolbarMenu.btnSkillsSet) {
+                stackChildren.add(Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      margin:
+                          EdgeInsets.fromLTRB(navigationButtonMargin, 0, 0, 0),
+                      decoration: BoxDecoration(
+                          gradient: RadialGradient(
+                            colors: [
+                              Colors.white,
+                              const Color.fromARGB(0, 255, 255, 255),
+                            ],
+                            stops: [0.25, 1],
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(25.0 * _animationInflate.value))),
+                      child: IconButton(
+                        color: navigationButtonPalette.iconHighlight,
+                        hoverColor: navigationButtonPalette.radientStop2,
+                        disabledColor: navigationButtonPalette.iconFocus,
+                        iconSize: constraints.maxWidth * 0.08,
+                        onPressed: carouselIndex.value == 0
+                            ? null
+                            : () {
+                                carouselController.previousPage(
+                                    curve: Curves.fastOutSlowIn,
+                                    duration: Duration(milliseconds: 500));
+                              },
+                        icon: Icon(
+                          Icons.arrow_circle_left_sharp,
+                          size: constraints.maxWidth * 0.08,
+                        ),
+                      ),
+                    )));
+
+                stackChildren.add(Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      margin:
+                          EdgeInsets.fromLTRB(0, 0, navigationButtonMargin, 0),
+                      decoration: BoxDecoration(
+                          gradient: RadialGradient(
+                            colors: [
+                              Colors.white,
+                              const Color.fromARGB(0, 255, 255, 255),
+                            ],
+                            stops: [0.25, 1],
+                          ),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(25.0 * _animationInflate.value))),
+                      child: IconButton(
+                        color: navigationButtonPalette.iconHighlight,
+                        hoverColor: navigationButtonPalette.radientStop2,
+                        disabledColor: navigationButtonPalette.iconFocus,
+                        iconSize: constraints.maxWidth * 0.08,
+                        onPressed: (carouselContent.isEmpty ||
+                                carouselIndex.value ==
+                                    carouselContent.length - 1)
+                            ? null
+                            : () {
+                                carouselController.nextPage(
+                                    curve: Curves.fastOutSlowIn,
+                                    duration: Duration(milliseconds: 500));
+                              },
+                        icon: Icon(
+                          Icons.arrow_circle_right_sharp,
+                          size: constraints.maxWidth * 0.08,
+                        ),
+                      ),
+                    )));
+              }
+
               return AnimatedOpacity(
                   duration: BubbleCarousel.animationDuration,
                   opacity: 1.0 * _animationInflate.value,
-                  child: Stack(children: [
-                    CarouselSlider(
-                        carouselController: carouselController,
-                        options: CarouselOptions(
-                            onPageChanged: (index, reason) {
-                              carouselIndex.value = index;
-                              bubbleContentScrollController.jumpTo(0.0);
-                              setState(() {});
-                            },
-                            enableInfiniteScroll: false,
-                            viewportFraction: 0.85,
-                            aspectRatio: bubbleWidth / bubbleHeight,
-                            enlargeCenterPage: true),
-                        items: carouselContent),
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          margin: EdgeInsets.fromLTRB(
-                              navigationButtonMargin, 0, 0, 0),
-                          decoration: BoxDecoration(
-                              gradient: RadialGradient(
-                                colors: [
-                                  Colors.white,
-                                  const Color.fromARGB(0, 255, 255, 255),
-                                ],
-                                stops: [0.25, 1],
-                              ),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  25.0 * _animationInflate.value))),
-                          child: IconButton(
-                            color: navigationButtonPalette.iconHighlight,
-                            hoverColor: navigationButtonPalette.radientStop2,
-                            disabledColor: navigationButtonPalette.iconFocus,
-                            iconSize: constraints.maxWidth * 0.08,
-                            onPressed: carouselIndex.value == 0
-                                ? null
-                                : () {
-                                    carouselController.previousPage(
-                                        curve: Curves.fastOutSlowIn,
-                                        duration: Duration(milliseconds: 500));
-                                  },
-                            icon: Icon(Icons.arrow_circle_left_sharp),
-                          ),
-                        )),
-                    Align(
-                        alignment: Alignment.centerRight,
-                        child: Container(
-                          margin: EdgeInsets.fromLTRB(
-                              0, 0, navigationButtonMargin, 0),
-                          decoration: BoxDecoration(
-                              gradient: RadialGradient(
-                                colors: [
-                                  Colors.white,
-                                  const Color.fromARGB(0, 255, 255, 255),
-                                ],
-                                stops: [0.25, 1],
-                              ),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  25.0 * _animationInflate.value))),
-                          child: IconButton(
-                            color: navigationButtonPalette.iconHighlight,
-                            hoverColor: navigationButtonPalette.radientStop2,
-                            disabledColor: navigationButtonPalette.iconFocus,
-                            iconSize: constraints.maxWidth * 0.08,
-                            onPressed: (carouselContent.isEmpty ||
-                                    carouselIndex.value ==
-                                        carouselContent.length - 1)
-                                ? null
-                                : () {
-                                    carouselController.nextPage(
-                                        curve: Curves.fastOutSlowIn,
-                                        duration: Duration(milliseconds: 500));
-                                  },
-                            icon: Icon(Icons.arrow_circle_right_sharp),
-                          ),
-                        ))
-                  ]));
+                  child: Container(
+                      margin: EdgeInsets.all(5),
+                      child: Stack(children: stackChildren)));
             })));
 
     Container stackContainer = Container(
