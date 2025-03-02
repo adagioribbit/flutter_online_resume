@@ -44,6 +44,7 @@ ValueListenableBuilder content_lecnam = ValueListenableBuilder(
             badgeAndroidStudio,
             badgeNetBeans,
             badgeBash,
-            badgeDocker
+            badgeDocker,
+            badgeTomcat
           ]);
     });

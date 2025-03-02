@@ -47,9 +47,11 @@ ValueListenableBuilder content_prastel_mobile = ValueListenableBuilder(
             badgeNetMaui,
             badgeIos,
             badgeAndroid,
-            badgeBlender,
+            badgeBluetooth,
             badgeGit,
-            badgeExcel
+            badgeXCode,
+            badgeExcel,
+            badgeBlender,
           ],
           projectTasks: AppStrings.PRASTEL_MOBILE_DESCRIPTION[value]);
     });
@@ -72,7 +74,11 @@ ValueListenableBuilder content_prastel_CR15NM = ValueListenableBuilder(
                     "https://play.google.com/store/apps/details?id=it.fldesign.www.flashlight&hl=$value"),
           ],
           languages: [badgeJava],
-          tools: [badgeAndroidStudio, badgeAndroid],
+          tools: [
+            badgeAndroidStudio,
+            badgeAndroid,
+            badgeGradle,
+          ],
           projectTasks: AppStrings.PRASTEL_CR15NM_DESCRIPTION[value]);
     });
 

@@ -4,16 +4,18 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
     show
         badgeAndroid,
         badgeAndroidStudio,
+        badgeAngular,
         badgeApacheServer,
         badgeBash,
         badgeBootstrap,
         badgeCSS3,
         badgeCSharp,
+        badgeChrome,
         badgeConfluence,
         badgeCordova,
         badgeDebian,
-        badgeGit,
         badgeGitlab,
+        badgeGradle,
         badgeHtml5,
         badgeIos,
         badgeJQuery,
@@ -23,11 +25,15 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
         badgeMacos,
         badgeMariaDB,
         badgeNetBeans,
+        badgeNpm,
         badgeObjectiveC,
         badgePhp,
         badgePhpMyAdmin,
         badgePhpStorm,
         badgeQt,
+        badgeSafari,
+        badgeSlack,
+        badgeUML,
         badgeXCode,
         badgeXML;
 import 'package:dossier_de_competences_web/widgets/external_link.dart';
@@ -62,11 +68,12 @@ ValueListenableBuilder content_evolucare_imaging = ValueListenableBuilder(
           badgeHtml5,
           badgeCSS3,
           badgeJavascript,
-          badgeXML,
+          badgeUML,
+          badgeQt,
+          badgeBash,
           badgeJava,
           badgeCSharp,
-          badgeQt,
-          badgeBash
+          badgeXML
         ],
         tools: [
           badgeDebian,
@@ -75,12 +82,16 @@ ValueListenableBuilder content_evolucare_imaging = ValueListenableBuilder(
           badgeMariaDB,
           badgePhpMyAdmin,
           badgePhpStorm,
+          badgeChrome,
+          badgeSafari,
           badgeNetBeans,
           badgeJira,
           badgeConfluence,
-          badgeGit,
+          badgeSlack,
+          badgeGitlab,
           badgeJQuery,
-          badgeBootstrap
+          badgeBootstrap,
+          badgeAngular
         ],
         projectTasks: AppStrings.EVOLUCARE_IMAGING_DESCRIPTION[value],
       );
@@ -107,6 +118,7 @@ ValueListenableBuilder content_evolucare_mobile = ValueListenableBuilder(
             badgeHtml5,
             badgeCSS3,
             badgeJavascript,
+            badgeUML,
             badgeJava,
             badgeObjectiveC
           ],
@@ -118,9 +130,13 @@ ValueListenableBuilder content_evolucare_mobile = ValueListenableBuilder(
             badgeMacos,
             badgePhpStorm,
             badgeAndroidStudio,
+            badgeGradle,
             badgeXCode,
             badgeJira,
-            badgeGitlab
+            badgeConfluence,
+            badgeSlack,
+            badgeGitlab,
+            badgeNpm
           ],
           projectTasks: AppStrings.EVOLUCARE_MOBILE_DESCRIPTION[value]);
     });

@@ -9,11 +9,13 @@ import '../../../../helpers/global_streams.dart';
 
 class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
   final String iconAssetPath, title;
+  final double nbYearsPractice;
   final VoidCallback? onPressedClbk;
 
   const SkillListItem(
       {required this.iconAssetPath,
       required this.title,
+      required this.nbYearsPractice,
       this.onPressedClbk,
       super.key});
 

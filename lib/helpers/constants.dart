@@ -387,8 +387,8 @@ class AppStrings {
   };
 
   static const Map<String, String> EVOLUCARE_IMAGING_PERIOD = {
-    'fr': '\nOctobre 2017 - Septembre 2021',
-    'en': '\nOctober 2017 - September 2021'
+    'fr': '\nOctobre 2016 - Septembre 2021',
+    'en': '\nOctober 2016 - September 2021'
   };
   static const Map<String, String> EVOLUCARE_IMAGING_PROJECT = {
     'fr':
@@ -418,8 +418,8 @@ class AppStrings {
   };
 
   static const Map<String, String> EVOLUCARE_MOBILE_PERIOD = {
-    'fr': '\nOctobre 2017 - Septembre 2021',
-    'en': '\nOctober 2017 - September 2021'
+    'fr': '\nOctobre 2016 - Septembre 2021',
+    'en': '\nOctober 2016 - September 2021'
   };
   static const Map<String, String> EVOLUCARE_MOBILE_PROJECT = {
     'fr':

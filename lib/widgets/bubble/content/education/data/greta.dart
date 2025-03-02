@@ -1,23 +1,7 @@
 import 'dart:ui' show Color;
 
 import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
-    show
-        badgeCSS3,
-        badgeChrome,
-        badgeGoogleDocs,
-        badgeHtml5,
-        badgeJavascript,
-        badgeJson,
-        badgeMySQL,
-        badgePhp,
-        badgePhpMyAdmin,
-        badgePython,
-        badgeSQL,
-        badgeSlack,
-        badgeTrello,
-        badgeVMWareWorkstation,
-        badgeWindows,
-        badgeWordpress;
+    show badgeCSS3, badgeChrome, badgeGoogleDocs, badgeHtml5, badgeJavascript, badgeJson, badgeMailchimp, badgeMySQL, badgePhp, badgePhpMyAdmin, badgePython, badgeSQL, badgeSlack, badgeTrello, badgeVMWareWorkstation, badgeWindows, badgeWordpress;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
@@ -54,5 +38,6 @@ ValueListenableBuilder content_greta = ValueListenableBuilder(
             badgeGoogleDocs,
             badgeSlack,
             badgeTrello,
+            badgeMailchimp,
           ]);
     });

@@ -19,6 +19,7 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
         badgeSQL,
         badgeSeaborn,
         badgeTensorflow,
+        badgeVSCode,
         badgeWindows;
 import 'package:dossier_de_competences_web/widgets/external_link.dart'
     show ExternalLink;
@@ -50,6 +51,7 @@ ValueListenableBuilder content_lewagon = ValueListenableBuilder(
           tools: [
             badgeWindows,
             badgeDebian,
+            badgeVSCode,
             badgeGithub,
             badgeJupyter,
             badgeMatplotlib,
