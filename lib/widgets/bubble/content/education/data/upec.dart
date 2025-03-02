@@ -1,7 +1,9 @@
 import 'dart:ui' show Color;
 
 import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
-    show badgeEnglish, badgeRobertCollins;
+    show badgeEnglish, badgeRobertCollins, badgeWikipedia;
+import 'package:dossier_de_competences_web/widgets/external_link.dart'
+    show ExternalLink;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
@@ -18,6 +20,16 @@ ValueListenableBuilder content_upec = ValueListenableBuilder(
           periodDescription: AppStrings.UPEC_PERIOD[value],
           degreeDescription: AppStrings.UPEC_DEGREE,
           curriculumDescription: AppStrings.UPEC_CURRICULUM[value],
-          languages: [badgeEnglish],
-          tools: [badgeRobertCollins]);
+          externalLinks: [
+            ExternalLink(
+                assetImagePath: "lib/assets/bubble_content/skill/wikipedia.png",
+                url: "https://fr.wikipedia.org/wiki/Utilisateur:AdagioRibbit"),
+          ],
+          languages: [
+            badgeEnglish
+          ],
+          tools: [
+            badgeRobertCollins,
+            badgeWikipedia
+          ]);
     });

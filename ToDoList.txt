@@ -22,8 +22,6 @@ Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -ArgumentList "
 
 ============= TRAVAIL EN COURS ======================
 
-- Ajouter le skill Wikipédia et un lien externe vers ma page d'auteur dans la page du diplôme d'anglais
-- Dans la classe SkillListItem, ajouter la constante du nombre total d'années d'exercice de la profession (depuis
 - Dans chaque instance de SkillListItem, ajouter le nombre d'années d'expérience et la liste des expériences ou diplômes associées
 	==> Créer des enums des expériences et des diplômes pour identifier les écrans grâce à des clés uniques
 - Modifier la police du titre des skills

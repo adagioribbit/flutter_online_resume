@@ -95,14 +95,16 @@ class _EducationContentState extends State<EducationContent>
       ];
 
       if (widget.externalLinks.isNotEmpty) {
-        content.add(ValueListenableBuilder(
-            valueListenable: appLanguage,
-            builder: (context, value, widget) {
-              return Text(AppStrings.TITLE_DETAILS[value].toString(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: titleFontSize, fontWeight: FontWeight.bold));
-            }));
+        if (!widget.academicLogoAssetPath.contains("upec")) {
+          content.add(ValueListenableBuilder(
+              valueListenable: appLanguage,
+              builder: (context, value, widget) {
+                return Text(AppStrings.TITLE_DETAILS[value].toString(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: titleFontSize, fontWeight: FontWeight.bold));
+              }));
+        }
         content.add(Container(
             height: externalLinkHeight,
             child: Row(
