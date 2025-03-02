@@ -24,17 +24,15 @@ Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -ArgumentList "
 
 - Dans chaque instance de SkillListItem, ajouter la liste des expériences ou diplômes associées
 	==> Créer des enums des expériences et des diplômes pour identifier les écrans grâce à des clés uniques
-- Modifier la police du titre des skills
 - Déplacer l'appel à skillListScrollController.scrollTo() dans toggleInflation en cas d'ouverture de la SkillsList
 	--> Mettre à jour une valeur globale avant le déclenchement de l'ouverture pour indiquer l'index de l'objet à afficher (voir l'index d'un objet au-dessus pour centrer le scroll sur la cible en prenant en compte la hauteur du conteneur de la liste)
+
 - Ajouter un bandeau statique en haut de la SkillsList :
 	- Ajouter un mécanisme de filtrage par catégories (Web, Mobile, BI, IA, autres, projet ou formation spécifique en cas d'ouverture depuis une autre bulle)
 	- Ajouter un mécanisme de tri (alphabétique, catégoriel, nombre d'années d'utilisation)
 
 - Clamp la taille des boutons de navigation et des badges de compétence pour les écrans étendus
 
- ans
-1 mois
 
 ------------- BUGS ----------------------------------
 
@@ -45,10 +43,6 @@ Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -ArgumentList "
 	* sur les tablettes et foldable en mode portrait
 	* en cas de positionnement paysage sur tout type de device
 	* prendre en compte le niveau de zoom de la fenêtre du navigateur
-
-- La suppression de la vérification de la taille de l'écran dans Utils a biaisé la vérification pour les SocialMediaButtons
-
-
 
 
 ~~~~~~~~~~~~~ FEUILLE DE ROUTE ~~~~~~~~~~~~~~~~~~~~~~

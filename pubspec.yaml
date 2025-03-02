@@ -252,3 +252,9 @@ flutter:
     - family: OvertheRainbow
       fonts:
         - asset: lib/fonts/OvertheRainbow-Regular.ttf
+    - family: Cabin
+      fonts:
+        - asset: lib/fonts/Cabin_Condensed-Bold.ttf
+    - family: RussoOne
+      fonts:
+        - asset: lib/fonts/RussoOne-Regular.ttf

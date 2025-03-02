@@ -132,6 +132,7 @@ class GaugeScalePainter extends CustomPainter {
       var textStyle = TextStyle(
           color: Colors.black,
           backgroundColor: Colors.transparent,
+          fontFamily: "Cabin",
           fontSize: indicatorFontSize,
           fontWeight: FontWeight.bold);
       var textSpan = TextSpan(
@@ -156,12 +157,13 @@ class GaugeScalePainter extends CustomPainter {
       if (indicatorX == 0) {
         indicatorMinX = indicatorRadius;
       }
+      double indicatorY = gaugeCenter -
+          (textPainter.height *
+              (idx * 0.6 * (indicatorLines.length - idx * 0.6)));
 
-      final offset = Offset(
-          indicatorX,
-          (size.height * 0.5) -
-              (textPainter.height * (idx * (indicatorLines.length - idx))));
+      final offset = Offset(indicatorX, indicatorY);
 
+      // Draw indicator container first
       if (idx == 0) {
         canvas.drawOval(
             Rect.fromCircle(
@@ -174,6 +176,7 @@ class GaugeScalePainter extends CustomPainter {
                 radius: gaugeIndicatorRadius),
             paintFillIndicator);
       }
+
       textPainter.paint(canvas, offset);
     }
   }

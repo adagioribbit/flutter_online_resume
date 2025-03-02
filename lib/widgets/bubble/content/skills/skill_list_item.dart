@@ -68,7 +68,9 @@ class _SkillListItemState extends State<SkillListItem> {
           title: Text(widget.title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: titleFontSize, fontWeight: FontWeight.bold)),
+                  fontSize: titleFontSize,
+                  fontFamily: "RussoOne",
+                  fontWeight: FontWeight.bold)),
           subtitle: SkillGauge(nbYearsPractice: widget.nbYearsPractice),
           children: [
             Text(widget.title,
