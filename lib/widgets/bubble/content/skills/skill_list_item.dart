@@ -66,7 +66,7 @@ class _SkillListItemState extends State<SkillListItem>
           leading: Image(
             image: AssetImage(widget.iconAssetPath),
           ),
-          title: SkillGauge(),
+          title: SkillGauge(nbYearsPractice: widget.nbYearsPractice),
           subtitle: Text(widget.title,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: titleFontSize)),

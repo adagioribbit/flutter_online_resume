@@ -236,7 +236,7 @@ ValueListenableBuilder gaugeGithub = ValueListenableBuilder(
       return SkillListItem(
           title: "Github",
           iconAssetPath: "lib/assets/bubble_content/skill/github.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: 8.16);
     });
 
 ValueListenableBuilder gaugeGitlab = ValueListenableBuilder(

@@ -5,9 +5,9 @@ import '../../../../helpers/colorchart.dart' show skillsSetButtonPalette;
 
 class SkillGauge extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 1500);
-  final int? nbYearsPractice;
+  final double nbYearsPractice;
 
-  const SkillGauge({this.nbYearsPractice, super.key});
+  const SkillGauge({required this.nbYearsPractice, super.key});
 
   @override
   Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
@@ -21,7 +21,7 @@ class SkillGauge extends StatefulWidget implements PreferredSizeWidget {
 class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
-  late int nbYearsPractice;
+  late double nbYearsPractice, totalYearsExperience;
 
   @override
   void initState() {
@@ -35,8 +35,9 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.linear),
     );
-    nbYearsPractice = widget.nbYearsPractice ??
-        (DateTime.now().difference(DateTime(2015, 9, 1)).inDays / 365).toInt();
+    totalYearsExperience =
+        (DateTime.now().difference(DateTime(2015, 9, 1)).inDays / 365);
+    nbYearsPractice = widget.nbYearsPractice ?? totalYearsExperience;
     _animationController.forward();
   }
 
@@ -50,7 +51,9 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     CustomPaint gaugeScale = CustomPaint(
       painter: GaugeScalePainter(
-          nbYearsPractice: nbYearsPractice, animation: _animation),
+          nbYearsPractice: nbYearsPractice,
+          totalYearsExperience: totalYearsExperience,
+          animation: _animation),
     );
 
     return LayoutBuilder(
@@ -65,14 +68,17 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
 class GaugeScalePainter extends CustomPainter {
   final Color fillColor = skillsSetButtonPalette.icon;
   final double strokeWidth = .5;
-  final int nbYearsPractice;
+  final double nbYearsPractice, totalYearsExperience;
   final Animation<double> animation;
 
-  GaugeScalePainter({required this.nbYearsPractice, required this.animation});
+  GaugeScalePainter(
+      {required this.nbYearsPractice,
+      required this.totalYearsExperience,
+      required this.animation});
 
   @override
   void paint(Canvas canvas, Size size) {
-    double step = size.width / (nbYearsPractice + 1),
+    double step = size.width / (totalYearsExperience + 1),
         gaugeLevelWidth = (nbYearsPractice * step) + 0.5,
         gaugeLevelTop = size.height / 2.3,
         gaugeLevelBottom = size.height - gaugeLevelTop;
@@ -103,7 +109,7 @@ class GaugeScalePainter extends CustomPainter {
         stepBottom = stepTop * 3.0,
         verticalCenter = sizeY / 2.0,
         radiusStops = sizeY / 10.0;
-    double step = sizeX / (nbYearsPractice + 1);
+    double step = sizeX / (totalYearsExperience + 1);
 
     // Scale backbone
     Path scalePath = Path()
