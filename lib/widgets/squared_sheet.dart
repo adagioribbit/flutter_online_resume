@@ -10,8 +10,7 @@ class SquaredSheet extends StatefulWidget {
   State<SquaredSheet> createState() => _SquaredSheetState();
 }
 
-class _SquaredSheetState extends State<SquaredSheet>
-    with WidgetsBindingObserver, TickerProviderStateMixin {
+class _SquaredSheetState extends State<SquaredSheet> {
   @override
   void initState() {
     super.initState();

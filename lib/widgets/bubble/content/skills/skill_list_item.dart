@@ -28,8 +28,7 @@ class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
   State<SkillListItem> createState() => _SkillListItemState();
 }
 
-class _SkillListItemState extends State<SkillListItem>
-    with TickerProviderStateMixin {
+class _SkillListItemState extends State<SkillListItem> {
   late StreamSubscription subscription;
 
   @override
@@ -66,10 +65,11 @@ class _SkillListItemState extends State<SkillListItem>
           leading: Image(
             image: AssetImage(widget.iconAssetPath),
           ),
-          title: SkillGauge(nbYearsPractice: widget.nbYearsPractice),
-          subtitle: Text(widget.title,
+          title: Text(widget.title,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: titleFontSize)),
+              style: TextStyle(
+                  fontSize: titleFontSize, fontWeight: FontWeight.bold)),
+          subtitle: SkillGauge(nbYearsPractice: widget.nbYearsPractice),
           children: [
             Text(widget.title,
                 textAlign: TextAlign.center,

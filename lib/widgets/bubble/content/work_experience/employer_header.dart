@@ -21,8 +21,7 @@ class EmployerHeader extends StatefulWidget implements PreferredSizeWidget {
   State<EmployerHeader> createState() => _EmployerHeaderState();
 }
 
-class _EmployerHeaderState extends State<EmployerHeader>
-    with TickerProviderStateMixin {
+class _EmployerHeaderState extends State<EmployerHeader> {
   late bool isTablet, isPhoneScreen, isFoldable, isPortrait;
   late double marginContainer,
       paddingHorizontalListView,

@@ -16,8 +16,7 @@ class ResumePresentation extends StatefulWidget {
   State<ResumePresentation> createState() => _ResumePresentationState();
 }
 
-class _ResumePresentationState extends State<ResumePresentation>
-    with WidgetsBindingObserver, TickerProviderStateMixin {
+class _ResumePresentationState extends State<ResumePresentation> {
   @override
   void initState() {
     super.initState();

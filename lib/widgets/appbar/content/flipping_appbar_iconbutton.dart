@@ -46,6 +46,12 @@ class _FlippingAppBarIconButtonState extends State<FlippingAppBarIconButton>
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var componentHeight = globals.isFoldable.value
         ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE

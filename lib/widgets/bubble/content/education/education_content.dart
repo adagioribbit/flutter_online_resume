@@ -35,8 +35,7 @@ class EducationContent extends StatefulWidget implements PreferredSizeWidget {
   State<EducationContent> createState() => _EducationContentState();
 }
 
-class _EducationContentState extends State<EducationContent>
-    with TickerProviderStateMixin {
+class _EducationContentState extends State<EducationContent> {
   @override
   void initState() {
     super.initState();

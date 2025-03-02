@@ -22,7 +22,7 @@ class Toolbar extends StatefulWidget implements PreferredSizeWidget {
   State<Toolbar> createState() => _ToolbarState();
 }
 
-class _ToolbarState extends State<Toolbar> with TickerProviderStateMixin {
+class _ToolbarState extends State<Toolbar> {
   @override
   void initState() {
     super.initState();

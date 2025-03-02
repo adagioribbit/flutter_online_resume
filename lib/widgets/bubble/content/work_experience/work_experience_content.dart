@@ -38,8 +38,7 @@ class WorkExperienceContent extends StatefulWidget
   State<WorkExperienceContent> createState() => _WorkExperienceContentState();
 }
 
-class _WorkExperienceContentState extends State<WorkExperienceContent>
-    with TickerProviderStateMixin {
+class _WorkExperienceContentState extends State<WorkExperienceContent> {
   @override
   void initState() {
     super.initState();

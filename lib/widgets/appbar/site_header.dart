@@ -99,6 +99,7 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
 
   @override
   void dispose() {
+    _animationController.dispose();
     super.dispose();
   }
 

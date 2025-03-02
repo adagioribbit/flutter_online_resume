@@ -37,7 +37,7 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
     );
     totalYearsExperience =
         (DateTime.now().difference(DateTime(2015, 9, 1)).inDays / 365);
-    nbYearsPractice = widget.nbYearsPractice ?? totalYearsExperience;
+    nbYearsPractice = widget.nbYearsPractice;
     _animationController.forward();
   }
 
@@ -45,6 +45,12 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
   void didChangeDependencies() {
     super.didChangeDependencies();
     setState(() {});
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -81,7 +87,22 @@ class GaugeScalePainter extends CustomPainter {
     double step = size.width / (totalYearsExperience + 1),
         gaugeLevelWidth = (nbYearsPractice * step) + 0.5,
         gaugeLevelTop = size.height / 2.3,
-        gaugeLevelBottom = size.height - gaugeLevelTop;
+        gaugeLevelBottom = size.height - gaugeLevelTop,
+        currGaugeLevel = gaugeLevelWidth * animation.value,
+        gaugeCenter = size.height / 2,
+        gaugeIndicatorRadius = size.height * 0.55,
+        indicatorFontSize = size.height * 0.35;
+
+    List<String> indicatorLines = [];
+    if (nbYearsPractice < .91) {
+      indicatorLines.add("mois");
+      indicatorLines.add(
+          "${(double.parse((nbYearsPractice * 12).round().toStringAsFixed(2))).toInt() % 12}");
+    } else {
+      int nbYears = nbYearsPractice.round().toInt();
+      indicatorLines.add((nbYears == 1) ? "an" : "ans");
+      indicatorLines.add(nbYears.toString());
+    }
 
     Paint paintStrokeScale = Paint()
           ..color = fillColor
@@ -94,14 +115,67 @@ class GaugeScalePainter extends CustomPainter {
         paintFillGaugeLevel = Paint()
           ..color = fillColor
           ..strokeWidth = strokeWidth
+          ..style = PaintingStyle.fill,
+        paintFillIndicator = Paint()
+          ..color = Color.fromARGB(255, 233, 190, 134)
+          ..strokeWidth = strokeWidth
           ..style = PaintingStyle.fill;
 
     canvas.drawPath(getScalePath(size.width, size.height), paintStrokeScale);
     canvas.drawPath(getScalePath(size.width, size.height), paintFillScale);
     canvas.drawRect(
-        Rect.fromLTRB(0, gaugeLevelTop, gaugeLevelWidth * animation.value,
-            gaugeLevelBottom),
+        Rect.fromLTRB(0, gaugeLevelTop, currGaugeLevel, gaugeLevelBottom),
         paintFillGaugeLevel);
+
+    double indicatorMinX = 0;
+    for (int idx = 0; idx < indicatorLines.length; idx++) {
+      var textStyle = TextStyle(
+          color: Colors.black,
+          backgroundColor: Colors.transparent,
+          fontSize: indicatorFontSize,
+          fontWeight: FontWeight.bold);
+      var textSpan = TextSpan(
+        text: indicatorLines[idx],
+        style: textStyle,
+      );
+      final textPainter = TextPainter(
+        text: textSpan,
+        textDirection: TextDirection.ltr,
+      );
+      textPainter.layout(
+        minWidth: 0,
+        maxWidth: size.width,
+      );
+
+      double indicatorRadius = (textPainter.width / 2);
+      if (indicatorMinX > 0) {
+        indicatorMinX -= indicatorRadius;
+      }
+      double indicatorX = (currGaugeLevel - indicatorRadius)
+          .clamp(indicatorMinX, size.width - indicatorRadius);
+      if (indicatorX == 0) {
+        indicatorMinX = indicatorRadius;
+      }
+
+      final offset = Offset(
+          indicatorX,
+          (size.height * 0.5) -
+              (textPainter.height * (idx * (indicatorLines.length - idx))));
+
+      if (idx == 0) {
+        canvas.drawOval(
+            Rect.fromCircle(
+                center: Offset(indicatorX + indicatorRadius, gaugeCenter),
+                radius: gaugeIndicatorRadius + 2),
+            paintFillGaugeLevel);
+        canvas.drawOval(
+            Rect.fromCircle(
+                center: Offset(indicatorX + indicatorRadius, gaugeCenter),
+                radius: gaugeIndicatorRadius),
+            paintFillIndicator);
+      }
+      textPainter.paint(canvas, offset);
+    }
   }
 
   Path getScalePath(double sizeX, double sizeY) {
@@ -113,10 +187,14 @@ class GaugeScalePainter extends CustomPainter {
 
     // Scale backbone
     Path scalePath = Path()
+      ..moveTo(0, 0)
+      ..lineTo(0, sizeY)
+      ..moveTo(.5, 0)
+      ..lineTo(.5, sizeY)
+      ..moveTo(1, 0)
+      ..lineTo(1, sizeY)
       ..moveTo(0, verticalCenter)
       ..lineTo(sizeX, verticalCenter)
-      ..addOval(Rect.fromCircle(
-          center: Offset(radiusStops, verticalCenter), radius: radiusStops))
       ..addOval(Rect.fromCircle(
           center: Offset(sizeX - radiusStops, verticalCenter),
           radius: radiusStops));
@@ -133,7 +211,6 @@ class GaugeScalePainter extends CustomPainter {
         ..lineTo(graduationPosition + strokeWidth, stepBottom);
       graduationPosition += step;
     }
-
     return scalePath;
   }
 

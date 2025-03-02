@@ -46,7 +46,7 @@ ValueListenableBuilder gaugeApacheServer = ValueListenableBuilder(
       return SkillListItem(
           title: "Apache Server",
           iconAssetPath: "lib/assets/bubble_content/skill/apache_server.png",
-          nbYearsPractice: 3.99);
+          nbYearsPractice: 4.99);
     });
 
 ValueListenableBuilder gaugeAppstore = ValueListenableBuilder(

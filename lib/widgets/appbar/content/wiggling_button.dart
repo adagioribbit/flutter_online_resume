@@ -62,6 +62,12 @@ class _WigglingButtonState extends State<WigglingButton>
     updateSizeAndMargin();
   }
 
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   void updateSizeAndMargin() {
     parentHeight = widget.isInflated
         ? Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK

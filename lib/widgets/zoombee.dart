@@ -135,6 +135,13 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
     super.didChangeDependencies();
   }
 
+  @override
+  void dispose() {
+    _animationStatusController.dispose();
+    _animationMoveAroundController.dispose();
+    super.dispose();
+  }
+
   Widget getStatusDisplay() {
     Widget statusEmoji;
     switch (status) {

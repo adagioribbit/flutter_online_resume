@@ -28,8 +28,7 @@ class ExternalLink extends StatefulWidget implements PreferredSizeWidget {
   State<ExternalLink> createState() => _ExternalLinkState();
 }
 
-class _ExternalLinkState extends State<ExternalLink>
-    with TickerProviderStateMixin {
+class _ExternalLinkState extends State<ExternalLink> {
   late double imageHeight;
 
   @override

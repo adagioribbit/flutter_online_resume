@@ -20,8 +20,7 @@ class SkillSetsContent extends StatefulWidget implements PreferredSizeWidget {
   State<SkillSetsContent> createState() => _SkillSetsContentState();
 }
 
-class _SkillSetsContentState extends State<SkillSetsContent>
-    with TickerProviderStateMixin {
+class _SkillSetsContentState extends State<SkillSetsContent> {
   @override
   void initState() {
     super.initState();

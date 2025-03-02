@@ -173,6 +173,12 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     super.didChangeDependencies();
   }
 
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   Future<void> toggleInflation(ToolbarMenu value) async {
     originButton = value;
     Offset newOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext

@@ -11,8 +11,7 @@ class MugginsPresentation extends StatefulWidget {
   State<MugginsPresentation> createState() => _MugginsPresentationState();
 }
 
-class _MugginsPresentationState extends State<MugginsPresentation>
-    with WidgetsBindingObserver, TickerProviderStateMixin {
+class _MugginsPresentationState extends State<MugginsPresentation> {
   @override
   void initState() {
     super.initState();
