@@ -1,7 +1,6 @@
 import 'dart:math' show pow, sqrt;
 import 'dart:ui' show DisplayFeature, DisplayFeatureType, FlutterView;
 import 'dart:io' show Platform;
-
 import 'package:flutter/widgets.dart';
 import 'package:web/web.dart';
 

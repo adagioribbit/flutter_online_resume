@@ -1,7 +1,7 @@
-import 'package:dossier_de_competences_web/helpers/colorchart.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' show pi, min, max;
 
+import '../helpers/colorchart.dart';
 import '../helpers/utils.dart';
 import 'resume_presentation.dart';
 

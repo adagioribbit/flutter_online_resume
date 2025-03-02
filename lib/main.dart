@@ -1,7 +1,7 @@
-import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show GlobalKeyRing;
 import 'package:flutter/material.dart';
+
 import 'helpers/colorchart.dart';
+import 'helpers/globals.dart' show GlobalKeyRing;
 import 'widgets/bubble/bubble_carousel.dart';
 import 'widgets/appbar/site_header.dart';
 import 'widgets/toolbar/toolbar.dart';

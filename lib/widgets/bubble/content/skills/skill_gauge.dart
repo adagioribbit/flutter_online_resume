@@ -1,8 +1,7 @@
-import 'dart:ui' as ui;
-import 'package:dossier_de_competences_web/helpers/colorchart.dart'
-    show skillsSetButtonPalette;
 import 'package:flutter/material.dart';
+
 import '../../../../helpers/constants.dart';
+import '../../../../helpers/colorchart.dart' show skillsSetButtonPalette;
 
 class SkillGauge extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 1500);

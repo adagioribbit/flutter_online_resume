@@ -1,27 +1,24 @@
 import 'dart:async';
 import 'dart:math' show max;
-
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dossier_de_competences_web/helpers/colorchart.dart'
-    show
-        ToolbarButtonPalette,
-        educationButtonPalette,
-        skillsSetButtonPalette,
-        workExperienceButtonPalette;
-import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_sets_content.dart';
 import 'package:flutter/material.dart';
+
 import '../../helpers/constants.dart';
 import '../../helpers/global_streams.dart';
+import '../../helpers/utils.dart' show Utils;
 import '../../helpers/globals.dart'
     show
         GlobalKeyRing,
         ToolbarMenu,
         bubbleContentScrollController,
         carouselController,
-        carouselIndex,
-        gaugePython,
-        skillList;
-import '../../helpers/utils.dart' show Utils;
+        carouselIndex;
+import '../../helpers/colorchart.dart'
+    show
+        ToolbarButtonPalette,
+        educationButtonPalette,
+        skillsSetButtonPalette,
+        workExperienceButtonPalette;
 import 'bubble_hailer.dart';
 import 'content/education/data/greta.dart';
 import 'content/education/data/lecnam.dart';
@@ -30,6 +27,8 @@ import 'content/education/data/upec.dart';
 import 'content/work_experience/data/content_amiltone.dart';
 import 'content/work_experience/data/content_evolucare.dart';
 import 'content/work_experience/data/content_prastel.dart';
+import 'content/skills/skill_sets_content.dart';
+import 'content/skills/skills.dart' show gaugePython, skillList;
 
 class BubbleCarousel extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 300);
@@ -122,14 +121,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
     screenSize = Utils.getScreenSize();
     isPortrait = Utils.isPortraitOrientation();
-    //containerSize = isPortrait
-    //    ? Size(
-    //        screenSize.width,
-    //        (screenSize.height -
-    //            Constants.TOOLBAR_HEIGHT -
-    //            Constants.APPBAR_HEIGHT))
-    //    : Size((screenSize.width - Constants.TOOLBAR_HEIGHT),
-    //        (screenSize.height - Constants.APPBAR_HEIGHT));
+
     containerSize = Size(
         screenSize.width,
         (screenSize.height -
@@ -156,8 +148,6 @@ class _BubbleCarouselState extends State<BubbleCarousel>
         }
       });
     });
-
-    //globalStreams.triggerBubbleCarousel(ToolbarMenu.btnSkillsSet);
   }
 
   @override

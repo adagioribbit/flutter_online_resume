@@ -1,11 +1,9 @@
-import 'dart:math' show min;
-
-import 'package:dossier_de_competences_web/helpers/constants.dart';
-import 'package:dossier_de_competences_web/helpers/globals.dart' as globals;
-import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show GlobalKeyRing;
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html;
+import 'dart:math' show min;
+
+import '../helpers/constants.dart';
+import '../helpers/globals.dart' show GlobalKeyRing, appLanguage;
 
 class ExternalLink extends StatefulWidget implements PreferredSizeWidget {
   final String assetImagePath, url;
@@ -58,7 +56,7 @@ class _ExternalLinkState extends State<ExternalLink>
     ExternalLink that = widget;
 
     return ValueListenableBuilder(
-        valueListenable: globals.appLanguage,
+        valueListenable: appLanguage,
         builder: (context, value, widget) {
           return LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {

@@ -1,13 +1,14 @@
-import 'package:dossier_de_competences_web/widgets/toolbar/toolbar_button.dart';
 import 'package:flutter/material.dart';
+
+import '../../helpers/constants.dart';
+import '../../helpers/globals.dart' show ToolbarMenu, appLanguage;
 import '../../helpers/colorchart.dart'
     show
         educationButtonPalette,
         skillsSetButtonPalette,
         workExperienceButtonPalette,
         ColorChart;
-import '../../helpers/constants.dart';
-import '../../helpers/globals.dart' show ToolbarMenu, appLanguage;
+import 'toolbar_button.dart';
 
 class Toolbar extends StatefulWidget implements PreferredSizeWidget {
   const Toolbar({super.key});

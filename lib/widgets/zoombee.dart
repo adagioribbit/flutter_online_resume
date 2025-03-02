@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'dart:math' show pi;
+
 import '../helpers/curved_text_painter.dart';
 
 enum STATUS { IDLE, RADAR, MOVING, CLEANING, RECYCLE, ALARM }

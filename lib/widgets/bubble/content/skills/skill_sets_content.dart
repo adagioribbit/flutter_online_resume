@@ -1,7 +1,7 @@
-import 'package:dossier_de_competences_web/helpers/colorchart.dart'
-    show skillsSetButtonPalette;
 import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show skillList, skillListScrollController;
+    show skillListScrollController;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skills.dart'
+    show skillList;
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ScrollablePositionedList;

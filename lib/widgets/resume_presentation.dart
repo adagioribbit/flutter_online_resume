@@ -1,9 +1,8 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../helpers/constants.dart';
-import '../helpers/globals.dart' as globals;
+import '../helpers/globals.dart' show appLanguage;
 import 'squared_sheet.dart';
 
 class ResumePresentation extends StatefulWidget {
@@ -64,7 +63,7 @@ class _ResumePresentationState extends State<ResumePresentation>
             image: AssetImage("lib/assets/toolbar/naughty.png")));
 
     ValueListenableBuilder boredom = ValueListenableBuilder(
-        valueListenable: globals.appLanguage,
+        valueListenable: appLanguage,
         builder: (context, language, widget) {
           return Transform(
               alignment: FractionalOffset.center,
@@ -85,7 +84,7 @@ class _ResumePresentationState extends State<ResumePresentation>
         });
 
     ValueListenableBuilder pretext = ValueListenableBuilder(
-        valueListenable: globals.appLanguage,
+        valueListenable: appLanguage,
         builder: (context, language, widget) {
           return Transform(
               alignment: FractionalOffset.center,
@@ -127,7 +126,7 @@ class _ResumePresentationState extends State<ResumePresentation>
             image: AssetImage("lib/assets/toolbar/blue_manga_crow.png")));
 
     ValueListenableBuilder callToAction = ValueListenableBuilder(
-        valueListenable: globals.appLanguage,
+        valueListenable: appLanguage,
         builder: (context, language, widget) {
           return Transform(
               alignment: FractionalOffset.center,
@@ -148,7 +147,7 @@ class _ResumePresentationState extends State<ResumePresentation>
         });
 
     ValueListenableBuilder outcry = ValueListenableBuilder(
-        valueListenable: globals.appLanguage,
+        valueListenable: appLanguage,
         builder: (context, language, widget) {
           return Transform(
               alignment: FractionalOffset.center,

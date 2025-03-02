@@ -1,6 +1,6 @@
-import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show ToolbarMenu;
 import 'package:rxdart/rxdart.dart';
+
+import 'globals.dart' show ToolbarMenu;
 
 class GlobalStreams {
   final BehaviorSubject<ToolbarMenu> _streamBubbleCarousel =
