@@ -14,6 +14,7 @@ CarouselSliderController carouselController = CarouselSliderController();
 ScrollController bubbleContentScrollController = ScrollController();
 ItemScrollController skillListScrollController = ItemScrollController();
 ValueNotifier<int> carouselIndex = ValueNotifier<int>(0);
+ValueNotifier<int> initialScrollIndex = ValueNotifier<int>(0);
 
 enum ToolbarMenu { None, btnEducation, btnSkillsSet, btnWorkExperience }
 

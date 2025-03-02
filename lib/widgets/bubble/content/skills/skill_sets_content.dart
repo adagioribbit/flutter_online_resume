@@ -1,12 +1,11 @@
-import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show skillListScrollController;
-import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skills.dart'
-    show skillList;
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ScrollablePositionedList;
 
 import '../../../../helpers/constants.dart';
+import '../../../../helpers/globals.dart'
+    show initialScrollIndex, skillListScrollController;
+import '../../../../widgets/bubble/content/skills/skills.dart' show skillList;
 
 class SkillSetsContent extends StatefulWidget implements PreferredSizeWidget {
   const SkillSetsContent({super.key});
@@ -43,6 +42,7 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
               maxWidth: constraints.maxWidth * 0.9),
           child: ScrollablePositionedList.builder(
               itemCount: skillList.length,
+              initialScrollIndex: initialScrollIndex.value,
               itemScrollController: skillListScrollController,
               itemBuilder: (context, index) {
                 return Container(
