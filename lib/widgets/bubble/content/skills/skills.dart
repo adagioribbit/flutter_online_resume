@@ -1,7 +1,22 @@
 import 'package:dossier_de_competences_web/helpers/globals.dart'
     show GlobalKeyRing, appLanguage;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/education_badges.dart'
+    show badgeLeCnam, badgeUpec, badgeGreta, badgeLeWagon;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_list_item.dart'
     show SkillListItem;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/work_experience_badges.dart'
+    show
+        badgeAmiltoneAndroid,
+        badgeAmiltoneIot,
+        badgeAmiltoneMigration,
+        badgeAmiltonePowerBI,
+        badgeAmiltoneWSO2,
+        badgeEvolucareBorne,
+        badgeEvolucareImaging,
+        badgeEvolucareMobile,
+        badgePrastelBT,
+        badgePrastelCRN15M,
+        badgePrastelSiteInterne;
 import 'package:flutter/material.dart' show ValueListenableBuilder, Widget;
 
 ValueListenableBuilder gaugeAccess = ValueListenableBuilder(
@@ -10,7 +25,8 @@ ValueListenableBuilder gaugeAccess = ValueListenableBuilder(
       return SkillListItem(
           title: "Microsoft Access",
           iconAssetPath: "lib/assets/bubble_content/skill/access.png",
-          nbYearsPractice: .33);
+          nbYearsPractice: .33,
+          experiences: [badgeAmiltoneMigration]);
     });
 
 ValueListenableBuilder gaugeAndroid = ValueListenableBuilder(
@@ -19,7 +35,14 @@ ValueListenableBuilder gaugeAndroid = ValueListenableBuilder(
       return SkillListItem(
           title: "Android",
           iconAssetPath: "lib/assets/bubble_content/skill/android.png",
-          nbYearsPractice: 6.9);
+          nbYearsPractice: 6.9,
+          experiences: [
+            badgePrastelBT,
+            badgePrastelCRN15M,
+            badgeAmiltoneAndroid,
+            badgeEvolucareMobile,
+            badgeLeCnam
+          ]);
     });
 
 ValueListenableBuilder gaugeAndroidStudio = ValueListenableBuilder(
@@ -28,7 +51,14 @@ ValueListenableBuilder gaugeAndroidStudio = ValueListenableBuilder(
       return SkillListItem(
           title: "Android Studio",
           iconAssetPath: "lib/assets/bubble_content/skill/android_studio.png",
-          nbYearsPractice: 7.75);
+          nbYearsPractice: 6.9,
+          experiences: [
+            badgePrastelBT,
+            badgePrastelCRN15M,
+            badgeAmiltoneAndroid,
+            badgeEvolucareMobile,
+            badgeLeCnam
+          ]);
     });
 
 ValueListenableBuilder gaugeAngular = ValueListenableBuilder(
@@ -37,7 +67,8 @@ ValueListenableBuilder gaugeAngular = ValueListenableBuilder(
       return SkillListItem(
           title: "Angular",
           iconAssetPath: "lib/assets/bubble_content/skill/angular.png",
-          nbYearsPractice: .08);
+          nbYearsPractice: .08,
+          experiences: [badgeEvolucareBorne]);
     });
 
 ValueListenableBuilder gaugeApacheServer = ValueListenableBuilder(
@@ -46,7 +77,14 @@ ValueListenableBuilder gaugeApacheServer = ValueListenableBuilder(
       return SkillListItem(
           title: "Apache Server",
           iconAssetPath: "lib/assets/bubble_content/skill/apache_server.png",
-          nbYearsPractice: 4.99);
+          nbYearsPractice: 4.99,
+          experiences: [
+            badgePrastelSiteInterne,
+            badgeEvolucareImaging,
+            badgeEvolucareBorne,
+            badgeLeCnam,
+            badgeGreta
+          ]);
     });
 
 ValueListenableBuilder gaugeAppstore = ValueListenableBuilder(
@@ -55,7 +93,8 @@ ValueListenableBuilder gaugeAppstore = ValueListenableBuilder(
       return SkillListItem(
           title: "App Store",
           iconAssetPath: "lib/assets/bubble_content/appstore.png",
-          nbYearsPractice: 5.74);
+          nbYearsPractice: 5.74,
+          experiences: [badgePrastelBT, badgeEvolucareMobile]);
     });
 
 ValueListenableBuilder gaugeBash = ValueListenableBuilder(
@@ -64,7 +103,8 @@ ValueListenableBuilder gaugeBash = ValueListenableBuilder(
       return SkillListItem(
           title: "Bash",
           iconAssetPath: "lib/assets/bubble_content/skill/bash.png",
-          nbYearsPractice: 4.74);
+          nbYearsPractice: 4.74,
+          experiences: [badgeEvolucareImaging, badgeLeCnam]);
     });
 
 ValueListenableBuilder gaugeBlender = ValueListenableBuilder(
@@ -73,7 +113,8 @@ ValueListenableBuilder gaugeBlender = ValueListenableBuilder(
       return SkillListItem(
           title: "Blender",
           iconAssetPath: "lib/assets/bubble_content/skill/blender.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgePrastelBT]);
     });
 
 ValueListenableBuilder gaugeBluetooth = ValueListenableBuilder(
@@ -82,7 +123,8 @@ ValueListenableBuilder gaugeBluetooth = ValueListenableBuilder(
       return SkillListItem(
           title: "Bluetooth",
           iconAssetPath: "lib/assets/bubble_content/skill/bluetooth.png",
-          nbYearsPractice: 1.83);
+          nbYearsPractice: 1.83,
+          experiences: [badgePrastelBT]);
     });
 
 ValueListenableBuilder gaugeBootstrap = ValueListenableBuilder(
@@ -91,7 +133,12 @@ ValueListenableBuilder gaugeBootstrap = ValueListenableBuilder(
       return SkillListItem(
           title: "Bootstrap",
           iconAssetPath: "lib/assets/bubble_content/skill/bootstrap.png",
-          nbYearsPractice: 3.99);
+          nbYearsPractice: 3.99,
+          experiences: [
+            badgePrastelSiteInterne,
+            badgeEvolucareImaging,
+            badgeEvolucareBorne
+          ]);
     });
 
 ValueListenableBuilder gaugeChrome = ValueListenableBuilder(
@@ -100,7 +147,13 @@ ValueListenableBuilder gaugeChrome = ValueListenableBuilder(
       return SkillListItem(
           title: "Chrome",
           iconAssetPath: "lib/assets/bubble_content/skill/chrome.png",
-          nbYearsPractice: 6.57);
+          nbYearsPractice: 6.57,
+          experiences: [
+            badgeLeCnam,
+            badgeEvolucareImaging,
+            badgeEvolucareBorne,
+            badgeGreta
+          ]);
     });
 
 ValueListenableBuilder gaugeColaboratory = ValueListenableBuilder(
@@ -109,7 +162,8 @@ ValueListenableBuilder gaugeColaboratory = ValueListenableBuilder(
       return SkillListItem(
           title: "Colaboratory",
           iconAssetPath: "lib/assets/bubble_content/skill/colaboratory.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeConfluence = ValueListenableBuilder(
@@ -118,7 +172,12 @@ ValueListenableBuilder gaugeConfluence = ValueListenableBuilder(
       return SkillListItem(
           title: "Confluence",
           iconAssetPath: "lib/assets/bubble_content/skill/confluence.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeEvolucareBorne,
+          ]);
     });
 
 ValueListenableBuilder gaugeCordova = ValueListenableBuilder(
@@ -127,7 +186,10 @@ ValueListenableBuilder gaugeCordova = ValueListenableBuilder(
       return SkillListItem(
           title: "Cordova",
           iconAssetPath: "lib/assets/bubble_content/skill/cordova.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgeEvolucareMobile,
+          ]);
     });
 
 ValueListenableBuilder gaugeCplusplus = ValueListenableBuilder(
@@ -136,7 +198,8 @@ ValueListenableBuilder gaugeCplusplus = ValueListenableBuilder(
       return SkillListItem(
           title: "C++",
           iconAssetPath: "lib/assets/bubble_content/skill/cplusplus.png",
-          nbYearsPractice: 0.83);
+          nbYearsPractice: 0.83,
+          experiences: [badgeLeCnam]);
     });
 
 ValueListenableBuilder gaugeCsharp = ValueListenableBuilder(
@@ -145,7 +208,11 @@ ValueListenableBuilder gaugeCsharp = ValueListenableBuilder(
       return SkillListItem(
           title: "C#",
           iconAssetPath: "lib/assets/bubble_content/skill/csharp.png",
-          nbYearsPractice: 1.99);
+          nbYearsPractice: 1.99,
+          experiences: [
+            badgePrastelBT,
+            badgeEvolucareImaging,
+          ]);
     });
 
 ValueListenableBuilder gaugeCss3 = ValueListenableBuilder(
@@ -154,7 +221,16 @@ ValueListenableBuilder gaugeCss3 = ValueListenableBuilder(
       return SkillListItem(
           title: "CSS 3",
           iconAssetPath: "lib/assets/bubble_content/skill/css3.png",
-          nbYearsPractice: 5.65);
+          nbYearsPractice: 5.65,
+          experiences: [
+            badgeLeWagon,
+            badgePrastelSiteInterne,
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeEvolucareBorne,
+            badgeLeCnam,
+            badgeGreta
+          ]);
     });
 
 ValueListenableBuilder gaugeDbeaver = ValueListenableBuilder(
@@ -163,7 +239,8 @@ ValueListenableBuilder gaugeDbeaver = ValueListenableBuilder(
       return SkillListItem(
           title: "DBeaver",
           iconAssetPath: "lib/assets/bubble_content/skill/dbeaver.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeDebian = ValueListenableBuilder(
@@ -172,7 +249,14 @@ ValueListenableBuilder gaugeDebian = ValueListenableBuilder(
       return SkillListItem(
           title: "Debian",
           iconAssetPath: "lib/assets/bubble_content/skill/debian.png",
-          nbYearsPractice: 5.98);
+          nbYearsPractice: 5.98,
+          experiences: [
+            badgeLeWagon,
+            badgePrastelSiteInterne,
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeLeCnam
+          ]);
     });
 
 ValueListenableBuilder gaugeDocker = ValueListenableBuilder(
@@ -181,7 +265,8 @@ ValueListenableBuilder gaugeDocker = ValueListenableBuilder(
       return SkillListItem(
           title: "Docker",
           iconAssetPath: "lib/assets/bubble_content/skill/docker.png",
-          nbYearsPractice: .99);
+          nbYearsPractice: .99,
+          experiences: [badgeLeWagon, badgeLeCnam]);
     });
 
 ValueListenableBuilder gaugeUkFlag = ValueListenableBuilder(
@@ -191,7 +276,8 @@ ValueListenableBuilder gaugeUkFlag = ValueListenableBuilder(
           title: "English",
           iconAssetPath: "lib/assets/appbar/uk_flag.png",
           nbYearsPractice:
-              (DateTime.now().difference(DateTime(2015, 9, 1)).inDays / 365));
+              (DateTime.now().difference(DateTime(2015, 9, 1)).inDays / 365),
+          experiences: [badgeUpec]);
     });
 
 ValueListenableBuilder gaugeExcel = ValueListenableBuilder(
@@ -200,7 +286,8 @@ ValueListenableBuilder gaugeExcel = ValueListenableBuilder(
       return SkillListItem(
           title: "Excel",
           iconAssetPath: "lib/assets/bubble_content/skill/excel.png",
-          nbYearsPractice: 1.83);
+          nbYearsPractice: 1.83,
+          experiences: [badgePrastelBT]);
     });
 
 ValueListenableBuilder gaugeFastapi = ValueListenableBuilder(
@@ -209,7 +296,8 @@ ValueListenableBuilder gaugeFastapi = ValueListenableBuilder(
       return SkillListItem(
           title: "FastAPI",
           iconAssetPath: "lib/assets/bubble_content/skill/fastapi.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeFlutter = ValueListenableBuilder(
@@ -218,7 +306,8 @@ ValueListenableBuilder gaugeFlutter = ValueListenableBuilder(
       return SkillListItem(
           title: "Flutter",
           iconAssetPath: "lib/assets/bubble_content/skill/flutter.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: []);
     });
 
 ValueListenableBuilder gaugeGit = ValueListenableBuilder(
@@ -227,7 +316,11 @@ ValueListenableBuilder gaugeGit = ValueListenableBuilder(
       return SkillListItem(
           title: "Git",
           iconAssetPath: "lib/assets/bubble_content/skill/git.png",
-          nbYearsPractice: 5.74);
+          nbYearsPractice: 5.74,
+          experiences: [
+            badgePrastelBT,
+            badgePrastelSiteInterne,
+          ]);
     });
 
 ValueListenableBuilder gaugeGithub = ValueListenableBuilder(
@@ -236,7 +329,8 @@ ValueListenableBuilder gaugeGithub = ValueListenableBuilder(
       return SkillListItem(
           title: "Github",
           iconAssetPath: "lib/assets/bubble_content/skill/github.png",
-          nbYearsPractice: 8.16);
+          nbYearsPractice: 8.16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeGitlab = ValueListenableBuilder(
@@ -245,7 +339,12 @@ ValueListenableBuilder gaugeGitlab = ValueListenableBuilder(
       return SkillListItem(
           title: "Gitlab",
           iconAssetPath: "lib/assets/bubble_content/skill/gitlab.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeEvolucareBorne,
+          ]);
     });
 
 ValueListenableBuilder gaugeGoogleDocs = ValueListenableBuilder(
@@ -254,7 +353,8 @@ ValueListenableBuilder gaugeGoogleDocs = ValueListenableBuilder(
       return SkillListItem(
           title: "Google Docs",
           iconAssetPath: "lib/assets/bubble_content/skill/google_docs.png",
-          nbYearsPractice: 1.16);
+          nbYearsPractice: 1.16,
+          experiences: [badgeAmiltoneMigration, badgeGreta]);
     });
 
 ValueListenableBuilder gaugeGooglePlay = ValueListenableBuilder(
@@ -263,7 +363,8 @@ ValueListenableBuilder gaugeGooglePlay = ValueListenableBuilder(
       return SkillListItem(
           title: "Google Play",
           iconAssetPath: "lib/assets/bubble_content/google_play.png",
-          nbYearsPractice: 5.74);
+          nbYearsPractice: 5.74,
+          experiences: [badgePrastelBT, badgePrastelCRN15M]);
     });
 
 ValueListenableBuilder gaugeGradle = ValueListenableBuilder(
@@ -272,7 +373,11 @@ ValueListenableBuilder gaugeGradle = ValueListenableBuilder(
       return SkillListItem(
           title: "Gradle",
           iconAssetPath: "lib/assets/bubble_content/skill/gradle.png",
-          nbYearsPractice: 4.99);
+          nbYearsPractice: 4.99,
+          experiences: [
+            badgePrastelCRN15M,
+            badgeEvolucareMobile,
+          ]);
     });
 
 ValueListenableBuilder gaugeHtml5 = ValueListenableBuilder(
@@ -281,7 +386,16 @@ ValueListenableBuilder gaugeHtml5 = ValueListenableBuilder(
       return SkillListItem(
           title: "Html 5",
           iconAssetPath: "lib/assets/bubble_content/skill/html5.png",
-          nbYearsPractice: 5.65);
+          nbYearsPractice: 5.65,
+          experiences: [
+            badgeLeWagon,
+            badgePrastelSiteInterne,
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeEvolucareBorne,
+            badgeLeCnam,
+            badgeGreta
+          ]);
     });
 
 ValueListenableBuilder gaugeHuggingface = ValueListenableBuilder(
@@ -290,7 +404,8 @@ ValueListenableBuilder gaugeHuggingface = ValueListenableBuilder(
       return SkillListItem(
           title: "Huggingface",
           iconAssetPath: "lib/assets/bubble_content/skill/huggingface.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeIos = ValueListenableBuilder(
@@ -299,7 +414,11 @@ ValueListenableBuilder gaugeIos = ValueListenableBuilder(
       return SkillListItem(
           title: "iOS",
           iconAssetPath: "lib/assets/bubble_content/skill/ios.png",
-          nbYearsPractice: 6.74);
+          nbYearsPractice: 6.74,
+          experiences: [
+            badgePrastelBT,
+            badgeEvolucareMobile,
+          ]);
     });
 
 ValueListenableBuilder gaugeJava = ValueListenableBuilder(
@@ -308,7 +427,14 @@ ValueListenableBuilder gaugeJava = ValueListenableBuilder(
       return SkillListItem(
           title: "Java",
           iconAssetPath: "lib/assets/bubble_content/skill/java.png",
-          nbYearsPractice: 1.07);
+          nbYearsPractice: 1.07,
+          experiences: [
+            badgePrastelCRN15M,
+            badgeAmiltoneAndroid,
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeLeCnam
+          ]);
     });
 
 ValueListenableBuilder gaugeJavascript = ValueListenableBuilder(
@@ -317,7 +443,16 @@ ValueListenableBuilder gaugeJavascript = ValueListenableBuilder(
       return SkillListItem(
           title: "Javascript",
           iconAssetPath: "lib/assets/bubble_content/skill/javascript.png",
-          nbYearsPractice: 5.57);
+          nbYearsPractice: 5.57,
+          experiences: [
+            badgeLeWagon,
+            badgePrastelSiteInterne,
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeEvolucareBorne,
+            badgeLeCnam,
+            badgeGreta
+          ]);
     });
 
 ValueListenableBuilder gaugeJira = ValueListenableBuilder(
@@ -326,7 +461,14 @@ ValueListenableBuilder gaugeJira = ValueListenableBuilder(
       return SkillListItem(
           title: "Jira",
           iconAssetPath: "lib/assets/bubble_content/skill/jira.png",
-          nbYearsPractice: 5.23);
+          nbYearsPractice: 5.23,
+          experiences: [
+            badgeAmiltoneWSO2,
+            badgeAmiltoneAndroid,
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeEvolucareBorne,
+          ]);
     });
 
 ValueListenableBuilder gaugeJquery = ValueListenableBuilder(
@@ -335,7 +477,12 @@ ValueListenableBuilder gaugeJquery = ValueListenableBuilder(
       return SkillListItem(
           title: "JQuery",
           iconAssetPath: "lib/assets/bubble_content/skill/jquery.png",
-          nbYearsPractice: 3.99);
+          nbYearsPractice: 3.99,
+          experiences: [
+            badgePrastelSiteInterne,
+            badgeEvolucareImaging,
+            badgeEvolucareBorne,
+          ]);
     });
 
 ValueListenableBuilder gaugeJson = ValueListenableBuilder(
@@ -344,7 +491,8 @@ ValueListenableBuilder gaugeJson = ValueListenableBuilder(
       return SkillListItem(
           title: "Json",
           iconAssetPath: "lib/assets/bubble_content/skill/json.png",
-          nbYearsPractice: 1.82);
+          nbYearsPractice: 1.82,
+          experiences: [badgeLeWagon, badgeLeCnam, badgeGreta]);
     });
 
 ValueListenableBuilder gaugeJupyter = ValueListenableBuilder(
@@ -353,7 +501,8 @@ ValueListenableBuilder gaugeJupyter = ValueListenableBuilder(
       return SkillListItem(
           title: "Jupyter",
           iconAssetPath: "lib/assets/bubble_content/skill/jupyter.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeKaggle = ValueListenableBuilder(
@@ -362,7 +511,8 @@ ValueListenableBuilder gaugeKaggle = ValueListenableBuilder(
       return SkillListItem(
           title: "Kaggle",
           iconAssetPath: "lib/assets/bubble_content/skill/kaggle.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeKeras = ValueListenableBuilder(
@@ -371,7 +521,8 @@ ValueListenableBuilder gaugeKeras = ValueListenableBuilder(
       return SkillListItem(
           title: "Keras",
           iconAssetPath: "lib/assets/bubble_content/skill/keras.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeLerobert = ValueListenableBuilder(
@@ -380,7 +531,8 @@ ValueListenableBuilder gaugeLerobert = ValueListenableBuilder(
       return SkillListItem(
           title: "Le Robert & Collins",
           iconAssetPath: "lib/assets/bubble_content/skill/lerobert.png",
-          nbYearsPractice: 7.2);
+          nbYearsPractice: 7.2,
+          experiences: [badgeUpec]);
     });
 
 ValueListenableBuilder gaugeMacos = ValueListenableBuilder(
@@ -389,7 +541,12 @@ ValueListenableBuilder gaugeMacos = ValueListenableBuilder(
       return SkillListItem(
           title: "Macos",
           iconAssetPath: "lib/assets/bubble_content/skill/macos.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgePrastelBT,
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+          ]);
     });
 
 ValueListenableBuilder gaugeMailchimp = ValueListenableBuilder(
@@ -398,7 +555,8 @@ ValueListenableBuilder gaugeMailchimp = ValueListenableBuilder(
       return SkillListItem(
           title: "Mailchimp",
           iconAssetPath: "lib/assets/bubble_content/skill/mailchimp.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeGreta]);
     });
 
 ValueListenableBuilder gaugeMariadb = ValueListenableBuilder(
@@ -407,7 +565,10 @@ ValueListenableBuilder gaugeMariadb = ValueListenableBuilder(
       return SkillListItem(
           title: "MariaDB",
           iconAssetPath: "lib/assets/bubble_content/skill/mariadb.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgeEvolucareImaging,
+          ]);
     });
 
 ValueListenableBuilder gaugeMatplotlib = ValueListenableBuilder(
@@ -416,7 +577,8 @@ ValueListenableBuilder gaugeMatplotlib = ValueListenableBuilder(
       return SkillListItem(
           title: "Matplotlib",
           iconAssetPath: "lib/assets/bubble_content/skill/matplotlib.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeMysql = ValueListenableBuilder(
@@ -425,7 +587,8 @@ ValueListenableBuilder gaugeMysql = ValueListenableBuilder(
       return SkillListItem(
           title: "MySQL",
           iconAssetPath: "lib/assets/bubble_content/skill/mysql.png",
-          nbYearsPractice: 1.74);
+          nbYearsPractice: 1.74,
+          experiences: [badgePrastelSiteInterne, badgeLeCnam, badgeGreta]);
     });
 
 ValueListenableBuilder gaugeNetbeans = ValueListenableBuilder(
@@ -434,7 +597,8 @@ ValueListenableBuilder gaugeNetbeans = ValueListenableBuilder(
       return SkillListItem(
           title: "NetBeans",
           iconAssetPath: "lib/assets/bubble_content/skill/netbeans.png",
-          nbYearsPractice: 0.99);
+          nbYearsPractice: 0.99,
+          experiences: [badgeEvolucareImaging, badgeLeCnam]);
     });
 
 ValueListenableBuilder gaugeNetMaui = ValueListenableBuilder(
@@ -443,7 +607,8 @@ ValueListenableBuilder gaugeNetMaui = ValueListenableBuilder(
       return SkillListItem(
           title: ".NET MAUI",
           iconAssetPath: "lib/assets/bubble_content/skill/net_maui.png",
-          nbYearsPractice: 1.83);
+          nbYearsPractice: 1.83,
+          experiences: [badgePrastelBT]);
     });
 
 ValueListenableBuilder gaugeNpm = ValueListenableBuilder(
@@ -452,7 +617,10 @@ ValueListenableBuilder gaugeNpm = ValueListenableBuilder(
       return SkillListItem(
           title: "NPM",
           iconAssetPath: "lib/assets/bubble_content/skill/npm.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgeEvolucareMobile,
+          ]);
     });
 
 ValueListenableBuilder gaugeObjectivec = ValueListenableBuilder(
@@ -461,7 +629,10 @@ ValueListenableBuilder gaugeObjectivec = ValueListenableBuilder(
       return SkillListItem(
           title: "Objective C",
           iconAssetPath: "lib/assets/bubble_content/skill/objectivec.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [
+            badgeEvolucareMobile,
+          ]);
     });
 
 ValueListenableBuilder gaugePandas = ValueListenableBuilder(
@@ -470,7 +641,8 @@ ValueListenableBuilder gaugePandas = ValueListenableBuilder(
       return SkillListItem(
           title: "Pandas",
           iconAssetPath: "lib/assets/bubble_content/skill/pandas.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugePhp = ValueListenableBuilder(
@@ -479,7 +651,14 @@ ValueListenableBuilder gaugePhp = ValueListenableBuilder(
       return SkillListItem(
           title: "PHP 7",
           iconAssetPath: "lib/assets/bubble_content/skill/php.png",
-          nbYearsPractice: 5.65);
+          nbYearsPractice: 5.65,
+          experiences: [
+            badgePrastelSiteInterne,
+            badgeEvolucareImaging,
+            badgeEvolucareBorne,
+            badgeLeCnam,
+            badgeGreta
+          ]);
     });
 
 ValueListenableBuilder gaugePhpmyadmin = ValueListenableBuilder(
@@ -488,7 +667,8 @@ ValueListenableBuilder gaugePhpmyadmin = ValueListenableBuilder(
       return SkillListItem(
           title: "PhpMyAdmin",
           iconAssetPath: "lib/assets/bubble_content/skill/phpmyadmin.png",
-          nbYearsPractice: 4.74);
+          nbYearsPractice: 4.74,
+          experiences: [badgeEvolucareImaging, badgeGreta]);
     });
 
 ValueListenableBuilder gaugePhpstorm = ValueListenableBuilder(
@@ -497,7 +677,12 @@ ValueListenableBuilder gaugePhpstorm = ValueListenableBuilder(
       return SkillListItem(
           title: "PhpStorm",
           iconAssetPath: "lib/assets/bubble_content/skill/phpstorm.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeEvolucareBorne,
+          ]);
     });
 
 ValueListenableBuilder gaugePowerbi = ValueListenableBuilder(
@@ -506,7 +691,8 @@ ValueListenableBuilder gaugePowerbi = ValueListenableBuilder(
       return SkillListItem(
           title: "Power BI",
           iconAssetPath: "lib/assets/bubble_content/skill/powerbi.png",
-          nbYearsPractice: .33);
+          nbYearsPractice: .33,
+          experiences: [badgeAmiltonePowerBI]);
     });
 
 ValueListenableBuilder gaugePowershell = ValueListenableBuilder(
@@ -515,7 +701,10 @@ ValueListenableBuilder gaugePowershell = ValueListenableBuilder(
       return SkillListItem(
           title: "PowerShell",
           iconAssetPath: "lib/assets/bubble_content/skill/powershell.png",
-          nbYearsPractice: .33);
+          nbYearsPractice: .33,
+          experiences: [
+            badgeAmiltoneIot,
+          ]);
     });
 
 ValueListenableBuilder gaugePowerQuery = ValueListenableBuilder(
@@ -524,7 +713,10 @@ ValueListenableBuilder gaugePowerQuery = ValueListenableBuilder(
       return SkillListItem(
           title: "Power Query",
           iconAssetPath: "lib/assets/bubble_content/skill/microsoft.png",
-          nbYearsPractice: .33);
+          nbYearsPractice: .33,
+          experiences: [
+            badgeAmiltonePowerBI,
+          ]);
     });
 
 ValueListenableBuilder gaugePython = ValueListenableBuilder(
@@ -534,7 +726,8 @@ ValueListenableBuilder gaugePython = ValueListenableBuilder(
           key: GlobalKeyRing.pythonGauge,
           title: "Python",
           iconAssetPath: "lib/assets/bubble_content/skill/python.png",
-          nbYearsPractice: 1.32);
+          nbYearsPractice: 1.32,
+          experiences: [badgeLeWagon, badgeAmiltoneIot, badgeGreta]);
     });
 
 ValueListenableBuilder gaugeQt = ValueListenableBuilder(
@@ -543,7 +736,10 @@ ValueListenableBuilder gaugeQt = ValueListenableBuilder(
       return SkillListItem(
           title: "Qt",
           iconAssetPath: "lib/assets/bubble_content/skill/qt.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgeEvolucareImaging,
+          ]);
     });
 
 ValueListenableBuilder gaugeReact = ValueListenableBuilder(
@@ -552,7 +748,8 @@ ValueListenableBuilder gaugeReact = ValueListenableBuilder(
       return SkillListItem(
           title: "React",
           iconAssetPath: "lib/assets/bubble_content/skill/react.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: []);
     });
 
 ValueListenableBuilder gaugeSafari = ValueListenableBuilder(
@@ -561,7 +758,10 @@ ValueListenableBuilder gaugeSafari = ValueListenableBuilder(
       return SkillListItem(
           title: "Safari",
           iconAssetPath: "lib/assets/bubble_content/skill/safari.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [
+            badgeEvolucareImaging,
+          ]);
     });
 
 ValueListenableBuilder gaugeSeaborn = ValueListenableBuilder(
@@ -570,7 +770,8 @@ ValueListenableBuilder gaugeSeaborn = ValueListenableBuilder(
       return SkillListItem(
           title: "Seaborn",
           iconAssetPath: "lib/assets/bubble_content/skill/seaborn.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeSharepoint = ValueListenableBuilder(
@@ -579,7 +780,10 @@ ValueListenableBuilder gaugeSharepoint = ValueListenableBuilder(
       return SkillListItem(
           title: "SharePoint",
           iconAssetPath: "lib/assets/bubble_content/skill/sharepoint.png",
-          nbYearsPractice: .33);
+          nbYearsPractice: .33,
+          experiences: [
+            badgeAmiltoneMigration,
+          ]);
     });
 
 ValueListenableBuilder gaugeSlack = ValueListenableBuilder(
@@ -588,7 +792,12 @@ ValueListenableBuilder gaugeSlack = ValueListenableBuilder(
       return SkillListItem(
           title: "Slack",
           iconAssetPath: "lib/assets/bubble_content/skill/slack.png",
-          nbYearsPractice: 5.74);
+          nbYearsPractice: 5.74,
+          experiences: [
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeGreta
+          ]);
     });
 
 ValueListenableBuilder gaugeSql = ValueListenableBuilder(
@@ -597,7 +806,13 @@ ValueListenableBuilder gaugeSql = ValueListenableBuilder(
       return SkillListItem(
           title: "SQL",
           iconAssetPath: "lib/assets/bubble_content/skill/sql.png",
-          nbYearsPractice: 7.06);
+          nbYearsPractice: 7.06,
+          experiences: [
+            badgeLeWagon,
+            badgeAmiltonePowerBI,
+            badgeLeCnam,
+            badgeGreta
+          ]);
     });
 
 ValueListenableBuilder gaugeSqlserver = ValueListenableBuilder(
@@ -606,7 +821,12 @@ ValueListenableBuilder gaugeSqlserver = ValueListenableBuilder(
       return SkillListItem(
           title: "SQL Server",
           iconAssetPath: "lib/assets/bubble_content/skill/sqlserver.png",
-          nbYearsPractice: .33);
+          nbYearsPractice: .33,
+          experiences: [
+            badgeAmiltoneMigration,
+            badgeAmiltoneIot,
+            badgeAmiltonePowerBI,
+          ]);
     });
 
 ValueListenableBuilder gaugeSqlite = ValueListenableBuilder(
@@ -615,7 +835,8 @@ ValueListenableBuilder gaugeSqlite = ValueListenableBuilder(
       return SkillListItem(
           title: "SQLite",
           iconAssetPath: "lib/assets/bubble_content/skill/sqlite.png",
-          nbYearsPractice: 4.91);
+          nbYearsPractice: 4.91,
+          experiences: [badgeEvolucareMobile]);
     });
 
 ValueListenableBuilder gaugeStackoverflow = ValueListenableBuilder(
@@ -624,7 +845,8 @@ ValueListenableBuilder gaugeStackoverflow = ValueListenableBuilder(
       return SkillListItem(
           title: "Stackoverflow",
           iconAssetPath: "lib/assets/bubble_content/skill/stackoverflow.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: []);
     });
 
 ValueListenableBuilder gaugeTensorflow = ValueListenableBuilder(
@@ -633,7 +855,8 @@ ValueListenableBuilder gaugeTensorflow = ValueListenableBuilder(
       return SkillListItem(
           title: "Tensorflow",
           iconAssetPath: "lib/assets/bubble_content/skill/tensorflow.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeThingsboard = ValueListenableBuilder(
@@ -642,7 +865,8 @@ ValueListenableBuilder gaugeThingsboard = ValueListenableBuilder(
       return SkillListItem(
           title: "Thingsboard",
           iconAssetPath: "lib/assets/bubble_content/skill/thingsboard.png",
-          nbYearsPractice: .33);
+          nbYearsPractice: .33,
+          experiences: [badgeAmiltoneIot]);
     });
 
 ValueListenableBuilder gaugeTomcat = ValueListenableBuilder(
@@ -651,7 +875,8 @@ ValueListenableBuilder gaugeTomcat = ValueListenableBuilder(
       return SkillListItem(
           title: "Tomcat",
           iconAssetPath: "lib/assets/bubble_content/skill/tomcat.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [badgeLeCnam]);
     });
 
 ValueListenableBuilder gaugeTrello = ValueListenableBuilder(
@@ -660,7 +885,8 @@ ValueListenableBuilder gaugeTrello = ValueListenableBuilder(
       return SkillListItem(
           title: "Trello",
           iconAssetPath: "lib/assets/bubble_content/skill/trello.png",
-          nbYearsPractice: 0.83);
+          nbYearsPractice: 0.83,
+          experiences: [badgeGreta]);
     });
 
 ValueListenableBuilder gaugeUml = ValueListenableBuilder(
@@ -669,7 +895,12 @@ ValueListenableBuilder gaugeUml = ValueListenableBuilder(
       return SkillListItem(
           title: "UML",
           iconAssetPath: "lib/assets/bubble_content/skill/uml.png",
-          nbYearsPractice: 5.74);
+          nbYearsPractice: 5.74,
+          experiences: [
+            badgeEvolucareImaging,
+            badgeEvolucareMobile,
+            badgeLeCnam
+          ]);
     });
 
 ValueListenableBuilder gaugeVisualStudio2022 = ValueListenableBuilder(
@@ -679,7 +910,18 @@ ValueListenableBuilder gaugeVisualStudio2022 = ValueListenableBuilder(
           title: "Visual Studio 2022",
           iconAssetPath:
               "lib/assets/bubble_content/skill/visual_studio_2022.png",
-          nbYearsPractice: 1.83);
+          nbYearsPractice: 1.83,
+          experiences: [badgePrastelBT]);
+    });
+
+ValueListenableBuilder gaugeVscode = ValueListenableBuilder(
+    valueListenable: appLanguage,
+    builder: (context, value, widget) {
+      return SkillListItem(
+          title: "Visual Studio Code",
+          iconAssetPath: "lib/assets/bubble_content/skill/vscode.png",
+          nbYearsPractice: .16,
+          experiences: [badgeLeWagon]);
     });
 
 ValueListenableBuilder gaugeVmwareWorkstation = ValueListenableBuilder(
@@ -689,16 +931,8 @@ ValueListenableBuilder gaugeVmwareWorkstation = ValueListenableBuilder(
           title: "VMWare Workstation",
           iconAssetPath:
               "lib/assets/bubble_content/skill/vmware_workstation.png",
-          nbYearsPractice: 0.83);
-    });
-
-ValueListenableBuilder gaugeVscode = ValueListenableBuilder(
-    valueListenable: appLanguage,
-    builder: (context, value, widget) {
-      return SkillListItem(
-          title: "Visual Studio Code",
-          iconAssetPath: "lib/assets/bubble_content/skill/vscode.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: 0.83,
+          experiences: [badgeGreta]);
     });
 
 ValueListenableBuilder gaugeWikipedia = ValueListenableBuilder(
@@ -707,7 +941,8 @@ ValueListenableBuilder gaugeWikipedia = ValueListenableBuilder(
       return SkillListItem(
           title: "Wikipedia",
           iconAssetPath: "lib/assets/bubble_content/skill/wikipedia.png",
-          nbYearsPractice: 4.3);
+          nbYearsPractice: 4.3,
+          experiences: [badgeUpec]);
     });
 
 ValueListenableBuilder gaugeWindows = ValueListenableBuilder(
@@ -716,7 +951,8 @@ ValueListenableBuilder gaugeWindows = ValueListenableBuilder(
       return SkillListItem(
           title: "Windows",
           iconAssetPath: "lib/assets/bubble_content/skill/windows.png",
-          nbYearsPractice: .99);
+          nbYearsPractice: .99,
+          experiences: [badgeLeWagon, badgeEvolucareBorne, badgeGreta]);
     });
 
 ValueListenableBuilder gaugeWindowsserver = ValueListenableBuilder(
@@ -725,7 +961,10 @@ ValueListenableBuilder gaugeWindowsserver = ValueListenableBuilder(
       return SkillListItem(
           title: "Windows Server",
           iconAssetPath: "lib/assets/bubble_content/skill/windowsserver.png",
-          nbYearsPractice: .33);
+          nbYearsPractice: .33,
+          experiences: [
+            badgeAmiltoneMigration,
+          ]);
     });
 
 ValueListenableBuilder gaugeWordpress = ValueListenableBuilder(
@@ -734,7 +973,8 @@ ValueListenableBuilder gaugeWordpress = ValueListenableBuilder(
       return SkillListItem(
           title: "Wordpress",
           iconAssetPath: "lib/assets/bubble_content/skill/wordpress.png",
-          nbYearsPractice: 0.83);
+          nbYearsPractice: 0.83,
+          experiences: [badgeGreta]);
     });
 
 ValueListenableBuilder gaugeWso2 = ValueListenableBuilder(
@@ -743,7 +983,10 @@ ValueListenableBuilder gaugeWso2 = ValueListenableBuilder(
       return SkillListItem(
           title: "WSO2",
           iconAssetPath: "lib/assets/bubble_content/skill/wso2.png",
-          nbYearsPractice: .16);
+          nbYearsPractice: .16,
+          experiences: [
+            badgeAmiltoneWSO2,
+          ]);
     });
 
 ValueListenableBuilder gaugeXamarin = ValueListenableBuilder(
@@ -752,7 +995,8 @@ ValueListenableBuilder gaugeXamarin = ValueListenableBuilder(
       return SkillListItem(
           title: "Xamarin",
           iconAssetPath: "lib/assets/bubble_content/skill/xamarin.png",
-          nbYearsPractice: 1.83);
+          nbYearsPractice: 1.83,
+          experiences: [badgePrastelBT]);
     });
 
 ValueListenableBuilder gaugeXcode = ValueListenableBuilder(
@@ -761,7 +1005,11 @@ ValueListenableBuilder gaugeXcode = ValueListenableBuilder(
       return SkillListItem(
           title: "XCode",
           iconAssetPath: "lib/assets/bubble_content/skill/xcode.png",
-          nbYearsPractice: 6.74);
+          nbYearsPractice: 6.74,
+          experiences: [
+            badgePrastelBT,
+            badgeEvolucareMobile,
+          ]);
     });
 
 ValueListenableBuilder gaugeXml = ValueListenableBuilder(
@@ -770,7 +1018,11 @@ ValueListenableBuilder gaugeXml = ValueListenableBuilder(
       return SkillListItem(
           title: "XML",
           iconAssetPath: "lib/assets/bubble_content/skill/xml.png",
-          nbYearsPractice: 4.07);
+          nbYearsPractice: 4.07,
+          experiences: [
+            badgeAmiltoneWSO2,
+            badgeEvolucareImaging,
+          ]);
     });
 
 List<Widget> skillList = [

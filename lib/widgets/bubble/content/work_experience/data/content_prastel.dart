@@ -21,6 +21,7 @@ import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_b
         badgeJQuery,
         badgeJava,
         badgeJavascript,
+        badgeMacos,
         badgeMySQL,
         badgeNetMaui,
         badgePhp,
@@ -60,6 +61,7 @@ ValueListenableBuilder contentPrastelMobile = ValueListenableBuilder(
           languages: [badgeCSharp],
           tools: [
             badgeVisualStudio2022,
+            badgeMacos,
             badgeXamarin,
             badgeNetMaui,
             badgeIos,

@@ -400,7 +400,7 @@ class AppStrings {
     'fr': [
       'Développement full-stack de nouvelles fonctionnalités à partir de maquettes',
       'Mise en œuvre des normes DICOM / HL7 / SESAM-Vitale',
-      'Portage de composants externes sous MacOS',
+      'Portage en Java pour MacOS de composants externes codés en C# pour Windows',
       'Création d\'interfaces vers des API externes REST d\'opérateurs SMS',
       'Implémentation du Dossier Médical Personnel (API SOAP)',
       'Implémentation d\'un suivi patient par code barre dans la worklist du RIS',
@@ -409,7 +409,7 @@ class AppStrings {
     'en': [
       'Develop both back and front end functionalities based on mockups',
       'Improve PACS worklist respecting the DICOM norm',
-      'Port C# external components on MacOS using Java',
+      'Port Windows C# external components on MacOS using Java',
       'Implement both back and front end interfaces with the Dossier Médical Personnel SOAP API (HL7 / SESAM-Vitale)',
       'Implement both back and front end interfaces with SMS providers REST APIs',
       'Implement a barcode patient follow-up system in the RIS worklist',
@@ -441,6 +441,31 @@ class AppStrings {
       'Full stack development of new functionalities based on mockup',
       'Create multiplatform plugins in native code',
       'Write and update internal documentation',
+    ]
+  };
+
+  static const Map<String, String> EVOLUCARE_BORNE_BADGE = {
+    'fr': 'Accueil',
+    'en': 'Reception'
+  };
+  static const Map<String, String> EVOLUCARE_BORNE_PERIOD = {
+    'fr': '\nSeptembre 2020 - Octobre 2020',
+    'en': '\September 2020 - October 2020'
+  };
+  static const Map<String, String> EVOLUCARE_BORNE_PROJECT = {
+    'fr':
+        'Adaptation en PHP et Javascript d\'un prototype de borne d\'accueil RIS à partir des sources compilées d\'un projet Angular pour les Journées Françaises de la Radiologie 2020.',
+    'en':
+        'Development of Evolucare Imaging Mobile, a partial Android and iOS hybrid app port of Evolucare Imaging RIS functionnalities.'
+  };
+  static const Map<String, List<String>> EVOLUCARE_BORNE_DESCRIPTION = {
+    'fr': [
+      'Auto-formation sur Angular 10',
+      'Réécriture de l\'ensemble de l\'interface graphique en PHP et JavaScript',
+    ],
+    'en': [
+      'Self-train on Angular 10',
+      'Write an equivalent user interface in PHP and JavaScript'
     ]
   };
 }

@@ -2,41 +2,7 @@ import 'package:dossier_de_competences_web/helpers/constants.dart'
     show AppStrings;
 
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_badges.dart'
-    show
-        badgeAndroid,
-        badgeAndroidStudio,
-        badgeAngular,
-        badgeApacheServer,
-        badgeBash,
-        badgeBootstrap,
-        badgeCSS3,
-        badgeCSharp,
-        badgeChrome,
-        badgeConfluence,
-        badgeCordova,
-        badgeDebian,
-        badgeGitlab,
-        badgeGradle,
-        badgeHtml5,
-        badgeIos,
-        badgeJQuery,
-        badgeJava,
-        badgeJavascript,
-        badgeJira,
-        badgeMacos,
-        badgeMariaDB,
-        badgeNetBeans,
-        badgeNpm,
-        badgeObjectiveC,
-        badgePhp,
-        badgePhpMyAdmin,
-        badgePhpStorm,
-        badgeQt,
-        badgeSafari,
-        badgeSlack,
-        badgeUML,
-        badgeXCode,
-        badgeXML;
+    show badgeAndroid, badgeAndroidStudio, badgeAngular, badgeApacheServer, badgeBash, badgeBootstrap, badgeCSS3, badgeCSharp, badgeChrome, badgeConfluence, badgeCordova, badgeDebian, badgeGitlab, badgeGradle, badgeHtml5, badgeIos, badgeJQuery, badgeJava, badgeJavascript, badgeJira, badgeMacos, badgeMariaDB, badgeNetBeans, badgeNpm, badgeObjectiveC, badgePhp, badgePhpMyAdmin, badgePhpStorm, badgeQt, badgeSQLite, badgeSafari, badgeSlack, badgeUML, badgeWindows, badgeXCode, badgeXML;
 import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart' show Color, ValueListenableBuilder;
 
@@ -91,8 +57,7 @@ ValueListenableBuilder contentEvolucareImaging = ValueListenableBuilder(
           badgeSlack,
           badgeGitlab,
           badgeJQuery,
-          badgeBootstrap,
-          badgeAngular
+          badgeBootstrap
         ],
         projectTasks: AppStrings.EVOLUCARE_IMAGING_DESCRIPTION[value],
       );
@@ -119,6 +84,7 @@ ValueListenableBuilder contentEvolucareMobile = ValueListenableBuilder(
             badgeHtml5,
             badgeCSS3,
             badgeJavascript,
+            badgeSQLite,
             badgeUML,
             badgeJava,
             badgeObjectiveC
@@ -140,4 +106,41 @@ ValueListenableBuilder contentEvolucareMobile = ValueListenableBuilder(
             badgeNpm
           ],
           projectTasks: AppStrings.EVOLUCARE_MOBILE_DESCRIPTION[value]);
+    });
+
+ValueListenableBuilder contentEvolucareBorne = ValueListenableBuilder(
+    valueListenable: globals.appLanguage,
+    builder: (context, value, widget) {
+      return WorkExperienceContent(
+          boxBorderColor: evolucareBorderColor,
+          boxShadowColor: evolucareShadowColor,
+          employerHeader: EmployerHeader(
+              employerLogoAssetPath:
+                  "lib/assets/bubble_content/employer/evolucare.png"),
+          periodDescription: AppStrings.EVOLUCARE_BORNE_PERIOD[value],
+          projectDescription: AppStrings.EVOLUCARE_BORNE_PROJECT[value],
+          externalLinks: [
+            ExternalLink(
+                assetImagePath: "lib/assets/bubble_content/appstore.png",
+                url:
+                    "https://www.evolucare.com/fr/imagerie-borne-accueil-rendez-vous/"),
+          ],
+          languages: [
+            badgePhp,
+            badgeHtml5,
+            badgeCSS3,
+            badgeJavascript,
+          ],
+          tools: [
+            badgeAngular,
+            badgeWindows,
+            badgePhpStorm,
+            badgeChrome,
+            badgeJira,
+            badgeConfluence,
+            badgeGitlab,
+            badgeJQuery,
+            badgeBootstrap,
+          ],
+          projectTasks: AppStrings.EVOLUCARE_BORNE_DESCRIPTION[value]);
     });

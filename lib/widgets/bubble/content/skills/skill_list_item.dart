@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:dossier_de_competences_web/helpers/colorchart.dart'
     show skillsSetButtonPalette;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_gauge.dart';
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/wrap_expansion_tile.dart'
+    show WrapExpansionTile;
 import 'package:flutter/material.dart';
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/global_streams.dart';
@@ -10,13 +12,13 @@ import '../../../../helpers/global_streams.dart';
 class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
   final String iconAssetPath, title;
   final double nbYearsPractice;
-  final VoidCallback? onPressedClbk;
+  final List<Widget> experiences;
 
   const SkillListItem(
       {required this.iconAssetPath,
       required this.title,
       required this.nbYearsPractice,
-      this.onPressedClbk,
+      required this.experiences,
       super.key});
 
   @override
@@ -50,7 +52,7 @@ class _SkillListItemState extends State<SkillListItem> {
         builder: (BuildContext context, BoxConstraints constraints) {
       double titleFontSize = (constraints.maxWidth * 0.03).clamp(15, 18);
 
-      return ExpansionTile(
+      return WrapExpansionTile(
           backgroundColor: skillsSetButtonPalette.radientStop2,
           collapsedBackgroundColor: skillsSetButtonPalette.radientStop3,
           tilePadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -72,12 +74,7 @@ class _SkillListItemState extends State<SkillListItem> {
                   fontFamily: "RussoOne",
                   fontWeight: FontWeight.bold)),
           subtitle: SkillGauge(nbYearsPractice: widget.nbYearsPractice),
-          children: [
-            Text(
-                "TODO : Etablir des liens vers les pages Education et Expérience",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: titleFontSize)),
-          ]);
+          children: widget.experiences);
     });
   }
 }

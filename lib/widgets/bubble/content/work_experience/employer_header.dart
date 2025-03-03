@@ -8,6 +8,8 @@ import '../../../../helpers/constants.dart';
 import '../../../../helpers/utils.dart';
 
 class EmployerHeader extends StatefulWidget implements PreferredSizeWidget {
+  static const int indexMinAmiltoneContent = 3;
+  static const int indexMinEvolucareContent = 8;
   final String employerLogoAssetPath;
 
   const EmployerHeader({required this.employerLogoAssetPath, super.key});
@@ -99,12 +101,18 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                       onPressed: carouselIndex.value == 0
                           ? null
                           : () {
-                              int pageNumber = carouselIndex.value <= 3
+                              int pageNumber = carouselIndex.value <=
+                                      EmployerHeader.indexMinAmiltoneContent
                                   ? 0
-                                  : carouselIndex.value <= 8
-                                      ? 3
-                                      : carouselIndex.value > 8
-                                          ? 8
+                                  : carouselIndex.value <=
+                                          EmployerHeader
+                                              .indexMinEvolucareContent
+                                      ? EmployerHeader.indexMinAmiltoneContent
+                                      : carouselIndex.value >
+                                              EmployerHeader
+                                                  .indexMinEvolucareContent
+                                          ? EmployerHeader
+                                              .indexMinEvolucareContent
                                           : 0;
                               carouselController.animateToPage(pageNumber,
                                   curve: Curves.fastOutSlowIn,
@@ -130,7 +138,10 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                       onPressed: carouselIndex.value > 7
                           ? null
                           : () {
-                              int pageNumber = carouselIndex.value < 3 ? 3 : 8;
+                              int pageNumber = carouselIndex.value <
+                                      EmployerHeader.indexMinAmiltoneContent
+                                  ? EmployerHeader.indexMinAmiltoneContent
+                                  : EmployerHeader.indexMinEvolucareContent;
                               carouselController.animateToPage(pageNumber,
                                   curve: Curves.fastOutSlowIn,
                                   duration: Duration(milliseconds: 1000));

@@ -109,7 +109,8 @@ class _BubbleCarouselState extends State<BubbleCarousel>
               contentAmiltoneWSO2,
               contentAmiltoneAndroid,
               contentEvolucareImaging,
-              contentEvolucareMobile
+              contentEvolucareMobile,
+              contentEvolucareBorne
             ];
           } else if (originButton == ToolbarMenu.btnSkillsSet) {
             navigationButtonPalette = skillsSetButtonPalette;
@@ -142,8 +143,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
       carouselContent = [];
       toggleInflation(value).then((v) {
         if (value == ToolbarMenu.btnSkillsSet) {
-          int pythinIndex = skillList.indexOf(gaugePython);
-          carouselController.animateToPage(pythinIndex,
+          carouselController.animateToPage(carouselIndex.value,
               duration: Duration(milliseconds: 500), curve: Curves.linear);
         }
       });

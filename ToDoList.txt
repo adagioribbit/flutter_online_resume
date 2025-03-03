@@ -22,8 +22,6 @@ Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -ArgumentList "
 
 ============= TRAVAIL EN COURS ======================
 
-- Dans chaque instance de SkillListItem, ajouter la liste des expériences ou diplômes associées
-	==> Créer des enums des expériences et des diplômes pour identifier les écrans grâce à des clés uniques
 - Déplacer l'appel à skillListScrollController.scrollTo() dans toggleInflation en cas d'ouverture de la SkillsList
 	--> Mettre à jour une valeur globale avant le déclenchement de l'ouverture pour indiquer l'index de l'objet à afficher (voir l'index d'un objet au-dessus pour centrer le scroll sur la cible en prenant en compte la hauteur du conteneur de la liste)
 
