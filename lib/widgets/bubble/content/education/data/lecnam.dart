@@ -1,6 +1,24 @@
 import 'dart:ui' show Color;
 
-import 'package:dossier_de_competences_web/widgets/bubble/badge.dart';
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_badges.dart'
+    show
+        badgeCplusplus,
+        badgeSQL,
+        badgeUML,
+        badgeDebian,
+        badgeChrome,
+        badgeMySQL,
+        badgeAndroidStudio,
+        badgeNetBeans,
+        badgeBash,
+        badgeDocker,
+        badgeTomcat,
+        badgePhp,
+        badgeJava,
+        badgeHtml5,
+        badgeCSS3,
+        badgeJavascript,
+        badgeJson;
 import 'package:dossier_de_competences_web/widgets/external_link.dart'
     show ExternalLink;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
@@ -9,7 +27,7 @@ import '../../../../../helpers/constants.dart' show AppStrings;
 import '../../../../../helpers/globals.dart' as globals;
 import '../education_content.dart';
 
-ValueListenableBuilder content_lecnam = ValueListenableBuilder(
+ValueListenableBuilder contentLeCnam = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return EducationContent(

@@ -1,6 +1,7 @@
 import 'package:dossier_de_competences_web/helpers/constants.dart'
     show AppStrings;
-import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
+
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_badges.dart'
     show
         badgeAndroid,
         badgeAndroidStudio,
@@ -46,7 +47,7 @@ import '../work_experience_content.dart';
 const Color evolucareBorderColor = Color.fromARGB(255, 235, 90, 15);
 const Color evolucareShadowColor = Color.fromARGB(127, 235, 90, 15);
 
-ValueListenableBuilder content_evolucare_imaging = ValueListenableBuilder(
+ValueListenableBuilder contentEvolucareImaging = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
@@ -97,7 +98,7 @@ ValueListenableBuilder content_evolucare_imaging = ValueListenableBuilder(
       );
     });
 
-ValueListenableBuilder content_evolucare_mobile = ValueListenableBuilder(
+ValueListenableBuilder contentEvolucareMobile = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(

@@ -1,6 +1,24 @@
 import 'package:dossier_de_competences_web/helpers/constants.dart'
     show AppStrings;
-import 'package:dossier_de_competences_web/widgets/bubble/badge.dart';
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_badges.dart'
+    show
+        badgeAccess,
+        badgeAndroid,
+        badgeAndroidStudio,
+        badgeGoogleDocs,
+        badgeJava,
+        badgeJira,
+        badgePowerBI,
+        badgePowerQuery,
+        badgePowerShell,
+        badgePython,
+        badgeSQL,
+        badgeSQLServer,
+        badgeSharePoint,
+        badgeThingsboard,
+        badgeWSO2,
+        badgeWindowsServer,
+        badgeXML;
 import 'package:flutter/material.dart' show Color, ValueListenableBuilder;
 
 import '../../../../../helpers/globals.dart' as globals;
@@ -10,7 +28,7 @@ import '../work_experience_content.dart';
 const Color amiltoneBorderColor = Color.fromARGB(255, 206, 48, 137);
 const Color amiltoneShadowColor = Color.fromARGB(127, 206, 48, 137);
 
-ValueListenableBuilder content_amiltone_migration = ValueListenableBuilder(
+ValueListenableBuilder contentAmiltoneMigration = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
@@ -33,7 +51,7 @@ ValueListenableBuilder content_amiltone_migration = ValueListenableBuilder(
       );
     });
 
-ValueListenableBuilder content_amiltone_iot = ValueListenableBuilder(
+ValueListenableBuilder contentAmiltoneIot = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
@@ -50,7 +68,7 @@ ValueListenableBuilder content_amiltone_iot = ValueListenableBuilder(
       );
     });
 
-ValueListenableBuilder content_amiltone_powerbi = ValueListenableBuilder(
+ValueListenableBuilder contentAmiltonePowerBI = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
@@ -67,7 +85,7 @@ ValueListenableBuilder content_amiltone_powerbi = ValueListenableBuilder(
       );
     });
 
-ValueListenableBuilder content_amiltone_wso2 = ValueListenableBuilder(
+ValueListenableBuilder contentAmiltoneWSO2 = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
@@ -84,7 +102,7 @@ ValueListenableBuilder content_amiltone_wso2 = ValueListenableBuilder(
       );
     });
 
-ValueListenableBuilder content_amiltone_android = ValueListenableBuilder(
+ValueListenableBuilder contentAmiltoneAndroid = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(

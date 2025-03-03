@@ -1,7 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart'
     show CarouselSliderController;
-import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_list_item.dart'
-    show SkillListItem;
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ItemScrollController;

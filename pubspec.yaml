@@ -86,10 +86,17 @@ flutter:
     - lib/assets/bubble_content/google_play.png
     - lib/assets/bubble_content/external_link.png
 
+    - lib/assets/bubble_content/employer/badge_amiltone.png
+    - lib/assets/bubble_content/employer/badge_evolucare.png
+    - lib/assets/bubble_content/employer/badge_prastel.png
     - lib/assets/bubble_content/employer/amiltone.png
     - lib/assets/bubble_content/employer/evolucare.png
     - lib/assets/bubble_content/employer/prastel.png
 
+    - lib/assets/bubble_content/school/badge_greta.png
+    - lib/assets/bubble_content/school/badge_le_cnam_paris.png
+    - lib/assets/bubble_content/school/badge_le_wagon.png
+    - lib/assets/bubble_content/school/badge_upec.png
     - lib/assets/bubble_content/school/greta_94.png
     - lib/assets/bubble_content/school/le_cnam_paris.png
     - lib/assets/bubble_content/school/lewagon.png

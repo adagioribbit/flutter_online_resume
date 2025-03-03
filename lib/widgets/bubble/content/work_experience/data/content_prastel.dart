@@ -1,17 +1,34 @@
 import 'dart:ui' show Color;
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dossier_de_competences_web/helpers/constants.dart'
     show AppStrings;
-import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show GlobalKeyRing;
-import 'package:dossier_de_competences_web/helpers/utils.dart' show Utils;
-import 'package:dossier_de_competences_web/widgets/bubble/badge.dart';
-import 'package:dossier_de_competences_web/widgets/bubble/bubble_carousel.dart'
-    show BubbleCarousel;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_badges.dart'
+    show
+        badgeAndroid,
+        badgeAndroidStudio,
+        badgeApacheServer,
+        badgeBlender,
+        badgeBluetooth,
+        badgeBootstrap,
+        badgeCSS3,
+        badgeCSharp,
+        badgeDebian,
+        badgeExcel,
+        badgeGit,
+        badgeGradle,
+        badgeHtml5,
+        badgeIos,
+        badgeJQuery,
+        badgeJava,
+        badgeJavascript,
+        badgeMySQL,
+        badgeNetMaui,
+        badgePhp,
+        badgeVisualStudio2022,
+        badgeXCode,
+        badgeXamarin;
 import 'package:dossier_de_competences_web/widgets/external_link.dart';
-import 'package:flutter/material.dart'
-    show BoxConstraints, ValueListenableBuilder;
+import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/globals.dart' as globals;
 import '../employer_header.dart';
@@ -20,7 +37,7 @@ import '../work_experience_content.dart';
 const Color prastelBorderColor = Color.fromARGB(255, 1, 40, 91);
 const Color prastelShadowColor = Color.fromARGB(127, 1, 40, 91);
 
-ValueListenableBuilder content_prastel_mobile = ValueListenableBuilder(
+ValueListenableBuilder contentPrastelMobile = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
@@ -56,7 +73,7 @@ ValueListenableBuilder content_prastel_mobile = ValueListenableBuilder(
           projectTasks: AppStrings.PRASTEL_MOBILE_DESCRIPTION[value]);
     });
 
-ValueListenableBuilder content_prastel_CR15NM = ValueListenableBuilder(
+ValueListenableBuilder contentPrastelCR15NM = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(
@@ -82,7 +99,7 @@ ValueListenableBuilder content_prastel_CR15NM = ValueListenableBuilder(
           projectTasks: AppStrings.PRASTEL_CR15NM_DESCRIPTION[value]);
     });
 
-ValueListenableBuilder content_prastel_site_interne = ValueListenableBuilder(
+ValueListenableBuilder contentPrastelWeb = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return WorkExperienceContent(

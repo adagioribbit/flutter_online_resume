@@ -86,9 +86,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           if (originButton == ToolbarMenu.btnEducation) {
             navigationButtonPalette = educationButtonPalette;
             carouselContent = [
-              content_lewagon,
-              content_lecnam,
-              content_greta,
+              contentLeWagon,
+              contentLeCnam,
+              contentGreta,
               content_upec
             ];
             if (carouselIndex.value != 0) {
@@ -100,16 +100,16 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           } else if (originButton == ToolbarMenu.btnWorkExperience) {
             navigationButtonPalette = workExperienceButtonPalette;
             carouselContent = [
-              content_prastel_mobile,
-              content_prastel_CR15NM,
-              content_prastel_site_interne,
-              content_amiltone_migration,
-              content_amiltone_iot,
-              content_amiltone_powerbi,
-              content_amiltone_wso2,
-              content_amiltone_android,
-              content_evolucare_imaging,
-              content_evolucare_mobile
+              contentPrastelMobile,
+              contentPrastelCR15NM,
+              contentPrastelWeb,
+              contentAmiltoneMigration,
+              contentAmiltoneIot,
+              contentAmiltonePowerBI,
+              contentAmiltoneWSO2,
+              contentAmiltoneAndroid,
+              contentEvolucareImaging,
+              contentEvolucareMobile
             ];
           } else if (originButton == ToolbarMenu.btnSkillsSet) {
             navigationButtonPalette = skillsSetButtonPalette;

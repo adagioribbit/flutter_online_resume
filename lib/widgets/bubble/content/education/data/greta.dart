@@ -1,14 +1,31 @@
 import 'dart:ui' show Color;
 
-import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
-    show badgeCSS3, badgeChrome, badgeGoogleDocs, badgeHtml5, badgeJavascript, badgeJson, badgeMailchimp, badgeMySQL, badgePhp, badgePhpMyAdmin, badgePython, badgeSQL, badgeSlack, badgeTrello, badgeVMWareWorkstation, badgeWindows, badgeWordpress;
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_badges.dart'
+    show
+        badgeCSS3,
+        badgeChrome,
+        badgeGoogleDocs,
+        badgeHtml5,
+        badgeJavascript,
+        badgeJson,
+        badgeMailchimp,
+        badgeMySQL,
+        badgePhp,
+        badgePhpMyAdmin,
+        badgePython,
+        badgeSQL,
+        badgeSlack,
+        badgeTrello,
+        badgeVMWareWorkstation,
+        badgeWindows,
+        badgeWordpress;
 import 'package:flutter/material.dart' show ValueListenableBuilder;
 
 import '../../../../../helpers/constants.dart' show AppStrings;
 import '../../../../../helpers/globals.dart' as globals;
 import '../education_content.dart';
 
-ValueListenableBuilder content_greta = ValueListenableBuilder(
+ValueListenableBuilder contentGreta = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
     builder: (context, value, widget) {
       return EducationContent(
