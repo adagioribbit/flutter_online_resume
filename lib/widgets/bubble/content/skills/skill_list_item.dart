@@ -2,6 +2,12 @@ import 'dart:async';
 
 import 'package:dossier_de_competences_web/helpers/colorchart.dart'
     show skillsSetButtonPalette;
+import 'package:dossier_de_competences_web/helpers/globals.dart'
+    show
+        SkillKey,
+        appLanguage,
+        initialScrollSkillItem,
+        skillListScrollController;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_gauge.dart';
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/wrap_expansion_tile.dart'
     show WrapExpansionTile;
@@ -10,12 +16,14 @@ import '../../../../helpers/constants.dart';
 import '../../../../helpers/global_streams.dart';
 
 class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
+  final SkillKey skillKey;
   final String iconAssetPath, title;
   final double nbYearsPractice;
   final List<Widget> experiences;
 
   const SkillListItem(
-      {required this.iconAssetPath,
+      {required this.skillKey,
+      required this.iconAssetPath,
       required this.title,
       required this.nbYearsPractice,
       required this.experiences,
@@ -48,33 +56,55 @@ class _SkillListItemState extends State<SkillListItem> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      double titleFontSize = (constraints.maxWidth * 0.03).clamp(15, 18);
+    SkillListItem thatSkillListItem = widget;
 
-      return WrapExpansionTile(
-          backgroundColor: skillsSetButtonPalette.radientStop2,
-          collapsedBackgroundColor: skillsSetButtonPalette.radientStop3,
-          tilePadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-          collapsedShape: RoundedRectangleBorder(
-            side: BorderSide(color: skillsSetButtonPalette.border, width: 1.5),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          shape: RoundedRectangleBorder(
-            side: BorderSide(color: skillsSetButtonPalette.border, width: 1.5),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          leading: Image(
-            image: AssetImage(widget.iconAssetPath),
-          ),
-          title: Text(widget.title,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: titleFontSize,
-                  fontFamily: "RussoOne",
-                  fontWeight: FontWeight.bold)),
-          subtitle: SkillGauge(nbYearsPractice: widget.nbYearsPractice),
-          children: widget.experiences);
-    });
+    return ValueListenableBuilder(
+        valueListenable: appLanguage,
+        builder: (context, value, widget) {
+          return LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+            double titleFontSize = (constraints.maxWidth * 0.03).clamp(15, 18);
+            bool isExpanded =
+                initialScrollSkillItem.value == thatSkillListItem.skillKey;
+
+            return WrapExpansionTile(
+                initiallyExpanded: isExpanded,
+                onExpansionChanged: (isExpanded) {
+                  if (isExpanded) {
+                    /// Scroll skillList to item
+                    skillListScrollController.scrollTo(
+                        index: SkillKey.values
+                                .indexOf(thatSkillListItem.skillKey) -
+                            3,
+                        duration: Duration(milliseconds: 1000));
+                  }
+                },
+                backgroundColor: skillsSetButtonPalette.radientStop2,
+                collapsedBackgroundColor: skillsSetButtonPalette.radientStop3,
+                tilePadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                collapsedShape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      color: skillsSetButtonPalette.border, width: 1.5),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      color: skillsSetButtonPalette.border, width: 1.5),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                leading: Image(
+                  image: AssetImage(thatSkillListItem.iconAssetPath),
+                ),
+                title: Text(thatSkillListItem.title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: titleFontSize,
+                        fontFamily: "RussoOne",
+                        fontWeight: FontWeight.bold)),
+                subtitle: SkillGauge(
+                    nbYearsPractice: thatSkillListItem.nbYearsPractice),
+                children: thatSkillListItem.experiences);
+          });
+        });
   }
 }

@@ -975,6 +975,7 @@ class _WrapExpansionTileState extends State<WrapExpansionTile>
               EdgeInsets.zero,
           child: Wrap(
             direction: Axis.horizontal,
+            alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: widget.children,
           ),

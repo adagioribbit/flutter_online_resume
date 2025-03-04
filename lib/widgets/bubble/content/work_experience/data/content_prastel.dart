@@ -21,6 +21,7 @@ import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_b
         badgeJQuery,
         badgeJava,
         badgeJavascript,
+        badgeJson,
         badgeMacos,
         badgeMySQL,
         badgeNetMaui,
@@ -112,7 +113,13 @@ ValueListenableBuilder contentPrastelWeb = ValueListenableBuilder(
                   "lib/assets/bubble_content/employer/prastel.png"),
           periodDescription: AppStrings.PRASTEL_SITE_INTERNE_PERIOD[value],
           projectDescription: AppStrings.PRASTEL_SITE_INTERNE_PROJECT[value],
-          languages: [badgePhp, badgeHtml5, badgeJavascript, badgeCSS3],
+          languages: [
+            badgePhp,
+            badgeHtml5,
+            badgeJavascript,
+            badgeJson,
+            badgeCSS3
+          ],
           tools: [
             badgeDebian,
             badgeApacheServer,

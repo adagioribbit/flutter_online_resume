@@ -2,7 +2,44 @@ import 'package:dossier_de_competences_web/helpers/constants.dart'
     show AppStrings;
 
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_badges.dart'
-    show badgeAndroid, badgeAndroidStudio, badgeAngular, badgeApacheServer, badgeBash, badgeBootstrap, badgeCSS3, badgeCSharp, badgeChrome, badgeConfluence, badgeCordova, badgeDebian, badgeGitlab, badgeGradle, badgeHtml5, badgeIos, badgeJQuery, badgeJava, badgeJavascript, badgeJira, badgeMacos, badgeMariaDB, badgeNetBeans, badgeNpm, badgeObjectiveC, badgePhp, badgePhpMyAdmin, badgePhpStorm, badgeQt, badgeSQLite, badgeSafari, badgeSlack, badgeUML, badgeWindows, badgeXCode, badgeXML;
+    show
+        badgeAndroid,
+        badgeAndroidStudio,
+        badgeAngular,
+        badgeApacheServer,
+        badgeBash,
+        badgeBootstrap,
+        badgeCSS3,
+        badgeCSharp,
+        badgeChrome,
+        badgeConfluence,
+        badgeCordova,
+        badgeDebian,
+        badgeGitlab,
+        badgeGradle,
+        badgeHtml5,
+        badgeIos,
+        badgeJQuery,
+        badgeJava,
+        badgeJavascript,
+        badgeJira,
+        badgeJson,
+        badgeMacos,
+        badgeMariaDB,
+        badgeNetBeans,
+        badgeNpm,
+        badgeObjectiveC,
+        badgePhp,
+        badgePhpMyAdmin,
+        badgePhpStorm,
+        badgeQt,
+        badgeSQLite,
+        badgeSafari,
+        badgeSlack,
+        badgeUML,
+        badgeWindows,
+        badgeXCode,
+        badgeXML;
 import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart' show Color, ValueListenableBuilder;
 
@@ -35,6 +72,7 @@ ValueListenableBuilder contentEvolucareImaging = ValueListenableBuilder(
           badgeHtml5,
           badgeCSS3,
           badgeJavascript,
+          badgeJson,
           badgeUML,
           badgeQt,
           badgeBash,
@@ -84,6 +122,7 @@ ValueListenableBuilder contentEvolucareMobile = ValueListenableBuilder(
             badgeHtml5,
             badgeCSS3,
             badgeJavascript,
+            badgeJson,
             badgeSQLite,
             badgeUML,
             badgeJava,
@@ -130,6 +169,7 @@ ValueListenableBuilder contentEvolucareBorne = ValueListenableBuilder(
             badgeHtml5,
             badgeCSS3,
             badgeJavascript,
+            badgeJson,
           ],
           tools: [
             badgeAngular,

@@ -13,17 +13,15 @@ Remplacer fonts/MaterialIcons-Regular.otf par fonts/MaterialIcons-Extended.otf
 Ouvrir PowerShell en administrateur
 Lancer la commande suivante :
 
-Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -ArgumentList ""Copy-Item -Path ""C:\Users\r0y4l\source\repos\dossier_de_competences_web\build\web\"" -Destination ""C:\inetpub\dossier_competences"" -Recurse""" -Verb
+Copy-Item -Path "C:\Users\r0y4l\source\repos\dossier_de_competences_web\build\web\**" -Destination "C:\inetpub\dossier_competences" -Recurse
 
 ======================================================================
 ======================================================================
 ======================================================================
 
+- Résoudre le problème d'ouverture du carrousel sur la bonne page sur l'interaction avec les badges de la skillList
 
 ============= TRAVAIL EN COURS ======================
-
-- Déplacer l'appel à skillListScrollController.scrollTo() dans toggleInflation en cas d'ouverture de la SkillsList
-	--> Mettre à jour une valeur globale avant le déclenchement de l'ouverture pour indiquer l'index de l'objet à afficher (voir l'index d'un objet au-dessus pour centrer le scroll sur la cible en prenant en compte la hauteur du conteneur de la liste)
 
 - Ajouter un bandeau statique en haut de la SkillsList :
 	- Ajouter un mécanisme de filtrage par catégories (Web, Mobile, BI, IA, autres, projet ou formation spécifique en cas d'ouverture depuis une autre bulle)

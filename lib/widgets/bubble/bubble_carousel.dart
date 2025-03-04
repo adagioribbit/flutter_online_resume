@@ -28,7 +28,6 @@ import 'content/work_experience/data/content_amiltone.dart';
 import 'content/work_experience/data/content_evolucare.dart';
 import 'content/work_experience/data/content_prastel.dart';
 import 'content/skills/skill_sets_content.dart';
-import 'content/skills/skills.dart' show gaugePython, skillList;
 
 class BubbleCarousel extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 300);

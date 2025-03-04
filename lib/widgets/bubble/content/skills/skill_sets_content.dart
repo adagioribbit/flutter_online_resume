@@ -4,7 +4,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
 
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart'
-    show initialScrollIndex, skillListScrollController;
+    show SkillKey, initialScrollSkillItem, skillListScrollController;
 import '../../../../widgets/bubble/content/skills/skills.dart' show skillList;
 
 class SkillSetsContent extends StatefulWidget implements PreferredSizeWidget {
@@ -23,6 +23,19 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
   @override
   void initState() {
     super.initState();
+
+    /// Autoscroll skillList
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (initialScrollSkillItem.value != SkillKey.none) {
+        int targetIdx = (SkillKey.values.indexOf(initialScrollSkillItem.value))
+            .clamp(0, skillList.length);
+
+        if (targetIdx > 3) {
+          skillListScrollController.scrollTo(
+              index: targetIdx - 2, duration: Duration(milliseconds: 1000));
+        }
+      }
+    });
   }
 
   @override
@@ -31,24 +44,31 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    initialScrollSkillItem.value = SkillKey.none;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       double listItemSpacing = constraints.maxWidth * 0.0125;
 
+      ScrollablePositionedList list = ScrollablePositionedList.builder(
+          itemCount: skillList.length,
+          itemScrollController: skillListScrollController,
+          itemBuilder: (context, index) {
+            return Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, listItemSpacing),
+                child: skillList[index]);
+          });
+
       return Container(
           constraints: BoxConstraints(
               maxHeight: constraints.maxHeight * 0.95,
               maxWidth: constraints.maxWidth * 0.9),
-          child: ScrollablePositionedList.builder(
-              itemCount: skillList.length,
-              initialScrollIndex: initialScrollIndex.value,
-              itemScrollController: skillListScrollController,
-              itemBuilder: (context, index) {
-                return Container(
-                    margin: EdgeInsets.fromLTRB(0, 0, 0, listItemSpacing),
-                    child: skillList[index]);
-              }));
+          child: list);
     });
   }
 }
