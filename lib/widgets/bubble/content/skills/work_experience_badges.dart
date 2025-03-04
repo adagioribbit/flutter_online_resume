@@ -7,81 +7,81 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart';
 import 'package:flutter/material.dart';
 
 WorkExperienceBadge badgePrastelBT = WorkExperienceBadge(
-    title: "PrastelBT",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_prastel.png",
-    onPressedClbk: () {
+    "PrastelBT",
+    "lib/assets/bubble_content/employer/badge_prastel.png",
+    () {
       carouselIndex.value = 0;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgePrastelCRN15M = WorkExperienceBadge(
-    title: "CRN15M",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_prastel.png",
-    onPressedClbk: () {
+    "CRN15M",
+    "lib/assets/bubble_content/employer/badge_prastel.png",
+    () {
       carouselIndex.value = 1;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgePrastelSiteInterne = WorkExperienceBadge(
-    title: "Web",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_prastel.png",
-    onPressedClbk: () {
+    "Web",
+    "lib/assets/bubble_content/employer/badge_prastel.png",
+    () {
       carouselIndex.value = 2;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgeAmiltoneMigration = WorkExperienceBadge(
-    title: "Migration",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_amiltone.png",
-    onPressedClbk: () {
+    "Migration",
+    "lib/assets/bubble_content/employer/badge_amiltone.png",
+    () {
       carouselIndex.value = 3;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgeAmiltoneIot = WorkExperienceBadge(
-    title: "IoT",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_amiltone.png",
-    onPressedClbk: () {
+    "IoT",
+    "lib/assets/bubble_content/employer/badge_amiltone.png",
+    () {
       carouselIndex.value = 4;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgeAmiltonePowerBI = WorkExperienceBadge(
-    title: "Power BI",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_amiltone.png",
-    onPressedClbk: () {
+    "Power BI",
+    "lib/assets/bubble_content/employer/badge_amiltone.png",
+    () {
       carouselIndex.value = 5;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgeAmiltoneWSO2 = WorkExperienceBadge(
-    title: "WSO2",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_amiltone.png",
-    onPressedClbk: () {
+    "WSO2",
+    "lib/assets/bubble_content/employer/badge_amiltone.png",
+    () {
       carouselIndex.value = 6;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgeAmiltoneAndroid = WorkExperienceBadge(
-    title: "Android",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_amiltone.png",
-    onPressedClbk: () {
+    "Android",
+    "lib/assets/bubble_content/employer/badge_amiltone.png",
+    () {
       carouselIndex.value = 7;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgeEvolucareImaging = WorkExperienceBadge(
-    title: "Imaging",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_evolucare.png",
-    onPressedClbk: () {
+    "Imaging",
+    "lib/assets/bubble_content/employer/badge_evolucare.png",
+    () {
       carouselIndex.value = 8;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
 
 WorkExperienceBadge badgeEvolucareMobile = WorkExperienceBadge(
-    title: "Mobile",
-    iconAssetPath: "lib/assets/bubble_content/employer/badge_evolucare.png",
-    onPressedClbk: () {
+    "Mobile",
+    "lib/assets/bubble_content/employer/badge_evolucare.png",
+    () {
       carouselIndex.value = 9;
       globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
     });
@@ -89,12 +89,9 @@ WorkExperienceBadge badgeEvolucareMobile = WorkExperienceBadge(
 ValueListenableBuilder badgeEvolucareBorne = ValueListenableBuilder(
     valueListenable: appLanguage,
     builder: (context, language, widget) {
-      return WorkExperienceBadge(
-          title: AppStrings.EVOLUCARE_BORNE_BADGE[language]!,
-          iconAssetPath:
-              "lib/assets/bubble_content/employer/badge_evolucare.png",
-          onPressedClbk: () {
-            carouselIndex.value = 10;
-            globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
-          });
+      return WorkExperienceBadge(AppStrings.EVOLUCARE_BORNE_BADGE[language]!,
+          "lib/assets/bubble_content/employer/badge_evolucare.png", () {
+        carouselIndex.value = 10;
+        globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
+      });
     });

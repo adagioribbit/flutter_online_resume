@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 
 class Badge extends StatelessWidget {
   final String title, iconAssetPath;
+  final Color borderColor;
   final double iconHeight;
   final VoidCallback? onPressedClbk;
 
   const Badge(
-      {required this.onPressedClbk,
-      required this.title,
+      {required this.title,
       required this.iconAssetPath,
+      required this.borderColor,
       this.iconHeight = 25.0,
+      required this.onPressedClbk,
       super.key});
 
   @override
@@ -25,16 +27,17 @@ class Badge extends StatelessWidget {
               onTap: onPressedClbk,
               child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                        width: .5, color: skillsSetButtonPalette.icon),
+                    border: Border.all(width: .5, color: borderColor),
                     borderRadius:
                         BorderRadius.all(Radius.circular(titleFontSize)),
                     boxShadow: [
                       BoxShadow(
-                        color: skillsSetButtonPalette.iconHover,
-                        blurRadius: 3,
-                        offset: Offset(2, 2),
+                        color: borderColor,
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        spreadRadius: -2,
+                        blurRadius: 5,
                       ),
                     ],
                   ),
@@ -57,25 +60,31 @@ class Badge extends StatelessWidget {
 }
 
 class EducationBadge extends Badge {
-  const EducationBadge(
-      {super.key,
-      required super.onPressedClbk,
-      required super.title,
-      required super.iconAssetPath});
+  EducationBadge(title, iconAssetPath, onPressedClbk, {super.key})
+      : super(
+          title: title,
+          iconAssetPath: iconAssetPath,
+          borderColor: educationButtonPalette.icon,
+          onPressedClbk: onPressedClbk,
+        );
 }
 
 class WorkExperienceBadge extends Badge {
-  const WorkExperienceBadge(
-      {super.key,
-      required super.onPressedClbk,
-      required super.title,
-      required super.iconAssetPath});
+  WorkExperienceBadge(title, iconAssetPath, onPressedClbk, {super.key})
+      : super(
+          title: title,
+          iconAssetPath: iconAssetPath,
+          borderColor: workExperienceButtonPalette.icon,
+          onPressedClbk: onPressedClbk,
+        );
 }
 
 class SkillBadge extends Badge {
-  const SkillBadge(
-      {super.key,
-      required super.onPressedClbk,
-      required super.title,
-      required super.iconAssetPath});
+  SkillBadge(title, iconAssetPath, onPressedClbk, {super.key})
+      : super(
+          title: title,
+          iconAssetPath: iconAssetPath,
+          borderColor: skillsSetButtonPalette.icon,
+          onPressedClbk: onPressedClbk,
+        );
 }
