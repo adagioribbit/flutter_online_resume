@@ -1,3 +1,4 @@
+import 'package:dossier_de_competences_web/widgets/draft_presentation.dart';
 import 'package:flutter/material.dart';
 
 import 'helpers/colorchart.dart';
@@ -43,6 +44,7 @@ class CardAndTabApp extends StatelessWidget {
             //          ),
             //          frontCoverMarkupTiltAngle: -0.085);
             //    }),
+            DraftPresentation(),
             BubbleCarousel(
               key: GlobalKeyRing.bubbleCarousel,
             ),
