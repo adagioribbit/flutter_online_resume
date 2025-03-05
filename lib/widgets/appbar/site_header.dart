@@ -164,7 +164,7 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [languageButton, darkModeButton],
+                      children: [languageButton], //, darkModeButton
                     ),
                     SocialNetworking(animationController: _animationController)
                   ])

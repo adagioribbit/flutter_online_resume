@@ -56,10 +56,6 @@ Dart SDK version: 3.7.0-209.1.beta (beta) (Tue Dec 3 23:59:04 2024 -0800) on "wi
 
 ~~~~~~~~~~~~~ FEUILLE DE ROUTE ~~~~~~~~~~~~~~~~~~~~~~
 
-- Terminer la navigation thématique
-- Ajouter le FAB vers le téléchargement des contenus
-- Travailler l'animation d'ouverture du dossier déclenchée au chargement de la page
-- Supprimer le bouton du mode sombre et Zoombee
 
 ==> Première mise en ligne
 
@@ -80,6 +76,7 @@ Dart SDK version: 3.7.0-209.1.beta (beta) (Tue Dec 3 23:59:04 2024 -0800) on "wi
 ==> Troisième mise en ligne
 
 - Ajouter une page dans FolderContent avec un diaporama de mes derniers posts Instagram
+- Travailler l'animation d'ouverture du dossier déclenchée au chargement de la page
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

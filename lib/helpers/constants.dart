@@ -110,8 +110,8 @@ class AppStrings {
     'en': 'I created this site\nto train on Flutter.'
   };
   static const Map<String, String> RESUME_PRESENTATION_CALL_TO_ACTION = {
-    'fr': 'Mes renseignements\nsont dispo ici',
-    'en': 'Please, download my resume'
+    'fr': 'Contactez-moi sur\nLinkedIn\npour plus de renseignements',
+    'en': 'Contact me on\nLinkedIn\nif you want to know more'
   };
   static const Map<String, String> RESUME_PRESENTATION_BOREDOM = {
     'fr': 'Je m\'ennui !!\n     J\'en ai marre !!!',
