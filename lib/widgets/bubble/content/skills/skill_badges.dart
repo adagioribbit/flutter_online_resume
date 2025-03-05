@@ -413,12 +413,6 @@ SkillBadge badgeSQLite =
   globalStreams.triggerBubbleCarousel(ToolbarMenu.btnSkillsSet);
 });
 
-SkillBadge badgeStackoverflow = SkillBadge(
-    "Stackoverflow", "lib/assets/bubble_content/skill/stackoverflow.png", () {
-  initialScrollSkillItem.value = SkillKey.gaugeStackoverflow;
-  globalStreams.triggerBubbleCarousel(ToolbarMenu.btnSkillsSet);
-});
-
 SkillBadge badgeTensorflow = SkillBadge(
     "Tensorflow", "lib/assets/bubble_content/skill/tensorflow.png", () {
   initialScrollSkillItem.value = SkillKey.gaugeTensorflow;

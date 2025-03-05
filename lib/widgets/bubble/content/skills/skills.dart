@@ -631,13 +631,6 @@ SkillListItem gaugeSqlite = SkillListItem(
     nbYearsPractice: 4.91,
     experiences: [badgeEvolucareMobile]);
 
-SkillListItem gaugeStackoverflow = SkillListItem(
-    skillKey: SkillKey.gaugeStackoverflow,
-    title: "Stackoverflow",
-    iconAssetPath: "lib/assets/bubble_content/skill/stackoverflow.png",
-    nbYearsPractice: .16,
-    experiences: []);
-
 SkillListItem gaugeTensorflow = SkillListItem(
     skillKey: SkillKey.gaugeTensorflow,
     title: "Tensorflow",
@@ -829,7 +822,6 @@ List<SkillListItem> skillList = [
   gaugeSql,
   gaugeSqlserver,
   gaugeSqlite,
-  gaugeStackoverflow,
   gaugeTensorflow,
   gaugeThingsboard,
   gaugeTomcat,

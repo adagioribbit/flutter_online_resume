@@ -88,7 +88,6 @@ enum SkillKey {
   gaugeSql,
   gaugeSqlserver,
   gaugeSqlite,
-  gaugeStackoverflow,
   gaugeTensorflow,
   gaugeThingsboard,
   gaugeTomcat,
