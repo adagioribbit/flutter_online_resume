@@ -103,7 +103,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     offsetGithub = isFoldable ? 110 : 125;
     offsetInstagram = isFoldable ? 50 : 65;
 
-    isStacked = isPhoneScreen || isFoldable;
+    isStacked = isPhoneScreen || isFoldable || Utils.screenWidth < 400;
     if (isFoldable) {
       wigglingButtonHeight = isStacked
           ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE
@@ -196,7 +196,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
                       });
                     }))
           ]);
-    } else if (isPhoneScreen) {
+    } else if (isPhoneScreen || Utils.screenWidth < 400) {
       return Row(
           spacing: 10,
           mainAxisAlignment: MainAxisAlignment.end,
