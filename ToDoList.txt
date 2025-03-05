@@ -42,8 +42,6 @@ Dart SDK version: 3.7.0-209.1.beta (beta) (Tue Dec 3 23:59:04 2024 -0800) on "wi
 	- Ajouter un mécanisme de filtrage par catégories (Web, Mobile, BI, IA, autres, projet ou formation spécifique en cas d'ouverture depuis une autre bulle)
 	- Ajouter un mécanisme de tri (alphabétique, catégoriel, nombre d'années d'utilisation)
 
-- Clamp la taille des boutons de navigation et des badges de compétence pour les écrans étendus
-
 
 ------------- BUGS ----------------------------------
 

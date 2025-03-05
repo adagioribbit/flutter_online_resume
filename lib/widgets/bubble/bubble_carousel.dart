@@ -32,7 +32,7 @@ import 'content/skills/skill_sets_content.dart';
 
 class BubbleCarousel extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 300);
-  static const double bubbleMaxWidth = 1000.0;
+  static const double bubbleMaxWidth = 700.0;
 
   const BubbleCarousel({super.key});
 
