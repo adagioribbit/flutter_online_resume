@@ -114,9 +114,7 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                                           ? EmployerHeader
                                               .indexMinEvolucareContent
                                           : 0;
-                              carouselController.animateToPage(pageNumber,
-                                  curve: Curves.fastOutSlowIn,
-                                  duration: Duration(milliseconds: 1000));
+                              carouselController.jumpToPage(pageNumber);
                             },
                       icon: Icon(Icons.arrow_circle_left_rounded),
                     )),
@@ -142,9 +140,7 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                                       EmployerHeader.indexMinAmiltoneContent
                                   ? EmployerHeader.indexMinAmiltoneContent
                                   : EmployerHeader.indexMinEvolucareContent;
-                              carouselController.animateToPage(pageNumber,
-                                  curve: Curves.fastOutSlowIn,
-                                  duration: Duration(milliseconds: 1000));
+                              carouselController.jumpToPage(pageNumber);
                             },
                       icon: Icon(Icons.arrow_circle_right_rounded),
                     )),
