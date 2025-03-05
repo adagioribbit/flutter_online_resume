@@ -131,7 +131,11 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     subscription = globalStreams.eventBubbleCarousel.listen((value) async {
       toggleInflation(value).then((v) {
         if (value != ToolbarMenu.btnSkillsSet) {
-          carouselController.jumpToPage(carouselIndex.value);
+          Future.delayed(const Duration(milliseconds: 150), () {
+            carouselController.animateToPage(carouselIndex.value,
+                duration: Duration(milliseconds: 1000),
+                curve: Curves.easeInOutExpo);
+          });
         }
       });
     });

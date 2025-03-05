@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:dossier_de_competences_web/helpers/utils.dart' show Utils;
 import 'package:flutter/material.dart';
 
 import '../helpers/constants.dart';
@@ -187,12 +188,20 @@ class _DraftPresentationState extends State<DraftPresentation> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraintsPage) {
+      bool isFoldable = Utils.isFoldable(context);
+      double rescaleBasis = isFoldable ? 2.5 : 2.25;
+      double rotationFactor = isFoldable ? -.015 * pi : -.05 * pi;
       scaleFactor = (constraintsPage.maxHeight / (1994 * (1 - sin(.05 * pi))));
 
       return Transform(
           alignment: FractionalOffset.center,
           origin: Offset.zero,
-          transform: Matrix4.identity()..rotateZ(-.05 * pi),
+          transform: Matrix4.identity()
+            // Scale
+            ..setEntry(3, 3, rescaleBasis * scaleFactor)
+            // Translate Y
+            ..setEntry(1, 3, -100 * scaleFactor)
+            ..rotateZ(rotationFactor),
           child: SquaredSheet(
               scaleFactor: DraftPresentation.defaultScaleFactor * scaleFactor,
               child: LayoutBuilder(builder:

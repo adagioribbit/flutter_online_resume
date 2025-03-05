@@ -32,8 +32,13 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
                 .clamp(0, skillList.length);
 
         if (targetIdx > 3) {
-          skillListScrollController.scrollTo(
-              index: targetIdx, duration: Duration(milliseconds: 1000));
+          Future.delayed(const Duration(milliseconds: 150), () {
+            skillListScrollController.scrollTo(
+                index: targetIdx,
+                duration: Duration(milliseconds: 1000),
+                curve: Curves.easeInOutExpo);
+            setState(() {});
+          });
         }
       }
     });
