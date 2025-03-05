@@ -27,12 +27,13 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
     /// Autoscroll skillList
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (initialScrollSkillItem.value != SkillKey.none) {
-        int targetIdx = (SkillKey.values.indexOf(initialScrollSkillItem.value))
-            .clamp(0, skillList.length);
+        int targetIdx =
+            (SkillKey.values.indexOf(initialScrollSkillItem.value) - 2)
+                .clamp(0, skillList.length);
 
         if (targetIdx > 3) {
           skillListScrollController.scrollTo(
-              index: targetIdx - 2, duration: Duration(milliseconds: 1000));
+              index: targetIdx, duration: Duration(milliseconds: 1000));
         }
       }
     });
@@ -72,3 +73,5 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
     });
   }
 }
+
+SkillSetsContent contentSkillSets = SkillSetsContent();

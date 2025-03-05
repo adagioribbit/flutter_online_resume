@@ -10,9 +10,10 @@ import '../../helpers/globals.dart'
     show
         GlobalKeyRing,
         ToolbarMenu,
-        bubbleContentScrollController,
         carouselController,
-        carouselIndex;
+        carouselIndex,
+        educationContentScrollController,
+        workExperienceContentScrollController;
 import '../../helpers/colorchart.dart'
     show
         ToolbarButtonPalette,
@@ -49,7 +50,6 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   CustomPaint bubbleHailer = CustomPaint(
     painter: BubbleHailerPainter(),
   );
-  AnimationStatus _prevStatus = AnimationStatus.dismissed;
 
   late List<Widget> carouselContent;
   late ToolbarMenu preButton, originButton;
@@ -76,12 +76,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
         setState(() {});
       })
       ..addStatusListener((currStatus) {
-        if (_prevStatus == AnimationStatus.reverse) carouselContent = [];
-        if (_prevStatus == AnimationStatus.reverse &&
-            currStatus == AnimationStatus.dismissed) {
-          carouselIndex.value = 0;
-        }
-        if (_prevStatus == AnimationStatus.forward) {
+        if (_animationController.isCompleted) carouselContent = [];
+
+        if (_animationController.isForwardOrCompleted) {
           if (originButton == ToolbarMenu.btnEducation) {
             navigationButtonPalette = educationButtonPalette;
             carouselContent = [
@@ -90,12 +87,6 @@ class _BubbleCarouselState extends State<BubbleCarousel>
               contentGreta,
               content_upec
             ];
-            if (carouselIndex.value != 0) {
-              var idx = carouselIndex.value;
-              carouselController.jumpToPage(carouselIndex.value);
-              bubbleContentScrollController.jumpTo(0.0);
-              carouselIndex.value = idx;
-            }
           } else if (originButton == ToolbarMenu.btnWorkExperience) {
             navigationButtonPalette = workExperienceButtonPalette;
             carouselContent = [
@@ -113,10 +104,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             ];
           } else if (originButton == ToolbarMenu.btnSkillsSet) {
             navigationButtonPalette = skillsSetButtonPalette;
-            carouselContent = [SkillSetsContent()];
+            carouselContent = [contentSkillSets];
           }
         }
-        _prevStatus = currStatus;
       });
 
     screenSize = Utils.getScreenSize();
@@ -139,11 +129,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     navigationButtonPalette = educationButtonPalette;
 
     subscription = globalStreams.eventBubbleCarousel.listen((value) async {
-      carouselContent = [];
       toggleInflation(value).then((v) {
-        if (value == ToolbarMenu.btnSkillsSet) {
-          carouselController.animateToPage(carouselIndex.value,
-              duration: Duration(milliseconds: 500), curve: Curves.linear);
+        if (value != ToolbarMenu.btnSkillsSet) {
+          carouselController.jumpToPage(carouselIndex.value);
         }
       });
     });
@@ -180,25 +168,28 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
   Future<void> toggleInflation(ToolbarMenu value) async {
     originButton = value;
+    bool isMenuSwitch = preButton != originButton;
     Offset newOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
             ?.findRenderObject() as RenderBox)
         .localToGlobal(Offset(
             Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
 
-    if (_prevStatus == AnimationStatus.completed) {
+    if (isMenuSwitch && preButton != ToolbarMenu.btnSkillsSet) {
+      carouselIndex.value = 0;
+    }
+
+    if (_animationController.isCompleted) {
       await _animationController.reverse().then((value) async {
-        if (originButton != preButton) {
+        if (isMenuSwitch) {
           preButton = originButton;
           bubbleOrigin = newOrigin;
-          carouselIndex.value = 0;
           await _animationController.forward();
         }
       }).then((value) => setState(() {}));
     } else {
-      if (originButton != preButton) {
+      if (isMenuSwitch) {
         preButton = originButton;
         bubbleOrigin = newOrigin;
-        carouselIndex.value = 0;
       }
       await _animationController.forward().then((value) => setState(() {}));
     }
@@ -236,7 +227,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     double bubbleOffsetX =
         bubbleOrigin.dx - (bubbleOrigin.dx * _animationInflate.value);
     if (screenSize.width > BubbleCarousel.bubbleMaxWidth) {
-      if (originButton != preButton && _prevStatus == AnimationStatus.reverse) {
+      if (originButton != preButton && _animationController.isDismissed) {
         if (preButton == ToolbarMenu.btnSkillsSet) {
           bubbleOffsetX = (bubbleOrigin.dx - bubbleWidth / 2);
         } else if (preButton == ToolbarMenu.btnWorkExperience) {
@@ -302,7 +293,15 @@ class _BubbleCarouselState extends State<BubbleCarousel>
                                   ? null
                                   : (index, reason) {
                                       carouselIndex.value = index;
-                                      bubbleContentScrollController.jumpTo(0.0);
+                                      if (originButton ==
+                                          ToolbarMenu.btnWorkExperience) {
+                                        workExperienceContentScrollController
+                                            .jumpTo(0.0);
+                                      } else if (originButton ==
+                                          ToolbarMenu.btnEducation) {
+                                        educationContentScrollController
+                                            .jumpTo(0.0);
+                                      }
                                       setState(() {});
                                     },
                               enableInfiniteScroll: false,

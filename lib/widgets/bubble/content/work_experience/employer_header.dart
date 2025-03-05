@@ -1,7 +1,7 @@
 import 'package:dossier_de_competences_web/helpers/colorchart.dart'
     show workExperienceButtonPalette;
 import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show bubbleContentScrollController, carouselController, carouselIndex;
+    show carouselController, carouselIndex;
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';

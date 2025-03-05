@@ -9,7 +9,8 @@ ValueNotifier<bool> isDarkMode = ValueNotifier<bool>(false);
 ValueNotifier<bool> isFoldable = ValueNotifier<bool>(false);
 
 CarouselSliderController carouselController = CarouselSliderController();
-ScrollController bubbleContentScrollController = ScrollController();
+ScrollController educationContentScrollController = ScrollController();
+ScrollController workExperienceContentScrollController = ScrollController();
 ItemScrollController skillListScrollController = ItemScrollController();
 ValueNotifier<int> carouselIndex = ValueNotifier<int>(0);
 ValueNotifier<SkillKey> initialScrollSkillItem =

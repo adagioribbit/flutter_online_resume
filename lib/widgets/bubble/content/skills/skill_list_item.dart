@@ -71,12 +71,14 @@ class _SkillListItemState extends State<SkillListItem> {
                 initiallyExpanded: isExpanded,
                 onExpansionChanged: (isExpanded) {
                   if (isExpanded) {
+                    int idx =
+                        (SkillKey.values.indexOf(thatSkillListItem.skillKey) -
+                                3)
+                            .clamp(0, SkillKey.values.length);
+
                     /// Scroll skillList to item
                     skillListScrollController.scrollTo(
-                        index: SkillKey.values
-                                .indexOf(thatSkillListItem.skillKey) -
-                            3,
-                        duration: Duration(milliseconds: 1000));
+                        index: idx, duration: Duration(milliseconds: 1000));
                   }
                 },
                 backgroundColor: skillsSetButtonPalette.radientStop2,

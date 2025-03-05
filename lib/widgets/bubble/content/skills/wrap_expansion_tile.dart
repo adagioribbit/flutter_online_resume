@@ -730,7 +730,7 @@ class _WrapExpansionTileState extends State<WrapExpansionTile>
   Widget? _buildIcon(BuildContext context) {
     return RotationTransition(
       turns: _iconTurns,
-      child: const Icon(Icons.expand_more),
+      child: const Icon(applyTextScaling: false, Icons.expand_more),
     );
   }
 

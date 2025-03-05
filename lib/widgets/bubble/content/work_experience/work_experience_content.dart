@@ -1,5 +1,9 @@
 import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show appLanguage, bubbleContentScrollController;
+    show
+        appLanguage,
+        workExperienceContentScrollController,
+        carouselController,
+        carouselIndex;
 import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
     show SkillBadge;
 import 'package:dossier_de_competences_web/widgets/external_link.dart';
@@ -42,6 +46,11 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
   @override
   void initState() {
     super.initState();
+
+    /// Autoscroll skillList
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      carouselController.jumpToPage(carouselIndex.value);
+    });
   }
 
   @override
@@ -232,7 +241,7 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                   }
 
                   return ListView(
-                      controller: bubbleContentScrollController,
+                      controller: workExperienceContentScrollController,
                       padding: EdgeInsets.fromLTRB(paddingHorizontalListView, 0,
                           paddingHorizontalListView, marginContainer),
                       children: listViewChildren);
