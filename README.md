@@ -1,16 +1,9 @@
-# dossier_de_competences_web
+# Mon CV en ligne
 
-A new Flutter project.
+La version 1.0 représente l'état de mes connaissances sur Flutter depuis que j'ai commencé à m'y former à la mi-décembre 2024.
+Y ayant passé à peu près deux tiers de mon temps, c'est le résultat de deux mois de travail à temps plein en comptant la formation continue à l'outil.
 
-## Getting Started
+# My online Resume
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Version 1.0 is a demonstration of my Flutter skills at the beginning of march 2025.
+Since I first started using it around mid-december 2024, having spent about two thirds of my time on it, it represents roughly two months of full-time labor, including self-training on the framework.

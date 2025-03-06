@@ -1,3 +1,6 @@
+// Loosely based on FlutterFxFolder
+// https://github.com/flutterfx/flutterfx_widgets/tree/f8bde010dd4c43086e47bd8073e66c6086840eb0
+
 import 'package:flutter/material.dart';
 import 'dart:math' show pi, min, max;
 
