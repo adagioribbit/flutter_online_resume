@@ -1,3 +1,4 @@
+import 'package:dossier_de_competences_web/helpers/globals.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
@@ -95,12 +96,19 @@ class GaugeScalePainter extends CustomPainter {
 
     List<String> indicatorLines = [];
     if (nbYearsPractice < .91) {
-      indicatorLines.add("mois");
-      indicatorLines.add(
-          "${(double.parse((nbYearsPractice * 12).round().toStringAsFixed(2))).toInt() % 12}");
+      int nbMonths =
+          double.parse((nbYearsPractice * 12).round().toStringAsFixed(2))
+                  .toInt() %
+              12;
+      indicatorLines.add((nbMonths == 1)
+          ? "${AppStrings.MONTH_SINGULAR[appLanguage.value]}"
+          : "${AppStrings.MONTH_PLURAL[appLanguage.value]}");
+      indicatorLines.add("$nbMonths");
     } else {
       int nbYears = nbYearsPractice.round().toInt();
-      indicatorLines.add((nbYears == 1) ? "an" : "ans");
+      indicatorLines.add((nbYears == 1)
+          ? "${AppStrings.YEAR_SINGULAR[appLanguage.value]}"
+          : "${AppStrings.YEAR_PLURAL[appLanguage.value]}");
       indicatorLines.add(nbYears.toString());
     }
 
@@ -160,6 +168,10 @@ class GaugeScalePainter extends CustomPainter {
       double indicatorY = gaugeCenter -
           (textPainter.height *
               (idx * 0.6 * (indicatorLines.length - idx * 0.6)));
+
+      if (appLanguage.value == 'en') {
+        indicatorY -= textPainter.height * 0.25;
+      }
 
       final offset = Offset(indicatorX, indicatorY);
 

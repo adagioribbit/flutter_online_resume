@@ -468,4 +468,15 @@ class AppStrings {
       'Write an equivalent user interface in PHP and JavaScript'
     ]
   };
+
+  static const Map<String, String> YEAR_SINGULAR = {'fr': 'an', 'en': 'year'};
+  static const Map<String, String> YEAR_PLURAL = {'fr': 'ans', 'en': 'years'};
+  static const Map<String, String> MONTH_SINGULAR = {
+    'fr': 'mois',
+    'en': 'month'
+  };
+  static const Map<String, String> MONTH_PLURAL = {
+    'fr': 'mois',
+    'en': 'months'
+  };
 }
