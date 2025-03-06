@@ -44,7 +44,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
           // Translate Y
           ..setEntry(1, 3, -100 * contentScaleFactor),
         child: Image(
-            height: 250 * contentScaleFactor,
+            height: 150 * contentScaleFactor,
             image: AssetImage("lib/assets/resume_presentation/vitruve.png")));
 
     Transform naughty = Transform(
@@ -56,7 +56,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
           // Translate Y
           ..setEntry(1, 3, 100 * contentScaleFactor),
         child: Image(
-            height: 150 * contentScaleFactor,
+            height: 100 * contentScaleFactor,
             image: AssetImage("lib/assets/resume_presentation/naughty.png")));
 
     ValueListenableBuilder boredom = ValueListenableBuilder(
@@ -90,7 +90,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 75 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -75 * contentScaleFactor)
+                ..setEntry(1, 3, -25 * contentScaleFactor)
                 ..rotateZ(pi * -0.0773),
               child: Text(AppStrings.RESUME_PRESENTATION_PRETEXT[language]!,
                   strutStyle: StrutStyle.disabled,
@@ -101,7 +101,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                   style: TextStyle(
                       leadingDistribution: TextLeadingDistribution.even,
                       textBaseline: TextBaseline.alphabetic,
-                      fontSize: 60.0 * contentScaleFactor,
+                      fontSize: 50.0 * contentScaleFactor,
                       fontFamily: "Mynerve",
                       fontWeight: FontWeight.bold,
                       color: const Color.fromARGB(207, 29, 114, 241))));
@@ -114,9 +114,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
           // Translate X
           ..setEntry(0, 3, 525 * contentScaleFactor)
           // Translate Y
-          ..setEntry(1, 3, -150 * contentScaleFactor),
+          ..setEntry(1, 3, -50 * contentScaleFactor),
         child: Image(
-            width: 300 * contentScaleFactor,
+            width: 250 * contentScaleFactor,
             image: AssetImage(
                 "lib/assets/resume_presentation/blue_manga_crow.png")));
 
@@ -130,7 +130,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 350 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -125 * contentScaleFactor)
+                ..setEntry(1, 3, -25 * contentScaleFactor)
                 ..rotateZ(pi * 0.1),
               child: Text(
                   AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[language]!,
@@ -151,7 +151,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 100 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -150 * contentScaleFactor),
+                ..setEntry(1, 3, 25 * contentScaleFactor),
               child: MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
@@ -210,7 +210,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 300 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -300 * contentScaleFactor),
+                ..setEntry(1, 3, -125 * contentScaleFactor),
               child: Image(
                   width: 200 * contentScaleFactor,
                   color: const Color.fromARGB(226, 219, 51, 21),
@@ -228,12 +228,12 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 250 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -250 * contentScaleFactor),
+                ..setEntry(1, 3, -50 * contentScaleFactor),
               child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 60.0 * contentScaleFactor,
+                      fontSize: 50.0 * contentScaleFactor,
                       fontFamily: "OvertheRainbow",
                       color: Colors.green,
                       decoration: TextDecoration.underline,

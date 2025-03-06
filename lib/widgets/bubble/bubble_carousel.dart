@@ -174,30 +174,37 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
   Future<void> toggleInflation(ToolbarMenu value) async {
     originButton = value;
-    bool isMenuSwitch = preButton != originButton;
-    Offset newOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
-            ?.findRenderObject() as RenderBox)
-        .localToGlobal(Offset(
-            Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
-
-    if (isMenuSwitch && preButton != ToolbarMenu.btnSkillsSet) {
+    if (originButton == ToolbarMenu.None) {
+      originButton = preButton;
       carouselIndex.value = 0;
-    }
+      await _animationController.reverse();
+    } else {
+      originButton = value;
+      bool isMenuSwitch = preButton != originButton;
+      Offset newOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
+              ?.findRenderObject() as RenderBox)
+          .localToGlobal(Offset(
+              Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
 
-    if (_animationController.isCompleted) {
-      await _animationController.reverse().then((value) async {
+      if (isMenuSwitch && preButton != ToolbarMenu.btnSkillsSet) {
+        carouselIndex.value = 0;
+      }
+
+      if (_animationController.isCompleted) {
+        await _animationController.reverse().then((value) async {
+          if (isMenuSwitch) {
+            preButton = originButton;
+            bubbleOrigin = newOrigin;
+            await _animationController.forward();
+          }
+        }).then((value) => setState(() {}));
+      } else {
         if (isMenuSwitch) {
           preButton = originButton;
           bubbleOrigin = newOrigin;
-          await _animationController.forward();
         }
-      }).then((value) => setState(() {}));
-    } else {
-      if (isMenuSwitch) {
-        preButton = originButton;
-        bubbleOrigin = newOrigin;
+        await _animationController.forward().then((value) => setState(() {}));
       }
-      await _animationController.forward().then((value) => setState(() {}));
     }
   }
 
@@ -404,26 +411,30 @@ class _BubbleCarouselState extends State<BubbleCarousel>
                       child: Stack(children: stackChildren)));
             })));
 
-    Container stackContainer = Container(
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(bubbleShadowOpacity, 0, 0, 0),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: Offset(-2, 5),
-          ),
-          BoxShadow(
-            color: Color.fromARGB(bubbleShadowOpacity, 0, 0, 0),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: Offset(2, 5),
-          ),
-        ]),
-        child: Stack(children: [
-          DraftPresentation(bubbleShadowOpacity: bubbleShadowOpacity),
-          portraitHailer,
-          portraitBubble
-        ]));
+    GestureDetector stackContainer = GestureDetector(
+        onTap: () {
+          globalStreams.triggerBubbleCarousel(ToolbarMenu.None);
+        },
+        child: Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Color.fromARGB(bubbleShadowOpacity, 0, 0, 0),
+                spreadRadius: 2,
+                blurRadius: 10,
+                offset: Offset(-2, 5),
+              ),
+              BoxShadow(
+                color: Color.fromARGB(bubbleShadowOpacity, 0, 0, 0),
+                spreadRadius: 2,
+                blurRadius: 10,
+                offset: Offset(2, 5),
+              ),
+            ]),
+            child: Stack(children: [
+              DraftPresentation(bubbleShadowOpacity: bubbleShadowOpacity),
+              portraitHailer,
+              portraitBubble
+            ])));
 
     return stackContainer;
   }
