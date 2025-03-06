@@ -419,8 +419,11 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             offset: Offset(2, 5),
           ),
         ]),
-        child: Stack(
-            children: [DraftPresentation(), portraitHailer, portraitBubble]));
+        child: Stack(children: [
+          DraftPresentation(bubbleShadowOpacity: bubbleShadowOpacity),
+          portraitHailer,
+          portraitBubble
+        ]));
 
     return stackContainer;
   }

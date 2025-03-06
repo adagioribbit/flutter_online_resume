@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:dossier_de_competences_web/helpers/utils.dart' show Utils;
-import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html show window;
 
@@ -10,10 +9,9 @@ import 'squared_sheet.dart';
 
 class DraftPresentation extends StatefulWidget {
   static const double defaultScaleFactor = 40.0;
-  final double animatedScaleFactor;
+  final int bubbleShadowOpacity;
 
-  const DraftPresentation(
-      {this.animatedScaleFactor = defaultScaleFactor, super.key});
+  const DraftPresentation({this.bubbleShadowOpacity = 0, super.key});
 
   @override
   State<DraftPresentation> createState() => _DraftPresentationState();
@@ -265,25 +263,28 @@ class _DraftPresentationState extends State<DraftPresentation> {
       double rotationFactor = isFoldable ? -.015 * pi : -.05 * pi;
       scaleFactor = (constraintsPage.maxHeight / (1994 * (1 - sin(.05 * pi))));
 
-      return Transform(
-          alignment: FractionalOffset.center,
-          origin: Offset.zero,
-          transform: Matrix4.identity()
-            // Scale
-            ..setEntry(3, 3, rescaleBasis * scaleFactor)
-            // Translate Y
-            ..setEntry(1, 3, -100 * scaleFactor)
-            ..rotateZ(rotationFactor),
-          child: SquaredSheet(
-              scaleFactor: DraftPresentation.defaultScaleFactor * scaleFactor,
-              child: LayoutBuilder(builder:
-                  (BuildContext context, BoxConstraints constraintsSheet) {
-                return Row(children: [
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: buildContent(constraintsSheet))
-                ]);
-              })));
+      return Opacity(
+          opacity: (255 - widget.bubbleShadowOpacity) / 255,
+          child: Transform(
+              alignment: FractionalOffset.center,
+              origin: Offset.zero,
+              transform: Matrix4.identity()
+                // Scale
+                ..setEntry(3, 3, rescaleBasis * scaleFactor)
+                // Translate Y
+                ..setEntry(1, 3, -100 * scaleFactor)
+                ..rotateZ(rotationFactor),
+              child: SquaredSheet(
+                  scaleFactor:
+                      DraftPresentation.defaultScaleFactor * scaleFactor,
+                  child: LayoutBuilder(builder:
+                      (BuildContext context, BoxConstraints constraintsSheet) {
+                    return Row(children: [
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: buildContent(constraintsSheet))
+                    ]);
+                  }))));
     });
   }
 }
