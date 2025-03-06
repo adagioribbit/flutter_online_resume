@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:math' show max;
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dossier_de_competences_web/widgets/draft_presentation.dart'
+    show DraftPresentation;
 import 'package:flutter/material.dart';
 
 import '../../helpers/constants.dart';
@@ -417,8 +419,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             offset: Offset(2, 5),
           ),
         ]),
-        child: Stack(children: [portraitHailer, portraitBubble]));
+        child: Stack(
+            children: [DraftPresentation(), portraitHailer, portraitBubble]));
 
-    return isPortrait ? stackContainer : stackContainer;
+    return stackContainer;
   }
 }

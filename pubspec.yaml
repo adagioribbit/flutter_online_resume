@@ -187,11 +187,17 @@ flutter:
     - lib/assets/bubble_content/skill/xcode.png
     - lib/assets/bubble_content/skill/xml.png
 
+    - lib/assets/files/download_pdf.png
+    - lib/assets/files/Resume_2025.pdf
+    - lib/assets/files/CV_2025.pdf
+
     - lib/assets/resume_presentation/blank_squared_sheet.png
     - lib/assets/resume_presentation/blue_manga_crow.png
     - lib/assets/resume_presentation/manga_crow.png
     - lib/assets/resume_presentation/naughty.png
     - lib/assets/resume_presentation/vitruve.png
+    - lib/assets/resume_presentation/neon_en.png
+    - lib/assets/resume_presentation/neon_fr.png
     
     - lib/assets/toolbar/bachelor_hat.png
     - lib/assets/toolbar/skills_set.png

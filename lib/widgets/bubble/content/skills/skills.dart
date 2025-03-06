@@ -1,9 +1,9 @@
 import 'package:dossier_de_competences_web/helpers/globals.dart' show SkillKey;
-import 'package:dossier_de_competences_web/widgets/bubble/content/skills/education_badges.dart'
+import 'package:dossier_de_competences_web/widgets/bubble/content/education/education_badges.dart'
     show badgeLeCnam, badgeUpec, badgeGreta, badgeLeWagon;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_list_item.dart'
     show SkillListItem;
-import 'package:dossier_de_competences_web/widgets/bubble/content/skills/work_experience_badges.dart'
+import 'package:dossier_de_competences_web/widgets/bubble/content/work_experience/work_experience_badges.dart'
     show
         badgeAmiltoneAndroid,
         badgeAmiltoneIot,

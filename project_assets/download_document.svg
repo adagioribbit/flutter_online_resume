@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   aria-label="Google Docs Editors"
+   role="img"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="download_document.svg"
+   inkscape:export-filename="google-docs.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <rect
+       x="94.888031"
+       y="34.924067"
+       width="133.10682"
+       height="56.669241"
+       id="rect4" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.75878906"
+     inkscape:cx="-72.483913"
+     inkscape:cy="280.05148"
+     inkscape:window-width="2400"
+     inkscape:window-height="1261"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1" />
+  <rect
+     width="512"
+     height="512"
+     rx="15.000001%"
+     fill="#30353e"
+     id="rect1-6"
+     x="0.36378852"
+     y="0.24225457"
+     style="display:inline;fill:#ffffff;fill-opacity:0"
+     inkscape:label="rect1-6" />
+  <g
+     id="g1"
+     transform="matrix(1.4883721,0,0,1.4883721,-124.65947,-124.781)"
+     inkscape:export-filename="..\PNG\google_docs.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96">
+    <g
+       id="g4">
+      <path
+         id="path1"
+         style="fill:#fc2626;fill-opacity:1"
+         d="m 161.5,84 c -19.99996,0 -30,10.00004 -30,30 v 228 2 54 c 0,19.99998 10.00002,30 30,30 h 53 2 83 51 c 19.99998,0 30,-10.00002 30,-30 V 342 170 h -83 V 84 Z" />
+      <path
+         d="m 297.5,84 v 86 h 83"
+         fill="#ea4335"
+         id="path2"
+         style="fill:#a50000;fill-opacity:1" />
+    </g>
+    <g
+       id="g5"
+       inkscape:export-filename="..\lib\assets\files\download_pdf.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:13.43749994;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:692.411;paint-order:markers stroke fill;stroke-opacity:1"
+         d="m 211.20766,253.44291 40.73102,41.61648 42.50193,-41.61648"
+         id="path3"
+         sodipodi:nodetypes="ccc" />
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:692.411"
+         id="rect6-6-3"
+         width="161.44144"
+         height="17.132563"
+         x="171.66098"
+         y="341.30685"
+         rx="1.5"
+         ry="8.5662813" />
+      <path
+         id="rect6"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.05211;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:692.411"
+         d="M 337.93035 284.30925 C 337.44802 284.30925 337.06033 284.69826 337.06033 285.18059 L 337.06033 360.91087 L 167.38171 360.91087 L 167.38171 285.2462 C 167.38171 284.76387 166.99401 284.37486 166.51168 284.37486 L 151.12024 284.37486 C 150.63791 284.37486 150.25021 284.76387 150.25021 285.2462 L 150.25021 377.20778 C 150.25021 377.69011 150.63791 378.07911 151.12024 378.07911 L 166.51168 378.07911 C 166.57408 378.07911 166.62892 378.05604 166.68753 378.04368 L 338.08258 378.04368 C 338.10275 378.04368 338.12163 378.01715 338.14163 378.0135 L 353.3218 378.0135 C 353.80413 378.0135 354.19314 377.62449 354.19314 377.14216 L 354.19314 285.18059 C 354.19314 284.69826 353.80413 284.30925 353.3218 284.30925 L 337.93035 284.30925 z " />
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:692.411"
+         id="rect6-6"
+         width="161.44144"
+         height="17.132563"
+         x="171.66098"
+         y="321.7027"
+         rx="1.5"
+         ry="8.5662813" />
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.790126;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:692.411"
+         id="rect6-6-31"
+         width="100.78764"
+         height="17.132563"
+         x="187.52901"
+         y="-260.948"
+         rx="0.93644768"
+         ry="8.5662813"
+         transform="rotate(90)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:58.4154px;line-height:0;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:3.2453px;word-spacing:16.2265px;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1.62265;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:692.411;stroke-opacity:1;paint-order:markers stroke fill"
+         x="149.45253"
+         y="159.43777"
+         id="text5"><tspan
+           sodipodi:role="line"
+           id="tspan5"
+           style="letter-spacing:3.2453px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.62265;stroke-dasharray:none"
+           x="149.45253"
+           y="159.43777">PDF</tspan></text>
+    </g>
+  </g>
+</svg>

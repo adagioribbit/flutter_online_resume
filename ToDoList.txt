@@ -39,7 +39,7 @@ Dart SDK version: 3.7.0-209.1.beta (beta) (Tue Dec 3 23:59:04 2024 -0800) on "wi
 ============= TRAVAIL EN COURS ======================
 
 - Ajouter un bandeau statique en haut de la SkillsList :
-	- Ajouter un mécanisme de filtrage par catégories (Web, Mobile, BI, IA, autres, projet ou formation spécifique en cas d'ouverture depuis une autre bulle)
+	- Ajouter un mécanisme de filtrage par catégories (langages, outils, Web, Mobile, BI, IA, autres, projet ou formation spécifique en cas d'ouverture depuis une autre bulle)
 	- Ajouter un mécanisme de tri (alphabétique, catégoriel, nombre d'années d'utilisation)
 
 

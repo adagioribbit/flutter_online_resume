@@ -44,11 +44,10 @@ class CardAndTabApp extends StatelessWidget {
             //          ),
             //          frontCoverMarkupTiltAngle: -0.085);
             //    }),
-            DraftPresentation(),
             BubbleCarousel(
               key: GlobalKeyRing.bubbleCarousel,
             ),
-            Toolbar()
+            Toolbar(),
           ])),
     );
   }

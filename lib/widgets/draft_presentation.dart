@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:dossier_de_competences_web/helpers/utils.dart' show Utils;
+import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart';
+import 'package:web/web.dart' as html show window;
 
 import '../helpers/constants.dart';
 import '../helpers/globals.dart' show appLanguage;
@@ -38,16 +40,13 @@ class _DraftPresentationState extends State<DraftPresentation> {
         alignment: FractionalOffset.center,
         origin: Offset.zero,
         transform: Matrix4.identity()
-          ..rotateZ(pi * 1.6273)
+          ..rotateZ(-0.15 * pi)
           // Translate X
-          ..setEntry(0, 3, 150 * contentScaleFactor)
+          ..setEntry(0, 3, 100 * contentScaleFactor)
           // Translate Y
-          ..setEntry(1, 3, 50 * contentScaleFactor)
-          // Scale
-          ..setEntry(0, 0, 4 * contentScaleFactor)
-          ..setEntry(1, 1, 4 * contentScaleFactor),
+          ..setEntry(1, 3, -100 * contentScaleFactor),
         child: Image(
-            height: 100 * contentScaleFactor,
+            height: 250 * contentScaleFactor,
             image: AssetImage("lib/assets/resume_presentation/vitruve.png")));
 
     Transform naughty = Transform(
@@ -55,14 +54,11 @@ class _DraftPresentationState extends State<DraftPresentation> {
         origin: Offset.zero,
         transform: Matrix4.identity()
           // Translate X
-          ..setEntry(0, 3, 700 * contentScaleFactor)
+          ..setEntry(0, 3, 650 * contentScaleFactor)
           // Translate Y
-          ..setEntry(1, 3, 100 * contentScaleFactor)
-          // Scale
-          ..setEntry(0, 0, 45 * contentScaleFactor)
-          ..setEntry(1, 1, 45 * contentScaleFactor),
+          ..setEntry(1, 3, 100 * contentScaleFactor),
         child: Image(
-            height: 5 * contentScaleFactor,
+            height: 150 * contentScaleFactor,
             image: AssetImage("lib/assets/resume_presentation/naughty.png")));
 
     ValueListenableBuilder boredom = ValueListenableBuilder(
@@ -75,7 +71,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 350 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, 150 * contentScaleFactor)
+                ..setEntry(1, 3, 50 * contentScaleFactor)
                 ..rotateZ(pi * 0.0973),
               child: Text(AppStrings.RESUME_PRESENTATION_BOREDOM[language]!,
                   textAlign: TextAlign.center,
@@ -96,7 +92,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 75 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, 150 * contentScaleFactor)
+                ..setEntry(1, 3, -75 * contentScaleFactor)
                 ..rotateZ(pi * -0.0773),
               child: Text(AppStrings.RESUME_PRESENTATION_PRETEXT[language]!,
                   strutStyle: StrutStyle.disabled,
@@ -118,14 +114,11 @@ class _DraftPresentationState extends State<DraftPresentation> {
         origin: Offset.zero,
         transform: Matrix4.identity()
           // Translate X
-          ..setEntry(0, 3, 550 * contentScaleFactor)
+          ..setEntry(0, 3, 525 * contentScaleFactor)
           // Translate Y
-          ..setEntry(1, 3, 100 * contentScaleFactor)
-          // Scale
-          ..setEntry(0, 0, 2.5 * contentScaleFactor)
-          ..setEntry(1, 1, 2.5 * contentScaleFactor),
+          ..setEntry(1, 3, -150 * contentScaleFactor),
         child: Image(
-            width: 200 * contentScaleFactor,
+            width: 300 * contentScaleFactor,
             image: AssetImage(
                 "lib/assets/resume_presentation/blue_manga_crow.png")));
 
@@ -137,10 +130,10 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 125 * contentScaleFactor)
+                ..setEntry(0, 3, 350 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, 150 * contentScaleFactor)
-                ..rotateZ(pi * -0.0373),
+                ..setEntry(1, 3, -125 * contentScaleFactor)
+                ..rotateZ(pi * 0.1),
               child: Text(
                   AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[language]!,
                   style: TextStyle(
@@ -148,6 +141,83 @@ class _DraftPresentationState extends State<DraftPresentation> {
                       fontFamily: "RockSalt",
                       fontWeight: FontWeight.bold,
                       color: const Color.fromARGB(226, 219, 51, 21))));
+        });
+
+    ValueListenableBuilder resumeLink = ValueListenableBuilder(
+        valueListenable: appLanguage,
+        builder: (context, language, widget) {
+          return Transform(
+              alignment: FractionalOffset.center,
+              origin: Offset.zero,
+              transform: Matrix4.identity()
+                // Translate X
+                ..setEntry(0, 3, 100 * contentScaleFactor)
+                // Translate Y
+                ..setEntry(1, 3, -150 * contentScaleFactor),
+              child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                      onTap: () {
+                        String filePath = language == 'en'
+                            ? "./lib/assets/files/Resume_2025.pdf"
+                            : "./lib/assets/files/CV_2025.pdf";
+                        html.window.open(filePath, '_blank');
+                      },
+                      child: Container(
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              40 * contentScaleFactor,
+                              0,
+                              40 * contentScaleFactor),
+                          height: 175 * contentScaleFactor,
+                          width: 175 * contentScaleFactor,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color.fromARGB(88, 219, 51, 21),
+                                spreadRadius: 5,
+                                blurRadius: 5,
+                              ),
+                              BoxShadow(
+                                color: const Color.fromARGB(226, 219, 51, 21),
+                              ),
+                              BoxShadow(
+                                color: Colors.white,
+                                spreadRadius: -5,
+                                blurRadius: 5,
+                              ),
+                            ],
+                            border: Border(
+                                left: BorderSide(
+                                    color:
+                                        const Color.fromARGB(226, 219, 51, 21)),
+                                top: BorderSide(
+                                    color: const Color.fromARGB(
+                                        226, 219, 51, 21))),
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(200 * contentScaleFactor)),
+                          ),
+                          child: Image(
+                              image: AssetImage(
+                                  "lib/assets/files/download_pdf.png"))))));
+        });
+
+    ValueListenableBuilder resumeArrow = ValueListenableBuilder(
+        valueListenable: appLanguage,
+        builder: (context, language, widget) {
+          return Transform(
+              alignment: FractionalOffset.center,
+              origin: Offset.zero,
+              transform: Matrix4.identity()
+                // Translate X
+                ..setEntry(0, 3, 300 * contentScaleFactor)
+                // Translate Y
+                ..setEntry(1, 3, -300 * contentScaleFactor),
+              child: Image(
+                  width: 200 * contentScaleFactor,
+                  color: const Color.fromARGB(226, 219, 51, 21),
+                  image: AssetImage(
+                      "lib/assets/resume_presentation/neon_$language.png")));
         });
 
     ValueListenableBuilder outcry = ValueListenableBuilder(
@@ -158,9 +228,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 225 * contentScaleFactor)
+                ..setEntry(0, 3, 250 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, 325 * contentScaleFactor),
+                ..setEntry(1, 3, -250 * contentScaleFactor),
               child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -180,6 +250,8 @@ class _DraftPresentationState extends State<DraftPresentation> {
       pretext,
       mangaCrow,
       callToAction,
+      resumeLink,
+      resumeArrow,
       outcry,
     ];
   }

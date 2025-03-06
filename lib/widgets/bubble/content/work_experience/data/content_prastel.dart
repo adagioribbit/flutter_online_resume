@@ -53,7 +53,8 @@ ValueListenableBuilder contentPrastelMobile = ValueListenableBuilder(
           externalLinks: [
             ExternalLink(
                 assetImagePath: "lib/assets/bubble_content/appstore.png",
-                url: "https://apps.apple.com/fr/app/prastelbt/id1321293444"),
+                url:
+                    "https://apps.apple.com/fr/app/prastelbt/id1321293444?platform=iphone"),
             ExternalLink(
                 assetImagePath: "lib/assets/bubble_content/google_play.png",
                 url:
