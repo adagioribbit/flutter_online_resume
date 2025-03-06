@@ -65,7 +65,6 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
     return SizedBox.expand(child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       double marginContainer = constraints.maxHeight * 0.025,
-          periodFontSize = constraints.maxHeight * 0.025,
           titleFontSize = constraints.maxHeight * 0.03,
           contentFontSize = (constraints.maxWidth * 0.023).clamp(12, 18),
           externalLinkHeight = constraints.maxWidth * 0.15;
@@ -105,7 +104,7 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                     Text(widgetContent.periodDescription.toString(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: periodFontSize,
+                            fontSize: titleFontSize,
                             fontStyle: FontStyle.italic)),
                     Container(
                         alignment: Alignment.center,

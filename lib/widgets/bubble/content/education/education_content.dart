@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart'
-    show
-        appLanguage,
-        educationContentScrollController;
+    show appLanguage, educationContentScrollController;
 
 class EducationContent extends StatefulWidget implements PreferredSizeWidget {
   final Color boxShadowColor, boxBorderColor;
@@ -56,7 +54,7 @@ class _EducationContentState extends State<EducationContent> {
           paddingVerticalListView = constraints.maxWidth * 0.05,
           marginContainer = constraints.maxHeight * 0.025,
           titleFontSize = constraints.maxHeight * 0.03,
-          contentFontSize = constraints.maxHeight * 0.02,
+          contentFontSize = (constraints.maxWidth * 0.023).clamp(12, 18),
           externalLinkHeight = constraints.maxHeight * 0.1;
 
       List<Widget> content = [
