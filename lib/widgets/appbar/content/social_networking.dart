@@ -103,7 +103,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     offsetGithub = isFoldable ? 110 : 125;
     offsetInstagram = isFoldable ? 50 : 65;
 
-    isStacked = isPhoneScreen || isFoldable || Utils.screenWidth < 400;
+    isStacked = isPhoneScreen || isFoldable || Utils.screenWidth < 450;
     if (isFoldable) {
       wigglingButtonHeight = isStacked
           ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE
@@ -116,6 +116,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
 
   @override
   Widget build(BuildContext context) {
+    print(Utils.screenWidth);
     if (isFoldable) {
       return Row(
           spacing: 5,
@@ -196,7 +197,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
                       });
                     }))
           ]);
-    } else if (isPhoneScreen || Utils.screenWidth < 400) {
+    } else if (isPhoneScreen || Utils.screenWidth < 450) {
       return Row(
           spacing: 10,
           mainAxisAlignment: MainAxisAlignment.end,
