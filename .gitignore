@@ -42,10 +42,12 @@ app.*.symbols
 app.*.map.json
 
 # Android Studio will place build artifacts here
-/android/
-/ios/
-/linux/
-/macos/
-/test/
-/web/
-/windows/
+android/*
+ios/*
+linux/*
+macos/*
+test/*
+web/*
+windows/*
+
+ToDoList.txt
