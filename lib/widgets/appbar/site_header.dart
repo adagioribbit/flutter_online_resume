@@ -120,8 +120,7 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
                       mainAxisAlignment: MainAxisAlignment.end,
                       direction: Axis.horizontal,
                       children: [
-                    Container(
-                        height: componentHeight, width: componentHeight * 2.0),
+                    SizedBox(height: componentHeight, width: componentHeight),
                     Expanded(
                         child: Opacity(
                             opacity: _animationOpacity.value,
