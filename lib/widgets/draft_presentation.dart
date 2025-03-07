@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:dossier_de_competences_web/helpers/utils.dart' show Utils;
+import 'package:dossier_de_competences_web/helpers/utils.dart' show OS, Utils;
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html show window;
 
@@ -32,7 +32,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
   }
 
   List<Widget> buildContent(BoxConstraints containerConstraints) {
-    double contentScaleFactor = (containerConstraints.maxHeight / 1994) * 1.6;
+    double contentScaleFactor = (containerConstraints.maxHeight / 1994) * 1.5;
 
     Transform vitruve = Transform(
         alignment: FractionalOffset.center,
@@ -154,7 +154,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 100 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, 25 * contentScaleFactor),
+                ..setEntry(1, 3, -25 * contentScaleFactor),
               child: MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
@@ -213,7 +213,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 // Translate X
                 ..setEntry(0, 3, 300 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -125 * contentScaleFactor),
+                ..setEntry(1, 3, -175 * contentScaleFactor),
               child: Image(
                   width: 200 * contentScaleFactor,
                   color: const Color.fromARGB(226, 219, 51, 21),
@@ -229,9 +229,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 250 * contentScaleFactor)
+                ..setEntry(0, 3, 500 * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -50 * contentScaleFactor),
+                ..setEntry(1, 3, -125 * contentScaleFactor),
               child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -261,9 +261,13 @@ class _DraftPresentationState extends State<DraftPresentation> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraintsPage) {
-      bool isFoldable = Utils.isFoldable(context);
-      double rescaleBasis = isFoldable ? 2.5 : 2.25;
-      double rotationFactor = isFoldable ? -.015 * pi : -.05 * pi;
+      OS runningOS = Utils.getOS(context);
+      bool isMobileDevice =
+          (Utils.isPhoneScreen(context) || Utils.isFoldable(context)) &&
+              (runningOS == OS.iOS || runningOS == OS.Android);
+
+      double rescaleBasis = isMobileDevice ? 2.5 : 2.25;
+      double rotationFactor = isMobileDevice ? -.015 * pi : -.05 * pi;
       scaleFactor = (constraintsPage.maxHeight / (1994 * (1 - sin(.05 * pi))));
 
       return Opacity(

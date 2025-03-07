@@ -419,8 +419,8 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           globalStreams.triggerToggleAppBar(false);
         },
         child: Container(
-            margin: EdgeInsets.fromLTRB(
-                0, Constants.APPBAR_HEIGHT - animatedOffsetTop, 0, 0),
+            margin: EdgeInsets.fromLTRB(0,
+                max(0, Constants.APPBAR_HEIGHT - animatedOffsetTop - 20), 0, 0),
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
                 color: Color.fromARGB(bubbleShadowOpacity, 0, 0, 0),

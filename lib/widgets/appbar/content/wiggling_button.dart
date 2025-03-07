@@ -109,7 +109,7 @@ class _WigglingButtonState extends State<WigglingButton>
               child: buttonContent,
             );
           });
-    } else if (Utils.isPhoneScreen(context)) {
+    } else {
       return AnimatedBuilder(
           animation: _animationController,
           builder: (context, _) {
@@ -122,8 +122,6 @@ class _WigglingButtonState extends State<WigglingButton>
               child: buttonContent,
             );
           });
-    } else {
-      return buttonContent;
     }
   }
 

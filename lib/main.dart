@@ -1,6 +1,5 @@
 import 'package:dossier_de_competences_web/helpers/constants.dart'
     show AppStrings;
-import 'package:dossier_de_competences_web/helpers/utils.dart' show OS, Utils;
 import 'package:flutter/material.dart';
 
 import 'helpers/globals.dart' show GlobalKeyRing;
@@ -15,18 +14,15 @@ class CardAndTabApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    OS runningOS = Utils.getOS(context);
-    bool isMobileDevice = (runningOS == OS.iOS || runningOS == OS.Android);
-
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: AppStrings.APP_TITLE,
         home: SizedBox.expand(
             child: Stack(children: [
-          SiteHeader(),
           BubbleCarousel(
             key: GlobalKeyRing.bubbleCarousel,
           ),
+          SiteHeader(),
           Toolbar(),
         ])));
   }
