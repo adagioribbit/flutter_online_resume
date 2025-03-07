@@ -116,7 +116,6 @@ class _SocialNetworkingState extends State<SocialNetworking> {
 
   @override
   Widget build(BuildContext context) {
-    print(Utils.screenWidth);
     if (isFoldable) {
       return Row(
           spacing: 5,

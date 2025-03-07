@@ -104,6 +104,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                     Text(widgetContent.periodDescription.toString(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Colors.black,
                             fontSize: titleFontSize,
                             fontStyle: FontStyle.italic)),
                     Container(
@@ -114,6 +116,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                                 .toString(),
                             textAlign: TextAlign.center,
                             style: TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Colors.black,
                                 fontSize: titleFontSize,
                                 fontWeight: FontWeight.bold))),
                     Container(
@@ -127,6 +131,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                         child: Text(widgetContent.projectDescription.toString(),
                             textAlign: TextAlign.center,
                             style: TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Colors.black,
                                 fontSize: contentFontSize,
                                 fontFamily: "Courier")))
                   ];
@@ -153,6 +159,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                                   AppStrings.TITLE_LANGUAGES[value].toString(),
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
+                                      decoration: TextDecoration.none,
+                                      color: Colors.black,
                                       fontSize: titleFontSize,
                                       fontWeight: FontWeight.bold)));
                         }));
@@ -184,6 +192,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                                   AppStrings.TITLE_TOOLS[value].toString(),
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
+                                      decoration: TextDecoration.none,
+                                      color: Colors.black,
                                       fontSize: titleFontSize,
                                       fontWeight: FontWeight.bold)));
                         }));
@@ -211,6 +221,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                           AppStrings.TITLE_PROJECT_TASKS[value].toString(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                              decoration: TextDecoration.none,
+                              color: Colors.black,
                               fontSize: titleFontSize,
                               fontWeight: FontWeight.bold))));
 
@@ -233,6 +245,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
                               child: Text(sentence,
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
+                                      decoration: TextDecoration.none,
+                                      color: Colors.black,
                                       height: 1.2,
                                       fontSize: contentFontSize,
                                       fontFamily: "Courier")))

@@ -77,7 +77,8 @@ class _DraftPresentationState extends State<DraftPresentation> {
                       fontSize: 50.0 * contentScaleFactor,
                       fontFamily: "GrapeNuts",
                       fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(127, 0, 0, 0))));
+                      color: const Color.fromARGB(127, 0, 0, 0),
+                      decoration: TextDecoration.none)));
         });
 
     ValueListenableBuilder pretext = ValueListenableBuilder(
@@ -99,6 +100,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                       applyHeightToFirstAscent: true,
                       applyHeightToLastDescent: false),
                   style: TextStyle(
+                      decoration: TextDecoration.none,
                       leadingDistribution: TextLeadingDistribution.even,
                       textBaseline: TextBaseline.alphabetic,
                       fontSize: 50.0 * contentScaleFactor,
@@ -135,6 +137,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
               child: Text(
                   AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[language]!,
                   style: TextStyle(
+                      decoration: TextDecoration.none,
                       fontSize: 40.0 * contentScaleFactor,
                       fontFamily: "RockSalt",
                       fontWeight: FontWeight.bold,

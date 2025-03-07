@@ -463,6 +463,7 @@ class _ManilaFolderState extends State<ManilaFolder>
           ..rotateZ(pi * widget.frontCoverMarkupTiltAngle),
         child: Text(widget.stickerLabelText,
             style: TextStyle(
+                decoration: TextDecoration.none,
                 fontSize: _frontCoverMarkupAdjustedFontSize,
                 fontFamily: widget.frontCoverMarkupTextStyle.fontFamily,
                 color: widget.frontCoverMarkupTextStyle.color
@@ -549,6 +550,8 @@ class _ManilaFolderState extends State<ManilaFolder>
             ),
             child: Text(widget.stickerLabelText,
                 style: TextStyle(
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
                     fontWeight: FontWeight.bold,
                     fontSize: widget.stickerFontSize))));
 

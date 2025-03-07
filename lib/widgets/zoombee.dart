@@ -167,6 +167,7 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
                     "💤",
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                        decoration: TextDecoration.none,
                         backgroundColor: Colors.transparent,
                         fontSize: widget.radius / 1.5),
                   ));
@@ -195,6 +196,7 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
                     textAlign: TextAlign.center,
                     textScaler: TextScaler.linear(2.0),
                     style: TextStyle(
+                        decoration: TextDecoration.none,
                         fontFamily: "Handwritten",
                         color: Colors.red,
                         backgroundColor: Colors.transparent,
@@ -238,6 +240,7 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
                             TextHeightBehavior(applyHeightToFirstAscent: false),
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            decoration: TextDecoration.none,
                             backgroundColor: Colors.transparent,
                             fontSize: widget.radius / 1.55),
                       )));
@@ -248,6 +251,7 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
           "🧽",
           textAlign: TextAlign.center,
           style: TextStyle(
+              decoration: TextDecoration.none,
               backgroundColor: Colors.transparent,
               fontSize: widget.radius / 2.0),
         );
@@ -272,6 +276,7 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
                     "♻️",
                     textScaler: TextScaler.linear(1.1),
                     style: TextStyle(
+                        decoration: TextDecoration.none,
                         color: Colors.green,
                         backgroundColor: Colors.transparent,
                         fontSize: widget.radius / 1.55),
@@ -283,6 +288,7 @@ class _ZoombeeState extends State<Zoombee> with TickerProviderStateMixin {
           "🚨",
           textAlign: TextAlign.center,
           style: TextStyle(
+              decoration: TextDecoration.none,
               backgroundColor: Colors.transparent,
               fontSize: widget.radius / 2.0),
         );

@@ -30,6 +30,7 @@ class _MugginsPresentationState extends State<MugginsPresentation> {
         builder: (context, language, widget) {
           return Text(AppStrings.RESUME_PRESENTATION_INSTAGRIT[language]!,
               style: TextStyle(
+                  decoration: TextDecoration.none,
                   fontSize: 40.0,
                   fontFamily: "JustMeAgainDownHere",
                   color: Colors.green));

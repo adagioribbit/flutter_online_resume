@@ -76,6 +76,7 @@ class _ResumePresentationState extends State<ResumePresentation> {
               child: Text(AppStrings.RESUME_PRESENTATION_BOREDOM[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                      decoration: TextDecoration.none,
                       fontSize: 50.0 * scaleFactorRatio,
                       fontFamily: "GrapeNuts",
                       fontWeight: FontWeight.bold,
@@ -101,6 +102,7 @@ class _ResumePresentationState extends State<ResumePresentation> {
                       applyHeightToFirstAscent: true,
                       applyHeightToLastDescent: false),
                   style: TextStyle(
+                      decoration: TextDecoration.none,
                       leadingDistribution: TextLeadingDistribution.even,
                       textBaseline: TextBaseline.alphabetic,
                       fontSize: 60.0 * scaleFactorRatio,
@@ -139,6 +141,7 @@ class _ResumePresentationState extends State<ResumePresentation> {
               child: Text(
                   AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[language]!,
                   style: TextStyle(
+                      decoration: TextDecoration.none,
                       fontSize: 40.0 * scaleFactorRatio,
                       fontFamily: "RockSalt",
                       fontWeight: FontWeight.bold,

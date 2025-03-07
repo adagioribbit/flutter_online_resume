@@ -53,7 +53,10 @@ class Badge extends StatelessWidget {
                     ),
                     Text(title,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: titleFontSize))
+                        style: TextStyle(
+                            color: Colors.black,
+                            decoration: TextDecoration.none,
+                            fontSize: titleFontSize))
                   ]))));
     });
   }

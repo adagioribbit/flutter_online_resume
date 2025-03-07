@@ -67,11 +67,17 @@ class _EducationContentState extends State<EducationContent> {
         Text(widget.periodDescription.toString(),
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: titleFontSize, fontStyle: FontStyle.italic)),
+                decoration: TextDecoration.none,
+                color: Colors.black,
+                fontSize: titleFontSize,
+                fontStyle: FontStyle.italic)),
         Text(widget.degreeDescription.toString(),
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: titleFontSize, fontWeight: FontWeight.bold)),
+                decoration: TextDecoration.none,
+                color: Colors.black,
+                fontSize: titleFontSize,
+                fontWeight: FontWeight.bold)),
         Container(
             alignment: Alignment.center,
             margin: EdgeInsets.fromLTRB(5, 25, 5, 25),
@@ -101,7 +107,10 @@ class _EducationContentState extends State<EducationContent> {
                 return Text(AppStrings.TITLE_DETAILS[value].toString(),
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: titleFontSize, fontWeight: FontWeight.bold));
+                        decoration: TextDecoration.none,
+                        color: Colors.black,
+                        fontSize: titleFontSize,
+                        fontWeight: FontWeight.bold));
               }));
         }
         content.add(Container(
@@ -120,7 +129,10 @@ class _EducationContentState extends State<EducationContent> {
               return Text(AppStrings.TITLE_LANGUAGES[value].toString(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: titleFontSize, fontWeight: FontWeight.bold));
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontSize: titleFontSize,
+                      fontWeight: FontWeight.bold));
             }));
         content.add(Container(
             decoration: BoxDecoration(
@@ -144,7 +156,10 @@ class _EducationContentState extends State<EducationContent> {
               return Text(AppStrings.TITLE_TOOLS[value].toString(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: titleFontSize, fontWeight: FontWeight.bold));
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontSize: titleFontSize,
+                      fontWeight: FontWeight.bold));
             }));
         content.add(Container(
             decoration: BoxDecoration(

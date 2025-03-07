@@ -100,6 +100,8 @@ class _SkillListItemState extends State<SkillListItem> {
                 title: Text(thatSkillListItem.title,
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: Colors.black,
                         fontSize: titleFontSize,
                         fontFamily: "RussoOne",
                         fontWeight: FontWeight.bold)),
