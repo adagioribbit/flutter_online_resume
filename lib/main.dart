@@ -1,7 +1,8 @@
-import 'package:dossier_de_competences_web/widgets/draft_presentation.dart';
+import 'package:dossier_de_competences_web/helpers/constants.dart'
+    show AppStrings;
+import 'package:dossier_de_competences_web/helpers/utils.dart' show OS, Utils;
 import 'package:flutter/material.dart';
 
-import 'helpers/colorchart.dart';
 import 'helpers/globals.dart' show GlobalKeyRing;
 import 'widgets/bubble/bubble_carousel.dart';
 import 'widgets/appbar/site_header.dart';
@@ -14,41 +15,19 @@ class CardAndTabApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OS runningOS = Utils.getOS(context);
+    bool isMobileDevice = (runningOS == OS.iOS || runningOS == OS.Android);
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Test",
-      color: Colors.amber,
-      theme: ThemeData(),
-      home: Scaffold(
-          extendBody: true,
-          backgroundColor: ColorChart.appBackground,
-          appBar: SiteHeader(),
-          body: Stack(children: [
-            //Zoombee(
-            //  radius: 50,
-            //),
-            //ValueListenableBuilder(
-            //    valueListenable: globals.appLanguage,
-            //    builder: (context, language, widget) {
-            //      return ManilaFolder(
-            //          stickerLabelText:
-            //              AppStrings.MANILLAFOLDER_TITLE[language]!,
-            //          stickerRotationAngle: -(pi / 60),
-            //          stickerFontSize: 20.0,
-            //          folderMainColor: Colors.teal,
-            //          hasFrontCoverMarkup: true,
-            //          frontCoverMarkupTextStyle: TextStyle(
-            //            fontSize: 100.0,
-            //            fontFamily: "Sabenya",
-            //            color: Colors.black,
-            //          ),
-            //          frontCoverMarkupTiltAngle: -0.085);
-            //    }),
-            BubbleCarousel(
-              key: GlobalKeyRing.bubbleCarousel,
-            ),
-            Toolbar(),
-          ])),
-    );
+        debugShowCheckedModeBanner: false,
+        title: AppStrings.APP_TITLE,
+        home: SizedBox.expand(
+            child: Stack(children: [
+          SiteHeader(),
+          BubbleCarousel(
+            key: GlobalKeyRing.bubbleCarousel,
+          ),
+          Toolbar(),
+        ])));
   }
 }

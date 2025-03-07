@@ -81,6 +81,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
         if (_animationController.isCompleted) carouselContent = [];
 
         if (_animationController.isForwardOrCompleted) {
+          globalStreams.triggerToggleAppBar(true);
           if (originButton == ToolbarMenu.btnEducation) {
             navigationButtonPalette = educationButtonPalette;
             carouselContent = [
@@ -108,6 +109,8 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             navigationButtonPalette = skillsSetButtonPalette;
             carouselContent = [contentSkillSets];
           }
+        } else if (_animationController.isDismissed) {
+          globalStreams.triggerToggleAppBar(false);
         }
       });
 
@@ -213,6 +216,8 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     bool isPortraitPhoneScreen = Utils.isPortraitContext(context) &&
         (Utils.isPhoneScreen(context) || Utils.isFoldable(context));
     double screenRatio = Utils.getWidthOverHeightRatio();
+    double animatedOffsetTop =
+        Constants.APPBAR_HEIGHT * _animationInflate.value;
 
     int bubbleShadowOpacity = (76 * _animationInflate.value).round();
     hailerSize = (Utils.isPhoneScreen(context) || Utils.isFoldable(context)
@@ -220,18 +225,15 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             : 50.0) *
         _animationInflate.value;
 
-    hailerOffset = Offset(
-        bubbleOrigin.dx - (hailerSize / 2.0),
-        bubbleOrigin.dy -
-            hailerSize -
-            Constants.APPBAR_HEIGHT -
-            Constants.TOOLBAR_HEIGHT);
+    hailerOffset = Offset(bubbleOrigin.dx - (hailerSize / 2.0),
+        bubbleOrigin.dy - hailerSize - Constants.TOOLBAR_HEIGHT);
 
     animatedBubbleMargin = 10.0 * _animationInflate.value;
     marginBubble = EdgeInsets.fromLTRB(
         animatedBubbleMargin, animatedBubbleMargin, animatedBubbleMargin, 0);
     bubbleHeight = (containerSize.height * _animationInflate.value) -
-        hailerSize -
+        hailerSize +
+        animatedOffsetTop -
         marginBubble.vertical;
     bubbleWidth = ((containerSize.width * _animationInflate.value) -
             marginBubble.horizontal)
@@ -414,8 +416,11 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     GestureDetector stackContainer = GestureDetector(
         onTap: () {
           globalStreams.triggerBubbleCarousel(ToolbarMenu.None);
+          globalStreams.triggerToggleAppBar(false);
         },
         child: Container(
+            margin: EdgeInsets.fromLTRB(
+                0, Constants.APPBAR_HEIGHT - animatedOffsetTop, 0, 0),
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
                 color: Color.fromARGB(bubbleShadowOpacity, 0, 0, 0),
