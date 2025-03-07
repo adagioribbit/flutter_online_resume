@@ -456,7 +456,7 @@ class AppStrings {
     'fr':
         'Adaptation en PHP et Javascript d\'un prototype de borne d\'accueil RIS à partir des sources compilées d\'un projet Angular pour les Journées Françaises de la Radiologie 2020.',
     'en':
-        'Development of Evolucare Imaging Mobile, a partial Android and iOS hybrid app port of Evolucare Imaging RIS functionnalities.'
+        'Adapt with PHP and Javascript the Angular prototype project of a RIS reception terminal for a last moment presentation at the main french radiology yearly convention (Journées Françaises de la Radiologie).'
   };
   static const Map<String, List<String>> EVOLUCARE_BORNE_DESCRIPTION = {
     'fr': [
