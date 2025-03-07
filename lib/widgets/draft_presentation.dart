@@ -1,10 +1,12 @@
 import 'dart:math';
+import 'package:dossier_de_competences_web/helpers/global_streams.dart'
+    show globalStreams;
 import 'package:dossier_de_competences_web/helpers/utils.dart' show OS, Utils;
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html show window;
 
 import '../helpers/constants.dart';
-import '../helpers/globals.dart' show appLanguage;
+import '../helpers/globals.dart' show ToolbarMenu, appLanguage;
 import 'squared_sheet.dart';
 
 class DraftPresentation extends StatefulWidget {
@@ -270,28 +272,33 @@ class _DraftPresentationState extends State<DraftPresentation> {
       double rotationFactor = isMobileDevice ? -.015 * pi : -.05 * pi;
       scaleFactor = (constraintsPage.maxHeight / (1994 * (1 - sin(.05 * pi))));
 
-      return Opacity(
-          opacity: (255 - widget.bubbleShadowOpacity) / 255,
-          child: Transform(
-              alignment: FractionalOffset.center,
-              origin: Offset.zero,
-              transform: Matrix4.identity()
-                // Scale
-                ..setEntry(3, 3, rescaleBasis * scaleFactor)
-                // Translate Y
-                ..setEntry(1, 3, -100 * scaleFactor)
-                ..rotateZ(rotationFactor),
-              child: SquaredSheet(
-                  scaleFactor:
-                      DraftPresentation.defaultScaleFactor * scaleFactor,
-                  child: LayoutBuilder(builder:
-                      (BuildContext context, BoxConstraints constraintsSheet) {
-                    return Row(children: [
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: buildContent(constraintsSheet))
-                    ]);
-                  }))));
+      return GestureDetector(
+          onTap: () {
+            globalStreams.triggerBubbleCarousel(ToolbarMenu.None);
+            globalStreams.triggerToggleAppBar(false);
+          },
+          child: Opacity(
+              opacity: (255 - widget.bubbleShadowOpacity) / 255,
+              child: Transform(
+                  alignment: FractionalOffset.center,
+                  origin: Offset.zero,
+                  transform: Matrix4.identity()
+                    // Scale
+                    ..setEntry(3, 3, rescaleBasis * scaleFactor)
+                    // Translate Y
+                    ..setEntry(1, 3, -100 * scaleFactor)
+                    ..rotateZ(rotationFactor),
+                  child: SquaredSheet(
+                      scaleFactor:
+                          DraftPresentation.defaultScaleFactor * scaleFactor,
+                      child: LayoutBuilder(builder: (BuildContext context,
+                          BoxConstraints constraintsSheet) {
+                        return Row(children: [
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: buildContent(constraintsSheet))
+                        ]);
+                      })))));
     });
   }
 }
