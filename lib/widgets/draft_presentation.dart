@@ -231,17 +231,17 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 500 * contentScaleFactor)
+                ..setEntry(0, 3, 200 * contentScaleFactor)
                 // Translate Y
                 ..setEntry(1, 3, -125 * contentScaleFactor),
               child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 50.0 * contentScaleFactor,
+                      fontSize: 40.0 * contentScaleFactor,
                       fontFamily: "OvertheRainbow",
                       color: Colors.green,
-                      decoration: TextDecoration.underline,
+                      decoration: TextDecoration.none,
                       decorationStyle: TextDecorationStyle.double,
                       decorationColor: const Color.fromARGB(225, 44, 138, 0))));
         });

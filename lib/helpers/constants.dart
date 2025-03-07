@@ -111,15 +111,15 @@ class AppStrings {
   };
   static const Map<String, String> RESUME_PRESENTATION_CALL_TO_ACTION = {
     'fr': 'Mes renseignements\nsont dispo ici',
-    'en': 'Please, download\nmy resume'
+    'en': 'My resume is\nonly a click away'
   };
   static const Map<String, String> RESUME_PRESENTATION_BOREDOM = {
     'fr': 'Je m\'ennui !!\n     J\'en ai marre !!!',
     'en': 'I am boooored!!\nI can\'t stand it any longer!!!'
   };
   static const Map<String, String> RESUME_PRESENTATION_OUTCRY = {
-    'fr': 'S\'il vous plaît,\nembauchez-moi !',
-    'en': 'Have a heart,\nemploy me!'
+    'fr': 'Contactez-moi !\nJe suis peut-être encore disponible !',
+    'en': 'Contact me now!\nI might still be available!'
   };
   static const Map<String, String> RESUME_PRESENTATION_INSTAGRIT = {
     'fr': 'Mes derniers posts Instagram',
@@ -213,7 +213,7 @@ class AppStrings {
   static const Map<String, List<String>> YARDSTICK_ONLINE_RESUME_TASKS = {
     'fr': [
       'Auto-formation sur Flutter 3.30',
-      'Réalisation d`\'animations 2D complexes',
+      'Réalisation d\'animations 2D complexes',
     ],
     'en': ['Self-train on Flutter 3.30', 'Implement complex 2D animations']
   };
