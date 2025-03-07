@@ -115,7 +115,7 @@ class AppStrings {
   };
   static const Map<String, String> RESUME_PRESENTATION_BOREDOM = {
     'fr': 'Je m\'ennui !!\n     J\'en ai marre !!!',
-    'en': 'I am boooored!\nI can\'t stand it any longer!'
+    'en': 'I am boooored!!\nI can\'t stand it any longer!!!'
   };
   static const Map<String, String> RESUME_PRESENTATION_OUTCRY = {
     'fr': 'S\'il vous plaît,\nembauchez-moi !',
@@ -196,6 +196,28 @@ class AppStrings {
         'My first attempt at a career was in literary translation. I spent a few years trying to build a clientele but, lacking insider contacts in publishing houses, I ultimately had to give up on that dream.\n\tOn the bright side, my studies, which where followed by a one year work experience as a teaching assistant in a Scottish private scool, allowed me to reach a C2 level in English which is a really useful asset in my current activity.'
   };
 
+  static const Map<String, String> YARDSTICK_ONLINE_RESUME_BADGE = {
+    'fr': 'Ce site',
+    'en': 'This site'
+  };
+  static const Map<String, String> YARDSTICK_ONLINE_RESUME_PERIOD = {
+    'fr': '\nDécembre 2024 - Mars 2025',
+    'en': '\nDecember 2024 - March 2025'
+  };
+  static const Map<String, String> YARDSTICK_ONLINE_RESUME_PROJECT = {
+    'fr':
+        'Pour accentuer ma présence en ligne et démontrer mes talents, j\'ai codé ce site vitrine en mettant en œuvre le framework de développement hybride Flutter pour la première fois.',
+    'en':
+        'In order to boost my online visibility and showcase my talents, I wrote this site using Flutter for the first time.'
+  };
+  static const Map<String, List<String>> YARDSTICK_ONLINE_RESUME_TASKS = {
+    'fr': [
+      'Auto-formation sur Flutter 3.30',
+      'Réalisation d`\'animations 2D complexes',
+    ],
+    'en': ['Self-train on Flutter 3.30', 'Implement complex 2D animations']
+  };
+
   static const Map<String, String> PRASTEL_MOBILE_PERIOD = {
     'fr': '\nJuin 2022 - Avril 2024',
     'en': '\nJune 2022 - April 2024'
@@ -206,7 +228,7 @@ class AppStrings {
     'en':
         'Update menus and features in the all-purpose PrastlBT and Télécommande Virtuelle Slim+BT hybrid apps to allow the management of the Bluetooth-enabled UNIK2E230-BT access central model, and keep their branded equivalent for wholesale clients up-to-date (MProxBLE Control Configurator, MProxBT).'
   };
-  static const Map<String, List<String>> PRASTEL_MOBILE_DESCRIPTION = {
+  static const Map<String, List<String>> PRASTEL_MOBILE_TASKS = {
     'fr': [
       'Création de nouvelles interfaces utilisateurs à partir de l\'existant',
       'Création et intégration de différents modèles de portails 3D interactifs à l\'interface de programmation',
@@ -237,7 +259,7 @@ class AppStrings {
     'en':
         'Fix and update the CR15NM Android app used by automated gate professionals for photo-receptors calibration.'
   };
-  static const Map<String, List<String>> PRASTEL_CR15NM_DESCRIPTION = {
+  static const Map<String, List<String>> PRASTEL_CR15NM_TASKS = {
     'fr': [
       'Recueil des nouveaux besoins',
       'Validation fonctionnelle de la mise à jour sur un banc de tests dédié',
@@ -260,7 +282,7 @@ class AppStrings {
     'en':
         'Redesign an internal website used for product labeling and licence management of M200-BT and UNIK2E230-BT access central products.'
   };
-  static const Map<String, List<String>> PRASTEL_SITE_INTERNE_DESCRIPTION = {
+  static const Map<String, List<String>> PRASTEL_SITE_INTERNE_TASKS = {
     'fr': [
       'Analyse des dysfonctionnements du site web existant codé en WebDev',
       'Recueil des nouveaux besoins',
@@ -285,7 +307,7 @@ class AppStrings {
     'en':
         'Establish a migration plan for a series of SharePoint 2013 and Access 2007 applications to run on an updated Windows Server virtualized infrastructure.'
   };
-  static const Map<String, List<String>> AMILTONE_MIGRATION_DESCRIPTION = {
+  static const Map<String, List<String>> AMILTONE_MIGRATION_TASKS = {
     'fr': [
       'Analyse de l\'existant',
       'Réalisation des tests de migration sur un ensemble de machines virtuelles',
@@ -309,7 +331,7 @@ class AppStrings {
         'Mise en place du traitement des données issues d\'un réseau de capteurs IoT LoRaWan.',
     'en': 'Set up a data treatment chain for a LoRaWan IoT sensors network.'
   };
-  static const Map<String, List<String>> AMILTONE_IOT_DESCRIPTION = {
+  static const Map<String, List<String>> AMILTONE_IOT_TASKS = {
     'fr': [
       'Analyse et correction de la solution Python existante',
       'Développement d\'un équivalent PowerShell',
@@ -331,7 +353,7 @@ class AppStrings {
         'Création de tableaux de bord financiers à partir des bases de données client.',
     'en': 'Design financial dashboards in connection with client databases.'
   };
-  static const Map<String, List<String>> AMILTONE_POWERBI_DESCRIPTION = {
+  static const Map<String, List<String>> AMILTONE_POWERBI_TASKS = {
     'fr': [
       'Recueil des besoins client',
       'Création des traitements de données dans Power Query',
@@ -352,7 +374,7 @@ class AppStrings {
     'fr': 'Test d\'évaluation de la solution WSO2 API Manager.',
     'en': 'Internal evaluation of WSO2 API Manager.'
   };
-  static const Map<String, List<String>> AMILTONE_WSO2_DESCRIPTION = {
+  static const Map<String, List<String>> AMILTONE_WSO2_TASKS = {
     'fr': [
       'Auto-formation sur l\'outil',
       'Développement d\'une API interne de traitement des données Jira'
@@ -373,7 +395,7 @@ class AppStrings {
     'en':
         'Corrective maintenance of general public and professional Android apps for Amiltone mobile apps factory.'
   };
-  static const Map<String, List<String>> AMILTONE_ANDROID_DESCRIPTION = {
+  static const Map<String, List<String>> AMILTONE_ANDROID_TASKS = {
     'fr': [
       'Analyse et correction de bugs',
       'Migration d\'une application vers AndroidX',
@@ -396,7 +418,7 @@ class AppStrings {
     'en':
         'Development of Evolucare Imaging web application, a RIS and PACS solution for medical imaging professionals.'
   };
-  static const Map<String, List<String>> EVOLUCARE_IMAGING_DESCRIPTION = {
+  static const Map<String, List<String>> EVOLUCARE_IMAGING_TASKS = {
     'fr': [
       'Développement full-stack de nouvelles fonctionnalités à partir de maquettes',
       'Mise en œuvre des normes DICOM / HL7 / SESAM-Vitale',
@@ -427,7 +449,7 @@ class AppStrings {
     'en':
         'Development of Evolucare Imaging Mobile, a partial Android and iOS hybrid app port of Evolucare Imaging RIS functionnalities.'
   };
-  static const Map<String, List<String>> EVOLUCARE_MOBILE_DESCRIPTION = {
+  static const Map<String, List<String>> EVOLUCARE_MOBILE_TASKS = {
     'fr': [
       'Résoudre des dysfonctionnements sur le projet prototype',
       'Implémentation de la refonte graphique du projet prototype',
@@ -450,7 +472,7 @@ class AppStrings {
   };
   static const Map<String, String> EVOLUCARE_BORNE_PERIOD = {
     'fr': '\nSeptembre 2020 - Octobre 2020',
-    'en': '\September 2020 - October 2020'
+    'en': '\nSeptember 2020 - October 2020'
   };
   static const Map<String, String> EVOLUCARE_BORNE_PROJECT = {
     'fr':
@@ -458,7 +480,7 @@ class AppStrings {
     'en':
         'Adapt with PHP and Javascript the Angular prototype project of a RIS reception terminal for a last moment presentation at the main french radiology yearly convention (Journées Françaises de la Radiologie).'
   };
-  static const Map<String, List<String>> EVOLUCARE_BORNE_DESCRIPTION = {
+  static const Map<String, List<String>> EVOLUCARE_BORNE_TASKS = {
     'fr': [
       'Auto-formation sur Angular 10',
       'Réécriture de l\'ensemble de l\'interface graphique en PHP et JavaScript',

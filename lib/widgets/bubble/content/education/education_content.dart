@@ -54,7 +54,7 @@ class _EducationContentState extends State<EducationContent> {
           paddingVerticalListView = constraints.maxWidth * 0.05,
           marginContainer = constraints.maxHeight * 0.025,
           titleFontSize = constraints.maxHeight * 0.03,
-          contentFontSize = (constraints.maxWidth * 0.023).clamp(12, 18),
+          contentFontSize = (constraints.maxWidth * 0.033).clamp(12, 18),
           externalLinkHeight = constraints.maxHeight * 0.1;
 
       List<Widget> content = [

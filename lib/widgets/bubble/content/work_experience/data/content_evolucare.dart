@@ -97,7 +97,7 @@ ValueListenableBuilder contentEvolucareImaging = ValueListenableBuilder(
           badgeJQuery,
           badgeBootstrap
         ],
-        projectTasks: AppStrings.EVOLUCARE_IMAGING_DESCRIPTION[value],
+        projectTasks: AppStrings.EVOLUCARE_IMAGING_TASKS[value],
       );
     });
 
@@ -144,7 +144,7 @@ ValueListenableBuilder contentEvolucareMobile = ValueListenableBuilder(
             badgeGitlab,
             badgeNpm
           ],
-          projectTasks: AppStrings.EVOLUCARE_MOBILE_DESCRIPTION[value]);
+          projectTasks: AppStrings.EVOLUCARE_MOBILE_TASKS[value]);
     });
 
 ValueListenableBuilder contentEvolucareBorne = ValueListenableBuilder(
@@ -182,5 +182,5 @@ ValueListenableBuilder contentEvolucareBorne = ValueListenableBuilder(
             badgeJQuery,
             badgeBootstrap,
           ],
-          projectTasks: AppStrings.EVOLUCARE_BORNE_DESCRIPTION[value]);
+          projectTasks: AppStrings.EVOLUCARE_BORNE_TASKS[value]);
     });

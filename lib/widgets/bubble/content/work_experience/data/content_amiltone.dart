@@ -47,7 +47,7 @@ ValueListenableBuilder contentAmiltoneMigration = ValueListenableBuilder(
           badgeSQLServer,
           badgeGoogleDocs
         ],
-        projectTasks: AppStrings.AMILTONE_MIGRATION_DESCRIPTION[value],
+        projectTasks: AppStrings.AMILTONE_MIGRATION_TASKS[value],
       );
     });
 
@@ -64,7 +64,7 @@ ValueListenableBuilder contentAmiltoneIot = ValueListenableBuilder(
         projectDescription: AppStrings.AMILTONE_IOT_PROJECT[value],
         languages: [badgePython, badgePowerShell],
         tools: [badgeThingsboard, badgeSQLServer],
-        projectTasks: AppStrings.AMILTONE_IOT_DESCRIPTION[value],
+        projectTasks: AppStrings.AMILTONE_IOT_TASKS[value],
       );
     });
 
@@ -81,7 +81,7 @@ ValueListenableBuilder contentAmiltonePowerBI = ValueListenableBuilder(
         projectDescription: AppStrings.AMILTONE_POWERBI_PROJECT[value],
         languages: [badgeSQL],
         tools: [badgePowerQuery, badgePowerBI, badgeSQLServer],
-        projectTasks: AppStrings.AMILTONE_POWERBI_DESCRIPTION[value],
+        projectTasks: AppStrings.AMILTONE_POWERBI_TASKS[value],
       );
     });
 
@@ -98,7 +98,7 @@ ValueListenableBuilder contentAmiltoneWSO2 = ValueListenableBuilder(
         projectDescription: AppStrings.AMILTONE_WSO2_PROJECT[value],
         languages: [badgeXML],
         tools: [badgeWSO2, badgeJira],
-        projectTasks: AppStrings.AMILTONE_WSO2_DESCRIPTION[value],
+        projectTasks: AppStrings.AMILTONE_WSO2_TASKS[value],
       );
     });
 
@@ -115,6 +115,6 @@ ValueListenableBuilder contentAmiltoneAndroid = ValueListenableBuilder(
         projectDescription: AppStrings.AMILTONE_ANDROID_PROJECT[value],
         languages: [badgeJava],
         tools: [badgeAndroidStudio, badgeAndroid, badgeJira],
-        projectTasks: AppStrings.AMILTONE_ANDROID_DESCRIPTION[value],
+        projectTasks: AppStrings.AMILTONE_ANDROID_TASKS[value],
       );
     });

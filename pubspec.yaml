@@ -89,9 +89,11 @@ flutter:
     - lib/assets/bubble_content/employer/badge_amiltone.png
     - lib/assets/bubble_content/employer/badge_evolucare.png
     - lib/assets/bubble_content/employer/badge_prastel.png
+    - lib/assets/bubble_content/employer/badge_yardstick.png
     - lib/assets/bubble_content/employer/amiltone.png
     - lib/assets/bubble_content/employer/evolucare.png
     - lib/assets/bubble_content/employer/prastel.png
+    - lib/assets/bubble_content/employer/yardstick.png
 
     - lib/assets/bubble_content/school/badge_greta.png
     - lib/assets/bubble_content/school/badge_le_cnam_paris.png
@@ -119,6 +121,7 @@ flutter:
     - lib/assets/bubble_content/skill/cplusplus.png
     - lib/assets/bubble_content/skill/csharp.png
     - lib/assets/bubble_content/skill/css3.png
+    - lib/assets/bubble_content/skill/dart.png
     - lib/assets/bubble_content/skill/dbeaver.png
     - lib/assets/bubble_content/skill/debian.png
     - lib/assets/bubble_content/skill/docker.png

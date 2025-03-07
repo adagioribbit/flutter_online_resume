@@ -15,7 +15,8 @@ import 'package:dossier_de_competences_web/widgets/bubble/content/work_experienc
         badgeEvolucareMobile,
         badgePrastelBT,
         badgePrastelCRN15M,
-        badgePrastelSiteInterne;
+        badgePrastelSiteInterne,
+        badgeYardStick;
 
 SkillListItem gaugeAccess = SkillListItem(
     skillKey: SkillKey.gaugeAccess,
@@ -113,11 +114,12 @@ SkillListItem gaugeChrome = SkillListItem(
     skillKey: SkillKey.gaugeChrome,
     title: "Chrome",
     iconAssetPath: "lib/assets/bubble_content/skill/chrome.png",
-    nbYearsPractice: 6.57,
+    nbYearsPractice: 6.73,
     experiences: [
-      badgeLeCnam,
+      badgeYardStick,
       badgeEvolucareImaging,
       badgeEvolucareBorne,
+      badgeLeCnam,
       badgeGreta
     ]);
 
@@ -180,6 +182,13 @@ SkillListItem gaugeCss3 = SkillListItem(
       badgeGreta
     ]);
 
+SkillListItem gaugeDart = SkillListItem(
+    skillKey: SkillKey.gaugeDart,
+    title: "Dart",
+    iconAssetPath: "lib/assets/bubble_content/skill/dart.png",
+    nbYearsPractice: .16,
+    experiences: [badgeYardStick]);
+
 SkillListItem gaugeDbeaver = SkillListItem(
     skillKey: SkillKey.gaugeDbeaver,
     title: "DBeaver",
@@ -234,7 +243,7 @@ SkillListItem gaugeFlutter = SkillListItem(
     title: "Flutter",
     iconAssetPath: "lib/assets/bubble_content/skill/flutter.png",
     nbYearsPractice: .16,
-    experiences: []);
+    experiences: [badgeYardStick]);
 
 SkillListItem gaugeGit = SkillListItem(
     skillKey: SkillKey.gaugeGit,
@@ -250,8 +259,8 @@ SkillListItem gaugeGithub = SkillListItem(
     skillKey: SkillKey.gaugeGithub,
     title: "Github",
     iconAssetPath: "lib/assets/bubble_content/skill/github.png",
-    nbYearsPractice: 8.16,
-    experiences: [badgeLeWagon]);
+    nbYearsPractice: 8.32,
+    experiences: [badgeYardStick, badgeLeWagon]);
 
 SkillListItem gaugeGitlab = SkillListItem(
     skillKey: SkillKey.gaugeGitlab,
@@ -677,8 +686,8 @@ SkillListItem gaugeVscode = SkillListItem(
     skillKey: SkillKey.gaugeVscode,
     title: "Visual Studio Code",
     iconAssetPath: "lib/assets/bubble_content/skill/vscode.png",
-    nbYearsPractice: .16,
-    experiences: [badgeLeWagon]);
+    nbYearsPractice: .32,
+    experiences: [badgeYardStick, badgeLeWagon]);
 
 SkillListItem gaugeVmwareWorkstation = SkillListItem(
     skillKey: SkillKey.gaugeVmwareWorkstation,
@@ -771,6 +780,7 @@ List<SkillListItem> skillList = [
   gaugeCplusplus,
   gaugeCsharp,
   gaugeCss3,
+  gaugeDart,
   gaugeDbeaver,
   gaugeDebian,
   gaugeDocker,
@@ -828,8 +838,8 @@ List<SkillListItem> skillList = [
   gaugeTrello,
   gaugeUml,
   gaugeVisualStudio2022,
-  gaugeVmwareWorkstation,
   gaugeVscode,
+  gaugeVmwareWorkstation,
   gaugeWikipedia,
   gaugeWindows,
   gaugeWindowsserver,

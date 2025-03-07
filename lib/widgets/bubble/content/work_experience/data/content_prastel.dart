@@ -74,7 +74,7 @@ ValueListenableBuilder contentPrastelMobile = ValueListenableBuilder(
             badgeExcel,
             badgeBlender,
           ],
-          projectTasks: AppStrings.PRASTEL_MOBILE_DESCRIPTION[value]);
+          projectTasks: AppStrings.PRASTEL_MOBILE_TASKS[value]);
     });
 
 ValueListenableBuilder contentPrastelCR15NM = ValueListenableBuilder(
@@ -100,7 +100,7 @@ ValueListenableBuilder contentPrastelCR15NM = ValueListenableBuilder(
             badgeAndroid,
             badgeGradle,
           ],
-          projectTasks: AppStrings.PRASTEL_CR15NM_DESCRIPTION[value]);
+          projectTasks: AppStrings.PRASTEL_CR15NM_TASKS[value]);
     });
 
 ValueListenableBuilder contentPrastelWeb = ValueListenableBuilder(
@@ -129,5 +129,5 @@ ValueListenableBuilder contentPrastelWeb = ValueListenableBuilder(
             badgeBootstrap,
             badgeGit
           ],
-          projectTasks: AppStrings.PRASTEL_SITE_INTERNE_DESCRIPTION[value]);
+          projectTasks: AppStrings.PRASTEL_SITE_INTERNE_TASKS[value]);
     });

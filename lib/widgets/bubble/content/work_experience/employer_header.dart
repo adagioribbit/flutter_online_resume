@@ -8,8 +8,9 @@ import '../../../../helpers/constants.dart';
 import '../../../../helpers/utils.dart';
 
 class EmployerHeader extends StatefulWidget implements PreferredSizeWidget {
-  static const int indexMinAmiltoneContent = 3;
-  static const int indexMinEvolucareContent = 8;
+  static const int indexMinPrastelContent = 1;
+  static const int indexMinAmiltoneContent = 4;
+  static const int indexMinEvolucareContent = 9;
   final String employerLogoAssetPath;
 
   const EmployerHeader({required this.employerLogoAssetPath, super.key});
@@ -101,19 +102,22 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                       onPressed: carouselIndex.value == 0
                           ? null
                           : () {
-                              int pageNumber = carouselIndex.value <=
-                                      EmployerHeader.indexMinAmiltoneContent
-                                  ? 0
-                                  : carouselIndex.value <=
-                                          EmployerHeader
-                                              .indexMinEvolucareContent
-                                      ? EmployerHeader.indexMinAmiltoneContent
-                                      : carouselIndex.value >
-                                              EmployerHeader
-                                                  .indexMinEvolucareContent
-                                          ? EmployerHeader
-                                              .indexMinEvolucareContent
-                                          : 0;
+                              int pageNumber = 0;
+                              if (carouselIndex.value <=
+                                  EmployerHeader.indexMinPrastelContent) {
+                                pageNumber = 0;
+                              } else if (carouselIndex.value <=
+                                  EmployerHeader.indexMinAmiltoneContent) {
+                                pageNumber =
+                                    EmployerHeader.indexMinPrastelContent;
+                              } else if (carouselIndex.value <=
+                                  EmployerHeader.indexMinEvolucareContent) {
+                                pageNumber =
+                                    EmployerHeader.indexMinAmiltoneContent;
+                              } else {
+                                pageNumber =
+                                    EmployerHeader.indexMinEvolucareContent;
+                              }
                               carouselController.jumpToPage(pageNumber);
                             },
                       icon: Icon(Icons.arrow_circle_left_rounded),
@@ -137,9 +141,12 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                           ? null
                           : () {
                               int pageNumber = carouselIndex.value <
-                                      EmployerHeader.indexMinAmiltoneContent
-                                  ? EmployerHeader.indexMinAmiltoneContent
-                                  : EmployerHeader.indexMinEvolucareContent;
+                                      EmployerHeader.indexMinPrastelContent
+                                  ? EmployerHeader.indexMinPrastelContent
+                                  : carouselIndex.value <
+                                          EmployerHeader.indexMinAmiltoneContent
+                                      ? EmployerHeader.indexMinAmiltoneContent
+                                      : EmployerHeader.indexMinEvolucareContent;
                               carouselController.jumpToPage(pageNumber);
                             },
                       icon: Icon(Icons.arrow_circle_right_rounded),

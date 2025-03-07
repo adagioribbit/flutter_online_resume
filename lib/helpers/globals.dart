@@ -37,6 +37,7 @@ enum SkillKey {
   gaugeCplusplus,
   gaugeCsharp,
   gaugeCss3,
+  gaugeDart,
   gaugeDbeaver,
   gaugeDebian,
   gaugeDocker,

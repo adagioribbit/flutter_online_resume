@@ -107,6 +107,12 @@ SkillBadge badgeCSS3 =
   globalStreams.triggerBubbleCarousel(ToolbarMenu.btnSkillsSet);
 });
 
+SkillBadge badgeDart =
+    SkillBadge("Dart", "lib/assets/bubble_content/skill/dart.png", () {
+  initialScrollSkillItem.value = SkillKey.gaugeDart;
+  globalStreams.triggerBubbleCarousel(ToolbarMenu.btnSkillsSet);
+});
+
 SkillBadge badgeDBeaver =
     SkillBadge("DBeaver", "lib/assets/bubble_content/skill/dbeaver.png", () {
   initialScrollSkillItem.value = SkillKey.gaugeDbeaver;
