@@ -33,8 +33,31 @@ class _DraftPresentationState extends State<DraftPresentation> {
     setState(() => {});
   }
 
-  List<Widget> buildContent(BoxConstraints containerConstraints) {
+  List<Widget> buildContent(
+      BoxConstraints containerConstraints, bool isSmallScreen) {
     double contentScaleFactor = (containerConstraints.maxHeight / 1994) * 1.5;
+
+    Offset vitruveOffset = Offset(100, -100);
+    Offset naughtyOffset = Offset(650, 100);
+    Offset boredomOffset = Offset(350, 50);
+    Offset pretextOffset = Offset(75, -25);
+    Offset mangaCrowOffset = Offset(525, -50);
+    Offset callToActionOffset = Offset(350, -25);
+    Offset resumeLinkOffset = Offset(100, -25);
+    Offset resumeArrowOffset = Offset(300, -175);
+    Offset outcryOffset = Offset(200, -125);
+
+    if (isSmallScreen) {
+      vitruveOffset = Offset(125, 0);
+      naughtyOffset = Offset(750, 150);
+      boredomOffset = Offset(400, 125);
+      pretextOffset = Offset(75, 25);
+      mangaCrowOffset = Offset(525, -50);
+      callToActionOffset = Offset(350, -25);
+      resumeLinkOffset = Offset(100, -25);
+      resumeArrowOffset = Offset(300, -175);
+      outcryOffset = Offset(200, -125);
+    }
 
     Transform vitruve = Transform(
         alignment: FractionalOffset.center,
@@ -42,9 +65,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
         transform: Matrix4.identity()
           ..rotateZ(-0.15 * pi)
           // Translate X
-          ..setEntry(0, 3, 100 * contentScaleFactor)
+          ..setEntry(0, 3, vitruveOffset.dx * contentScaleFactor)
           // Translate Y
-          ..setEntry(1, 3, -100 * contentScaleFactor),
+          ..setEntry(1, 3, vitruveOffset.dy * contentScaleFactor),
         child: Image(
             height: 150 * contentScaleFactor,
             image: AssetImage("lib/assets/resume_presentation/vitruve.png")));
@@ -54,9 +77,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
         origin: Offset.zero,
         transform: Matrix4.identity()
           // Translate X
-          ..setEntry(0, 3, 650 * contentScaleFactor)
+          ..setEntry(0, 3, naughtyOffset.dx * contentScaleFactor)
           // Translate Y
-          ..setEntry(1, 3, 100 * contentScaleFactor),
+          ..setEntry(1, 3, naughtyOffset.dy * contentScaleFactor),
         child: Image(
             height: 100 * contentScaleFactor,
             image: AssetImage("lib/assets/resume_presentation/naughty.png")));
@@ -69,9 +92,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 350 * contentScaleFactor)
+                ..setEntry(0, 3, boredomOffset.dx * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, 50 * contentScaleFactor)
+                ..setEntry(1, 3, boredomOffset.dy * contentScaleFactor)
                 ..rotateZ(pi * 0.0973),
               child: Text(AppStrings.RESUME_PRESENTATION_BOREDOM[language]!,
                   textAlign: TextAlign.center,
@@ -91,9 +114,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 75 * contentScaleFactor)
+                ..setEntry(0, 3, pretextOffset.dx * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -25 * contentScaleFactor)
+                ..setEntry(1, 3, pretextOffset.dy * contentScaleFactor)
                 ..rotateZ(pi * -0.0773),
               child: Text(AppStrings.RESUME_PRESENTATION_PRETEXT[language]!,
                   strutStyle: StrutStyle.disabled,
@@ -116,9 +139,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
         origin: Offset.zero,
         transform: Matrix4.identity()
           // Translate X
-          ..setEntry(0, 3, 525 * contentScaleFactor)
+          ..setEntry(0, 3, mangaCrowOffset.dx * contentScaleFactor)
           // Translate Y
-          ..setEntry(1, 3, -50 * contentScaleFactor),
+          ..setEntry(1, 3, mangaCrowOffset.dy * contentScaleFactor),
         child: Image(
             width: 250 * contentScaleFactor,
             image: AssetImage(
@@ -132,9 +155,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 350 * contentScaleFactor)
+                ..setEntry(0, 3, callToActionOffset.dx * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -25 * contentScaleFactor)
+                ..setEntry(1, 3, callToActionOffset.dy * contentScaleFactor)
                 ..rotateZ(pi * 0.1),
               child: Text(
                   AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[language]!,
@@ -154,9 +177,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 100 * contentScaleFactor)
+                ..setEntry(0, 3, resumeLinkOffset.dx * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -25 * contentScaleFactor),
+                ..setEntry(1, 3, resumeLinkOffset.dy * contentScaleFactor),
               child: MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
@@ -213,9 +236,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 300 * contentScaleFactor)
+                ..setEntry(0, 3, resumeArrowOffset.dx * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -175 * contentScaleFactor),
+                ..setEntry(1, 3, resumeArrowOffset.dy * contentScaleFactor),
               child: Image(
                   width: 200 * contentScaleFactor,
                   color: const Color.fromARGB(226, 219, 51, 21),
@@ -231,9 +254,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
               origin: Offset.zero,
               transform: Matrix4.identity()
                 // Translate X
-                ..setEntry(0, 3, 200 * contentScaleFactor)
+                ..setEntry(0, 3, outcryOffset.dx * contentScaleFactor)
                 // Translate Y
-                ..setEntry(1, 3, -125 * contentScaleFactor),
+                ..setEntry(1, 3, outcryOffset.dy * contentScaleFactor),
               child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[language]!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -264,9 +287,8 @@ class _DraftPresentationState extends State<DraftPresentation> {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraintsPage) {
       OS runningOS = Utils.getOS(context);
-      bool isMobileDevice =
-          (Utils.isPhoneScreen(context) || Utils.isFoldable(context)) &&
-              (runningOS == OS.iOS || runningOS == OS.Android);
+      bool isMobileDevice = Utils.isSmallScreen(context) &&
+          (runningOS == OS.iOS || runningOS == OS.Android);
 
       double rescaleBasis = isMobileDevice ? 2.5 : 2.25;
       double rotationFactor = isMobileDevice ? -.015 * pi : -.05 * pi;
@@ -296,7 +318,8 @@ class _DraftPresentationState extends State<DraftPresentation> {
                         return Row(children: [
                           Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: buildContent(constraintsSheet))
+                              children: buildContent(
+                                  constraintsSheet, isMobileDevice))
                         ]);
                       })))));
     });

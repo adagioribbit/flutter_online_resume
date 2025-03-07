@@ -153,6 +153,13 @@ class Utils {
     return isPhone;
   }
 
+  static bool isSmallScreen(BuildContext context) {
+    updateScreenData(context);
+    double widthOverHeightRatio = getWidthOverHeightRatio();
+    bool isSmallScreen = screenWidth < 400 && widthOverHeightRatio < 0.7;
+    return isSmallScreen;
+  }
+
   static bool hasNotch() {
     return features
         .where((feature) => feature.type == DisplayFeatureType.hinge)
