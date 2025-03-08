@@ -41,7 +41,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
     Offset naughtyOffset = Offset(650, 100);
     Offset boredomOffset = Offset(350, 50);
     Offset pretextOffset = Offset(75, -25);
-    Offset mangaCrowOffset = Offset(525, -50);
+    Offset mangaCrowOffset = Offset(425, -50);
     Offset callToActionOffset = Offset(350, -25);
     Offset resumeLinkOffset = Offset(100, -25);
     Offset resumeArrowOffset = Offset(300, -175);
@@ -52,7 +52,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
       naughtyOffset = Offset(750, 150);
       boredomOffset = Offset(400, 125);
       pretextOffset = Offset(75, 25);
-      mangaCrowOffset = Offset(525, -50);
+      mangaCrowOffset = Offset(425, -50);
       callToActionOffset = Offset(350, -25);
       resumeLinkOffset = Offset(100, -25);
       resumeArrowOffset = Offset(300, -175);
@@ -142,10 +142,24 @@ class _DraftPresentationState extends State<DraftPresentation> {
           ..setEntry(0, 3, mangaCrowOffset.dx * contentScaleFactor)
           // Translate Y
           ..setEntry(1, 3, mangaCrowOffset.dy * contentScaleFactor),
-        child: Image(
-            width: 250 * contentScaleFactor,
-            image: AssetImage(
-                "lib/assets/resume_presentation/blue_manga_crow.png")));
+        child: Stack(children: [
+          Image(
+              width: 350 * contentScaleFactor,
+              image: AssetImage(
+                  "lib/assets/resume_presentation/blue_manga_crow/body_test.gif")),
+          Image(
+              width: 350 * contentScaleFactor,
+              image: AssetImage(
+                  "lib/assets/resume_presentation/blue_manga_crow/beak_tweeting.gif")),
+          Image(
+              width: 350 * contentScaleFactor,
+              image: AssetImage(
+                  "lib/assets/resume_presentation/blue_manga_crow/eye_rolling.gif")),
+          Image(
+              width: 350 * contentScaleFactor,
+              image: AssetImage(
+                  "lib/assets/resume_presentation/blue_manga_crow/legs_spreading.gif"))
+        ]));
 
     ValueListenableBuilder callToAction = ValueListenableBuilder(
         valueListenable: appLanguage,
