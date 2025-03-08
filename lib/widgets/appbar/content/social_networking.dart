@@ -116,137 +116,48 @@ class _SocialNetworkingState extends State<SocialNetworking> {
 
   @override
   Widget build(BuildContext context) {
-    if (isFoldable) {
-      return Row(
-          spacing: 5,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            AnimatedBuilder(
-                animation: widget.animationController,
-                builder: (context, child) {
-                  return Transform(
-                      transform: Matrix4.identity()
-                        //// Translate X
-                        ..setEntry(
-                            0, 3, offsetLinkedIn * _animationTranslate.value)
-                        // Translate Y
-                        ..setEntry(1, 3,
-                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
-                        // Scale
-                        ..setEntry(0, 0, _animationScale.value)
-                        ..setEntry(1, 1, _animationScale.value),
-                      child: _linkedInButton);
-                }),
-            AnimatedBuilder(
-                animation: widget.animationController,
-                builder: (context, child) {
-                  return Transform(
-                      transform: Matrix4.identity()
-                        // Translate X
-                        ..setEntry(
-                            0, 3, offsetGithub * _animationTranslate.value)
-                        // Translate Y
-                        ..setEntry(1, 3,
-                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
-                        // Scale
-                        ..setEntry(0, 0, _animationScale.value)
-                        ..setEntry(1, 1, _animationScale.value),
-                      child: _githubButton);
-                }),
-            AnimatedBuilder(
-                animation: widget.animationController,
-                builder: (context, child) {
-                  return Transform(
-                      transform: Matrix4.identity()
-                        // Translate X
-                        ..setEntry(
-                            0, 3, offsetInstagram * _animationTranslate.value)
-                        // Translate Y
-                        ..setEntry(1, 3,
-                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
-                        // Scale
-                        ..setEntry(0, 0, _animationScale.value)
-                        ..setEntry(1, 1, _animationScale.value),
-                      child: _instagramButton);
-                }),
-            AnimatedContainer(
-                duration: Duration(
-                    milliseconds: Constants.WIGGLING_BUTTON_ANIMATION_DURATION),
-                height: wigglingButtonHeight,
-                width: wigglingButtonHeight,
-                transform: Matrix4.identity()
-                  // Translate X
-                  ..setEntry(0, 3, 5)
-                  // Translate Y
-                  ..setEntry(1, 3, widget.animationController.value),
-                child: WigglingButton(
-                    isInflated: isStacked,
-                    onPressedClbk: () {
-                      setState(() {
-                        isStacked = !isStacked;
-                        wigglingButtonHeight = isStacked
-                            ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE
-                            : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK_FOLDABLE;
+    double rowSpacing = isFoldable ? 5 : 10;
 
-                        if (isStacked) {
-                          widget.animationController.forward();
-                        } else {
-                          widget.animationController.reverse();
-                        }
-                      });
-                    }))
-          ]);
-    } else if (isPhoneScreen || Utils.screenWidth < 450) {
+    if (isFoldable || isPhoneScreen || Utils.screenWidth < 450) {
+      Matrix4 matrixTransform = Matrix4.identity()
+        // Translate Y
+        ..setEntry(1, 3, 5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
+        // Scale
+        ..setEntry(0, 0, _animationScale.value)
+        ..setEntry(1, 1, _animationScale.value);
+
       return Row(
-          spacing: 10,
+          spacing: rowSpacing,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             AnimatedBuilder(
                 animation: widget.animationController,
                 builder: (context, child) {
                   return Transform(
-                      transform: Matrix4.identity()
+                      transform: matrixTransform
                         //// Translate X
                         ..setEntry(
-                            0, 3, offsetLinkedIn * _animationTranslate.value)
-                        // Translate Y
-                        ..setEntry(1, 3,
-                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
-                        // Scale
-                        ..setEntry(0, 0, _animationScale.value)
-                        ..setEntry(1, 1, _animationScale.value),
+                            0, 3, offsetLinkedIn * _animationTranslate.value),
                       child: _linkedInButton);
                 }),
             AnimatedBuilder(
                 animation: widget.animationController,
                 builder: (context, child) {
                   return Transform(
-                      transform: Matrix4.identity()
+                      transform: matrixTransform
                         // Translate X
                         ..setEntry(
-                            0, 3, offsetGithub * _animationTranslate.value)
-                        // Translate Y
-                        ..setEntry(1, 3,
-                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
-                        // Scale
-                        ..setEntry(0, 0, _animationScale.value)
-                        ..setEntry(1, 1, _animationScale.value),
+                            0, 3, offsetGithub * _animationTranslate.value),
                       child: _githubButton);
                 }),
             AnimatedBuilder(
                 animation: widget.animationController,
                 builder: (context, child) {
                   return Transform(
-                      transform: Matrix4.identity()
+                      transform: matrixTransform
                         // Translate X
                         ..setEntry(
-                            0, 3, offsetInstagram * _animationTranslate.value)
-                        // Translate Y
-                        ..setEntry(1, 3,
-                            5.0 + (-10.0 * (1.0 - _animationTranslate.value)))
-                        // Scale
-                        ..setEntry(0, 0, _animationScale.value)
-                        ..setEntry(1, 1, _animationScale.value),
+                            0, 3, offsetInstagram * _animationTranslate.value),
                       child: _instagramButton);
                 }),
             AnimatedContainer(
@@ -277,6 +188,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
                     })),
           ]);
     } else {
+      ;
       return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
         Transform(
           transform: Matrix4.identity()
