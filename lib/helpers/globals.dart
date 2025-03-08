@@ -1,10 +1,13 @@
+import 'dart:ui' show PlatformDispatcher;
+
 import 'package:carousel_slider/carousel_controller.dart'
     show CarouselSliderController;
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ItemScrollController;
 
-ValueNotifier<String> appLanguage = ValueNotifier<String>('fr');
+ValueNotifier<String> appLanguage = ValueNotifier<String>(
+    PlatformDispatcher.instance.locale.toString().substring(0, 2));
 ValueNotifier<bool> isDarkMode = ValueNotifier<bool>(false);
 ValueNotifier<bool> isFoldable = ValueNotifier<bool>(false);
 

@@ -34,13 +34,14 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
   var languageButton = ValueListenableBuilder(
       valueListenable: globals.appLanguage,
       builder: (context, language, widget) {
+        String secondLanguage = (language == 'fr' ? 'en' : 'fr');
         return FlippingAppBarIconButton(
-            frontImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH['fr']!,
-            backImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH['en']!,
+            frontImageFilePath:
+                AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[language]!,
+            backImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[language]!,
             frontTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[language],
             backTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[language],
-            onPressedClbk: () =>
-                {globals.appLanguage.value = (language == 'fr' ? 'en' : 'fr')});
+            onPressedClbk: () => {globals.appLanguage.value = secondLanguage});
       });
 
   var darkModeButton = ValueListenableBuilder(
