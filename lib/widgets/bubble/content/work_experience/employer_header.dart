@@ -11,6 +11,7 @@ class EmployerHeader extends StatefulWidget implements PreferredSizeWidget {
   static const int indexMinPrastelContent = 1;
   static const int indexMinAmiltoneContent = 4;
   static const int indexMinEvolucareContent = 9;
+  static const int indexMinHardLifeContent = 12;
   final String employerLogoAssetPath;
 
   const EmployerHeader({required this.employerLogoAssetPath, super.key});
@@ -114,9 +115,13 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                                   EmployerHeader.indexMinEvolucareContent) {
                                 pageNumber =
                                     EmployerHeader.indexMinAmiltoneContent;
-                              } else {
+                              } else if (carouselIndex.value <=
+                                  EmployerHeader.indexMinHardLifeContent) {
                                 pageNumber =
                                     EmployerHeader.indexMinEvolucareContent;
+                              } else {
+                                pageNumber =
+                                    EmployerHeader.indexMinHardLifeContent;
                               }
                               carouselController.jumpToPage(pageNumber);
                             },
@@ -137,7 +142,8 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                       hoverColor: workExperienceButtonPalette.radientStop2,
                       disabledColor: workExperienceButtonPalette.iconFocus,
                       iconSize: constraints.maxWidth * 0.08,
-                      onPressed: carouselIndex.value > 7
+                      onPressed: carouselIndex.value >=
+                              EmployerHeader.indexMinHardLifeContent
                           ? null
                           : () {
                               int pageNumber = carouselIndex.value <
@@ -146,7 +152,13 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                                   : carouselIndex.value <
                                           EmployerHeader.indexMinAmiltoneContent
                                       ? EmployerHeader.indexMinAmiltoneContent
-                                      : EmployerHeader.indexMinEvolucareContent;
+                                      : carouselIndex.value <
+                                              EmployerHeader
+                                                  .indexMinEvolucareContent
+                                          ? EmployerHeader
+                                              .indexMinEvolucareContent
+                                          : EmployerHeader
+                                              .indexMinHardLifeContent;
                               carouselController.jumpToPage(pageNumber);
                             },
                       icon: Icon(Icons.arrow_circle_right_rounded),

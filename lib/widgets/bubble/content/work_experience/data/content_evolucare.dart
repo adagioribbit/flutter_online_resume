@@ -63,9 +63,11 @@ ValueListenableBuilder contentEvolucareImaging = ValueListenableBuilder(
         projectDescription: AppStrings.EVOLUCARE_IMAGING_PROJECT[value],
         externalLinks: [
           ExternalLink(
-              assetImagePath: "lib/assets/bubble_content/external_link.png",
-              url:
-                  "https://www.evolucare.com/$value/logiciel-imagerie-medicale/"),
+            assetImagePath:
+                "lib/assets/bubble_content/employer/badge_evolucare.png",
+            url: "https://www.evolucare.com/$value/logiciel-imagerie-medicale/",
+            tooltip: "Evolucare Imaging",
+          ),
         ],
         languages: [
           badgePhp,
@@ -114,9 +116,11 @@ ValueListenableBuilder contentEvolucareMobile = ValueListenableBuilder(
           projectDescription: AppStrings.EVOLUCARE_MOBILE_PROJECT[value],
           externalLinks: [
             ExternalLink(
-                assetImagePath: "lib/assets/bubble_content/appstore.png",
-                url:
-                    "https://apps.apple.com/fr/app/evolucare-imaging-mobile/id1469915229"),
+              assetImagePath: "lib/assets/bubble_content/appstore.png",
+              url:
+                  "https://apps.apple.com/fr/app/evolucare-imaging-mobile/id1469915229",
+              tooltip: "Evolucare Imaging Mobile",
+            ),
           ],
           languages: [
             badgeHtml5,
@@ -160,9 +164,12 @@ ValueListenableBuilder contentEvolucareBorne = ValueListenableBuilder(
           projectDescription: AppStrings.EVOLUCARE_BORNE_PROJECT[value],
           externalLinks: [
             ExternalLink(
-                assetImagePath: "lib/assets/bubble_content/appstore.png",
-                url:
-                    "https://www.evolucare.com/fr/imagerie-borne-accueil-rendez-vous/"),
+              assetImagePath:
+                  "lib/assets/bubble_content/employer/badge_evolucare.png",
+              url:
+                  "https://www.evolucare.com/fr/imagerie-borne-accueil-rendez-vous/",
+              tooltip: AppStrings.EVOLUCARE_BORNE_BADGE[value],
+            ),
           ],
           languages: [
             badgePhp,

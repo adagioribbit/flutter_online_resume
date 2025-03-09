@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math' show max;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dossier_de_competences_web/widgets/bubble/content/work_experience/data/content_yardstick.dart'
-    show contentYardStickOnlineResume;
+    show contentYardStickOnlineResume, contentYardStickStarter;
 import 'package:dossier_de_competences_web/widgets/draft_presentation.dart'
     show DraftPresentation;
 import 'package:flutter/material.dart';
@@ -106,7 +106,8 @@ class _BubbleCarouselState extends State<BubbleCarousel>
               contentAmiltoneAndroid,
               contentEvolucareImaging,
               contentEvolucareMobile,
-              contentEvolucareBorne
+              contentEvolucareBorne,
+              contentYardStickStarter
             ];
           } else if (originButton == ToolbarMenu.btnSkillsSet) {
             navigationButtonPalette = skillsSetButtonPalette;

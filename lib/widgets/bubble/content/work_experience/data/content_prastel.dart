@@ -54,11 +54,13 @@ ValueListenableBuilder contentPrastelMobile = ValueListenableBuilder(
             ExternalLink(
                 assetImagePath: "lib/assets/bubble_content/appstore.png",
                 url:
-                    "https://apps.apple.com/fr/app/prastelbt/id1321293444?platform=iphone"),
+                    "https://apps.apple.com/fr/app/prastelbt/id1321293444?platform=iphone",
+                tooltip: "PrastelBT"),
             ExternalLink(
                 assetImagePath: "lib/assets/bubble_content/google_play.png",
                 url:
-                    "https://play.google.com/store/apps/details?id=m2000bt.Android"),
+                    "https://play.google.com/store/apps/details?id=m2000bt.Android",
+                tooltip: "PrastelBT"),
           ],
           languages: [badgeCSharp],
           tools: [
@@ -92,7 +94,8 @@ ValueListenableBuilder contentPrastelCR15NM = ValueListenableBuilder(
             ExternalLink(
                 assetImagePath: "lib/assets/bubble_content/google_play.png",
                 url:
-                    "https://play.google.com/store/apps/details?id=it.fldesign.www.flashlight&hl=$value"),
+                    "https://play.google.com/store/apps/details?id=it.fldesign.www.flashlight&hl=$value",
+                tooltip: "CRN15M"),
           ],
           languages: [badgeJava],
           tools: [

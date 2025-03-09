@@ -146,7 +146,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
           Image(
               width: 350 * contentScaleFactor,
               image: AssetImage(
-                  "lib/assets/resume_presentation/blue_manga_crow/body_test.gif")),
+                  "lib/assets/resume_presentation/blue_manga_crow/body_flapping.gif")),
           Image(
               width: 350 * contentScaleFactor,
               image: AssetImage(

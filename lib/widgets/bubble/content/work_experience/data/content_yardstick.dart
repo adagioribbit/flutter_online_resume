@@ -26,8 +26,9 @@ ValueListenableBuilder contentYardStickOnlineResume = ValueListenableBuilder(
         projectDescription: AppStrings.YARDSTICK_ONLINE_RESUME_PROJECT[value],
         externalLinks: [
           ExternalLink(
-              assetImagePath: "lib/assets/bubble_content/skill/github.png",
-              url: "https://github.com/adagioribbit/flutter_online_resume"),
+            assetImagePath: "lib/assets/bubble_content/skill/github.png",
+            url: "https://github.com/adagioribbit/flutter_online_resume",
+          ),
         ],
         languages: [badgeDart],
         tools: [
@@ -37,5 +38,58 @@ ValueListenableBuilder contentYardStickOnlineResume = ValueListenableBuilder(
           badgeGithub,
         ],
         projectTasks: AppStrings.YARDSTICK_ONLINE_RESUME_TASKS[value],
+      );
+    });
+
+ValueListenableBuilder contentYardStickStarter = ValueListenableBuilder(
+    valueListenable: globals.appLanguage,
+    builder: (context, value, widget) {
+      return WorkExperienceContent(
+        boxBorderColor: yardStickBorderColor,
+        boxShadowColor: yardStickShadowColor,
+        employerHeader: EmployerHeader(
+            employerLogoAssetPath:
+                "lib/assets/bubble_content/employer/hard_life.png"),
+        periodDescription: AppStrings.YARDSTICK_STARTER_PERIOD[value],
+        projectDescription: AppStrings.YARDSTICK_STARTER_PROJECT[value],
+        externalLinks: [
+          ExternalLink(
+            assetImagePath:
+                "lib/assets/bubble_content/employer/badge_argus_presse.png",
+            url: AppStrings.LINKEDIN_URL,
+            hoverColor: Color.fromARGB(125, 230, 0, 96),
+            tooltip: "Argus de la Presse / Cision",
+          ),
+          ExternalLink(
+            assetImagePath:
+                "lib/assets/bubble_content/employer/badge_british_council.png",
+            url: AppStrings.LINKEDIN_URL,
+            hoverColor: Color.fromARGB(125, 35, 8, 90),
+            tooltip: "British Council",
+          ),
+          ExternalLink(
+            assetImagePath:
+                "lib/assets/bubble_content/employer/badge_xs_arena.png",
+            url: AppStrings.LINKEDIN_URL,
+            hoverColor: Color.fromARGB(125, 99, 124, 186),
+            tooltip: "XS Arena",
+          ),
+          ExternalLink(
+            assetImagePath:
+                "lib/assets/bubble_content/employer/badge_teleperformance.png",
+            url: AppStrings.LINKEDIN_URL,
+            hoverColor: Color.fromARGB(125, 134, 14, 148),
+            tooltip: "Téléperformance",
+          ),
+          ExternalLink(
+            assetImagePath: "lib/assets/bubble_content/employer/badge_g4s.png",
+            url: AppStrings.LINKEDIN_URL,
+            hoverColor: Color.fromARGB(125, 238, 52, 63),
+            tooltip: "Sicli / G4S",
+          ),
+        ],
+        languages: [],
+        tools: [],
+        projectTasks: AppStrings.YARDSTICK_STARTER_TASKS[value],
       );
     });

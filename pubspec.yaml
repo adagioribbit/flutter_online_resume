@@ -87,13 +87,19 @@ flutter:
     - lib/assets/bubble_content/external_link.png
 
     - lib/assets/bubble_content/employer/badge_amiltone.png
+    - lib/assets/bubble_content/employer/badge_argus_presse.png
+    - lib/assets/bubble_content/employer/badge_british_council.png
+    - lib/assets/bubble_content/employer/badge_g4s.png
     - lib/assets/bubble_content/employer/badge_evolucare.png
     - lib/assets/bubble_content/employer/badge_prastel.png
+    - lib/assets/bubble_content/employer/badge_teleperformance.png
     - lib/assets/bubble_content/employer/badge_yardstick.png
+    - lib/assets/bubble_content/employer/badge_xs_arena.png
     - lib/assets/bubble_content/employer/amiltone.png
     - lib/assets/bubble_content/employer/evolucare.png
     - lib/assets/bubble_content/employer/prastel.png
     - lib/assets/bubble_content/employer/yardstick.png
+    - lib/assets/bubble_content/employer/hard_life.png
 
     - lib/assets/bubble_content/school/badge_greta.png
     - lib/assets/bubble_content/school/badge_le_cnam_paris.png
@@ -196,7 +202,6 @@ flutter:
 
     - lib/assets/resume_presentation/blank_squared_sheet.png
     - lib/assets/resume_presentation/blue_manga_crow/body_flapping.gif
-    - lib/assets/resume_presentation/blue_manga_crow/body_test.gif
     - lib/assets/resume_presentation/blue_manga_crow/droppings.png
     - lib/assets/resume_presentation/blue_manga_crow/beak_tweeting.gif
     - lib/assets/resume_presentation/blue_manga_crow/eye_rolling.gif

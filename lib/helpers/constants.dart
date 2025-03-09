@@ -501,4 +501,41 @@ class AppStrings {
     'fr': 'mois',
     'en': 'months'
   };
+
+  static const Map<String, String> YARDSTICK_STARTER_BADGE = {
+    'fr': 'Mes débuts',
+    'en': 'Career start'
+  };
+  static const Map<String, String> YARDSTICK_STARTER_PERIOD = {
+    'fr': '\nAvril 1999 - Octobre 2014',
+    'en': '\nApril 1999 - October 2014'
+  };
+  static const Map<String, String> YARDSTICK_STARTER_PROJECT = {
+    'fr':
+        'La vie n\'est linéaire que lorsqu\'on la rêve.\nIl a fallu que j\'accumule des expériences diverses pour finalement arriver à me forger un avenir professionnel dans l\'informatique.\n\nSi la curiosité vous pique, j\'ai consigné l\'ensemble de mon parcours sur mon profil LinkedIn.',
+    'en':
+        'Life is not straightforward.\nI had to multiply experiences before I finally settled for a career as a software developer.\n\nIf you are intrigued, my full resume is available on my LinkedIn profile.'
+  };
+  static const Map<String, List<String>> YARDSTICK_STARTER_TASKS = {
+    'fr': [
+      'Lecteur web',
+      'Assistant Professeur de langue française',
+      'Dactylo',
+      'Responsable de la maintenance informatique',
+      'Technicien conseil hotline',
+      'Employé de cybercafé / salle de jeux',
+      'Agent de sécurité',
+      'Surveillant scolaire',
+    ],
+    'en': [
+      'Web news reviewer',
+      'Assistant french teacher',
+      'Dactylographer',
+      'IT maintenance technician',
+      'Hotliner',
+      'Internet and online gaming cafe employee',
+      'Security agent',
+      'Playground superviser',
+    ]
+  };
 }
