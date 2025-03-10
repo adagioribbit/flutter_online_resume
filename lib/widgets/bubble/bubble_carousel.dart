@@ -419,6 +419,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
     GestureDetector stackContainer = GestureDetector(
         onTap: () {
+          globalStreams.triggerStackSocialMediaButtons(true);
           globalStreams.triggerBubbleCarousel(ToolbarMenu.None);
           globalStreams.triggerToggleAppBar(false);
         },

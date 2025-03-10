@@ -1,3 +1,7 @@
+import 'dart:async' show StreamSubscription;
+
+import 'package:dossier_de_competences_web/helpers/global_streams.dart'
+    show globalStreams;
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html;
 import '../../../helpers/colorchart.dart';
@@ -25,6 +29,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
       wigglingButtonBottomMargin;
   late Animation _animationTranslate, _animationScale;
   late SiteHeader? parent;
+  late StreamSubscription subscription;
 
   final _linkedInButton = ValueListenableBuilder(
     valueListenable: globals.appLanguage,
@@ -91,6 +96,20 @@ class _SocialNetworkingState extends State<SocialNetworking> {
     _animationScale = Tween(begin: 1.25, end: 1.0).animate(CurvedAnimation(
         parent: widget.animationController,
         curve: Curves.easeInOutCubicEmphasized));
+
+    subscription =
+        globalStreams.eventStackSocialMediaButtons.listen((mustStack) async {
+      if (!isStacked) {
+        setState(() {
+          isStacked = !isStacked;
+          wigglingButtonHeight = isStacked
+              ? Constants.WIGGLING_BUTTON_HEIGHT
+              : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
+
+          widget.animationController.forward();
+        });
+      }
+    });
   }
 
   @override

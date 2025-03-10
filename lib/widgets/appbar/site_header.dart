@@ -96,8 +96,9 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
     _animationOpacity = Tween(begin: 0.2, end: 1.0).animate(
         CurvedAnimation(parent: _animationController, curve: Curves.linear));
 
-    subscription = globalStreams.eventToggleAppBar.listen((isHidden) async {
-      if (isHidden) {
+    subscription = globalStreams.eventToggleAppBar.listen((mustHide) async {
+      if (mustHide) {
+        globalStreams.triggerStackSocialMediaButtons(true);
         _toggleAppBarController.forward();
       } else {
         _toggleAppBarController.reverse();
