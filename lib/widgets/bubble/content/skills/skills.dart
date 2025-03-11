@@ -26,6 +26,7 @@ SkillListItem gaugeAccess = SkillListItem(
     title: "Microsoft Access",
     iconAssetPath: "lib/assets/bubble_content/skill/access.png",
     nbYearsPractice: .33,
+    dateLastUsed: DateTime(2022, 4),
     experiences: [badgeAmiltoneMigration]);
 
 SkillListItem gaugeAndroid = SkillListItem(
@@ -35,6 +36,7 @@ SkillListItem gaugeAndroid = SkillListItem(
     title: "Android",
     iconAssetPath: "lib/assets/bubble_content/skill/android.png",
     nbYearsPractice: 6.9,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [
       badgePrastelBT,
       badgePrastelCRN15M,
@@ -50,6 +52,7 @@ SkillListItem gaugeAndroidStudio = SkillListItem(
     title: "Android Studio",
     iconAssetPath: "lib/assets/bubble_content/skill/android_studio.png",
     nbYearsPractice: 6.9,
+    dateLastUsed: DateTime(2023, 12),
     experiences: [
       badgePrastelBT,
       badgePrastelCRN15M,
@@ -65,6 +68,7 @@ SkillListItem gaugeAngular = SkillListItem(
     title: "Angular",
     iconAssetPath: "lib/assets/bubble_content/skill/angular.png",
     nbYearsPractice: .08,
+    dateLastUsed: DateTime(2020, 10),
     experiences: [badgeEvolucareBorne]);
 
 SkillListItem gaugeApacheServer = SkillListItem(
@@ -74,6 +78,7 @@ SkillListItem gaugeApacheServer = SkillListItem(
     title: "Apache Server",
     iconAssetPath: "lib/assets/bubble_content/skill/apache_server.png",
     nbYearsPractice: 4.99,
+    dateLastUsed: DateTime(2023, 9),
     experiences: [
       badgePrastelSiteInterne,
       badgeEvolucareImaging,
@@ -89,6 +94,7 @@ SkillListItem gaugeAppstore = SkillListItem(
     title: "App Store",
     iconAssetPath: "lib/assets/bubble_content/appstore.png",
     nbYearsPractice: 5.74,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT, badgeEvolucareMobile]);
 
 SkillListItem gaugeBash = SkillListItem(
@@ -98,6 +104,7 @@ SkillListItem gaugeBash = SkillListItem(
     title: "Bash",
     iconAssetPath: "lib/assets/bubble_content/skill/bash.png",
     nbYearsPractice: 4.74,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [badgeEvolucareImaging, badgeLeCnam]);
 
 SkillListItem gaugeBlender = SkillListItem(
@@ -107,6 +114,7 @@ SkillListItem gaugeBlender = SkillListItem(
     title: "Blender",
     iconAssetPath: "lib/assets/bubble_content/skill/blender.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2023, 8),
     experiences: [badgePrastelBT]);
 
 SkillListItem gaugeBluetooth = SkillListItem(
@@ -116,6 +124,7 @@ SkillListItem gaugeBluetooth = SkillListItem(
     title: "Bluetooth",
     iconAssetPath: "lib/assets/bubble_content/skill/bluetooth.png",
     nbYearsPractice: 1.83,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
 SkillListItem gaugeBootstrap = SkillListItem(
@@ -125,6 +134,7 @@ SkillListItem gaugeBootstrap = SkillListItem(
     title: "Bootstrap",
     iconAssetPath: "lib/assets/bubble_content/skill/bootstrap.png",
     nbYearsPractice: 3.99,
+    dateLastUsed: DateTime(2023, 9),
     experiences: [
       badgePrastelSiteInterne,
       badgeEvolucareImaging,
@@ -138,6 +148,7 @@ SkillListItem gaugeChrome = SkillListItem(
     title: "Chrome",
     iconAssetPath: "lib/assets/bubble_content/skill/chrome.png",
     nbYearsPractice: 6.73,
+    dateLastUsed: DateTime.now(),
     experiences: [
       badgeYardStick,
       badgeEvolucareImaging,
@@ -153,6 +164,7 @@ SkillListItem gaugeColaboratory = SkillListItem(
     title: "Colaboratory",
     iconAssetPath: "lib/assets/bubble_content/skill/colaboratory.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeConfluence = SkillListItem(
@@ -162,6 +174,7 @@ SkillListItem gaugeConfluence = SkillListItem(
     title: "Confluence",
     iconAssetPath: "lib/assets/bubble_content/skill/confluence.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2021, 11),
     experiences: [
       badgeEvolucareImaging,
       badgeEvolucareMobile,
@@ -175,6 +188,7 @@ SkillListItem gaugeCordova = SkillListItem(
     title: "Cordova",
     iconAssetPath: "lib/assets/bubble_content/skill/cordova.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [
       badgeEvolucareMobile,
     ]);
@@ -186,6 +200,7 @@ SkillListItem gaugeCplusplus = SkillListItem(
     title: "C++",
     iconAssetPath: "lib/assets/bubble_content/skill/cplusplus.png",
     nbYearsPractice: 0.83,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [badgeLeCnam]);
 
 SkillListItem gaugeCsharp = SkillListItem(
@@ -195,6 +210,7 @@ SkillListItem gaugeCsharp = SkillListItem(
     title: "C#",
     iconAssetPath: "lib/assets/bubble_content/skill/csharp.png",
     nbYearsPractice: 1.99,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [
       badgePrastelBT,
       badgeEvolucareImaging,
@@ -207,6 +223,7 @@ SkillListItem gaugeCss3 = SkillListItem(
     title: "CSS 3",
     iconAssetPath: "lib/assets/bubble_content/skill/css3.png",
     nbYearsPractice: 5.65,
+    dateLastUsed: DateTime(2025, 3),
     experiences: [
       badgeLeWagon,
       badgePrastelSiteInterne,
@@ -224,6 +241,7 @@ SkillListItem gaugeDart = SkillListItem(
     title: "Dart",
     iconAssetPath: "lib/assets/bubble_content/skill/dart.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2025, 3),
     experiences: [badgeYardStick]);
 
 SkillListItem gaugeDbeaver = SkillListItem(
@@ -233,6 +251,7 @@ SkillListItem gaugeDbeaver = SkillListItem(
     title: "DBeaver",
     iconAssetPath: "lib/assets/bubble_content/skill/dbeaver.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeDebian = SkillListItem(
@@ -242,6 +261,7 @@ SkillListItem gaugeDebian = SkillListItem(
     title: "Debian",
     iconAssetPath: "lib/assets/bubble_content/skill/debian.png",
     nbYearsPractice: 5.98,
+    dateLastUsed: DateTime.now(),
     experiences: [
       badgeLeWagon,
       badgePrastelSiteInterne,
@@ -257,6 +277,7 @@ SkillListItem gaugeDocker = SkillListItem(
     title: "Docker",
     iconAssetPath: "lib/assets/bubble_content/skill/docker.png",
     nbYearsPractice: .99,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon, badgeLeCnam]);
 
 SkillListItem gaugeUkFlag = SkillListItem(
@@ -265,6 +286,7 @@ SkillListItem gaugeUkFlag = SkillListItem(
     type: SkillType.language,
     title: "English",
     iconAssetPath: "lib/assets/appbar/uk_flag.png",
+    dateLastUsed: DateTime.now(),
     nbYearsPractice:
         (DateTime.now().difference(DateTime(2015, 9, 1)).inDays / 365),
     experiences: [badgeUpec]);
@@ -276,6 +298,7 @@ SkillListItem gaugeExcel = SkillListItem(
     title: "Excel",
     iconAssetPath: "lib/assets/bubble_content/skill/excel.png",
     nbYearsPractice: 1.83,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
 SkillListItem gaugeFastapi = SkillListItem(
@@ -285,6 +308,7 @@ SkillListItem gaugeFastapi = SkillListItem(
     title: "FastAPI",
     iconAssetPath: "lib/assets/bubble_content/skill/fastapi.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeFlutter = SkillListItem(
@@ -294,6 +318,7 @@ SkillListItem gaugeFlutter = SkillListItem(
     title: "Flutter",
     iconAssetPath: "lib/assets/bubble_content/skill/flutter.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime.now(),
     experiences: [badgeYardStick]);
 
 SkillListItem gaugeGit = SkillListItem(
@@ -303,6 +328,7 @@ SkillListItem gaugeGit = SkillListItem(
     title: "Git",
     iconAssetPath: "lib/assets/bubble_content/skill/git.png",
     nbYearsPractice: 5.74,
+    dateLastUsed: DateTime.now(),
     experiences: [
       badgePrastelBT,
       badgePrastelSiteInterne,
@@ -315,6 +341,7 @@ SkillListItem gaugeGithub = SkillListItem(
     title: "Github",
     iconAssetPath: "lib/assets/bubble_content/skill/github.png",
     nbYearsPractice: 8.32,
+    dateLastUsed: DateTime.now(),
     experiences: [badgeYardStick, badgeLeWagon]);
 
 SkillListItem gaugeGitlab = SkillListItem(
@@ -324,6 +351,7 @@ SkillListItem gaugeGitlab = SkillListItem(
     title: "Gitlab",
     iconAssetPath: "lib/assets/bubble_content/skill/gitlab.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2021, 10),
     experiences: [
       badgeEvolucareImaging,
       badgeEvolucareMobile,
@@ -337,6 +365,7 @@ SkillListItem gaugeGoogleDocs = SkillListItem(
     title: "Google Docs",
     iconAssetPath: "lib/assets/bubble_content/skill/google_docs.png",
     nbYearsPractice: 1.16,
+    dateLastUsed: DateTime.now(),
     experiences: [badgeAmiltoneMigration, badgeGreta]);
 
 SkillListItem gaugeGooglePlay = SkillListItem(
@@ -346,6 +375,7 @@ SkillListItem gaugeGooglePlay = SkillListItem(
     title: "Google Play",
     iconAssetPath: "lib/assets/bubble_content/google_play.png",
     nbYearsPractice: 5.74,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT, badgePrastelCRN15M]);
 
 SkillListItem gaugeGradle = SkillListItem(
@@ -355,6 +385,7 @@ SkillListItem gaugeGradle = SkillListItem(
     title: "Gradle",
     iconAssetPath: "lib/assets/bubble_content/skill/gradle.png",
     nbYearsPractice: 4.99,
+    dateLastUsed: DateTime(2023, 12),
     experiences: [
       badgePrastelCRN15M,
       badgeEvolucareMobile,
@@ -367,6 +398,7 @@ SkillListItem gaugeHtml5 = SkillListItem(
     title: "Html 5",
     iconAssetPath: "lib/assets/bubble_content/skill/html5.png",
     nbYearsPractice: 5.65,
+    dateLastUsed: DateTime.now(),
     experiences: [
       badgeLeWagon,
       badgePrastelSiteInterne,
@@ -384,6 +416,7 @@ SkillListItem gaugeHuggingface = SkillListItem(
     title: "Huggingface",
     iconAssetPath: "lib/assets/bubble_content/skill/huggingface.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeIos = SkillListItem(
@@ -393,6 +426,7 @@ SkillListItem gaugeIos = SkillListItem(
     title: "iOS",
     iconAssetPath: "lib/assets/bubble_content/skill/ios.png",
     nbYearsPractice: 6.74,
+    dateLastUsed: DateTime.now(),
     experiences: [
       badgePrastelBT,
       badgeEvolucareMobile,
@@ -405,6 +439,7 @@ SkillListItem gaugeJava = SkillListItem(
     title: "Java",
     iconAssetPath: "lib/assets/bubble_content/skill/java.png",
     nbYearsPractice: 1.07,
+    dateLastUsed: DateTime(2023, 12),
     experiences: [
       badgePrastelCRN15M,
       badgeAmiltoneAndroid,
@@ -420,6 +455,7 @@ SkillListItem gaugeJavascript = SkillListItem(
     title: "Javascript",
     iconAssetPath: "lib/assets/bubble_content/skill/javascript.png",
     nbYearsPractice: 5.57,
+    dateLastUsed: DateTime(2025, 3),
     experiences: [
       badgeLeWagon,
       badgePrastelSiteInterne,
@@ -437,6 +473,7 @@ SkillListItem gaugeJira = SkillListItem(
     title: "Jira",
     iconAssetPath: "lib/assets/bubble_content/skill/jira.png",
     nbYearsPractice: 5.23,
+    dateLastUsed: DateTime(2021, 11),
     experiences: [
       badgeAmiltoneWSO2,
       badgeAmiltoneAndroid,
@@ -452,6 +489,7 @@ SkillListItem gaugeJquery = SkillListItem(
     title: "JQuery",
     iconAssetPath: "lib/assets/bubble_content/skill/jquery.png",
     nbYearsPractice: 3.99,
+    dateLastUsed: DateTime(2023, 9),
     experiences: [
       badgePrastelSiteInterne,
       badgeEvolucareImaging,
@@ -465,6 +503,7 @@ SkillListItem gaugeJson = SkillListItem(
     title: "Json",
     iconAssetPath: "lib/assets/bubble_content/skill/json.png",
     nbYearsPractice: 6.73,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [
       badgeLeWagon,
       badgePrastelSiteInterne,
@@ -482,6 +521,7 @@ SkillListItem gaugeJupyter = SkillListItem(
     title: "Jupyter",
     iconAssetPath: "lib/assets/bubble_content/skill/jupyter.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeKaggle = SkillListItem(
@@ -491,6 +531,7 @@ SkillListItem gaugeKaggle = SkillListItem(
     title: "Kaggle",
     iconAssetPath: "lib/assets/bubble_content/skill/kaggle.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeKeras = SkillListItem(
@@ -500,6 +541,7 @@ SkillListItem gaugeKeras = SkillListItem(
     title: "Keras",
     iconAssetPath: "lib/assets/bubble_content/skill/keras.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeLerobert = SkillListItem(
@@ -509,6 +551,7 @@ SkillListItem gaugeLerobert = SkillListItem(
     title: "Le Robert & Collins",
     iconAssetPath: "lib/assets/bubble_content/skill/lerobert.png",
     nbYearsPractice: 7.2,
+    dateLastUsed: DateTime(2013, 9),
     experiences: [badgeUpec]);
 
 SkillListItem gaugeMacos = SkillListItem(
@@ -518,6 +561,7 @@ SkillListItem gaugeMacos = SkillListItem(
     title: "Macos",
     iconAssetPath: "lib/assets/bubble_content/skill/macos.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [
       badgePrastelBT,
       badgeEvolucareImaging,
@@ -531,6 +575,7 @@ SkillListItem gaugeMailchimp = SkillListItem(
     title: "Mailchimp",
     iconAssetPath: "lib/assets/bubble_content/skill/mailchimp.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2016, 7),
     experiences: [badgeGreta]);
 
 SkillListItem gaugeMariadb = SkillListItem(
@@ -540,6 +585,7 @@ SkillListItem gaugeMariadb = SkillListItem(
     title: "MariaDB",
     iconAssetPath: "lib/assets/bubble_content/skill/mariadb.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [
       badgeEvolucareImaging,
     ]);
@@ -551,6 +597,7 @@ SkillListItem gaugeMatplotlib = SkillListItem(
     title: "Matplotlib",
     iconAssetPath: "lib/assets/bubble_content/skill/matplotlib.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeMysql = SkillListItem(
@@ -560,6 +607,7 @@ SkillListItem gaugeMysql = SkillListItem(
     title: "MySQL",
     iconAssetPath: "lib/assets/bubble_content/skill/mysql.png",
     nbYearsPractice: 1.74,
+    dateLastUsed: DateTime(2023, 9),
     experiences: [badgePrastelSiteInterne, badgeLeCnam, badgeGreta]);
 
 SkillListItem gaugeNetbeans = SkillListItem(
@@ -569,6 +617,7 @@ SkillListItem gaugeNetbeans = SkillListItem(
     title: "NetBeans",
     iconAssetPath: "lib/assets/bubble_content/skill/netbeans.png",
     nbYearsPractice: 0.99,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [badgeEvolucareImaging, badgeLeCnam]);
 
 SkillListItem gaugeNetMaui = SkillListItem(
@@ -578,6 +627,7 @@ SkillListItem gaugeNetMaui = SkillListItem(
     title: ".NET MAUI",
     iconAssetPath: "lib/assets/bubble_content/skill/net_maui.png",
     nbYearsPractice: 1.83,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
 SkillListItem gaugeNpm = SkillListItem(
@@ -587,6 +637,7 @@ SkillListItem gaugeNpm = SkillListItem(
     title: "NPM",
     iconAssetPath: "lib/assets/bubble_content/skill/npm.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [
       badgeEvolucareMobile,
     ]);
@@ -598,6 +649,7 @@ SkillListItem gaugeObjectivec = SkillListItem(
     title: "Objective C",
     iconAssetPath: "lib/assets/bubble_content/skill/objectivec.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [
       badgeEvolucareMobile,
     ]);
@@ -609,6 +661,7 @@ SkillListItem gaugePandas = SkillListItem(
     title: "Pandas",
     iconAssetPath: "lib/assets/bubble_content/skill/pandas.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugePhp = SkillListItem(
@@ -618,6 +671,7 @@ SkillListItem gaugePhp = SkillListItem(
     title: "PHP 7",
     iconAssetPath: "lib/assets/bubble_content/skill/php.png",
     nbYearsPractice: 5.65,
+    dateLastUsed: DateTime(2023, 9),
     experiences: [
       badgePrastelSiteInterne,
       badgeEvolucareImaging,
@@ -633,6 +687,7 @@ SkillListItem gaugePhpmyadmin = SkillListItem(
     title: "PhpMyAdmin",
     iconAssetPath: "lib/assets/bubble_content/skill/phpmyadmin.png",
     nbYearsPractice: 4.74,
+    dateLastUsed: DateTime(2023, 9),
     experiences: [badgeEvolucareImaging, badgeGreta]);
 
 SkillListItem gaugePhpstorm = SkillListItem(
@@ -642,6 +697,7 @@ SkillListItem gaugePhpstorm = SkillListItem(
     title: "PhpStorm",
     iconAssetPath: "lib/assets/bubble_content/skill/phpstorm.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2021, 10),
     experiences: [
       badgeEvolucareImaging,
       badgeEvolucareMobile,
@@ -655,6 +711,7 @@ SkillListItem gaugePowerbi = SkillListItem(
     title: "Power BI",
     iconAssetPath: "lib/assets/bubble_content/skill/powerbi.png",
     nbYearsPractice: .33,
+    dateLastUsed: DateTime(2022, 3),
     experiences: [badgeAmiltonePowerBI]);
 
 SkillListItem gaugePowershell = SkillListItem(
@@ -664,6 +721,7 @@ SkillListItem gaugePowershell = SkillListItem(
     title: "PowerShell",
     iconAssetPath: "lib/assets/bubble_content/skill/powershell.png",
     nbYearsPractice: .33,
+    dateLastUsed: DateTime.now(),
     experiences: [
       badgeAmiltoneIot,
     ]);
@@ -675,6 +733,7 @@ SkillListItem gaugePowerQuery = SkillListItem(
     title: "Power Query",
     iconAssetPath: "lib/assets/bubble_content/skill/microsoft.png",
     nbYearsPractice: .33,
+    dateLastUsed: DateTime(2022, 4),
     experiences: [
       badgeAmiltonePowerBI,
     ]);
@@ -686,6 +745,7 @@ SkillListItem gaugePython = SkillListItem(
     title: "Python",
     iconAssetPath: "lib/assets/bubble_content/skill/python.png",
     nbYearsPractice: 1.32,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon, badgeAmiltoneIot, badgeGreta]);
 
 SkillListItem gaugeQt = SkillListItem(
@@ -695,6 +755,7 @@ SkillListItem gaugeQt = SkillListItem(
     title: "Qt",
     iconAssetPath: "lib/assets/bubble_content/skill/qt.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [
       badgeEvolucareImaging,
     ]);
@@ -706,6 +767,7 @@ SkillListItem gaugeReact = SkillListItem(
     title: "React",
     iconAssetPath: "lib/assets/bubble_content/skill/react.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 11),
     experiences: []);
 
 SkillListItem gaugeSafari = SkillListItem(
@@ -715,6 +777,7 @@ SkillListItem gaugeSafari = SkillListItem(
     title: "Safari",
     iconAssetPath: "lib/assets/bubble_content/skill/safari.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime.now(),
     experiences: [
       badgeEvolucareImaging,
     ]);
@@ -726,6 +789,7 @@ SkillListItem gaugeSeaborn = SkillListItem(
     title: "Seaborn",
     iconAssetPath: "lib/assets/bubble_content/skill/seaborn.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeSharepoint = SkillListItem(
@@ -735,6 +799,7 @@ SkillListItem gaugeSharepoint = SkillListItem(
     title: "SharePoint",
     iconAssetPath: "lib/assets/bubble_content/skill/sharepoint.png",
     nbYearsPractice: .33,
+    dateLastUsed: DateTime(2022, 4),
     experiences: [
       badgeAmiltoneMigration,
     ]);
@@ -746,6 +811,7 @@ SkillListItem gaugeSlack = SkillListItem(
     title: "Slack",
     iconAssetPath: "lib/assets/bubble_content/skill/slack.png",
     nbYearsPractice: 5.74,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeEvolucareImaging, badgeEvolucareMobile, badgeGreta]);
 
 SkillListItem gaugeSql = SkillListItem(
@@ -755,6 +821,7 @@ SkillListItem gaugeSql = SkillListItem(
     title: "SQL",
     iconAssetPath: "lib/assets/bubble_content/skill/sql.png",
     nbYearsPractice: 7.06,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon, badgeAmiltonePowerBI, badgeLeCnam, badgeGreta]);
 
 SkillListItem gaugeSqlserver = SkillListItem(
@@ -764,6 +831,7 @@ SkillListItem gaugeSqlserver = SkillListItem(
     title: "SQL Server",
     iconAssetPath: "lib/assets/bubble_content/skill/sqlserver.png",
     nbYearsPractice: .33,
+    dateLastUsed: DateTime(2022, 4),
     experiences: [
       badgeAmiltoneMigration,
       badgeAmiltoneIot,
@@ -777,6 +845,7 @@ SkillListItem gaugeSqlite = SkillListItem(
     title: "SQLite",
     iconAssetPath: "lib/assets/bubble_content/skill/sqlite.png",
     nbYearsPractice: 4.91,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [badgeEvolucareMobile]);
 
 SkillListItem gaugeTensorflow = SkillListItem(
@@ -786,6 +855,7 @@ SkillListItem gaugeTensorflow = SkillListItem(
     title: "Tensorflow",
     iconAssetPath: "lib/assets/bubble_content/skill/tensorflow.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
 SkillListItem gaugeThingsboard = SkillListItem(
@@ -795,6 +865,7 @@ SkillListItem gaugeThingsboard = SkillListItem(
     title: "Thingsboard",
     iconAssetPath: "lib/assets/bubble_content/skill/thingsboard.png",
     nbYearsPractice: .33,
+    dateLastUsed: DateTime(2022, 4),
     experiences: [badgeAmiltoneIot]);
 
 SkillListItem gaugeTomcat = SkillListItem(
@@ -804,6 +875,7 @@ SkillListItem gaugeTomcat = SkillListItem(
     title: "Tomcat",
     iconAssetPath: "lib/assets/bubble_content/skill/tomcat.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2017, 7),
     experiences: [badgeLeCnam]);
 
 SkillListItem gaugeTrello = SkillListItem(
@@ -813,6 +885,7 @@ SkillListItem gaugeTrello = SkillListItem(
     title: "Trello",
     iconAssetPath: "lib/assets/bubble_content/skill/trello.png",
     nbYearsPractice: 0.83,
+    dateLastUsed: DateTime(2016, 7),
     experiences: [badgeGreta]);
 
 SkillListItem gaugeUml = SkillListItem(
@@ -822,6 +895,7 @@ SkillListItem gaugeUml = SkillListItem(
     title: "UML",
     iconAssetPath: "lib/assets/bubble_content/skill/uml.png",
     nbYearsPractice: 5.74,
+    dateLastUsed: DateTime(2021, 9),
     experiences: [badgeEvolucareImaging, badgeEvolucareMobile, badgeLeCnam]);
 
 SkillListItem gaugeVisualStudio2022 = SkillListItem(
@@ -831,6 +905,7 @@ SkillListItem gaugeVisualStudio2022 = SkillListItem(
     title: "Visual Studio 2022",
     iconAssetPath: "lib/assets/bubble_content/skill/visual_studio_2022.png",
     nbYearsPractice: 1.83,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
 SkillListItem gaugeVscode = SkillListItem(
@@ -840,6 +915,7 @@ SkillListItem gaugeVscode = SkillListItem(
     title: "Visual Studio Code",
     iconAssetPath: "lib/assets/bubble_content/skill/vscode.png",
     nbYearsPractice: .32,
+    dateLastUsed: DateTime.now(),
     experiences: [badgeYardStick, badgeLeWagon]);
 
 SkillListItem gaugeVmwareWorkstation = SkillListItem(
@@ -849,6 +925,7 @@ SkillListItem gaugeVmwareWorkstation = SkillListItem(
     title: "VMWare Workstation",
     iconAssetPath: "lib/assets/bubble_content/skill/vmware_workstation.png",
     nbYearsPractice: 0.83,
+    dateLastUsed: DateTime(2016, 7),
     experiences: [badgeGreta]);
 
 SkillListItem gaugeWikipedia = SkillListItem(
@@ -858,6 +935,7 @@ SkillListItem gaugeWikipedia = SkillListItem(
     title: "Wikipedia",
     iconAssetPath: "lib/assets/bubble_content/skill/wikipedia.png",
     nbYearsPractice: 4.3,
+    dateLastUsed: DateTime(2024, 12),
     experiences: [badgeUpec]);
 
 SkillListItem gaugeWindows = SkillListItem(
@@ -867,6 +945,7 @@ SkillListItem gaugeWindows = SkillListItem(
     title: "Windows",
     iconAssetPath: "lib/assets/bubble_content/skill/windows.png",
     nbYearsPractice: .99,
+    dateLastUsed: DateTime.now(),
     experiences: [badgeLeWagon, badgeEvolucareBorne, badgeGreta]);
 
 SkillListItem gaugeWindowsserver = SkillListItem(
@@ -876,6 +955,7 @@ SkillListItem gaugeWindowsserver = SkillListItem(
     title: "Windows Server",
     iconAssetPath: "lib/assets/bubble_content/skill/windowsserver.png",
     nbYearsPractice: .33,
+    dateLastUsed: DateTime(2022, 4),
     experiences: [
       badgeAmiltoneMigration,
     ]);
@@ -887,6 +967,7 @@ SkillListItem gaugeWordpress = SkillListItem(
     title: "Wordpress",
     iconAssetPath: "lib/assets/bubble_content/skill/wordpress.png",
     nbYearsPractice: 0.83,
+    dateLastUsed: DateTime(2016, 7),
     experiences: [badgeGreta]);
 
 SkillListItem gaugeWso2 = SkillListItem(
@@ -896,6 +977,7 @@ SkillListItem gaugeWso2 = SkillListItem(
     title: "WSO2",
     iconAssetPath: "lib/assets/bubble_content/skill/wso2.png",
     nbYearsPractice: .16,
+    dateLastUsed: DateTime(2021, 11),
     experiences: [
       badgeAmiltoneWSO2,
     ]);
@@ -907,6 +989,7 @@ SkillListItem gaugeXamarin = SkillListItem(
     title: "Xamarin",
     iconAssetPath: "lib/assets/bubble_content/skill/xamarin.png",
     nbYearsPractice: 1.83,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
 SkillListItem gaugeXcode = SkillListItem(
@@ -916,6 +999,7 @@ SkillListItem gaugeXcode = SkillListItem(
     title: "XCode",
     iconAssetPath: "lib/assets/bubble_content/skill/xcode.png",
     nbYearsPractice: 6.74,
+    dateLastUsed: DateTime(2024, 4),
     experiences: [
       badgePrastelBT,
       badgeEvolucareMobile,
@@ -928,95 +1012,8 @@ SkillListItem gaugeXml = SkillListItem(
     title: "XML",
     iconAssetPath: "lib/assets/bubble_content/skill/xml.png",
     nbYearsPractice: 4.07,
+    dateLastUsed: DateTime(2024, 9),
     experiences: [
       badgeAmiltoneWSO2,
       badgeEvolucareImaging,
     ]);
-
-List<SkillListItem> skillList = [
-  gaugeAccess,
-  gaugeAndroid,
-  gaugeAndroidStudio,
-  gaugeAngular,
-  gaugeApacheServer,
-  gaugeAppstore,
-  gaugeBash,
-  gaugeBlender,
-  gaugeBluetooth,
-  gaugeBootstrap,
-  gaugeChrome,
-  gaugeColaboratory,
-  gaugeConfluence,
-  gaugeCordova,
-  gaugeCplusplus,
-  gaugeCsharp,
-  gaugeCss3,
-  gaugeDart,
-  gaugeDbeaver,
-  gaugeDebian,
-  gaugeDocker,
-  gaugeUkFlag,
-  gaugeExcel,
-  gaugeFastapi,
-  gaugeFlutter,
-  gaugeGit,
-  gaugeGithub,
-  gaugeGitlab,
-  gaugeGoogleDocs,
-  gaugeGooglePlay,
-  gaugeGradle,
-  gaugeHtml5,
-  gaugeHuggingface,
-  gaugeIos,
-  gaugeJava,
-  gaugeJavascript,
-  gaugeJira,
-  gaugeJquery,
-  gaugeJson,
-  gaugeJupyter,
-  gaugeKaggle,
-  gaugeKeras,
-  gaugeLerobert,
-  gaugeMacos,
-  gaugeMailchimp,
-  gaugeMariadb,
-  gaugeMatplotlib,
-  gaugeMysql,
-  gaugeNetbeans,
-  gaugeNetMaui,
-  gaugeNpm,
-  gaugeObjectivec,
-  gaugePandas,
-  gaugePhp,
-  gaugePhpmyadmin,
-  gaugePhpstorm,
-  gaugePowerbi,
-  gaugePowershell,
-  gaugePowerQuery,
-  gaugePython,
-  gaugeQt,
-  gaugeReact,
-  gaugeSafari,
-  gaugeSeaborn,
-  gaugeSharepoint,
-  gaugeSlack,
-  gaugeSql,
-  gaugeSqlserver,
-  gaugeSqlite,
-  gaugeTensorflow,
-  gaugeThingsboard,
-  gaugeTomcat,
-  gaugeTrello,
-  gaugeUml,
-  gaugeVisualStudio2022,
-  gaugeVscode,
-  gaugeVmwareWorkstation,
-  gaugeWikipedia,
-  gaugeWindows,
-  gaugeWindowsserver,
-  gaugeWordpress,
-  gaugeWso2,
-  gaugeXamarin,
-  gaugeXcode,
-  gaugeXml
-];

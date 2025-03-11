@@ -23,6 +23,7 @@ class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
   final SkillUsage usage;
   final String iconAssetPath, title;
   final double nbYearsPractice;
+  final DateTime dateLastUsed;
   final List<Widget> experiences;
 
   const SkillListItem(
@@ -32,8 +33,27 @@ class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
       required this.iconAssetPath,
       required this.title,
       required this.nbYearsPractice,
+      required this.dateLastUsed,
       required this.experiences,
       super.key});
+
+  Map<Type, dynamic> _toSortMap() {
+    return {
+      String: title,
+      SkillType: type,
+      SkillUsage: usage,
+      double: nbYearsPractice,
+      DateTime: dateLastUsed,
+    };
+  }
+
+  dynamic get(Type propertyType) {
+    var objMap = _toSortMap();
+    if (objMap.containsKey(propertyType)) {
+      return objMap[propertyType];
+    }
+    throw ArgumentError('Propery type not found in SkillListItem object');
+  }
 
   @override
   Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
