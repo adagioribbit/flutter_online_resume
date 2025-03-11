@@ -1,3 +1,5 @@
+import 'package:dossier_de_competences_web/helpers/colorchart.dart'
+    show ColorChart;
 import 'package:flutter/material.dart';
 
 class SquaredSheet extends StatefulWidget {
@@ -43,10 +45,24 @@ class _SquaredSheetState extends State<SquaredSheet> {
                 color: Colors.transparent,
                 boxShadow: [
                   BoxShadow(
-                    color: const Color.fromARGB(39, 0, 0, 0),
-                    spreadRadius: 5,
-                    blurRadius: 30,
-                    offset: Offset(10, 25),
+                    color: ColorChart.toolbarBoxShadow,
+                    blurRadius: 5,
+                    offset: Offset(-2, -2),
+                  ),
+                  BoxShadow(
+                    color: ColorChart.toolbarBoxShadow,
+                    blurRadius: 25,
+                    offset: Offset(-2, 5),
+                  ),
+                  BoxShadow(
+                    color: ColorChart.toolbarBoxShadow,
+                    blurRadius: 5,
+                    offset: Offset(2, -2),
+                  ),
+                  BoxShadow(
+                    color: ColorChart.toolbarBoxShadow,
+                    blurRadius: 25,
+                    offset: Offset(2, 5),
                   ),
                 ],
               ),
