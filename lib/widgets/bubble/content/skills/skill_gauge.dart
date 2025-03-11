@@ -140,8 +140,8 @@ class GaugeScalePainter extends CustomPainter {
       var textStyle = TextStyle(
           color: Colors.black,
           backgroundColor: Colors.transparent,
-          fontFamily: "Cabin",
-          fontSize: indicatorFontSize,
+          fontFamily: (idx > 0 ? "RussoOne" : "Cabin"),
+          fontSize: (idx > 0 ? indicatorFontSize * 1.25 : indicatorFontSize),
           fontWeight: FontWeight.bold);
       var textSpan = TextSpan(
         text: indicatorLines[idx],
