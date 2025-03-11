@@ -57,13 +57,13 @@ class _ToolbarButtonState extends State<ToolbarButton> {
                 Radius.circular(Constants.TOOLBAR_HEIGHT / 2.0)),
             boxShadow: [
               BoxShadow(
-                color: ColorChart.toolbarBoxShadow,
+                color: ColorChart.toolbarButtonBoxShadow,
                 spreadRadius: 2,
                 blurRadius: 10,
                 offset: Offset(-2, 5),
               ),
               BoxShadow(
-                color: ColorChart.toolbarBoxShadow,
+                color: ColorChart.toolbarButtonBoxShadow,
                 spreadRadius: 2,
                 blurRadius: 10,
                 offset: Offset(2, 5),

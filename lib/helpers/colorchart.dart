@@ -29,7 +29,8 @@ class ColorChart {
 
   /// TOOLBAR
   static const toolbarBorder = Color.fromARGB(143, 202, 202, 202);
-  static const toolbarBoxShadow = Color.fromARGB(151, 196, 196, 196);
+  static const toolbarBoxShadow = Color.fromARGB(151, 114, 66, 28);
+  static const toolbarButtonBoxShadow = Color.fromARGB(151, 196, 196, 196);
 }
 
 class ToolbarButtonPalette {
