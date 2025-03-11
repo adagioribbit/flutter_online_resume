@@ -68,14 +68,15 @@ class _SquaredSheetState extends State<SquaredSheet> {
               ),
               child: Stack(children: [
                 Image(
-                    image: AssetImage(
-                        "lib/assets/resume_presentation/blank_squared_sheet.png"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topLeft
-                    // Cover = léger resize, mais sûrement du aux marges
-                    // Contain, fitHeight, fitWidth = resize mais ratio intact
-                    // fill = resize sans conservation du ratio
-                    ),
+                  image: AssetImage(
+                      "lib/assets/resume_presentation/blank_squared_sheet.png"),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topLeft,
+                  isAntiAlias: true,
+                  // Cover = léger resize, mais sûrement du aux marges
+                  // Contain, fitHeight, fitWidth = resize mais ratio intact
+                  // fill = resize sans conservation du ratio
+                ),
                 widget.child
               ]),
             )));
