@@ -333,7 +333,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 },
                 onTap: () {
                   globalStreams.triggerStackSocialMediaButtons(true);
-                  globalStreams.triggerBubbleCarousel(ToolbarMenu.None);
+                  globalStreams.triggerBubbleCarousel(ToolbarMenu.none);
                   globalStreams.triggerToggleAppBar(false);
                 },
                 child: Opacity(

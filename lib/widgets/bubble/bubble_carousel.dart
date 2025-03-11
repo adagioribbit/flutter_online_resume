@@ -133,7 +133,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
         _animationInflate.value;
     hailerOffset = Offset((containerSize.width / 2.0) - (hailerSize / 2.0),
         containerSize.height - hailerSize);
-    preButton = originButton = ToolbarMenu.None;
+    preButton = originButton = ToolbarMenu.none;
     bubbleOrigin = Offset.zero;
     navigationButtonPalette = educationButtonPalette;
 
@@ -154,7 +154,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   void didChangeDependencies() {
     isPortrait = Utils.isPortraitOrientation();
 
-    if (originButton != ToolbarMenu.None) {
+    if (originButton != ToolbarMenu.none) {
       bubbleOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
               ?.findRenderObject() as RenderBox)
           .localToGlobal(Offset(
@@ -181,7 +181,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
   Future<void> toggleInflation(ToolbarMenu value) async {
     originButton = value;
-    if (originButton == ToolbarMenu.None) {
+    if (originButton == ToolbarMenu.none) {
       originButton = preButton;
       carouselIndex.value = 0;
       await _animationController.reverse();
@@ -420,7 +420,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     GestureDetector stackContainer = GestureDetector(
         onTap: () {
           globalStreams.triggerStackSocialMediaButtons(true);
-          globalStreams.triggerBubbleCarousel(ToolbarMenu.None);
+          globalStreams.triggerBubbleCarousel(ToolbarMenu.none);
           globalStreams.triggerToggleAppBar(false);
         },
         child: Container(

@@ -19,7 +19,7 @@ ValueNotifier<int> carouselIndex = ValueNotifier<int>(0);
 ValueNotifier<SkillKey> initialScrollSkillItem =
     ValueNotifier<SkillKey>(SkillKey.none);
 
-enum ToolbarMenu { None, btnEducation, btnSkillsSet, btnWorkExperience }
+enum ToolbarMenu { none, btnEducation, btnSkillsSet, btnWorkExperience }
 
 enum SkillKey {
   none,
