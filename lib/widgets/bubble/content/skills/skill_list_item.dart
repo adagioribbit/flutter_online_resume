@@ -37,22 +37,22 @@ class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
       required this.experiences,
       super.key});
 
-  Map<Type, dynamic> _toSortMap() {
+  Map<String, dynamic> _toSortMap() {
     return {
-      String: title,
-      SkillType: type,
-      SkillUsage: usage,
-      double: nbYearsPractice,
-      DateTime: dateLastUsed,
+      "title": title,
+      "type": type,
+      "usage": usage,
+      "nbYearsPractice": nbYearsPractice,
+      "dateLastUsed": dateLastUsed,
     };
   }
 
-  dynamic get(Type propertyType) {
+  dynamic get(String propName) {
     var objMap = _toSortMap();
-    if (objMap.containsKey(propertyType)) {
-      return objMap[propertyType];
+    if (objMap.containsKey(propName)) {
+      return objMap[propName];
     }
-    throw ArgumentError('Propery type not found in SkillListItem object');
+    throw ArgumentError('Propery name not found in SkillListItem object');
   }
 
   @override

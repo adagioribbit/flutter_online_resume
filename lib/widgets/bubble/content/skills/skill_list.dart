@@ -1,3 +1,5 @@
+import 'package:dossier_de_competences_web/helpers/globals.dart'
+    show SkillType, SkillUsage;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_list_item.dart'
     show SkillListItem;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skills.dart'
@@ -225,5 +227,73 @@ Future<void> sortSkillListByNbYearsPractice(bool desc) async {
 }
 
 Future<void> sortSkillListByDateLastUsed(bool desc) async {
-  //skillList.sort((a, b) => a.someProperty.compareTo(b.someProperty));
+  if (desc) {
+    skillList.sort((a, b) => b.dateLastUsed.compareTo(a.dateLastUsed));
+  } else {
+    skillList.sort((a, b) => a.dateLastUsed.compareTo(b.dateLastUsed));
+  }
+}
+
+int compareSkillTypes(
+    SkillType propA, SkillType propB, bool isDescendingOrder) {
+  if (isDescendingOrder) {
+    return Enum.compareByIndex(propB, propA);
+  } else {
+    return Enum.compareByIndex(propA, propB);
+  }
+}
+
+int compareSkillUsages(
+    SkillUsage propA, SkillUsage propB, bool isDescendingOrder) {
+  if (isDescendingOrder) {
+    return Enum.compareByIndex(propB, propA);
+  } else {
+    return Enum.compareByIndex(propA, propB);
+  }
+}
+
+/// Call exemple :
+///  multisortSkillList({
+///    "usage": true,
+///    "dateLastUsed": true,
+///    "title": false,
+///  });
+Future<void> multisortSkillList(Map<String, bool> criteria) async {
+  skillList.sort((a, b) {
+    int idxCurrCriterion = 0;
+    int cmp = 0;
+
+    while (idxCurrCriterion < criteria.length) {
+      String criterion = criteria.keys.elementAt(idxCurrCriterion);
+
+      bool isDescendingOrder =
+          criteria[criteria.keys.elementAt(idxCurrCriterion)] == true;
+      bool isSkillType = criterion == 'type';
+      bool isSkillUsage = criterion == 'usage';
+
+      if (isSkillType || isSkillUsage) {
+        if (isSkillType) {
+          SkillType propA = a.get(criterion);
+          SkillType propB = b.get(criterion);
+          cmp = compareSkillTypes(propA, propB, isDescendingOrder);
+        } else {
+          SkillUsage propA = a.get(criterion);
+          SkillUsage propB = b.get(criterion);
+          cmp = compareSkillUsages(propA, propB, isDescendingOrder);
+        }
+        if (cmp != 0) break;
+      } else {
+        dynamic propA = a.get(criterion);
+        dynamic propB = b.get(criterion);
+        if (isDescendingOrder) {
+          cmp = propB.compareTo(propA);
+        } else {
+          cmp = propA.compareTo(propB);
+        }
+        if (cmp != 0) break;
+      }
+      idxCurrCriterion++;
+    }
+    return cmp;
+  });
 }
