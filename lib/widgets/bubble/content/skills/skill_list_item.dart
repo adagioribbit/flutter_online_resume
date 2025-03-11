@@ -5,6 +5,8 @@ import 'package:dossier_de_competences_web/helpers/colorchart.dart'
 import 'package:dossier_de_competences_web/helpers/globals.dart'
     show
         SkillKey,
+        SkillType,
+        SkillUsage,
         appLanguage,
         initialScrollSkillItem,
         skillListScrollController;
@@ -17,12 +19,16 @@ import '../../../../helpers/global_streams.dart';
 
 class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
   final SkillKey skillKey;
+  final SkillType type;
+  final SkillUsage usage;
   final String iconAssetPath, title;
   final double nbYearsPractice;
   final List<Widget> experiences;
 
   const SkillListItem(
       {required this.skillKey,
+      required this.type,
+      required this.usage,
       required this.iconAssetPath,
       required this.title,
       required this.nbYearsPractice,

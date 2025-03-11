@@ -110,6 +110,23 @@ enum SkillKey {
   gaugeXml,
 }
 
+enum SkillUsage {
+  webDevelopment,
+  mobileDevelopment,
+  businessIntelligence,
+  artificielIntelligence,
+  backend,
+  devops,
+  teamWork,
+  other,
+}
+
+enum SkillType {
+  language,
+  tool,
+  softskill,
+}
+
 class GlobalKeyRing {
   static GlobalKey bubbleCarousel = GlobalKey();
 

@@ -1,4 +1,5 @@
-import 'package:dossier_de_competences_web/helpers/globals.dart' show SkillKey;
+import 'package:dossier_de_competences_web/helpers/globals.dart'
+    show SkillKey, SkillType, SkillUsage;
 import 'package:dossier_de_competences_web/widgets/bubble/content/education/education_badges.dart'
     show badgeLeCnam, badgeUpec, badgeGreta, badgeLeWagon;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_list_item.dart'
@@ -20,6 +21,8 @@ import 'package:dossier_de_competences_web/widgets/bubble/content/work_experienc
 
 SkillListItem gaugeAccess = SkillListItem(
     skillKey: SkillKey.gaugeAccess,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Microsoft Access",
     iconAssetPath: "lib/assets/bubble_content/skill/access.png",
     nbYearsPractice: .33,
@@ -27,6 +30,8 @@ SkillListItem gaugeAccess = SkillListItem(
 
 SkillListItem gaugeAndroid = SkillListItem(
     skillKey: SkillKey.gaugeAndroid,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Android",
     iconAssetPath: "lib/assets/bubble_content/skill/android.png",
     nbYearsPractice: 6.9,
@@ -40,6 +45,8 @@ SkillListItem gaugeAndroid = SkillListItem(
 
 SkillListItem gaugeAndroidStudio = SkillListItem(
     skillKey: SkillKey.gaugeAndroidStudio,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Android Studio",
     iconAssetPath: "lib/assets/bubble_content/skill/android_studio.png",
     nbYearsPractice: 6.9,
@@ -53,6 +60,8 @@ SkillListItem gaugeAndroidStudio = SkillListItem(
 
 SkillListItem gaugeAngular = SkillListItem(
     skillKey: SkillKey.gaugeAngular,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.language,
     title: "Angular",
     iconAssetPath: "lib/assets/bubble_content/skill/angular.png",
     nbYearsPractice: .08,
@@ -60,6 +69,8 @@ SkillListItem gaugeAngular = SkillListItem(
 
 SkillListItem gaugeApacheServer = SkillListItem(
     skillKey: SkillKey.gaugeApacheServer,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "Apache Server",
     iconAssetPath: "lib/assets/bubble_content/skill/apache_server.png",
     nbYearsPractice: 4.99,
@@ -73,6 +84,8 @@ SkillListItem gaugeApacheServer = SkillListItem(
 
 SkillListItem gaugeAppstore = SkillListItem(
     skillKey: SkillKey.gaugeAppstore,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "App Store",
     iconAssetPath: "lib/assets/bubble_content/appstore.png",
     nbYearsPractice: 5.74,
@@ -80,6 +93,8 @@ SkillListItem gaugeAppstore = SkillListItem(
 
 SkillListItem gaugeBash = SkillListItem(
     skillKey: SkillKey.gaugeBash,
+    usage: SkillUsage.devops,
+    type: SkillType.language,
     title: "Bash",
     iconAssetPath: "lib/assets/bubble_content/skill/bash.png",
     nbYearsPractice: 4.74,
@@ -87,6 +102,8 @@ SkillListItem gaugeBash = SkillListItem(
 
 SkillListItem gaugeBlender = SkillListItem(
     skillKey: SkillKey.gaugeBlender,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Blender",
     iconAssetPath: "lib/assets/bubble_content/skill/blender.png",
     nbYearsPractice: .16,
@@ -94,6 +111,8 @@ SkillListItem gaugeBlender = SkillListItem(
 
 SkillListItem gaugeBluetooth = SkillListItem(
     skillKey: SkillKey.gaugeBluetooth,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Bluetooth",
     iconAssetPath: "lib/assets/bubble_content/skill/bluetooth.png",
     nbYearsPractice: 1.83,
@@ -101,6 +120,8 @@ SkillListItem gaugeBluetooth = SkillListItem(
 
 SkillListItem gaugeBootstrap = SkillListItem(
     skillKey: SkillKey.gaugeBootstrap,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "Bootstrap",
     iconAssetPath: "lib/assets/bubble_content/skill/bootstrap.png",
     nbYearsPractice: 3.99,
@@ -112,6 +133,8 @@ SkillListItem gaugeBootstrap = SkillListItem(
 
 SkillListItem gaugeChrome = SkillListItem(
     skillKey: SkillKey.gaugeChrome,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "Chrome",
     iconAssetPath: "lib/assets/bubble_content/skill/chrome.png",
     nbYearsPractice: 6.73,
@@ -125,6 +148,8 @@ SkillListItem gaugeChrome = SkillListItem(
 
 SkillListItem gaugeColaboratory = SkillListItem(
     skillKey: SkillKey.gaugeColaboratory,
+    usage: SkillUsage.artificielIntelligence,
+    type: SkillType.tool,
     title: "Colaboratory",
     iconAssetPath: "lib/assets/bubble_content/skill/colaboratory.png",
     nbYearsPractice: .16,
@@ -132,6 +157,8 @@ SkillListItem gaugeColaboratory = SkillListItem(
 
 SkillListItem gaugeConfluence = SkillListItem(
     skillKey: SkillKey.gaugeConfluence,
+    usage: SkillUsage.teamWork,
+    type: SkillType.tool,
     title: "Confluence",
     iconAssetPath: "lib/assets/bubble_content/skill/confluence.png",
     nbYearsPractice: 4.91,
@@ -143,6 +170,8 @@ SkillListItem gaugeConfluence = SkillListItem(
 
 SkillListItem gaugeCordova = SkillListItem(
     skillKey: SkillKey.gaugeCordova,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Cordova",
     iconAssetPath: "lib/assets/bubble_content/skill/cordova.png",
     nbYearsPractice: 4.91,
@@ -152,6 +181,8 @@ SkillListItem gaugeCordova = SkillListItem(
 
 SkillListItem gaugeCplusplus = SkillListItem(
     skillKey: SkillKey.gaugeCplusplus,
+    usage: SkillUsage.other,
+    type: SkillType.language,
     title: "C++",
     iconAssetPath: "lib/assets/bubble_content/skill/cplusplus.png",
     nbYearsPractice: 0.83,
@@ -159,6 +190,8 @@ SkillListItem gaugeCplusplus = SkillListItem(
 
 SkillListItem gaugeCsharp = SkillListItem(
     skillKey: SkillKey.gaugeCsharp,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.language,
     title: "C#",
     iconAssetPath: "lib/assets/bubble_content/skill/csharp.png",
     nbYearsPractice: 1.99,
@@ -169,6 +202,8 @@ SkillListItem gaugeCsharp = SkillListItem(
 
 SkillListItem gaugeCss3 = SkillListItem(
     skillKey: SkillKey.gaugeCss3,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.language,
     title: "CSS 3",
     iconAssetPath: "lib/assets/bubble_content/skill/css3.png",
     nbYearsPractice: 5.65,
@@ -184,6 +219,8 @@ SkillListItem gaugeCss3 = SkillListItem(
 
 SkillListItem gaugeDart = SkillListItem(
     skillKey: SkillKey.gaugeDart,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.language,
     title: "Dart",
     iconAssetPath: "lib/assets/bubble_content/skill/dart.png",
     nbYearsPractice: .16,
@@ -191,6 +228,8 @@ SkillListItem gaugeDart = SkillListItem(
 
 SkillListItem gaugeDbeaver = SkillListItem(
     skillKey: SkillKey.gaugeDbeaver,
+    usage: SkillUsage.businessIntelligence,
+    type: SkillType.tool,
     title: "DBeaver",
     iconAssetPath: "lib/assets/bubble_content/skill/dbeaver.png",
     nbYearsPractice: .16,
@@ -198,6 +237,8 @@ SkillListItem gaugeDbeaver = SkillListItem(
 
 SkillListItem gaugeDebian = SkillListItem(
     skillKey: SkillKey.gaugeDebian,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Debian",
     iconAssetPath: "lib/assets/bubble_content/skill/debian.png",
     nbYearsPractice: 5.98,
@@ -211,6 +252,8 @@ SkillListItem gaugeDebian = SkillListItem(
 
 SkillListItem gaugeDocker = SkillListItem(
     skillKey: SkillKey.gaugeDocker,
+    usage: SkillUsage.devops,
+    type: SkillType.tool,
     title: "Docker",
     iconAssetPath: "lib/assets/bubble_content/skill/docker.png",
     nbYearsPractice: .99,
@@ -218,6 +261,8 @@ SkillListItem gaugeDocker = SkillListItem(
 
 SkillListItem gaugeUkFlag = SkillListItem(
     skillKey: SkillKey.gaugeUkFlag,
+    usage: SkillUsage.other,
+    type: SkillType.language,
     title: "English",
     iconAssetPath: "lib/assets/appbar/uk_flag.png",
     nbYearsPractice:
@@ -226,6 +271,8 @@ SkillListItem gaugeUkFlag = SkillListItem(
 
 SkillListItem gaugeExcel = SkillListItem(
     skillKey: SkillKey.gaugeExcel,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Excel",
     iconAssetPath: "lib/assets/bubble_content/skill/excel.png",
     nbYearsPractice: 1.83,
@@ -233,6 +280,8 @@ SkillListItem gaugeExcel = SkillListItem(
 
 SkillListItem gaugeFastapi = SkillListItem(
     skillKey: SkillKey.gaugeFastapi,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "FastAPI",
     iconAssetPath: "lib/assets/bubble_content/skill/fastapi.png",
     nbYearsPractice: .16,
@@ -240,6 +289,8 @@ SkillListItem gaugeFastapi = SkillListItem(
 
 SkillListItem gaugeFlutter = SkillListItem(
     skillKey: SkillKey.gaugeFlutter,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Flutter",
     iconAssetPath: "lib/assets/bubble_content/skill/flutter.png",
     nbYearsPractice: .16,
@@ -247,6 +298,8 @@ SkillListItem gaugeFlutter = SkillListItem(
 
 SkillListItem gaugeGit = SkillListItem(
     skillKey: SkillKey.gaugeGit,
+    usage: SkillUsage.devops,
+    type: SkillType.tool,
     title: "Git",
     iconAssetPath: "lib/assets/bubble_content/skill/git.png",
     nbYearsPractice: 5.74,
@@ -257,6 +310,8 @@ SkillListItem gaugeGit = SkillListItem(
 
 SkillListItem gaugeGithub = SkillListItem(
     skillKey: SkillKey.gaugeGithub,
+    usage: SkillUsage.devops,
+    type: SkillType.tool,
     title: "Github",
     iconAssetPath: "lib/assets/bubble_content/skill/github.png",
     nbYearsPractice: 8.32,
@@ -264,6 +319,8 @@ SkillListItem gaugeGithub = SkillListItem(
 
 SkillListItem gaugeGitlab = SkillListItem(
     skillKey: SkillKey.gaugeGitlab,
+    usage: SkillUsage.devops,
+    type: SkillType.tool,
     title: "Gitlab",
     iconAssetPath: "lib/assets/bubble_content/skill/gitlab.png",
     nbYearsPractice: 4.91,
@@ -275,6 +332,8 @@ SkillListItem gaugeGitlab = SkillListItem(
 
 SkillListItem gaugeGoogleDocs = SkillListItem(
     skillKey: SkillKey.gaugeGoogleDocs,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Google Docs",
     iconAssetPath: "lib/assets/bubble_content/skill/google_docs.png",
     nbYearsPractice: 1.16,
@@ -282,6 +341,8 @@ SkillListItem gaugeGoogleDocs = SkillListItem(
 
 SkillListItem gaugeGooglePlay = SkillListItem(
     skillKey: SkillKey.gaugeGooglePlay,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Google Play",
     iconAssetPath: "lib/assets/bubble_content/google_play.png",
     nbYearsPractice: 5.74,
@@ -289,6 +350,8 @@ SkillListItem gaugeGooglePlay = SkillListItem(
 
 SkillListItem gaugeGradle = SkillListItem(
     skillKey: SkillKey.gaugeGradle,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Gradle",
     iconAssetPath: "lib/assets/bubble_content/skill/gradle.png",
     nbYearsPractice: 4.99,
@@ -299,6 +362,8 @@ SkillListItem gaugeGradle = SkillListItem(
 
 SkillListItem gaugeHtml5 = SkillListItem(
     skillKey: SkillKey.gaugeHtml5,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.language,
     title: "Html 5",
     iconAssetPath: "lib/assets/bubble_content/skill/html5.png",
     nbYearsPractice: 5.65,
@@ -314,6 +379,8 @@ SkillListItem gaugeHtml5 = SkillListItem(
 
 SkillListItem gaugeHuggingface = SkillListItem(
     skillKey: SkillKey.gaugeHuggingface,
+    usage: SkillUsage.artificielIntelligence,
+    type: SkillType.tool,
     title: "Huggingface",
     iconAssetPath: "lib/assets/bubble_content/skill/huggingface.png",
     nbYearsPractice: .16,
@@ -321,6 +388,8 @@ SkillListItem gaugeHuggingface = SkillListItem(
 
 SkillListItem gaugeIos = SkillListItem(
     skillKey: SkillKey.gaugeIos,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "iOS",
     iconAssetPath: "lib/assets/bubble_content/skill/ios.png",
     nbYearsPractice: 6.74,
@@ -331,6 +400,8 @@ SkillListItem gaugeIos = SkillListItem(
 
 SkillListItem gaugeJava = SkillListItem(
     skillKey: SkillKey.gaugeJava,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.language,
     title: "Java",
     iconAssetPath: "lib/assets/bubble_content/skill/java.png",
     nbYearsPractice: 1.07,
@@ -344,6 +415,8 @@ SkillListItem gaugeJava = SkillListItem(
 
 SkillListItem gaugeJavascript = SkillListItem(
     skillKey: SkillKey.gaugeJavascript,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.language,
     title: "Javascript",
     iconAssetPath: "lib/assets/bubble_content/skill/javascript.png",
     nbYearsPractice: 5.57,
@@ -359,6 +432,8 @@ SkillListItem gaugeJavascript = SkillListItem(
 
 SkillListItem gaugeJira = SkillListItem(
     skillKey: SkillKey.gaugeJira,
+    usage: SkillUsage.teamWork,
+    type: SkillType.tool,
     title: "Jira",
     iconAssetPath: "lib/assets/bubble_content/skill/jira.png",
     nbYearsPractice: 5.23,
@@ -372,6 +447,8 @@ SkillListItem gaugeJira = SkillListItem(
 
 SkillListItem gaugeJquery = SkillListItem(
     skillKey: SkillKey.gaugeJquery,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "JQuery",
     iconAssetPath: "lib/assets/bubble_content/skill/jquery.png",
     nbYearsPractice: 3.99,
@@ -383,6 +460,8 @@ SkillListItem gaugeJquery = SkillListItem(
 
 SkillListItem gaugeJson = SkillListItem(
     skillKey: SkillKey.gaugeJson,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.language,
     title: "Json",
     iconAssetPath: "lib/assets/bubble_content/skill/json.png",
     nbYearsPractice: 6.73,
@@ -398,6 +477,8 @@ SkillListItem gaugeJson = SkillListItem(
 
 SkillListItem gaugeJupyter = SkillListItem(
     skillKey: SkillKey.gaugeJupyter,
+    usage: SkillUsage.businessIntelligence,
+    type: SkillType.tool,
     title: "Jupyter",
     iconAssetPath: "lib/assets/bubble_content/skill/jupyter.png",
     nbYearsPractice: .16,
@@ -405,6 +486,8 @@ SkillListItem gaugeJupyter = SkillListItem(
 
 SkillListItem gaugeKaggle = SkillListItem(
     skillKey: SkillKey.gaugeKaggle,
+    usage: SkillUsage.artificielIntelligence,
+    type: SkillType.tool,
     title: "Kaggle",
     iconAssetPath: "lib/assets/bubble_content/skill/kaggle.png",
     nbYearsPractice: .16,
@@ -412,6 +495,8 @@ SkillListItem gaugeKaggle = SkillListItem(
 
 SkillListItem gaugeKeras = SkillListItem(
     skillKey: SkillKey.gaugeKeras,
+    usage: SkillUsage.artificielIntelligence,
+    type: SkillType.tool,
     title: "Keras",
     iconAssetPath: "lib/assets/bubble_content/skill/keras.png",
     nbYearsPractice: .16,
@@ -419,6 +504,8 @@ SkillListItem gaugeKeras = SkillListItem(
 
 SkillListItem gaugeLerobert = SkillListItem(
     skillKey: SkillKey.gaugeLerobert,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Le Robert & Collins",
     iconAssetPath: "lib/assets/bubble_content/skill/lerobert.png",
     nbYearsPractice: 7.2,
@@ -426,6 +513,8 @@ SkillListItem gaugeLerobert = SkillListItem(
 
 SkillListItem gaugeMacos = SkillListItem(
     skillKey: SkillKey.gaugeMacos,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Macos",
     iconAssetPath: "lib/assets/bubble_content/skill/macos.png",
     nbYearsPractice: 4.91,
@@ -437,6 +526,8 @@ SkillListItem gaugeMacos = SkillListItem(
 
 SkillListItem gaugeMailchimp = SkillListItem(
     skillKey: SkillKey.gaugeMailchimp,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "Mailchimp",
     iconAssetPath: "lib/assets/bubble_content/skill/mailchimp.png",
     nbYearsPractice: .16,
@@ -444,6 +535,8 @@ SkillListItem gaugeMailchimp = SkillListItem(
 
 SkillListItem gaugeMariadb = SkillListItem(
     skillKey: SkillKey.gaugeMariadb,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "MariaDB",
     iconAssetPath: "lib/assets/bubble_content/skill/mariadb.png",
     nbYearsPractice: 4.91,
@@ -453,6 +546,8 @@ SkillListItem gaugeMariadb = SkillListItem(
 
 SkillListItem gaugeMatplotlib = SkillListItem(
     skillKey: SkillKey.gaugeMatplotlib,
+    usage: SkillUsage.businessIntelligence,
+    type: SkillType.tool,
     title: "Matplotlib",
     iconAssetPath: "lib/assets/bubble_content/skill/matplotlib.png",
     nbYearsPractice: .16,
@@ -460,6 +555,8 @@ SkillListItem gaugeMatplotlib = SkillListItem(
 
 SkillListItem gaugeMysql = SkillListItem(
     skillKey: SkillKey.gaugeMysql,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "MySQL",
     iconAssetPath: "lib/assets/bubble_content/skill/mysql.png",
     nbYearsPractice: 1.74,
@@ -467,6 +564,8 @@ SkillListItem gaugeMysql = SkillListItem(
 
 SkillListItem gaugeNetbeans = SkillListItem(
     skillKey: SkillKey.gaugeNetbeans,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "NetBeans",
     iconAssetPath: "lib/assets/bubble_content/skill/netbeans.png",
     nbYearsPractice: 0.99,
@@ -474,6 +573,8 @@ SkillListItem gaugeNetbeans = SkillListItem(
 
 SkillListItem gaugeNetMaui = SkillListItem(
     skillKey: SkillKey.gaugeNetMaui,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: ".NET MAUI",
     iconAssetPath: "lib/assets/bubble_content/skill/net_maui.png",
     nbYearsPractice: 1.83,
@@ -481,6 +582,8 @@ SkillListItem gaugeNetMaui = SkillListItem(
 
 SkillListItem gaugeNpm = SkillListItem(
     skillKey: SkillKey.gaugeNpm,
+    usage: SkillUsage.devops,
+    type: SkillType.tool,
     title: "NPM",
     iconAssetPath: "lib/assets/bubble_content/skill/npm.png",
     nbYearsPractice: 4.91,
@@ -490,6 +593,8 @@ SkillListItem gaugeNpm = SkillListItem(
 
 SkillListItem gaugeObjectivec = SkillListItem(
     skillKey: SkillKey.gaugeObjectivec,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.language,
     title: "Objective C",
     iconAssetPath: "lib/assets/bubble_content/skill/objectivec.png",
     nbYearsPractice: .16,
@@ -499,6 +604,8 @@ SkillListItem gaugeObjectivec = SkillListItem(
 
 SkillListItem gaugePandas = SkillListItem(
     skillKey: SkillKey.gaugePandas,
+    usage: SkillUsage.businessIntelligence,
+    type: SkillType.tool,
     title: "Pandas",
     iconAssetPath: "lib/assets/bubble_content/skill/pandas.png",
     nbYearsPractice: .16,
@@ -506,6 +613,8 @@ SkillListItem gaugePandas = SkillListItem(
 
 SkillListItem gaugePhp = SkillListItem(
     skillKey: SkillKey.gaugePhp,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.language,
     title: "PHP 7",
     iconAssetPath: "lib/assets/bubble_content/skill/php.png",
     nbYearsPractice: 5.65,
@@ -519,6 +628,8 @@ SkillListItem gaugePhp = SkillListItem(
 
 SkillListItem gaugePhpmyadmin = SkillListItem(
     skillKey: SkillKey.gaugePhpmyadmin,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "PhpMyAdmin",
     iconAssetPath: "lib/assets/bubble_content/skill/phpmyadmin.png",
     nbYearsPractice: 4.74,
@@ -526,6 +637,8 @@ SkillListItem gaugePhpmyadmin = SkillListItem(
 
 SkillListItem gaugePhpstorm = SkillListItem(
     skillKey: SkillKey.gaugePhpstorm,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "PhpStorm",
     iconAssetPath: "lib/assets/bubble_content/skill/phpstorm.png",
     nbYearsPractice: 4.91,
@@ -537,6 +650,8 @@ SkillListItem gaugePhpstorm = SkillListItem(
 
 SkillListItem gaugePowerbi = SkillListItem(
     skillKey: SkillKey.gaugePowerbi,
+    usage: SkillUsage.businessIntelligence,
+    type: SkillType.tool,
     title: "Power BI",
     iconAssetPath: "lib/assets/bubble_content/skill/powerbi.png",
     nbYearsPractice: .33,
@@ -544,6 +659,8 @@ SkillListItem gaugePowerbi = SkillListItem(
 
 SkillListItem gaugePowershell = SkillListItem(
     skillKey: SkillKey.gaugePowershell,
+    usage: SkillUsage.devops,
+    type: SkillType.language,
     title: "PowerShell",
     iconAssetPath: "lib/assets/bubble_content/skill/powershell.png",
     nbYearsPractice: .33,
@@ -553,6 +670,8 @@ SkillListItem gaugePowershell = SkillListItem(
 
 SkillListItem gaugePowerQuery = SkillListItem(
     skillKey: SkillKey.gaugePowerQuery,
+    usage: SkillUsage.businessIntelligence,
+    type: SkillType.tool,
     title: "Power Query",
     iconAssetPath: "lib/assets/bubble_content/skill/microsoft.png",
     nbYearsPractice: .33,
@@ -562,6 +681,8 @@ SkillListItem gaugePowerQuery = SkillListItem(
 
 SkillListItem gaugePython = SkillListItem(
     skillKey: SkillKey.gaugePython,
+    usage: SkillUsage.artificielIntelligence,
+    type: SkillType.language,
     title: "Python",
     iconAssetPath: "lib/assets/bubble_content/skill/python.png",
     nbYearsPractice: 1.32,
@@ -569,6 +690,8 @@ SkillListItem gaugePython = SkillListItem(
 
 SkillListItem gaugeQt = SkillListItem(
     skillKey: SkillKey.gaugeQt,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.language,
     title: "Qt",
     iconAssetPath: "lib/assets/bubble_content/skill/qt.png",
     nbYearsPractice: 4.91,
@@ -578,6 +701,8 @@ SkillListItem gaugeQt = SkillListItem(
 
 SkillListItem gaugeReact = SkillListItem(
     skillKey: SkillKey.gaugeReact,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "React",
     iconAssetPath: "lib/assets/bubble_content/skill/react.png",
     nbYearsPractice: .16,
@@ -585,6 +710,8 @@ SkillListItem gaugeReact = SkillListItem(
 
 SkillListItem gaugeSafari = SkillListItem(
     skillKey: SkillKey.gaugeSafari,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "Safari",
     iconAssetPath: "lib/assets/bubble_content/skill/safari.png",
     nbYearsPractice: 4.91,
@@ -594,6 +721,8 @@ SkillListItem gaugeSafari = SkillListItem(
 
 SkillListItem gaugeSeaborn = SkillListItem(
     skillKey: SkillKey.gaugeSeaborn,
+    usage: SkillUsage.businessIntelligence,
+    type: SkillType.tool,
     title: "Seaborn",
     iconAssetPath: "lib/assets/bubble_content/skill/seaborn.png",
     nbYearsPractice: .16,
@@ -601,6 +730,8 @@ SkillListItem gaugeSeaborn = SkillListItem(
 
 SkillListItem gaugeSharepoint = SkillListItem(
     skillKey: SkillKey.gaugeSharepoint,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "SharePoint",
     iconAssetPath: "lib/assets/bubble_content/skill/sharepoint.png",
     nbYearsPractice: .33,
@@ -610,6 +741,8 @@ SkillListItem gaugeSharepoint = SkillListItem(
 
 SkillListItem gaugeSlack = SkillListItem(
     skillKey: SkillKey.gaugeSlack,
+    usage: SkillUsage.teamWork,
+    type: SkillType.tool,
     title: "Slack",
     iconAssetPath: "lib/assets/bubble_content/skill/slack.png",
     nbYearsPractice: 5.74,
@@ -617,6 +750,8 @@ SkillListItem gaugeSlack = SkillListItem(
 
 SkillListItem gaugeSql = SkillListItem(
     skillKey: SkillKey.gaugeSql,
+    usage: SkillUsage.backend,
+    type: SkillType.language,
     title: "SQL",
     iconAssetPath: "lib/assets/bubble_content/skill/sql.png",
     nbYearsPractice: 7.06,
@@ -624,6 +759,8 @@ SkillListItem gaugeSql = SkillListItem(
 
 SkillListItem gaugeSqlserver = SkillListItem(
     skillKey: SkillKey.gaugeSqlserver,
+    usage: SkillUsage.backend,
+    type: SkillType.tool,
     title: "SQL Server",
     iconAssetPath: "lib/assets/bubble_content/skill/sqlserver.png",
     nbYearsPractice: .33,
@@ -635,6 +772,8 @@ SkillListItem gaugeSqlserver = SkillListItem(
 
 SkillListItem gaugeSqlite = SkillListItem(
     skillKey: SkillKey.gaugeSqlite,
+    usage: SkillUsage.backend,
+    type: SkillType.language,
     title: "SQLite",
     iconAssetPath: "lib/assets/bubble_content/skill/sqlite.png",
     nbYearsPractice: 4.91,
@@ -642,6 +781,8 @@ SkillListItem gaugeSqlite = SkillListItem(
 
 SkillListItem gaugeTensorflow = SkillListItem(
     skillKey: SkillKey.gaugeTensorflow,
+    usage: SkillUsage.artificielIntelligence,
+    type: SkillType.tool,
     title: "Tensorflow",
     iconAssetPath: "lib/assets/bubble_content/skill/tensorflow.png",
     nbYearsPractice: .16,
@@ -649,6 +790,8 @@ SkillListItem gaugeTensorflow = SkillListItem(
 
 SkillListItem gaugeThingsboard = SkillListItem(
     skillKey: SkillKey.gaugeThingsboard,
+    usage: SkillUsage.backend,
+    type: SkillType.tool,
     title: "Thingsboard",
     iconAssetPath: "lib/assets/bubble_content/skill/thingsboard.png",
     nbYearsPractice: .33,
@@ -656,6 +799,8 @@ SkillListItem gaugeThingsboard = SkillListItem(
 
 SkillListItem gaugeTomcat = SkillListItem(
     skillKey: SkillKey.gaugeTomcat,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "Tomcat",
     iconAssetPath: "lib/assets/bubble_content/skill/tomcat.png",
     nbYearsPractice: .16,
@@ -663,6 +808,8 @@ SkillListItem gaugeTomcat = SkillListItem(
 
 SkillListItem gaugeTrello = SkillListItem(
     skillKey: SkillKey.gaugeTrello,
+    usage: SkillUsage.teamWork,
+    type: SkillType.tool,
     title: "Trello",
     iconAssetPath: "lib/assets/bubble_content/skill/trello.png",
     nbYearsPractice: 0.83,
@@ -670,6 +817,8 @@ SkillListItem gaugeTrello = SkillListItem(
 
 SkillListItem gaugeUml = SkillListItem(
     skillKey: SkillKey.gaugeUml,
+    usage: SkillUsage.teamWork,
+    type: SkillType.language,
     title: "UML",
     iconAssetPath: "lib/assets/bubble_content/skill/uml.png",
     nbYearsPractice: 5.74,
@@ -677,6 +826,8 @@ SkillListItem gaugeUml = SkillListItem(
 
 SkillListItem gaugeVisualStudio2022 = SkillListItem(
     skillKey: SkillKey.gaugeVisualStudio2022,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Visual Studio 2022",
     iconAssetPath: "lib/assets/bubble_content/skill/visual_studio_2022.png",
     nbYearsPractice: 1.83,
@@ -684,6 +835,8 @@ SkillListItem gaugeVisualStudio2022 = SkillListItem(
 
 SkillListItem gaugeVscode = SkillListItem(
     skillKey: SkillKey.gaugeVscode,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Visual Studio Code",
     iconAssetPath: "lib/assets/bubble_content/skill/vscode.png",
     nbYearsPractice: .32,
@@ -691,6 +844,8 @@ SkillListItem gaugeVscode = SkillListItem(
 
 SkillListItem gaugeVmwareWorkstation = SkillListItem(
     skillKey: SkillKey.gaugeVmwareWorkstation,
+    usage: SkillUsage.devops,
+    type: SkillType.tool,
     title: "VMWare Workstation",
     iconAssetPath: "lib/assets/bubble_content/skill/vmware_workstation.png",
     nbYearsPractice: 0.83,
@@ -698,6 +853,8 @@ SkillListItem gaugeVmwareWorkstation = SkillListItem(
 
 SkillListItem gaugeWikipedia = SkillListItem(
     skillKey: SkillKey.gaugeWikipedia,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Wikipedia",
     iconAssetPath: "lib/assets/bubble_content/skill/wikipedia.png",
     nbYearsPractice: 4.3,
@@ -705,6 +862,8 @@ SkillListItem gaugeWikipedia = SkillListItem(
 
 SkillListItem gaugeWindows = SkillListItem(
     skillKey: SkillKey.gaugeWindows,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Windows",
     iconAssetPath: "lib/assets/bubble_content/skill/windows.png",
     nbYearsPractice: .99,
@@ -712,6 +871,8 @@ SkillListItem gaugeWindows = SkillListItem(
 
 SkillListItem gaugeWindowsserver = SkillListItem(
     skillKey: SkillKey.gaugeWindowsserver,
+    usage: SkillUsage.other,
+    type: SkillType.tool,
     title: "Windows Server",
     iconAssetPath: "lib/assets/bubble_content/skill/windowsserver.png",
     nbYearsPractice: .33,
@@ -721,6 +882,8 @@ SkillListItem gaugeWindowsserver = SkillListItem(
 
 SkillListItem gaugeWordpress = SkillListItem(
     skillKey: SkillKey.gaugeWordpress,
+    usage: SkillUsage.webDevelopment,
+    type: SkillType.tool,
     title: "Wordpress",
     iconAssetPath: "lib/assets/bubble_content/skill/wordpress.png",
     nbYearsPractice: 0.83,
@@ -728,6 +891,8 @@ SkillListItem gaugeWordpress = SkillListItem(
 
 SkillListItem gaugeWso2 = SkillListItem(
     skillKey: SkillKey.gaugeWso2,
+    usage: SkillUsage.backend,
+    type: SkillType.tool,
     title: "WSO2",
     iconAssetPath: "lib/assets/bubble_content/skill/wso2.png",
     nbYearsPractice: .16,
@@ -737,6 +902,8 @@ SkillListItem gaugeWso2 = SkillListItem(
 
 SkillListItem gaugeXamarin = SkillListItem(
     skillKey: SkillKey.gaugeXamarin,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "Xamarin",
     iconAssetPath: "lib/assets/bubble_content/skill/xamarin.png",
     nbYearsPractice: 1.83,
@@ -744,6 +911,8 @@ SkillListItem gaugeXamarin = SkillListItem(
 
 SkillListItem gaugeXcode = SkillListItem(
     skillKey: SkillKey.gaugeXcode,
+    usage: SkillUsage.mobileDevelopment,
+    type: SkillType.tool,
     title: "XCode",
     iconAssetPath: "lib/assets/bubble_content/skill/xcode.png",
     nbYearsPractice: 6.74,
@@ -754,6 +923,8 @@ SkillListItem gaugeXcode = SkillListItem(
 
 SkillListItem gaugeXml = SkillListItem(
     skillKey: SkillKey.gaugeXml,
+    usage: SkillUsage.other,
+    type: SkillType.language,
     title: "XML",
     iconAssetPath: "lib/assets/bubble_content/skill/xml.png",
     nbYearsPractice: 4.07,
