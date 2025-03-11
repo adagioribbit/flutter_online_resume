@@ -21,6 +21,10 @@ class DraftPresentation extends StatefulWidget {
 
 class _DraftPresentationState extends State<DraftPresentation> {
   late double scaleFactor;
+  ScaleUpdateDetails prevScaleUpdateDetails = ScaleUpdateDetails();
+  ValueNotifier<double> pinchRotationAngle = ValueNotifier<double>(0.0);
+  ValueNotifier<double> pinchScaleRatio = ValueNotifier<double>(0.0);
+
   @override
   void initState() {
     super.initState();
@@ -298,44 +302,70 @@ class _DraftPresentationState extends State<DraftPresentation> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraintsPage) {
-      OS runningOS = Utils.getOS(context);
-      bool isMobileDevice = Utils.isSmallScreen(context) &&
-          (runningOS == OS.iOS || runningOS == OS.Android);
+    DraftPresentation that = widget;
 
-      double rescaleBasis = isMobileDevice ? 2.5 : 2.25;
-      double rotationFactor = isMobileDevice ? -.015 * pi : -.05 * pi;
-      scaleFactor = (constraintsPage.maxHeight / (1994 * (1 - sin(.05 * pi))));
+    return ValueListenableBuilder(
+        valueListenable: pinchScaleRatio,
+        builder: (context, value, widget) {
+          return LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraintsPage) {
+            OS runningOS = Utils.getOS(context);
+            bool isMobileDevice = Utils.isSmallScreen(context) &&
+                (runningOS == OS.iOS || runningOS == OS.Android);
 
-      return GestureDetector(
-          onTap: () {
-            globalStreams.triggerBubbleCarousel(ToolbarMenu.None);
-            globalStreams.triggerToggleAppBar(false);
-          },
-          child: Opacity(
-              opacity: (255 - widget.bubbleShadowOpacity) / 255,
-              child: Transform(
-                  alignment: FractionalOffset.center,
-                  origin: Offset.zero,
-                  transform: Matrix4.identity()
-                    // Scale
-                    ..setEntry(3, 3, rescaleBasis * scaleFactor)
-                    // Translate Y
-                    ..setEntry(1, 3, -100 * scaleFactor)
-                    ..rotateZ(rotationFactor),
-                  child: SquaredSheet(
-                      scaleFactor:
-                          DraftPresentation.defaultScaleFactor * scaleFactor,
-                      child: LayoutBuilder(builder: (BuildContext context,
-                          BoxConstraints constraintsSheet) {
-                        return Row(children: [
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: buildContent(
-                                  constraintsSheet, isMobileDevice))
-                        ]);
-                      })))));
-    });
+            double rescaleBasis = isMobileDevice ? 2.5 : 2.25;
+            double rotationFactor = isMobileDevice ? -.015 * pi : -.05 * pi;
+            scaleFactor =
+                (constraintsPage.maxHeight / (1994 * (1 - sin(.05 * pi))));
+
+            return GestureDetector(
+                onScaleUpdate: (ScaleUpdateDetails details) {
+                  if (details.pointerCount > 1) {
+                    double diffScale =
+                        prevScaleUpdateDetails.scale - details.scale;
+                    double diffRotation =
+                        prevScaleUpdateDetails.rotation - details.rotation;
+                    pinchScaleRatio.value =
+                        (pinchScaleRatio.value + diffScale).clamp(-0.5, 0.5);
+                    pinchRotationAngle.value += diffRotation;
+                  }
+                  prevScaleUpdateDetails = details;
+                },
+                onTap: () {
+                  globalStreams.triggerStackSocialMediaButtons(true);
+                  globalStreams.triggerBubbleCarousel(ToolbarMenu.None);
+                  globalStreams.triggerToggleAppBar(false);
+                },
+                child: Opacity(
+                    opacity: (255 - that.bubbleShadowOpacity) / 255,
+                    child: Transform(
+                        alignment: FractionalOffset.center,
+                        origin: Offset.zero,
+                        transform: Matrix4.identity()
+                          // Scale
+                          ..setEntry(
+                              3,
+                              3,
+                              (rescaleBasis * scaleFactor) +
+                                  (pinchScaleRatio.value))
+                          // Translate Y
+                          ..setEntry(1, 3, -100 * scaleFactor)
+                          ..rotateZ(rotationFactor - pinchRotationAngle.value),
+                        child: SquaredSheet(
+                            scaleFactor: DraftPresentation.defaultScaleFactor *
+                                scaleFactor,
+                            child: LayoutBuilder(builder: (BuildContext context,
+                                BoxConstraints constraintsSheet) {
+                              return Row(children: [
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: buildContent(
+                                        constraintsSheet, isMobileDevice))
+                              ]);
+                            })))));
+          });
+        });
   }
 }
