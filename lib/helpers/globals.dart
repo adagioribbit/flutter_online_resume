@@ -7,7 +7,9 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ItemScrollController;
 
 ValueNotifier<String> appLanguage = ValueNotifier<String>(
-    PlatformDispatcher.instance.locale.toString().substring(0, 2));
+    (PlatformDispatcher.instance.locale.toString().substring(0, 2) != 'fr'
+        ? 'en'
+        : 'fr'));
 ValueNotifier<bool> isDarkMode = ValueNotifier<bool>(false);
 ValueNotifier<bool> isFoldable = ValueNotifier<bool>(false);
 
