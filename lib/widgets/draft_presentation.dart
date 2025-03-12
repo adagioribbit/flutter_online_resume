@@ -208,11 +208,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
                         html.window.open(filePath, '_blank');
                       },
                       child: Container(
-                          padding: EdgeInsets.fromLTRB(
-                              0,
-                              40 * contentScaleFactor,
-                              0,
-                              40 * contentScaleFactor),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 0,
+                              vertical : 40 * contentScaleFactor),
                           height: 175 * contentScaleFactor,
                           width: 175 * contentScaleFactor,
                           decoration: BoxDecoration(

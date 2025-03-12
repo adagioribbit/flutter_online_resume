@@ -60,7 +60,7 @@ class _EducationContentState extends State<EducationContent> {
       List<Widget> content = [
         Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
             child: Image(
                 height: 100.0,
                 image: AssetImage(widget.academicLogoAssetPath))),
@@ -80,7 +80,7 @@ class _EducationContentState extends State<EducationContent> {
                 fontWeight: FontWeight.bold)),
         Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.fromLTRB(5, 25, 5, 25),
+            margin: EdgeInsets.symmetric(horizontal: 5, vertical: 25),
             child: Builder(builder: (BuildContext context) {
               List<String> sentences =
                   widget.curriculumDescription.toString().split('\t');
@@ -177,7 +177,8 @@ class _EducationContentState extends State<EducationContent> {
       }
 
       return Container(
-          margin: EdgeInsets.fromLTRB(0, marginContainer, 0, marginContainer),
+          margin:
+              EdgeInsets.symmetric(horizontal: 0, vertical: marginContainer),
           decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -198,11 +199,9 @@ class _EducationContentState extends State<EducationContent> {
               border: Border.all(color: widget.boxBorderColor, width: 0.5)),
           child: ListView(
               controller: educationContentScrollController,
-              padding: EdgeInsets.fromLTRB(
-                  paddingHorizontalListView,
-                  paddingVerticalListView,
-                  paddingHorizontalListView,
-                  paddingVerticalListView),
+              padding: EdgeInsets.symmetric(
+                  horizontal: paddingHorizontalListView,
+                  vertical: paddingVerticalListView),
               children: content));
     }));
   }

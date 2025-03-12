@@ -73,8 +73,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
           valueListenable: appLanguage,
           builder: (context, value, widget) {
             return Container(
-                margin:
-                    EdgeInsets.fromLTRB(0, marginContainer, 0, marginContainer),
+                margin: EdgeInsets.symmetric(
+                    horizontal: 0, vertical: marginContainer),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -215,8 +215,8 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
 
                   listViewChildren.add(Container(
                       alignment: Alignment.center,
-                      margin: EdgeInsets.fromLTRB(
-                          0, contentFontSize, 0, contentFontSize),
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 0, vertical: contentFontSize),
                       child: Text(
                           AppStrings.TITLE_PROJECT_TASKS[value].toString(),
                           textAlign: TextAlign.center,

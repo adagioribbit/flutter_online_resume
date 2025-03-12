@@ -41,7 +41,7 @@ class Badge extends StatelessWidget {
                       ),
                     ],
                   ),
-                  margin: EdgeInsets.fromLTRB(5, 2.5, 5, 2.5),
+                  margin: EdgeInsets.symmetric(horizontal: 5, vertical: 2.5),
                   padding: EdgeInsets.all(5),
                   child: Column(children: [
                     IconButton(

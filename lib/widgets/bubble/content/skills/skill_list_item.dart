@@ -109,7 +109,7 @@ class _SkillListItemState extends State<SkillListItem> {
                 },
                 backgroundColor: skillsSetButtonPalette.radientStop2,
                 collapsedBackgroundColor: skillsSetButtonPalette.radientStop3,
-                tilePadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                tilePadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                 collapsedShape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: skillsSetButtonPalette.border, width: 1.5),
