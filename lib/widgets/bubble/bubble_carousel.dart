@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:math' show max;
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dossier_de_competences_web/widgets/bubble/content/work_experience/data/content_yardstick.dart'
-    show contentYardStickOnlineResume, contentYardStickStarter;
 import 'package:dossier_de_competences_web/widgets/draft_presentation.dart'
     show DraftPresentation;
 import 'package:flutter/material.dart';
@@ -29,9 +27,8 @@ import 'content/education/data/greta.dart';
 import 'content/education/data/lecnam.dart';
 import 'content/education/data/lewagon.dart';
 import 'content/education/data/upec.dart';
-import 'content/work_experience/data/content_amiltone.dart';
-import 'content/work_experience/data/content_evolucare.dart';
-import 'content/work_experience/data/content_prastel.dart';
+import 'content/work_experience/data/bubble_content_workexperience.dart'
+    show buildWorkExperienceBubbleContent;
 import 'content/skills/skill_sets_content.dart';
 
 class BubbleCarousel extends StatefulWidget implements PreferredSizeWidget {
@@ -94,21 +91,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             ];
           } else if (originButton == ToolbarMenu.btnWorkExperience) {
             navigationButtonPalette = workExperienceButtonPalette;
-            carouselContent = [
-              contentYardStickOnlineResume,
-              contentPrastelMobile,
-              contentPrastelCR15NM,
-              contentPrastelWeb,
-              contentAmiltoneMigration,
-              contentAmiltoneIot,
-              contentAmiltonePowerBI,
-              contentAmiltoneWSO2,
-              contentAmiltoneAndroid,
-              contentEvolucareImaging,
-              contentEvolucareMobile,
-              contentEvolucareBorne,
-              contentYardStickStarter
-            ];
+            carouselContent = buildWorkExperienceBubbleContent(context);
           } else if (originButton == ToolbarMenu.btnSkillsSet) {
             navigationButtonPalette = skillsSetButtonPalette;
             carouselContent = [contentSkillSets];

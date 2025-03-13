@@ -54,33 +54,28 @@ class _ExternalLinkState extends State<ExternalLink> {
   Widget build(BuildContext context) {
     ExternalLink that = widget;
 
-    return ValueListenableBuilder(
-        valueListenable: appLanguage,
-        builder: (context, value, widget) {
-          return LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-              return Container(
-                  constraints: that.constraints ??
-                      BoxConstraints(
-                          minHeight: imageHeight,
-                          maxHeight: imageHeight,
-                          minWidth: imageHeight,
-                          maxWidth: imageHeight),
-                  child: IconButton(
-                    padding: EdgeInsets.all(imageHeight * 0.175),
-                    hoverColor: that.hoverColor,
-                    icon: Image(
-                        image: AssetImage(that.assetImagePath),
-                        fit: BoxFit.contain),
-                    tooltip: that.tooltip,
-                    onPressed: () {
-                      if (that.url.isNotEmpty) {
-                        html.window.open(that.url, '_blank');
-                      }
-                    },
-                  ));
-            },
-          );
-        });
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return Container(
+            constraints: that.constraints ??
+                BoxConstraints(
+                    minHeight: imageHeight,
+                    maxHeight: imageHeight,
+                    minWidth: imageHeight,
+                    maxWidth: imageHeight),
+            child: IconButton(
+              padding: EdgeInsets.all(imageHeight * 0.175),
+              hoverColor: that.hoverColor,
+              icon: Image(
+                  image: AssetImage(that.assetImagePath), fit: BoxFit.contain),
+              tooltip: that.tooltip,
+              onPressed: () {
+                if (that.url.isNotEmpty) {
+                  html.window.open(that.url, '_blank');
+                }
+              },
+            ));
+      },
+    );
   }
 }

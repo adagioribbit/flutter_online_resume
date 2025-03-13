@@ -4,18 +4,13 @@ import 'package:dossier_de_competences_web/helpers/global_streams.dart'
 import 'package:dossier_de_competences_web/helpers/globals.dart'
     show ToolbarMenu, appLanguage, carouselIndex;
 import 'package:dossier_de_competences_web/widgets/bubble/badge.dart';
-import 'package:flutter/material.dart';
 
-ValueListenableBuilder badgeYardStick = ValueListenableBuilder(
-    valueListenable: appLanguage,
-    builder: (context, language, widget) {
-      return WorkExperienceBadge(
-          AppStrings.YARDSTICK_ONLINE_RESUME_BADGE[language]!,
-          "lib/assets/bubble_content/employer/badge_yardstick.png", () {
-        carouselIndex.value = 0;
-        globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
-      });
-    });
+WorkExperienceBadge badgeYardStick = WorkExperienceBadge(
+    AppStrings.YARDSTICK_ONLINE_RESUME_BADGE[appLanguage.value]!,
+    "lib/assets/bubble_content/employer/badge_yardstick.png", () {
+  carouselIndex.value = 0;
+  globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
+});
 
 WorkExperienceBadge badgePrastelBT = WorkExperienceBadge(
     "PrastelBT", "lib/assets/bubble_content/employer/badge_prastel.png", () {
@@ -77,12 +72,9 @@ WorkExperienceBadge badgeEvolucareMobile = WorkExperienceBadge(
   globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
 });
 
-ValueListenableBuilder badgeEvolucareBorne = ValueListenableBuilder(
-    valueListenable: appLanguage,
-    builder: (context, language, widget) {
-      return WorkExperienceBadge(AppStrings.EVOLUCARE_BORNE_BADGE[language]!,
-          "lib/assets/bubble_content/employer/badge_evolucare.png", () {
-        carouselIndex.value = 11;
-        globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
-      });
-    });
+WorkExperienceBadge badgeEvolucareBorne = WorkExperienceBadge(
+    AppStrings.EVOLUCARE_BORNE_BADGE[appLanguage.value]!,
+    "lib/assets/bubble_content/employer/badge_evolucare.png", () {
+  carouselIndex.value = 11;
+  globalStreams.triggerBubbleCarousel(ToolbarMenu.btnWorkExperience);
+});

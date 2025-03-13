@@ -1,8 +1,8 @@
-import 'package:dossier_de_competences_web/helpers/globals.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../helpers/constants.dart';
 import '../../../../helpers/colorchart.dart' show skillsSetButtonPalette;
+import '../../../../helpers/constants.dart';
+import '../../../../helpers/globals.dart' show appLanguage;
 
 class SkillGauge extends StatefulWidget implements PreferredSizeWidget {
   static const Duration animationDuration = Duration(milliseconds: 1500);

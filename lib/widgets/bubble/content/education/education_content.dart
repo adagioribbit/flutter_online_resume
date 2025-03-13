@@ -101,18 +101,16 @@ class _EducationContentState extends State<EducationContent> {
 
       if (widget.externalLinks.isNotEmpty) {
         if (!widget.academicLogoAssetPath.contains("upec")) {
-          content.add(ValueListenableBuilder(
-              valueListenable: appLanguage,
-              builder: (context, value, widget) {
-                return Text(AppStrings.TITLE_DETAILS[value].toString(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        decoration: TextDecoration.none,
-                        color: Colors.black,
-                        fontSize: titleFontSize,
-                        fontWeight: FontWeight.bold));
-              }));
+          content.add(Text(
+              AppStrings.TITLE_DETAILS[appLanguage.value].toString(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: Colors.black,
+                  fontSize: titleFontSize,
+                  fontWeight: FontWeight.bold)));
         }
+
         content.add(Container(
             height: externalLinkHeight,
             child: Row(
@@ -123,17 +121,15 @@ class _EducationContentState extends State<EducationContent> {
       }
 
       if (widget.languages.isNotEmpty) {
-        content.add(ValueListenableBuilder(
-            valueListenable: appLanguage,
-            builder: (context, value, widget) {
-              return Text(AppStrings.TITLE_LANGUAGES[value].toString(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      decoration: TextDecoration.none,
-                      color: Colors.black,
-                      fontSize: titleFontSize,
-                      fontWeight: FontWeight.bold));
-            }));
+        content.add(Text(
+            AppStrings.TITLE_LANGUAGES[appLanguage.value].toString(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                decoration: TextDecoration.none,
+                color: Colors.black,
+                fontSize: titleFontSize,
+                fontWeight: FontWeight.bold)));
+
         content.add(Container(
             decoration: BoxDecoration(
               border: Border.all(color: widget.boxBorderColor, width: 0.5),
@@ -150,17 +146,14 @@ class _EducationContentState extends State<EducationContent> {
       }
 
       if (widget.tools.isNotEmpty) {
-        content.add(ValueListenableBuilder(
-            valueListenable: appLanguage,
-            builder: (context, value, widget) {
-              return Text(AppStrings.TITLE_TOOLS[value].toString(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      decoration: TextDecoration.none,
-                      color: Colors.black,
-                      fontSize: titleFontSize,
-                      fontWeight: FontWeight.bold));
-            }));
+        content.add(Text(AppStrings.TITLE_TOOLS[appLanguage.value].toString(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                decoration: TextDecoration.none,
+                color: Colors.black,
+                fontSize: titleFontSize,
+                fontWeight: FontWeight.bold)));
+
         content.add(Container(
             decoration: BoxDecoration(
               border: Border.all(color: widget.boxBorderColor, width: 0.5),

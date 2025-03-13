@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../helpers/constants.dart';
-import '../helpers/globals.dart' as globals;
+import '../helpers/globals.dart' show appLanguage;
 import 'squared_sheet.dart';
 
 class MugginsPresentation extends StatefulWidget {
@@ -25,16 +25,13 @@ class _MugginsPresentationState extends State<MugginsPresentation> {
 
   @override
   Widget build(BuildContext context) {
-    ValueListenableBuilder instagrit = ValueListenableBuilder(
-        valueListenable: globals.appLanguage,
-        builder: (context, language, widget) {
-          return Text(AppStrings.RESUME_PRESENTATION_INSTAGRIT[language]!,
-              style: TextStyle(
-                  decoration: TextDecoration.none,
-                  fontSize: 40.0,
-                  fontFamily: "JustMeAgainDownHere",
-                  color: Colors.green));
-        });
+    Text instagrit = Text(
+        AppStrings.RESUME_PRESENTATION_INSTAGRIT[appLanguage.value]!,
+        style: TextStyle(
+            decoration: TextDecoration.none,
+            fontSize: 40.0,
+            fontFamily: "JustMeAgainDownHere",
+            color: Colors.green));
 
     return SquaredSheet(
         scaleFactor: 30.0,

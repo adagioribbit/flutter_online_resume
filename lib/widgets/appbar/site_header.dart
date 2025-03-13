@@ -6,7 +6,7 @@ import 'package:dossier_de_competences_web/widgets/appbar/content/flipping_appba
 import 'package:flutter/material.dart';
 import '../../helpers/colorchart.dart';
 import '../../helpers/constants.dart';
-import '../../helpers/globals.dart' as globals;
+import '../../helpers/globals.dart' show appLanguage, isDarkMode, isFoldable;
 import '../../helpers/utils.dart';
 import 'content/social_networking.dart';
 
@@ -31,35 +31,26 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
       _animationOpacity;
   late StreamSubscription subscription;
 
-  var languageButton = ValueListenableBuilder(
-      valueListenable: globals.appLanguage,
-      builder: (context, language, widget) {
-        String secondLanguage = (language == 'fr' ? 'en' : 'fr');
-        return FlippingAppBarIconButton(
-            frontImageFilePath:
-                AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[language]!,
-            backImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[language]!,
-            frontTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[language],
-            backTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[language],
-            onPressedClbk: () => {globals.appLanguage.value = secondLanguage});
+  FlippingAppBarIconButton languageButton = FlippingAppBarIconButton(
+      frontImageFilePath:
+          AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[appLanguage.value]!,
+      backImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[
+          AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]]!,
+      frontTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[appLanguage.value],
+      backTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[
+          AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]],
+      onPressedClbk: () {
+        appLanguage.value = AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]!;
       });
 
-  var darkModeButton = ValueListenableBuilder(
-      valueListenable: globals.isDarkMode,
-      builder: (context, darkMode, widget) {
-        return ValueListenableBuilder(
-            valueListenable: globals.appLanguage,
-            builder: (context, language, widget) {
-              return FlippingAppBarIconButton(
-                  frontImageFilePath: AppStrings.DARK_MODE_IMAGE_PATH[false]!,
-                  backImageFilePath: AppStrings.DARK_MODE_IMAGE_PATH[true]!,
-                  frontTooltip:
-                      AppStrings.DARK_MODE_TOOLTIP[darkMode]![language],
-                  backTooltip:
-                      AppStrings.DARK_MODE_TOOLTIP[darkMode]![language],
-                  onPressedClbk: () => {globals.isDarkMode.value = !darkMode});
-            });
-      });
+  FlippingAppBarIconButton darkModeButton = FlippingAppBarIconButton(
+      frontImageFilePath: AppStrings.DARK_MODE_IMAGE_PATH[false]!,
+      backImageFilePath: AppStrings.DARK_MODE_IMAGE_PATH[true]!,
+      frontTooltip:
+          AppStrings.DARK_MODE_TOOLTIP[isDarkMode.value]![appLanguage.value],
+      backTooltip:
+          AppStrings.DARK_MODE_TOOLTIP[isDarkMode.value]![appLanguage.value],
+      onPressedClbk: () => {isDarkMode.value = !isDarkMode.value});
 
   @override
   void initState() {
@@ -109,9 +100,9 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    globals.isFoldable.value = Utils.isFoldable(context);
+    isFoldable.value = Utils.isFoldable(context);
 
-    if (Utils.isPhoneScreen(context) | globals.isFoldable.value) {
+    if (Utils.isPhoneScreen(context) | isFoldable.value) {
       titleFontSize = 20.0;
       subtitleFontSize = 12.0;
       titlePaddingTop = 0.0;
@@ -132,7 +123,7 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var componentHeight = globals.isFoldable.value
+    var componentHeight = isFoldable.value
         ? Constants.WIGGLING_BUTTON_HEIGHT_FOLDABLE
         : Constants.WIGGLING_BUTTON_HEIGHT;
 
@@ -210,28 +201,23 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
                                                               color:
                                                                   _animationTitleColor
                                                                       .value)),
-                                                      ValueListenableBuilder(
-                                                        valueListenable:
-                                                            globals.appLanguage,
-                                                        builder: (context,
-                                                            value, widget) {
-                                                          return Text(
-                                                              AppStrings
-                                                                      .APP_SUBTITLE[
-                                                                  value]!,
-                                                              style: TextStyle(
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .none,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontSize:
-                                                                      subtitleFontSize,
-                                                                  color: _animationTitleColor
-                                                                      .value));
-                                                        },
-                                                      ),
+                                                      Text(
+                                                          AppStrings
+                                                                  .APP_SUBTITLE[
+                                                              appLanguage
+                                                                  .value]!,
+                                                          style: TextStyle(
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize:
+                                                                  subtitleFontSize,
+                                                              color:
+                                                                  _animationTitleColor
+                                                                      .value)),
                                                     ])))),
                                     Container(
                                       height: componentHeight,

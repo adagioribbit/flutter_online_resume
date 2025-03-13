@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html;
 import '../../../helpers/colorchart.dart';
 import '../../../helpers/constants.dart';
-import '../../../helpers/globals.dart' as globals;
+import '../../../helpers/globals.dart' show appLanguage;
 import '../../../helpers/utils.dart';
 import '../site_header.dart';
 import 'wiggling_button.dart';
@@ -30,60 +30,6 @@ class _SocialNetworkingState extends State<SocialNetworking> {
   late Animation _animationTranslate, _animationScale;
   late SiteHeader? parent;
   late StreamSubscription subscription;
-
-  final _linkedInButton = ValueListenableBuilder(
-    valueListenable: globals.appLanguage,
-    builder: (context, value, widget) {
-      return IconButton(
-        hoverColor: ColorChart.linkedInButtonShadowHovered,
-        constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-        icon: Image(
-          image: AssetImage("lib/assets/appbar/linkedin.png"),
-          fit: BoxFit.fill,
-        ),
-        tooltip: AppStrings.LINKEDIN_TOOLTIP[value],
-        onPressed: () {
-          html.window.open(AppStrings.LINKEDIN_URL, '_blank');
-        },
-      );
-    },
-  );
-
-  final _githubButton = ValueListenableBuilder(
-    valueListenable: globals.appLanguage,
-    builder: (context, value, widget) {
-      return IconButton(
-        hoverColor: ColorChart.githubButtonShadowHovered,
-        constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-        icon: Image(
-          image: AssetImage("lib/assets/appbar/github.png"),
-          fit: BoxFit.fill,
-        ),
-        tooltip: AppStrings.GITHUB_TOOLTIP[value],
-        onPressed: () {
-          html.window.open(AppStrings.GITHUB_URL, '_blank');
-        },
-      );
-    },
-  );
-
-  final _instagramButton = ValueListenableBuilder(
-    valueListenable: globals.appLanguage,
-    builder: (context, value, widget) {
-      return IconButton(
-        hoverColor: ColorChart.instagralButtonShadowHovered,
-        constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-        icon: Image(
-          image: AssetImage("lib/assets/appbar/instagram.png"),
-          fit: BoxFit.fill,
-        ),
-        tooltip: AppStrings.INSTAGRAM_TOOLTIP[value],
-        onPressed: () {
-          html.window.open(AppStrings.INSTAGRAM_URL, '_blank');
-        },
-      );
-    },
-  );
 
   @override
   void initState() {
@@ -137,6 +83,45 @@ class _SocialNetworkingState extends State<SocialNetworking> {
   Widget build(BuildContext context) {
     double rowSpacing = isFoldable ? 5 : 10;
 
+    IconButton linkedInButton = IconButton(
+      hoverColor: ColorChart.linkedInButtonShadowHovered,
+      constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+      icon: Image(
+        image: AssetImage("lib/assets/appbar/linkedin.png"),
+        fit: BoxFit.fill,
+      ),
+      tooltip: AppStrings.LINKEDIN_TOOLTIP[appLanguage.value],
+      onPressed: () {
+        html.window.open(AppStrings.LINKEDIN_URL, '_blank');
+      },
+    );
+
+    IconButton githubButton = IconButton(
+      hoverColor: ColorChart.githubButtonShadowHovered,
+      constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+      icon: Image(
+        image: AssetImage("lib/assets/appbar/github.png"),
+        fit: BoxFit.fill,
+      ),
+      tooltip: AppStrings.GITHUB_TOOLTIP[appLanguage.value],
+      onPressed: () {
+        html.window.open(AppStrings.GITHUB_URL, '_blank');
+      },
+    );
+
+    IconButton instagramButton = IconButton(
+      hoverColor: ColorChart.instagralButtonShadowHovered,
+      constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+      icon: Image(
+        image: AssetImage("lib/assets/appbar/instagram.png"),
+        fit: BoxFit.fill,
+      ),
+      tooltip: AppStrings.INSTAGRAM_TOOLTIP[appLanguage.value],
+      onPressed: () {
+        html.window.open(AppStrings.INSTAGRAM_URL, '_blank');
+      },
+    );
+
     if (isFoldable || isPhoneScreen || Utils.screenWidth < 450) {
       Matrix4 matrixTransform = Matrix4.identity()
         // Translate Y
@@ -157,7 +142,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
                         //// Translate X
                         ..setEntry(
                             0, 3, offsetLinkedIn * _animationTranslate.value),
-                      child: _linkedInButton);
+                      child: linkedInButton);
                 }),
             AnimatedBuilder(
                 animation: widget.animationController,
@@ -167,7 +152,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
                         // Translate X
                         ..setEntry(
                             0, 3, offsetGithub * _animationTranslate.value),
-                      child: _githubButton);
+                      child: githubButton);
                 }),
             AnimatedBuilder(
                 animation: widget.animationController,
@@ -177,7 +162,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
                         // Translate X
                         ..setEntry(
                             0, 3, offsetInstagram * _animationTranslate.value),
-                      child: _instagramButton);
+                      child: instagramButton);
                 }),
             AnimatedContainer(
                 duration: Duration(
@@ -218,7 +203,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
             // Scale
             ..setEntry(0, 0, 1.5)
             ..setEntry(1, 1, 1.5),
-          child: _linkedInButton,
+          child: linkedInButton,
         ),
         Transform(
             transform: Matrix4.identity()
@@ -229,7 +214,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
               // Scale
               ..setEntry(0, 0, 1.5)
               ..setEntry(1, 1, 1.5),
-            child: _githubButton),
+            child: githubButton),
         Transform(
             transform: Matrix4.identity()
               // Translate X
@@ -239,7 +224,7 @@ class _SocialNetworkingState extends State<SocialNetworking> {
               // Scale
               ..setEntry(0, 0, 1.5)
               ..setEntry(1, 1, 1.5),
-            child: _instagramButton)
+            child: instagramButton)
       ]);
     }
   }

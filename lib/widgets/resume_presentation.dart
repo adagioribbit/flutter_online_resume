@@ -61,55 +61,47 @@ class _ResumePresentationState extends State<ResumePresentation> {
             height: 5 * scaleFactorRatio,
             image: AssetImage("lib/assets/toolbar/naughty.png")));
 
-    ValueListenableBuilder boredom = ValueListenableBuilder(
-        valueListenable: appLanguage,
-        builder: (context, language, widget) {
-          return Transform(
-              alignment: FractionalOffset.center,
-              origin: Offset.zero,
-              transform: Matrix4.identity()
-                // Translate X
-                ..setEntry(0, 3, 350 * scaleFactorRatio)
-                // Translate Y
-                ..setEntry(1, 3, 150 * scaleFactorRatio)
-                ..rotateZ(pi * 0.0973),
-              child: Text(AppStrings.RESUME_PRESENTATION_BOREDOM[language]!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      decoration: TextDecoration.none,
-                      fontSize: 50.0 * scaleFactorRatio,
-                      fontFamily: "GrapeNuts",
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(127, 0, 0, 0))));
-        });
+    Transform boredom = Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset.zero,
+        transform: Matrix4.identity()
+          // Translate X
+          ..setEntry(0, 3, 350 * scaleFactorRatio)
+          // Translate Y
+          ..setEntry(1, 3, 150 * scaleFactorRatio)
+          ..rotateZ(pi * 0.0973),
+        child: Text(AppStrings.RESUME_PRESENTATION_BOREDOM[appLanguage.value]!,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                decoration: TextDecoration.none,
+                fontSize: 50.0 * scaleFactorRatio,
+                fontFamily: "GrapeNuts",
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(127, 0, 0, 0))));
 
-    ValueListenableBuilder pretext = ValueListenableBuilder(
-        valueListenable: appLanguage,
-        builder: (context, language, widget) {
-          return Transform(
-              alignment: FractionalOffset.center,
-              origin: Offset.zero,
-              transform: Matrix4.identity()
-                // Translate X
-                ..setEntry(0, 3, 75 * scaleFactorRatio)
-                // Translate Y
-                ..setEntry(1, 3, 150 * scaleFactorRatio)
-                ..rotateZ(pi * -0.0773),
-              child: Text(AppStrings.RESUME_PRESENTATION_PRETEXT[language]!,
-                  strutStyle: StrutStyle.disabled,
-                  textHeightBehavior: TextHeightBehavior(
-                      leadingDistribution: TextLeadingDistribution.even,
-                      applyHeightToFirstAscent: true,
-                      applyHeightToLastDescent: false),
-                  style: TextStyle(
-                      decoration: TextDecoration.none,
-                      leadingDistribution: TextLeadingDistribution.even,
-                      textBaseline: TextBaseline.alphabetic,
-                      fontSize: 60.0 * scaleFactorRatio,
-                      fontFamily: "Mynerve",
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(207, 29, 114, 241))));
-        });
+    Transform pretext = Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset.zero,
+        transform: Matrix4.identity()
+          // Translate X
+          ..setEntry(0, 3, 75 * scaleFactorRatio)
+          // Translate Y
+          ..setEntry(1, 3, 150 * scaleFactorRatio)
+          ..rotateZ(pi * -0.0773),
+        child: Text(AppStrings.RESUME_PRESENTATION_PRETEXT[appLanguage.value]!,
+            strutStyle: StrutStyle.disabled,
+            textHeightBehavior: TextHeightBehavior(
+                leadingDistribution: TextLeadingDistribution.even,
+                applyHeightToFirstAscent: true,
+                applyHeightToLastDescent: false),
+            style: TextStyle(
+                decoration: TextDecoration.none,
+                leadingDistribution: TextLeadingDistribution.even,
+                textBaseline: TextBaseline.alphabetic,
+                fontSize: 60.0 * scaleFactorRatio,
+                fontFamily: "Mynerve",
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(207, 29, 114, 241))));
 
     Transform mangaCrow = Transform(
         alignment: FractionalOffset.center,
@@ -126,50 +118,42 @@ class _ResumePresentationState extends State<ResumePresentation> {
             width: 200 * scaleFactorRatio,
             image: AssetImage("lib/assets/toolbar/blue_manga_crow.png")));
 
-    ValueListenableBuilder callToAction = ValueListenableBuilder(
-        valueListenable: appLanguage,
-        builder: (context, language, widget) {
-          return Transform(
-              alignment: FractionalOffset.center,
-              origin: Offset.zero,
-              transform: Matrix4.identity()
-                // Translate X
-                ..setEntry(0, 3, 125 * scaleFactorRatio)
-                // Translate Y
-                ..setEntry(1, 3, 150 * scaleFactorRatio)
-                ..rotateZ(pi * -0.0373),
-              child: Text(
-                  AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[language]!,
-                  style: TextStyle(
-                      decoration: TextDecoration.none,
-                      fontSize: 40.0 * scaleFactorRatio,
-                      fontFamily: "RockSalt",
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(226, 219, 51, 21))));
-        });
+    Transform callToAction = Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset.zero,
+        transform: Matrix4.identity()
+          // Translate X
+          ..setEntry(0, 3, 125 * scaleFactorRatio)
+          // Translate Y
+          ..setEntry(1, 3, 150 * scaleFactorRatio)
+          ..rotateZ(pi * -0.0373),
+        child: Text(
+            AppStrings.RESUME_PRESENTATION_CALL_TO_ACTION[appLanguage.value]!,
+            style: TextStyle(
+                decoration: TextDecoration.none,
+                fontSize: 40.0 * scaleFactorRatio,
+                fontFamily: "RockSalt",
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(226, 219, 51, 21))));
 
-    ValueListenableBuilder outcry = ValueListenableBuilder(
-        valueListenable: appLanguage,
-        builder: (context, language, widget) {
-          return Transform(
-              alignment: FractionalOffset.center,
-              origin: Offset.zero,
-              transform: Matrix4.identity()
-                // Translate X
-                ..setEntry(0, 3, 225 * scaleFactorRatio)
-                // Translate Y
-                ..setEntry(1, 3, 325 * scaleFactorRatio),
-              child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[language]!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 60.0 * scaleFactorRatio,
-                      fontFamily: "OvertheRainbow",
-                      color: Colors.green,
-                      decoration: TextDecoration.underline,
-                      decorationStyle: TextDecorationStyle.double,
-                      decorationColor: const Color.fromARGB(225, 44, 138, 0))));
-        });
+    Transform outcry = Transform(
+        alignment: FractionalOffset.center,
+        origin: Offset.zero,
+        transform: Matrix4.identity()
+          // Translate X
+          ..setEntry(0, 3, 225 * scaleFactorRatio)
+          // Translate Y
+          ..setEntry(1, 3, 325 * scaleFactorRatio),
+        child: Text(AppStrings.RESUME_PRESENTATION_OUTCRY[appLanguage.value]!,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 60.0 * scaleFactorRatio,
+                fontFamily: "OvertheRainbow",
+                color: Colors.green,
+                decoration: TextDecoration.underline,
+                decorationStyle: TextDecorationStyle.double,
+                decorationColor: const Color.fromARGB(225, 44, 138, 0))));
 
     return [
       naughty,

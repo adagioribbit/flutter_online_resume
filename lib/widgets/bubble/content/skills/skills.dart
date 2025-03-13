@@ -488,7 +488,7 @@ SkillListItem gaugeJquery = SkillListItem(
     type: SkillType.tool,
     title: "JQuery",
     iconAssetPath: "lib/assets/bubble_content/skill/jquery.png",
-    nbYearsPractice: 3.99,
+    nbYearsPractice: 5.57,
     dateLastUsed: DateTime(2023, 9),
     experiences: [
       badgePrastelSiteInterne,
@@ -944,7 +944,7 @@ SkillListItem gaugeWindows = SkillListItem(
     type: SkillType.tool,
     title: "Windows",
     iconAssetPath: "lib/assets/bubble_content/skill/windows.png",
-    nbYearsPractice: .99,
+    nbYearsPractice: 10,
     dateLastUsed: DateTime.now(),
     experiences: [badgeLeWagon, badgeEvolucareBorne, badgeGreta]);
 

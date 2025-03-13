@@ -3,7 +3,7 @@ import 'package:dossier_de_competences_web/helpers/constants.dart'
 import 'package:dossier_de_competences_web/helpers/utils.dart' show Utils;
 import 'package:flutter/material.dart';
 
-import 'helpers/globals.dart' show GlobalKeyRing;
+import 'helpers/globals.dart' show GlobalKeyRing, appLanguage, isDarkMode;
 import 'widgets/bubble/bubble_carousel.dart';
 import 'widgets/appbar/site_header.dart';
 import 'widgets/toolbar/toolbar.dart';
@@ -29,6 +29,9 @@ class _CardAndTabAppState extends State<CardAndTabApp> {
   void initState() {
     super.initState();
     isPortrait = Utils.isPhoneView();
+
+    appLanguage.addListener(() => setState(() {}));
+    isDarkMode.addListener(() => setState(() {}));
   }
 
   @override

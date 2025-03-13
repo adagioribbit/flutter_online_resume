@@ -61,6 +61,10 @@ class AppStrings {
   };
 
   /// TOOLTIPS
+  static const Map<String, String> LANGUAGE_SWITCH_LOOP = {
+    'fr': 'en',
+    'en': 'fr',
+  };
   static const Map<String, String> LANGUAGE_SWITCH_TOOLTIP = {
     'fr': 'Switch to english',
     'en': 'Afficher en français',
@@ -537,5 +541,39 @@ class AppStrings {
       'Security agent',
       'Playground superviser',
     ]
+  };
+
+  /// SKILL LIST FILTERS
+  static const Map<String, String> TITLE_WEB_DEVELOPMENT = {
+    'fr': 'Développement web',
+    'en': 'Web Development',
+  };
+  static const Map<String, String> TITLE_MOBILE_DEVELOPMENT = {
+    'fr': 'Développement mobile',
+    'en': 'Mobile Development',
+  };
+  static const Map<String, String> TITLE_BUSINESS_INTELLIGENCE = {
+    'fr': 'Informatique décisionnelle',
+    'en': 'Business Intelligence',
+  };
+  static const Map<String, String> TITLE_ARTIFICIAL_INTELLIGENCE = {
+    'fr': 'Intelligence artificielle',
+    'en': 'Artificial Intelligence',
+  };
+  static const Map<String, String> TITLE_BACK_END_DEVELOPMENT = {
+    'fr': 'Développement back-end',
+    'en': 'Back-end Development',
+  };
+  static const Map<String, String> TITLE_DEVOPS = {
+    'fr': 'DevOps',
+    'en': 'DevOps',
+  };
+  static const Map<String, String> TITLE_TEAMWORK = {
+    'fr': 'Travail en équipe',
+    'en': 'Teamwork',
+  };
+  static const Map<String, String> TITLE_OTHER_SKILLS = {
+    'fr': 'Autres',
+    'en': 'Others',
   };
 }
