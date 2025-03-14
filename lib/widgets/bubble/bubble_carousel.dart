@@ -23,10 +23,8 @@ import '../../helpers/colorchart.dart'
         skillsSetButtonPalette,
         workExperienceButtonPalette;
 import 'bubble_hailer.dart';
-import 'content/education/data/greta.dart';
-import 'content/education/data/lecnam.dart';
-import 'content/education/data/lewagon.dart';
-import 'content/education/data/upec.dart';
+import 'content/education/data/bubble_content_education.dart'
+    show buildEducationBubbleContent;
 import 'content/work_experience/data/bubble_content_workexperience.dart'
     show buildWorkExperienceBubbleContent;
 import 'content/skills/skill_sets_content.dart';
@@ -83,12 +81,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           globalStreams.triggerToggleAppBar(true);
           if (originButton == ToolbarMenu.btnEducation) {
             navigationButtonPalette = educationButtonPalette;
-            carouselContent = [
-              contentLeWagon,
-              contentLeCnam,
-              contentGreta,
-              content_upec
-            ];
+            carouselContent = buildEducationBubbleContent(context);
           } else if (originButton == ToolbarMenu.btnWorkExperience) {
             navigationButtonPalette = workExperienceButtonPalette;
             carouselContent = buildWorkExperienceBubbleContent(context);
