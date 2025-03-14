@@ -7,7 +7,6 @@ import 'package:dossier_de_competences_web/helpers/globals.dart'
         SkillKey,
         SkillType,
         SkillUsage,
-        appLanguage,
         initialScrollSkillItem,
         skillListScrollController;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_gauge.dart';

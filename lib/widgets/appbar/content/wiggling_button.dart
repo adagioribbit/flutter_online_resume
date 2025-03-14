@@ -6,8 +6,9 @@ import '../../../helpers/utils.dart';
 
 class WigglingButton extends StatefulWidget {
   final VoidCallback? onPressedClbk;
-  bool isInflated;
-  WigglingButton({this.isInflated = false, this.onPressedClbk, super.key});
+  final bool isInflated;
+  const WigglingButton(
+      {this.isInflated = false, this.onPressedClbk, super.key});
 
   @override
   State<WigglingButton> createState() => _WigglingButtonState();
@@ -19,6 +20,7 @@ class _WigglingButtonState extends State<WigglingButton>
   late Animation<double> _animation;
   late bool isTouchedOnce = false;
   late double parentHeight;
+  late bool isInflated = widget.isInflated;
 
   @override
   void initState() {
@@ -69,7 +71,7 @@ class _WigglingButtonState extends State<WigglingButton>
   }
 
   void updateSizeAndMargin() {
-    parentHeight = widget.isInflated
+    parentHeight = isInflated
         ? Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK
         : Constants.WIGGLING_BUTTON_HEIGHT;
   }
@@ -81,7 +83,7 @@ class _WigglingButtonState extends State<WigglingButton>
   String getIcon() {
     if (!isTouchedOnce) {
       return "lib/assets/appbar/callme_sign_shadowed.png";
-    } else if (widget.isInflated) {
+    } else if (isInflated) {
       return "lib/assets/appbar/love_you_sign_shadowed.png";
     } else {
       return "lib/assets/appbar/pointing_left_sign_shadowed.png";
@@ -149,7 +151,7 @@ class _WigglingButtonState extends State<WigglingButton>
                 animationDuration: Duration(milliseconds: 200)),
             onPressed: () {
               isTouchedOnce = true;
-              widget.isInflated = !widget.isInflated;
+              isInflated = !isInflated;
               onToggleShrink();
               widget.onPressedClbk!();
             },

@@ -86,7 +86,7 @@ class _EmployerHeaderState extends State<EmployerHeader> {
 
     return ValueListenableBuilder(
         valueListenable: carouselIndex,
-        builder: (context, value, widget) {
+        builder: (context, currIdx, widget) {
           return LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
             return Row(
@@ -100,22 +100,22 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                       hoverColor: workExperienceButtonPalette.radientStop2,
                       disabledColor: workExperienceButtonPalette.iconFocus,
                       iconSize: constraints.maxWidth * 0.08,
-                      onPressed: carouselIndex.value == 0
+                      onPressed: currIdx == 0
                           ? null
                           : () {
                               int pageNumber = 0;
-                              if (carouselIndex.value <=
+                              if (currIdx <=
                                   EmployerHeader.indexMinPrastelContent) {
                                 pageNumber = 0;
-                              } else if (carouselIndex.value <=
+                              } else if (currIdx <=
                                   EmployerHeader.indexMinAmiltoneContent) {
                                 pageNumber =
                                     EmployerHeader.indexMinPrastelContent;
-                              } else if (carouselIndex.value <=
+                              } else if (currIdx <=
                                   EmployerHeader.indexMinEvolucareContent) {
                                 pageNumber =
                                     EmployerHeader.indexMinAmiltoneContent;
-                              } else if (carouselIndex.value <=
+                              } else if (currIdx <=
                                   EmployerHeader.indexMinHardLifeContent) {
                                 pageNumber =
                                     EmployerHeader.indexMinEvolucareContent;
@@ -142,17 +142,17 @@ class _EmployerHeaderState extends State<EmployerHeader> {
                       hoverColor: workExperienceButtonPalette.radientStop2,
                       disabledColor: workExperienceButtonPalette.iconFocus,
                       iconSize: constraints.maxWidth * 0.08,
-                      onPressed: carouselIndex.value >=
+                      onPressed: currIdx >=
                               EmployerHeader.indexMinHardLifeContent
                           ? null
                           : () {
-                              int pageNumber = carouselIndex.value <
+                              int pageNumber = currIdx <
                                       EmployerHeader.indexMinPrastelContent
                                   ? EmployerHeader.indexMinPrastelContent
-                                  : carouselIndex.value <
+                                  : currIdx <
                                           EmployerHeader.indexMinAmiltoneContent
                                       ? EmployerHeader.indexMinAmiltoneContent
-                                      : carouselIndex.value <
+                                      : currIdx <
                                               EmployerHeader
                                                   .indexMinEvolucareContent
                                           ? EmployerHeader

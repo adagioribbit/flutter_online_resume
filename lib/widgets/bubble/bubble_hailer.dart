@@ -1,8 +1,6 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
-import '../../helpers/utils.dart';
-
 class BubbleHailerPainter extends CustomPainter {
   final Color strokeColor, fillColor;
   final double strokeWidth;
@@ -28,7 +26,7 @@ class BubbleHailerPainter extends CustomPainter {
   }
 
   Path getHailerPath(double x, double y) {
-    bool isPortrait = Utils.isPortraitOrientation();
+    //bool isPortrait = Utils.isPortraitOrientation();
 
     //** Successful attempt at a cartoon curved hailer */
     //Path pathPointingDown = Path()
@@ -42,11 +40,11 @@ class BubbleHailerPainter extends CustomPainter {
       ..lineTo(x / 2, y)
       ..lineTo(0, 0)
       ..lineTo(x, 0);
-    Path pathPointingLeft = Path()
-      ..moveTo(x, 0)
-      ..lineTo(x, y)
-      ..lineTo(0, y / 2)
-      ..lineTo(x, 0);
+    //Path pathPointingLeft = Path()
+    //  ..moveTo(x, 0)
+    //  ..lineTo(x, y)
+    //  ..lineTo(0, y / 2)
+    //  ..lineTo(x, 0);
     //return isPortrait ? pathPointingLeft : pathPointingDown;
     return pathPointingDown;
   }
