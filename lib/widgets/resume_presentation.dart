@@ -70,7 +70,9 @@ class _ResumePresentationState extends State<ResumePresentation> {
           // Translate Y
           ..setEntry(1, 3, 150 * scaleFactorRatio)
           ..rotateZ(pi * 0.0973),
-        child: Text(AppStrings.RESUME_PRESENTATION_BOREDOM[appLanguage.value]!,
+        child: Text(
+            AppStrings
+                .RESUME_PRESENTATION_AUDIO_DESCRIPTION[appLanguage.value]!,
             textAlign: TextAlign.center,
             style: TextStyle(
                 decoration: TextDecoration.none,

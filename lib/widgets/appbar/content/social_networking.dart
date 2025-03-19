@@ -3,6 +3,7 @@ import 'dart:async' show StreamSubscription;
 import 'package:dossier_de_competences_web/helpers/global_streams.dart'
     show globalStreams;
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart' show SemanticsProperties;
 import 'package:web/web.dart' as html;
 import '../../../helpers/colorchart.dart';
 import '../../../helpers/constants.dart';
@@ -83,44 +84,68 @@ class _SocialNetworkingState extends State<SocialNetworking> {
   Widget build(BuildContext context) {
     double rowSpacing = isFoldable ? 5 : 10;
 
-    IconButton linkedInButton = IconButton(
-      hoverColor: ColorChart.linkedInButtonShadowHovered,
-      constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-      icon: Image(
-        image: AssetImage("lib/assets/appbar/linkedin.png"),
-        fit: BoxFit.fill,
-      ),
-      tooltip: AppStrings.LINKEDIN_TOOLTIP[appLanguage.value],
-      onPressed: () {
-        html.window.open(AppStrings.LINKEDIN_URL, '_blank');
-      },
-    );
+    Semantics linkedInButton = Semantics.fromProperties(
+        properties: SemanticsProperties(
+            enabled: true,
+            focusable: true,
+            tooltip: SemanticsStrings.LINKEDIN[appLanguage.value],
+            button: true),
+        child: ExcludeSemantics(
+            excluding: true,
+            child: IconButton(
+              hoverColor: ColorChart.linkedInButtonShadowHovered,
+              constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+              icon: Image(
+                image: AssetImage("lib/assets/appbar/linkedin.png"),
+                fit: BoxFit.fill,
+              ),
+              tooltip: AppStrings.LINKEDIN_TOOLTIP[appLanguage.value],
+              onPressed: () {
+                html.window.open(AppStrings.LINKEDIN_URL, '_blank');
+              },
+            )));
 
-    IconButton githubButton = IconButton(
-      hoverColor: ColorChart.githubButtonShadowHovered,
-      constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-      icon: Image(
-        image: AssetImage("lib/assets/appbar/github.png"),
-        fit: BoxFit.fill,
-      ),
-      tooltip: AppStrings.GITHUB_TOOLTIP[appLanguage.value],
-      onPressed: () {
-        html.window.open(AppStrings.GITHUB_URL, '_blank');
-      },
-    );
+    Semantics githubButton = Semantics.fromProperties(
+        properties: SemanticsProperties(
+            enabled: true,
+            focusable: true,
+            tooltip: SemanticsStrings.GITHUB[appLanguage.value],
+            button: true),
+        child: ExcludeSemantics(
+            excluding: true,
+            child: IconButton(
+              hoverColor: ColorChart.githubButtonShadowHovered,
+              constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+              icon: Image(
+                image: AssetImage("lib/assets/appbar/github.png"),
+                fit: BoxFit.fill,
+              ),
+              tooltip: AppStrings.GITHUB_TOOLTIP[appLanguage.value],
+              onPressed: () {
+                html.window.open(AppStrings.GITHUB_URL, '_blank');
+              },
+            )));
 
-    IconButton instagramButton = IconButton(
-      hoverColor: ColorChart.instagralButtonShadowHovered,
-      constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-      icon: Image(
-        image: AssetImage("lib/assets/appbar/instagram.png"),
-        fit: BoxFit.fill,
-      ),
-      tooltip: AppStrings.INSTAGRAM_TOOLTIP[appLanguage.value],
-      onPressed: () {
-        html.window.open(AppStrings.INSTAGRAM_URL, '_blank');
-      },
-    );
+    Semantics instagramButton = Semantics.fromProperties(
+        properties: SemanticsProperties(
+            enabled: true,
+            focusable: true,
+            tooltip: SemanticsStrings.INSTAGRAM[appLanguage.value],
+            button: true),
+        child: ExcludeSemantics(
+            excluding: true,
+            child: IconButton(
+              hoverColor: ColorChart.instagralButtonShadowHovered,
+              constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+              icon: Image(
+                image: AssetImage("lib/assets/appbar/instagram.png"),
+                fit: BoxFit.fill,
+              ),
+              tooltip: AppStrings.INSTAGRAM_TOOLTIP[appLanguage.value],
+              onPressed: () {
+                html.window.open(AppStrings.INSTAGRAM_URL, '_blank');
+              },
+            )));
 
     if (isFoldable || isPhoneScreen || Utils.screenWidth < 450) {
       Matrix4 matrixTransform = Matrix4.identity()
@@ -174,25 +199,27 @@ class _SocialNetworkingState extends State<SocialNetworking> {
                   ..setEntry(0, 3, 5)
                   // Translate Y
                   ..setEntry(1, 3, widget.animationController.value),
-                child: WigglingButton(
-                    isInflated: isStacked,
-                    onPressedClbk: () {
-                      setState(() {
-                        isStacked = !isStacked;
-                        wigglingButtonHeight = isStacked
-                            ? Constants.WIGGLING_BUTTON_HEIGHT
-                            : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
+                child: Semantics.fromProperties(
+                    properties:
+                        SemanticsProperties(enabled: true, focusable: false),
+                    child: WigglingButton(
+                        isInflated: isStacked,
+                        onPressedClbk: () {
+                          setState(() {
+                            isStacked = !isStacked;
+                            wigglingButtonHeight = isStacked
+                                ? Constants.WIGGLING_BUTTON_HEIGHT
+                                : Constants.WIGGLING_BUTTON_HEIGHT_SHRUNK;
 
-                        if (isStacked) {
-                          widget.animationController.forward();
-                        } else {
-                          widget.animationController.reverse();
-                        }
-                      });
-                    })),
+                            if (isStacked) {
+                              widget.animationController.forward();
+                            } else {
+                              widget.animationController.reverse();
+                            }
+                          });
+                        }))),
           ]);
     } else {
-      ;
       return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
         Transform(
           transform: Matrix4.identity()

@@ -133,28 +133,30 @@ class _WigglingButtonState extends State<WigglingButton>
         duration: Duration(milliseconds: 50),
         height: parentHeight,
         width: parentHeight,
-        child: ElevatedButton(
-            style: ButtonStyle(
-                padding: WidgetStateProperty.all<EdgeInsets>(
-                    EdgeInsets.fromLTRB(3, 11, 5, 15)),
-                backgroundColor: WidgetStateProperty.resolveWith<Color>(
-                  (Set<WidgetState> states) {
-                    if (states.contains(WidgetState.hovered)) {
-                      return ColorChart.appBarButtonPlusBackgroundHovered;
-                    } else if (states.contains(WidgetState.pressed)) {
-                      return ColorChart.appBarButtonPlusBackgroundPressed;
-                    } else {
-                      return ColorChart.appBarButtonPlusBackground;
-                    }
-                  },
-                ),
-                animationDuration: Duration(milliseconds: 200)),
-            onPressed: () {
-              isTouchedOnce = true;
-              isInflated = !isInflated;
-              onToggleShrink();
-              widget.onPressedClbk!();
-            },
-            child: buildButtonText()));
+        child: ExcludeSemantics(
+            excluding: true,
+            child: ElevatedButton(
+                style: ButtonStyle(
+                    padding: WidgetStateProperty.all<EdgeInsets>(
+                        EdgeInsets.fromLTRB(3, 11, 5, 15)),
+                    backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                      (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.hovered)) {
+                          return ColorChart.appBarButtonPlusBackgroundHovered;
+                        } else if (states.contains(WidgetState.pressed)) {
+                          return ColorChart.appBarButtonPlusBackgroundPressed;
+                        } else {
+                          return ColorChart.appBarButtonPlusBackground;
+                        }
+                      },
+                    ),
+                    animationDuration: Duration(milliseconds: 200)),
+                onPressed: () {
+                  isTouchedOnce = true;
+                  isInflated = !isInflated;
+                  onToggleShrink();
+                  widget.onPressedClbk!();
+                },
+                child: buildButtonText())));
   }
 }

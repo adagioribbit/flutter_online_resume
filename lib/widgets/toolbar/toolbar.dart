@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart' show SemanticsProperties;
 
 import '../../helpers/constants.dart';
 import '../../helpers/globals.dart' show ToolbarMenu, appLanguage;
@@ -69,24 +70,43 @@ class _ToolbarState extends State<Toolbar> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ToolbarButton(
-                      idMenu: ToolbarMenu.btnEducation,
-                      tooltip: AppStrings.EDUCATION_TOOLTIP[value],
-                      imageAssetPath: "lib/assets/toolbar/bachelor_hat.png",
-                      palette: educationButtonPalette,
-                    ),
-                    ToolbarButton(
-                      idMenu: ToolbarMenu.btnSkillsSet,
-                      tooltip: AppStrings.SKILL_SETS_TOOLTIP[value],
-                      imageAssetPath: "lib/assets/toolbar/skills_set.png",
-                      palette: skillsSetButtonPalette,
-                    ),
-                    ToolbarButton(
-                      idMenu: ToolbarMenu.btnWorkExperience,
-                      tooltip: AppStrings.WORK_EXPERIENCE_TOOLTIP[value],
-                      imageAssetPath: "lib/assets/toolbar/work_experience.png",
-                      palette: workExperienceButtonPalette,
-                    ),
+                    Semantics.fromProperties(
+                        properties: SemanticsProperties(
+                            enabled: true, focusable: false, button: false),
+                        child: ExcludeSemantics(
+                            excluding: true,
+                            child: ToolbarButton(
+                              idMenu: ToolbarMenu.btnEducation,
+                              tooltip: AppStrings.EDUCATION_TOOLTIP[value],
+                              imageAssetPath:
+                                  "lib/assets/toolbar/bachelor_hat.png",
+                              palette: educationButtonPalette,
+                            ))),
+                    Semantics.fromProperties(
+                        properties: SemanticsProperties(
+                            enabled: true, focusable: false, button: false),
+                        child: ExcludeSemantics(
+                            excluding: true,
+                            child: ToolbarButton(
+                              idMenu: ToolbarMenu.btnSkillsSet,
+                              tooltip: AppStrings.SKILL_SETS_TOOLTIP[value],
+                              imageAssetPath:
+                                  "lib/assets/toolbar/skills_set.png",
+                              palette: skillsSetButtonPalette,
+                            ))),
+                    Semantics.fromProperties(
+                        properties: SemanticsProperties(
+                            enabled: true, focusable: false, button: false),
+                        child: ExcludeSemantics(
+                            excluding: true,
+                            child: ToolbarButton(
+                              idMenu: ToolbarMenu.btnWorkExperience,
+                              tooltip:
+                                  AppStrings.WORK_EXPERIENCE_TOOLTIP[value],
+                              imageAssetPath:
+                                  "lib/assets/toolbar/work_experience.png",
+                              palette: workExperienceButtonPalette,
+                            ))),
                   ],
                 ),
               ));

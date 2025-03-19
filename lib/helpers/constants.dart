@@ -117,9 +117,9 @@ class AppStrings {
     'fr': 'Mes renseignements\nsont dispo ici',
     'en': 'My resume is\nonly a click away'
   };
-  static const Map<String, String> RESUME_PRESENTATION_BOREDOM = {
-    'fr': 'Je m\'ennui !!\n     J\'en ai marre !!!',
-    'en': 'I am boooored!!\nI can\'t stand it any longer!!!'
+  static const Map<String, String> RESUME_PRESENTATION_AUDIO_DESCRIPTION = {
+    'fr': 'Activez Voice Over\npour plus de contenu',
+    'en': 'Activate Voice Over\nto unlock more content'
   };
   static const Map<String, String> RESUME_PRESENTATION_OUTCRY = {
     'fr': 'Contactez-moi !\nJe suis peut-être encore disponible !',
@@ -575,5 +575,63 @@ class AppStrings {
   static const Map<String, String> TITLE_OTHER_SKILLS = {
     'fr': 'Autres',
     'en': 'Others',
+  };
+}
+
+class SemanticsStrings {
+  static const Map<String, String> GUIDED_TOUR_1 = {
+    'fr':
+        "Bonjour et bienvenue sur mon dossier de compétence interactif. Si vous pouviez le voir, vous seriez proprement subjugué par une animation de la mascotte du langage Darte, un colibri-bleu que j'ai réalisé moi-même avec un logiciel gratuit de création d'images vectorielles. Vous écarquilleriez les yeux devant la fluidité des transitions entre les différentes rubriques.",
+    'en':
+        'Hello and welcome on my online CV. If you could see it clearly, you would be amazed by the blue animated hummingbird that I created using a free vector graphics software ; your eyes would widen staring at the flabbergastingly smooth tranzitions between sections.',
+  };
+  static const Map<String, String> GUIDED_TOUR_2 = {
+    'fr':
+        "Mais ces époustoufflantes fioritures ne vous étant pas accessibles, je vais, pour vous, m'appuyer sur des phrases bien pensées pour agrémenter la visite. Rassurez-vous, je ne vous assènerai pas la liste détaillée de mes compétences. Sachez simplement que je suis spécialisé dans le développement d'applications web et mobile.",
+    'en':
+        "All of those breathtaking features being unfortunately inaccessible to you, I took the time to create this alternative guided tour. Rest assured, I ill not debilitate you with a boring list of skills and scores. Simply know that I am specialized in web and mobile development.",
+  };
+  static const Map<String, String> GUIDED_TOUR_3 = {
+    'fr':
+        "J'ai codé ce site avec Floeutteur pour me former moi-même sur un outil qui, je le pense, est plein d'avenir, et auquel je ne connaissais rien il y a encore deux mois. J'ai encodé ce texte de manière à ce qu'il soit intelligible dans les logiciels de synthèse vocale embarqués, mais il m'a fallu pour cela faire quelques écarts d'orthographe pour faciliter leur diction, et aussi allonger mes idées de quelques mots pour déjouer les anicroches prosodiques dans leur voix mécaniques. Ayant étudié la linguistique dans ma jeunesse sans en faire mon métier, cette gymnastique est pour moi l'équivalent d'un jeu, comme une grille de mots croisés.",
+    'en':
+        'I wrote this site using Flutter in order to self-train on that framework, knowing nothing about it just a few months ago.',
+  };
+  static const Map<String, String> GUIDED_TOUR_4 = {
+    'fr':
+        "C'est la première fois que j'encode un outil informatique pour fonctionner avec ces technologies d'assistance. On ne me l'a jamais demandé jusqu'à présent dans un cadre professionnel. Maintenant que je m'y attache, je voudrais pouvoir faire preuve de créativité ; créer un parcours complètement indépendant de celui pour le tout-venant, un parcours qui soit aussi attrayant que celui que j'ai commencé par mettre en place pour répondre aux contraintes habituelles de l'entreussoi validiste.",
+    'en':
+        'I am using voice over technology for the first time. I have never been asked to implement anything like this at work so far. But now, as I am slowly learning the specifics of assistive technologies, I wish I could be creative and write a fully independant guided tour, something just as appealing as the one I wrote with only sighted people in mind.',
+  };
+  static const Map<String, String> GUIDED_TOUR_5 = {
+    'fr':
+        "Pour ça, il faudrait probablement que j'ajoute des boutons invisibles ou des raccourcis tactiles dédiés aux malvoyants pour leur procurer une navigation intuitive. Toutefois, mon objectif premier est de trouver un emploi et d'étendre mes connaissances, mes priorités sont donc ailleurs.",
+    'en':
+        'And if I had the time, I would add invisible buttons or handy touchscreen shortcuts to build a navigation system dedicated to the visually impaired, but being unemployed my first priority  is to send applications all day long and learn new skills in order to make a good living again.',
+  };
+  static const Map<String, String> DOWNLOAD_BUTTON = {
+    'fr': "Mon CV est téléchargeable ici en PDF.",
+    'en': 'You can download my CV as a PDF here.',
+  };
+  static const Map<String, String> SOCIALMEDIA_SEGUE = {
+    'fr':
+        "La visite se termine ici, mais si vous voulez en savoir plus, trois options s'offrent à vous",
+    'en':
+        'This guided tour ends here, but if you want to know more, you have three options.',
+  };
+  static const Map<String, String> LINKEDIN = {
+    'fr': "Vous pouvez me contacter sur Linekedine",
+    'en': 'You can contact me on LinkedIn.',
+  };
+  static const Map<String, String> GITHUB = {
+    'fr':
+        "Vous pouvez aussi jeter un oeil sur mes projets publics sur Guiteub.",
+    'en': 'You can also take a look at my GitHub projects.',
+  };
+  static const Map<String, String> INSTAGRAM = {
+    'fr':
+        "Sinon, vous pouvez aussi lorgner sur mes derniers posts sur Ainstagram.",
+    'en':
+        'Or even get to know me on a more personal level by peeking randomly through my Instagram history.',
   };
 }

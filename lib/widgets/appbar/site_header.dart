@@ -4,6 +4,7 @@ import 'package:dossier_de_competences_web/helpers/global_streams.dart'
     show globalStreams;
 import 'package:dossier_de_competences_web/widgets/appbar/content/flipping_appbar_iconbutton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import '../../helpers/colorchart.dart';
 import '../../helpers/constants.dart';
 import '../../helpers/globals.dart' show appLanguage, isDarkMode, isFoldable;
@@ -31,17 +32,24 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
       _animationOpacity;
   late StreamSubscription subscription;
 
-  FlippingAppBarIconButton languageButton = FlippingAppBarIconButton(
-      frontImageFilePath:
-          AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[appLanguage.value]!,
-      backImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[
-          AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]]!,
-      frontTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[appLanguage.value],
-      backTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[
-          AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]],
-      onPressedClbk: () {
-        appLanguage.value = AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]!;
-      });
+  Semantics languageButton = Semantics.fromProperties(
+      properties:
+          SemanticsProperties(enabled: true, focusable: false, button: false),
+      child: ExcludeSemantics(
+          excluding: true,
+          child: FlippingAppBarIconButton(
+              frontImageFilePath:
+                  AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[appLanguage.value]!,
+              backImageFilePath: AppStrings.LANGUAGE_SWITCH_IMAGE_PATH[
+                  AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]]!,
+              frontTooltip:
+                  AppStrings.LANGUAGE_SWITCH_TOOLTIP[appLanguage.value],
+              backTooltip: AppStrings.LANGUAGE_SWITCH_TOOLTIP[
+                  AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]],
+              onPressedClbk: () {
+                appLanguage.value =
+                    AppStrings.LANGUAGE_SWITCH_LOOP[appLanguage.value]!;
+              })));
 
   FlippingAppBarIconButton darkModeButton = FlippingAppBarIconButton(
       frontImageFilePath: AppStrings.DARK_MODE_IMAGE_PATH[false]!,
@@ -188,36 +196,40 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
                                                         CrossAxisAlignment
                                                             .center,
                                                     children: <Widget>[
-                                                      Text(AppStrings.APP_TITLE,
-                                                          style: TextStyle(
-                                                              decoration:
-                                                                  TextDecoration
-                                                                      .none,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize:
-                                                                  titleFontSize,
-                                                              color:
-                                                                  _animationTitleColor
-                                                                      .value)),
-                                                      Text(
-                                                          AppStrings
-                                                                  .APP_SUBTITLE[
-                                                              appLanguage
-                                                                  .value]!,
-                                                          style: TextStyle(
-                                                              decoration:
-                                                                  TextDecoration
-                                                                      .none,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize:
-                                                                  subtitleFontSize,
-                                                              color:
-                                                                  _animationTitleColor
-                                                                      .value)),
+                                                      ExcludeSemantics(
+                                                          excluding: true,
+                                                          child: Text(
+                                                              AppStrings
+                                                                  .APP_TITLE,
+                                                              style: TextStyle(
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .none,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      titleFontSize,
+                                                                  color: _animationTitleColor
+                                                                      .value))),
+                                                      ExcludeSemantics(
+                                                          excluding: true,
+                                                          child: Text(
+                                                              AppStrings
+                                                                      .APP_SUBTITLE[
+                                                                  appLanguage
+                                                                      .value]!,
+                                                              style: TextStyle(
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .none,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      subtitleFontSize,
+                                                                  color: _animationTitleColor
+                                                                      .value))),
                                                     ])))),
                                     Container(
                                       height: componentHeight,
