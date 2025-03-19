@@ -1,7 +1,6 @@
 import 'package:dossier_de_competences_web/helpers/constants.dart'
-    show AppStrings, SemanticsStrings;
+    show AppStrings;
 import 'package:dossier_de_competences_web/helpers/utils.dart' show Utils;
-import 'package:flutter/foundation.dart' show PlatformDispatcher;
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart'
     show SemanticsBinding, SemanticsProperties;

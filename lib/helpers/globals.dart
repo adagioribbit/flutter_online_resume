@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ItemScrollController;
 
+
 ValueNotifier<String> appLanguage = ValueNotifier<String>(
     (PlatformDispatcher.instance.locale.toString().substring(0, 2) != 'fr'
         ? 'en'
         : 'fr'));
 ValueNotifier<bool> isDarkMode = ValueNotifier<bool>(false);
 ValueNotifier<bool> isFoldable = ValueNotifier<bool>(false);
+ValueNotifier<bool> isVisibleSkillListFilters = ValueNotifier<bool>(false);
 
 CarouselSliderController carouselController = CarouselSliderController();
 ScrollController educationContentScrollController = ScrollController();
@@ -126,7 +128,6 @@ enum SkillUsage {
 enum SkillType {
   language,
   tool,
-  softskill,
 }
 
 class GlobalKeyRing {

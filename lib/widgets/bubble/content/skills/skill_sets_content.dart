@@ -4,8 +4,14 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
 
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart'
-    show SkillKey, initialScrollSkillItem, skillListScrollController;
-import '../../../../widgets/bubble/content/skills/skills.dart' show skillList;
+    show
+        SkillKey,
+        initialScrollSkillItem,
+        isVisibleSkillListFilters,
+        skillListScrollController;
+import '../../../../widgets/bubble/content/skills/skill_list.dart'
+    show skillList;
+import 'skill_list_filter_form.dart' show skillListFilterForm;
 
 class SkillSetsContent extends StatefulWidget implements PreferredSizeWidget {
   const SkillSetsContent({super.key});
@@ -70,11 +76,42 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
                 child: skillList[index]);
           });
 
+      double settingsButtonSize = (constraints.maxWidth * 0.08).clamp(0.5, 40);
+      double settingsButtonContainerSize = settingsButtonSize * 1.25;
+
       return Container(
           constraints: BoxConstraints(
               maxHeight: constraints.maxHeight * 0.95,
               maxWidth: constraints.maxWidth * 0.9),
-          child: list);
+          child: Stack(children: [
+            list,
+            //skillListFilterForm,
+            //Positioned(
+            //    bottom: 0,
+            //    right: 0,
+            //    child: Container(
+            //        height: settingsButtonContainerSize,
+            //        width: settingsButtonContainerSize,
+            //        decoration: BoxDecoration(
+            //          color: Color.fromARGB(117, 255, 255, 255),
+            //          border:
+            //              Border.all(color: Colors.orangeAccent, width: 3.0),
+            //          borderRadius:
+            //              const BorderRadius.all(Radius.circular(100)),
+            //        ),
+            //        child: IconButton(
+            //          padding: EdgeInsets.all(0),
+            //          icon: Icon(
+            //            color: Colors.orangeAccent,
+            //            size: settingsButtonSize,
+            //            Icons.search,
+            //          ),
+            //          onPressed: () {
+            //            isVisibleSkillListFilters.value =
+            //                !isVisibleSkillListFilters.value;
+            //          },
+            //        ))),
+          ]));
     });
   }
 }
