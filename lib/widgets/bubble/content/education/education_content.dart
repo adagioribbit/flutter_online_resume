@@ -2,6 +2,7 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
     show SkillBadge;
 import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart' show SemanticsBinding, SemanticsHandle;
 
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart'
@@ -39,6 +40,7 @@ class _EducationContentState extends State<EducationContent> {
   @override
   void initState() {
     super.initState();
+    SemanticsBinding.instance.ensureSemantics().dispose();
   }
 
   @override
@@ -58,115 +60,136 @@ class _EducationContentState extends State<EducationContent> {
           externalLinkHeight = constraints.maxHeight * 0.1;
 
       List<Widget> content = [
-        Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-            child: Image(
-                height: 100.0,
-                image: AssetImage(widget.academicLogoAssetPath))),
-        Text(widget.periodDescription.toString(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                decoration: TextDecoration.none,
-                color: Colors.black,
-                fontSize: titleFontSize,
-                fontStyle: FontStyle.italic)),
-        Text(widget.degreeDescription.toString(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                decoration: TextDecoration.none,
-                color: Colors.black,
-                fontSize: titleFontSize,
-                fontWeight: FontWeight.bold)),
-        Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.symmetric(horizontal: 5, vertical: 25),
-            child: Builder(builder: (BuildContext context) {
-              List<String> sentences =
-                  widget.curriculumDescription.toString().split('\t');
+        ExcludeSemantics(
+            excluding: true,
+            child: Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                child: Image(
+                    height: 100.0,
+                    image: AssetImage(widget.academicLogoAssetPath)))),
+        ExcludeSemantics(
+            excluding: true,
+            child: Text(widget.periodDescription.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.black,
+                    fontSize: titleFontSize,
+                    fontStyle: FontStyle.italic))),
+        ExcludeSemantics(
+            excluding: true,
+            child: Text(widget.degreeDescription.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.black,
+                    fontSize: titleFontSize,
+                    fontWeight: FontWeight.bold))),
+        ExcludeSemantics(
+            excluding: true,
+            child: Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.symmetric(horizontal: 5, vertical: 25),
+                child: Builder(builder: (BuildContext context) {
+                  List<String> sentences =
+                      widget.curriculumDescription.toString().split('\t');
 
-              List<InlineSpan> richTextChildren = [];
-              for (String sentence in sentences) {
-                richTextChildren.add(WidgetSpan(child: SizedBox(width: 40.0)));
-                richTextChildren.add(TextSpan(
-                    text: sentence,
-                    style: TextStyle(
-                        fontSize: contentFontSize, fontFamily: "Courier")));
-              }
-              return RichText(
-                  textAlign: TextAlign.justify,
-                  text: TextSpan(children: richTextChildren));
-            }))
+                  List<InlineSpan> richTextChildren = [];
+                  for (String sentence in sentences) {
+                    richTextChildren
+                        .add(WidgetSpan(child: SizedBox(width: 40.0)));
+                    richTextChildren.add(TextSpan(
+                        text: sentence,
+                        style: TextStyle(
+                            fontSize: contentFontSize, fontFamily: "Courier")));
+                  }
+                  return RichText(
+                      textAlign: TextAlign.justify,
+                      text: TextSpan(children: richTextChildren));
+                })))
       ];
 
       if (widget.externalLinks.isNotEmpty) {
         if (!widget.academicLogoAssetPath.contains("upec")) {
-          content.add(Text(
-              AppStrings.TITLE_DETAILS[appLanguage.value].toString(),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: Colors.black,
-                  fontSize: titleFontSize,
-                  fontWeight: FontWeight.bold)));
+          content.add(ExcludeSemantics(
+              excluding: true,
+              child: Text(
+                  AppStrings.TITLE_DETAILS[appLanguage.value].toString(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontSize: titleFontSize,
+                      fontWeight: FontWeight.bold))));
         }
 
-        content.add(Container(
-            height: externalLinkHeight,
-            child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: titleFontSize,
-                children: widget.externalLinks)));
+        content.add(ExcludeSemantics(
+            excluding: true,
+            child: Container(
+                height: externalLinkHeight,
+                child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: titleFontSize,
+                    children: widget.externalLinks))));
       }
 
       if (widget.languages.isNotEmpty) {
-        content.add(Text(
-            AppStrings.TITLE_LANGUAGES[appLanguage.value].toString(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                decoration: TextDecoration.none,
-                color: Colors.black,
-                fontSize: titleFontSize,
-                fontWeight: FontWeight.bold)));
+        content.add(ExcludeSemantics(
+            excluding: true,
+            child: Text(
+                AppStrings.TITLE_LANGUAGES[appLanguage.value].toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.black,
+                    fontSize: titleFontSize,
+                    fontWeight: FontWeight.bold))));
 
-        content.add(Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: widget.boxBorderColor, width: 0.5),
-            ),
-            alignment: Alignment.center,
-            margin: EdgeInsets.all(5),
-            child: Column(children: [
-              Wrap(
-                direction: Axis.horizontal,
-                alignment: WrapAlignment.center,
-                children: widget.languages,
-              )
-            ])));
+        content.add(ExcludeSemantics(
+            excluding: true,
+            child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: widget.boxBorderColor, width: 0.5),
+                ),
+                alignment: Alignment.center,
+                margin: EdgeInsets.all(5),
+                child: Column(children: [
+                  Wrap(
+                    direction: Axis.horizontal,
+                    alignment: WrapAlignment.center,
+                    children: widget.languages,
+                  )
+                ]))));
       }
 
       if (widget.tools.isNotEmpty) {
-        content.add(Text(AppStrings.TITLE_TOOLS[appLanguage.value].toString(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                decoration: TextDecoration.none,
-                color: Colors.black,
-                fontSize: titleFontSize,
-                fontWeight: FontWeight.bold)));
+        content.add(ExcludeSemantics(
+            excluding: true,
+            child: Text(AppStrings.TITLE_TOOLS[appLanguage.value].toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.black,
+                    fontSize: titleFontSize,
+                    fontWeight: FontWeight.bold))));
 
-        content.add(Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: widget.boxBorderColor, width: 0.5),
-            ),
-            alignment: Alignment.center,
-            margin: EdgeInsets.all(5),
-            child: Column(children: [
-              Wrap(
-                direction: Axis.horizontal,
-                alignment: WrapAlignment.center,
-                children: widget.tools,
-              )
-            ])));
+        content.add(ExcludeSemantics(
+            excluding: true,
+            child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: widget.boxBorderColor, width: 0.5),
+                ),
+                alignment: Alignment.center,
+                margin: EdgeInsets.all(5),
+                child: Column(children: [
+                  Wrap(
+                    direction: Axis.horizontal,
+                    alignment: WrapAlignment.center,
+                    children: widget.tools,
+                  )
+                ]))));
       }
 
       return Container(

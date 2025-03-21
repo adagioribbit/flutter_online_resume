@@ -5,7 +5,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart'
     show SkillKey, initialScrollSkillItem, skillListScrollController;
-import '../../../../widgets/bubble/content/skills/skills.dart' show skillList;
+import 'skill_list.dart' show skillList;
 
 class SkillSetsContent extends StatefulWidget implements PreferredSizeWidget {
   const SkillSetsContent({super.key});

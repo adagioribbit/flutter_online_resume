@@ -90,20 +90,18 @@ class _SocialNetworkingState extends State<SocialNetworking> {
             focusable: true,
             tooltip: SemanticsStrings.LINKEDIN[appLanguage.value],
             button: true),
-        child: ExcludeSemantics(
-            excluding: true,
-            child: IconButton(
-              hoverColor: ColorChart.linkedInButtonShadowHovered,
-              constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-              icon: Image(
-                image: AssetImage("lib/assets/appbar/linkedin.png"),
-                fit: BoxFit.fill,
-              ),
-              tooltip: AppStrings.LINKEDIN_TOOLTIP[appLanguage.value],
-              onPressed: () {
-                html.window.open(AppStrings.LINKEDIN_URL, '_blank');
-              },
-            )));
+        child: IconButton(
+          hoverColor: ColorChart.linkedInButtonShadowHovered,
+          constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+          icon: Image(
+            image: AssetImage("lib/assets/appbar/linkedin.png"),
+            fit: BoxFit.fill,
+          ),
+          tooltip: AppStrings.LINKEDIN_TOOLTIP[appLanguage.value],
+          onPressed: () {
+            html.window.open(AppStrings.LINKEDIN_URL, '_blank');
+          },
+        ));
 
     Semantics githubButton = Semantics.fromProperties(
         properties: SemanticsProperties(
@@ -111,20 +109,18 @@ class _SocialNetworkingState extends State<SocialNetworking> {
             focusable: true,
             tooltip: SemanticsStrings.GITHUB[appLanguage.value],
             button: true),
-        child: ExcludeSemantics(
-            excluding: true,
-            child: IconButton(
-              hoverColor: ColorChart.githubButtonShadowHovered,
-              constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-              icon: Image(
-                image: AssetImage("lib/assets/appbar/github.png"),
-                fit: BoxFit.fill,
-              ),
-              tooltip: AppStrings.GITHUB_TOOLTIP[appLanguage.value],
-              onPressed: () {
-                html.window.open(AppStrings.GITHUB_URL, '_blank');
-              },
-            )));
+        child: IconButton(
+          hoverColor: ColorChart.githubButtonShadowHovered,
+          constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+          icon: Image(
+            image: AssetImage("lib/assets/appbar/github.png"),
+            fit: BoxFit.fill,
+          ),
+          tooltip: AppStrings.GITHUB_TOOLTIP[appLanguage.value],
+          onPressed: () {
+            html.window.open(AppStrings.GITHUB_URL, '_blank');
+          },
+        ));
 
     Semantics instagramButton = Semantics.fromProperties(
         properties: SemanticsProperties(
@@ -132,20 +128,18 @@ class _SocialNetworkingState extends State<SocialNetworking> {
             focusable: true,
             tooltip: SemanticsStrings.INSTAGRAM[appLanguage.value],
             button: true),
-        child: ExcludeSemantics(
-            excluding: true,
-            child: IconButton(
-              hoverColor: ColorChart.instagralButtonShadowHovered,
-              constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-              icon: Image(
-                image: AssetImage("lib/assets/appbar/instagram.png"),
-                fit: BoxFit.fill,
-              ),
-              tooltip: AppStrings.INSTAGRAM_TOOLTIP[appLanguage.value],
-              onPressed: () {
-                html.window.open(AppStrings.INSTAGRAM_URL, '_blank');
-              },
-            )));
+        child: IconButton(
+          hoverColor: ColorChart.instagralButtonShadowHovered,
+          constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
+          icon: Image(
+            image: AssetImage("lib/assets/appbar/instagram.png"),
+            fit: BoxFit.fill,
+          ),
+          tooltip: AppStrings.INSTAGRAM_TOOLTIP[appLanguage.value],
+          onPressed: () {
+            html.window.open(AppStrings.INSTAGRAM_URL, '_blank');
+          },
+        ));
 
     if (isFoldable || isPhoneScreen || Utils.screenWidth < 450) {
       Matrix4 matrixTransform = Matrix4.identity()
