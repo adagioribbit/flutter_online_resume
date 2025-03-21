@@ -197,6 +197,7 @@ flutter:
     - lib/assets/bubble_content/skill/xcode.png
     - lib/assets/bubble_content/skill/xml.png
 
+    - lib/assets/files/download_button.png
     - lib/assets/files/download_pdf.png
     - lib/assets/files/Resume_2025.pdf
     - lib/assets/files/CV_2025.pdf

@@ -45,7 +45,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
     double contentScaleFactor = (containerConstraints.maxHeight / 1994) * 1.5;
 
     Offset vitruveOffset = Offset(100, -100);
-    Offset audioDescriptionLogoOffset = Offset(650, 50);
+    Offset audioDescriptionLogoOffset = Offset(600, 50);
     Offset audioDescriptionIncentiveOffset = Offset(450, 75);
     Offset pretextOffset = Offset(75, -25);
     Offset mangaCrowOffset = Offset(425, -50);
@@ -56,7 +56,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
 
     if (isSmallScreen) {
       vitruveOffset = Offset(125, 0);
-      audioDescriptionLogoOffset = Offset(675, 150);
+      audioDescriptionLogoOffset = Offset(600, 160);
       audioDescriptionIncentiveOffset = Offset(450, 150);
       pretextOffset = Offset(75, 25);
       mangaCrowOffset = Offset(425, -50);
@@ -105,7 +105,8 @@ class _DraftPresentationState extends State<DraftPresentation> {
                       0, 3, audioDescriptionLogoOffset.dx * contentScaleFactor)
                   // Translate Y
                   ..setEntry(
-                      1, 3, audioDescriptionLogoOffset.dy * contentScaleFactor),
+                      1, 3, audioDescriptionLogoOffset.dy * contentScaleFactor)
+                  ..rotateZ(pi * 0.0573),
                 child: Image(
                     height: 100 * contentScaleFactor,
                     image: AssetImage(
@@ -138,7 +139,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                         fontSize: 50.0 * contentScaleFactor,
                         fontFamily: "GrapeNuts",
                         fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(127, 0, 0, 0),
+                        color: const Color.fromARGB(200, 40, 37, 97),
                         decoration: TextDecoration.none)))));
 
     Semantics pretext = Semantics.fromProperties(
@@ -258,39 +259,15 @@ class _DraftPresentationState extends State<DraftPresentation> {
                         label: SemanticsStrings
                             .DOWNLOAD_BUTTON[appLanguage.value]),
                     child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 40 * contentScaleFactor),
-                        height: 175 * contentScaleFactor,
-                        width: 175 * contentScaleFactor,
+                        height: 150 * contentScaleFactor,
                         decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color.fromARGB(88, 219, 51, 21),
-                              spreadRadius: 5,
-                              blurRadius: 5,
-                            ),
-                            BoxShadow(
-                              color: const Color.fromARGB(226, 219, 51, 21),
-                            ),
-                            BoxShadow(
-                              color: Colors.white,
-                              spreadRadius: -5,
-                              blurRadius: 5,
-                            ),
-                          ],
-                          border: Border(
-                              left: BorderSide(
-                                  color:
-                                      const Color.fromARGB(226, 219, 51, 21)),
-                              top: BorderSide(
-                                  color:
-                                      const Color.fromARGB(226, 219, 51, 21))),
                           borderRadius: BorderRadius.all(
                               Radius.circular(200 * contentScaleFactor)),
                         ),
                         child: Image(
+                            fit: BoxFit.fitHeight,
                             image: AssetImage(
-                                "lib/assets/files/download_pdf.png")))))));
+                                "lib/assets/files/download_button.png")))))));
 
     Semantics resumeArrow = Semantics.fromProperties(
         properties:
