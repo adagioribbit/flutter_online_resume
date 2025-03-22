@@ -202,7 +202,7 @@ flutter:
     - lib/assets/files/Resume_2025.pdf
     - lib/assets/files/CV_2025.pdf
 
-    - lib/assets/resume_presentation/audio_description.png
+    - lib/assets/resume_presentation/audio_description.gif
     - lib/assets/resume_presentation/blank_squared_sheet.png
     - lib/assets/resume_presentation/blue_manga_crow/body_flapping.gif
     - lib/assets/resume_presentation/blue_manga_crow/droppings.png

@@ -110,7 +110,7 @@ class _DraftPresentationState extends State<DraftPresentation> {
                 child: Image(
                     height: 100 * contentScaleFactor,
                     image: AssetImage(
-                        "lib/assets/resume_presentation/audio_description.png")))));
+                        "lib/assets/resume_presentation/audio_description.gif")))));
 
     Semantics audioDescriptionIncentive = Semantics.fromProperties(
         properties: SemanticsProperties(
