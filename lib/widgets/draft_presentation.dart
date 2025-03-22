@@ -1,7 +1,10 @@
+import 'dart:async' show StreamSubscription;
 import 'dart:math';
 import 'package:dossier_de_competences_web/helpers/global_streams.dart'
     show globalStreams;
 import 'package:dossier_de_competences_web/helpers/utils.dart' show OS, Utils;
+import 'package:dossier_de_competences_web/widgets/bubble/bubble_carousel.dart'
+    show BubbleCarousel;
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart' show SemanticsProperties;
 import 'package:web/web.dart' as html show window;
@@ -21,10 +24,12 @@ class DraftPresentation extends StatefulWidget {
 }
 
 class _DraftPresentationState extends State<DraftPresentation> {
+  late StreamSubscription subscriptionToggleAppBar;
   late double scaleFactor, pinchScaleRatio = 0.0;
   ScaleUpdateDetails prevScaleUpdateDetails = ScaleUpdateDetails();
 
   ValueNotifier<double> pinchRotationAngle = ValueNotifier<double>(0.0);
+  ValueNotifier<Offset> dragOffset = ValueNotifier<Offset>(Offset.zero);
 
   @override
   void initState() {
@@ -32,6 +37,19 @@ class _DraftPresentationState extends State<DraftPresentation> {
     scaleFactor = DraftPresentation.defaultScaleFactor;
 
     pinchRotationAngle.addListener(() => setState(() {}));
+    dragOffset.addListener(() => setState(() {}));
+
+    subscriptionToggleAppBar =
+        globalStreams.eventToggleAppBar.listen((mustHide) async {
+      if (mustHide) {
+        Future.delayed(BubbleCarousel.animationDuration, () {
+          pinchRotationAngle.value = 0.0;
+          dragOffset.value = Offset.zero;
+          scaleFactor = DraftPresentation.defaultScaleFactor;
+          pinchScaleRatio = 0.0;
+        });
+      }
+    });
   }
 
   @override
@@ -359,7 +377,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
           ),
           child: GestureDetector(
               onScaleUpdate: (ScaleUpdateDetails details) {
-                if (details.pointerCount > 1) {
+                if (details.pointerCount == 1) {
+                  dragOffset.value += (details.focalPointDelta * scaleFactor);
+                } else if (details.pointerCount > 1) {
                   double diffScale =
                       prevScaleUpdateDetails.scale - details.scale;
                   double diffRotation =
@@ -383,9 +403,12 @@ class _DraftPresentationState extends State<DraftPresentation> {
                       transform: Matrix4.identity()
                         // Scale
                         ..setEntry(3, 3,
-                            (rescaleBasis * scaleFactor) + (pinchScaleRatio))
+                            (rescaleBasis * scaleFactor) + pinchScaleRatio)
+                        // Translate X
+                        ..setEntry(0, 3, dragOffset.value.dx)
                         // Translate Y
-                        ..setEntry(1, 3, -100 * scaleFactor)
+                        ..setEntry(
+                            1, 3, (-100 * scaleFactor) + dragOffset.value.dy)
                         ..rotateZ(rotationFactor - pinchRotationAngle.value),
                       child: SquaredSheet(
                           scaleFactor: DraftPresentation.defaultScaleFactor *
