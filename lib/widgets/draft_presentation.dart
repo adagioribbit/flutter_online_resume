@@ -264,10 +264,16 @@ class _DraftPresentationState extends State<DraftPresentation> {
                           borderRadius: BorderRadius.all(
                               Radius.circular(200 * contentScaleFactor)),
                         ),
-                        child: Image(
-                            fit: BoxFit.fitHeight,
-                            image: AssetImage(
-                                "lib/assets/files/download_button.png")))))));
+                        child: Stack(children: [
+                          Image(
+                              fit: BoxFit.fitHeight,
+                              image: AssetImage(
+                                  "lib/assets/files/download_button_background.png")),
+                          Image(
+                              fit: BoxFit.fitHeight,
+                              image: AssetImage(
+                                  "lib/assets/files/download_button_pdf.gif")),
+                        ]))))));
 
     Semantics resumeArrow = Semantics.fromProperties(
         properties:
