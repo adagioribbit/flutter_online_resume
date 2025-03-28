@@ -121,7 +121,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           }
         });
       } else {
-        setState(() {});
+        setState(() {
+          updateBubbleOrigin();
+        });
       }
     });
   }
@@ -149,6 +151,15 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     super.dispose();
   }
 
+  void updateBubbleOrigin() {
+    if (originButton != ToolbarMenu.none) {
+      bubbleOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
+              ?.findRenderObject() as RenderBox)
+          .localToGlobal(Offset(
+              Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
+    }
+  }
+
   Future<void> toggleInflation(ToolbarMenu? value) async {
     originButton = value!;
     // On tap outside
@@ -170,26 +181,14 @@ class _BubbleCarouselState extends State<BubbleCarousel>
       if (_animationController.isCompleted) {
         await _animationController.reverse().then((value) async {
           if (isMenuSwitch) {
-            if (originButton != ToolbarMenu.none) {
-              bubbleOrigin = (GlobalKeyRing
-                      .toolbar[originButton]?.currentContext
-                      ?.findRenderObject() as RenderBox)
-                  .localToGlobal(Offset(Constants.TOOLBAR_HEIGHT * 0.3,
-                      Constants.TOOLBAR_HEIGHT * 0.8));
-            }
-
+            updateBubbleOrigin();
             preButton = originButton;
             _animationController.forward();
           }
         });
       } else {
         if (isMenuSwitch) {
-          if (originButton != ToolbarMenu.none) {
-            bubbleOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
-                    ?.findRenderObject() as RenderBox)
-                .localToGlobal(Offset(Constants.TOOLBAR_HEIGHT * 0.3,
-                    Constants.TOOLBAR_HEIGHT * 0.8));
-          }
+          updateBubbleOrigin();
           preButton = originButton;
         }
         await _animationController.forward();
