@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart'
     show SemanticsBinding, SemanticsProperties;
 
+import 'helpers/global_streams.dart' show globalStreams;
 import 'helpers/globals.dart' show GlobalKeyRing, appLanguage, isDarkMode;
 import 'widgets/bubble/bubble_carousel.dart';
 import 'widgets/appbar/site_header.dart';
@@ -44,6 +45,11 @@ class _CardAndTabAppState extends State<CardAndTabApp> {
     super.didChangeDependencies();
     isPortrait = Utils.isPortraitContext(context);
     setState(() {});
+
+    // Trigger bubble redraw to fix its position
+    Future.delayed(const Duration(milliseconds: 150), () {
+      globalStreams.triggerBubbleCarousel(null);
+    });
   }
 
   @override

@@ -109,24 +109,21 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     navigationButtonPalette = educationButtonPalette;
 
     subscription = globalStreams.eventBubbleCarousel.listen((value) async {
-      toggleInflation(value).then((v) {
-        if (value != ToolbarMenu.btnSkillsSet) {
-          carouselController.jumpToPage(carouselIndex.value);
-        }
-      });
+      if (value != null) {
+        toggleInflation(value).then((v) {
+          if (value != ToolbarMenu.btnSkillsSet) {
+            carouselController.jumpToPage(carouselIndex.value);
+          }
+        });
+      } else {
+        setState(() {});
+      }
     });
   }
 
   @override
   void didChangeDependencies() {
     isPortrait = Utils.isPortraitOrientation();
-
-    if (originButton != ToolbarMenu.none) {
-      bubbleOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
-              ?.findRenderObject() as RenderBox)
-          .localToGlobal(Offset(
-              Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
-    }
 
     setState(() {
       screenSize = Utils.getContextSize(context);
@@ -147,18 +144,14 @@ class _BubbleCarouselState extends State<BubbleCarousel>
     super.dispose();
   }
 
-  Future<void> toggleInflation(ToolbarMenu value) async {
-    originButton = value;
+  Future<void> toggleInflation(ToolbarMenu? value) async {
+    originButton = value!;
     if (originButton == ToolbarMenu.none) {
       originButton = preButton;
       await _animationController.reverse();
     } else {
       originButton = value;
       bool isMenuSwitch = preButton != originButton;
-      Offset newOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
-              ?.findRenderObject() as RenderBox)
-          .localToGlobal(Offset(
-              Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
 
       if (isMenuSwitch && preButton != ToolbarMenu.btnSkillsSet) {
         carouselIndex.value = 0;
@@ -168,14 +161,12 @@ class _BubbleCarouselState extends State<BubbleCarousel>
         await _animationController.reverse().then((value) async {
           if (isMenuSwitch) {
             preButton = originButton;
-            bubbleOrigin = newOrigin;
             await _animationController.forward();
           }
         }).then((value) => setState(() {}));
       } else {
         if (isMenuSwitch) {
           preButton = originButton;
-          bubbleOrigin = newOrigin;
         }
         await _animationController.forward().then((value) => setState(() {}));
       }
@@ -195,6 +186,13 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             ? 20.0
             : 50.0) *
         _animationInflate.value;
+
+    if (originButton != ToolbarMenu.none) {
+      bubbleOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
+              ?.findRenderObject() as RenderBox)
+          .localToGlobal(Offset(
+              Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
+    }
 
     hailerOffset = Offset(bubbleOrigin.dx - (hailerSize / 2.0),
         bubbleOrigin.dy - hailerSize - Constants.TOOLBAR_HEIGHT);

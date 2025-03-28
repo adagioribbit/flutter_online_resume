@@ -6,8 +6,8 @@ class GlobalStreams {
   final BehaviorSubject<bool> _streamStackSocialMediaButtons =
       BehaviorSubject<bool>();
   final BehaviorSubject<bool> _streamIsAppBarVisible = BehaviorSubject<bool>();
-  final BehaviorSubject<ToolbarMenu> _streamBubbleCarousel =
-      BehaviorSubject<ToolbarMenu>();
+  final BehaviorSubject<ToolbarMenu?> _streamBubbleCarousel =
+      BehaviorSubject<ToolbarMenu?>();
   final BehaviorSubject<List<double>> _streamSkillListItem =
       BehaviorSubject<List<double>>();
   final BehaviorSubject<bool> _streamSkillListFilters = BehaviorSubject<bool>();
@@ -16,7 +16,7 @@ class GlobalStreams {
   ValueStream<bool> get eventStackSocialMediaButtons =>
       _streamStackSocialMediaButtons.stream;
   ValueStream<bool> get eventToggleAppBar => _streamIsAppBarVisible.stream;
-  ValueStream<ToolbarMenu> get eventBubbleCarousel =>
+  ValueStream<ToolbarMenu?> get eventBubbleCarousel =>
       _streamBubbleCarousel.stream;
   ValueStream<List<double>> get eventSkillListItem =>
       _streamSkillListItem.stream;
@@ -26,7 +26,7 @@ class GlobalStreams {
   Function(bool) get triggerStackSocialMediaButtons =>
       _streamStackSocialMediaButtons.sink.add;
   Function(bool) get triggerToggleAppBar => _streamIsAppBarVisible.sink.add;
-  Function(ToolbarMenu) get triggerBubbleCarousel =>
+  Function(ToolbarMenu?) get triggerBubbleCarousel =>
       _streamBubbleCarousel.sink.add;
   Function(List<double>) get triggerSkillListItem =>
       _streamSkillListItem.sink.add;

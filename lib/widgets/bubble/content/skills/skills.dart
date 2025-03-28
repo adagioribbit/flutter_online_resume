@@ -860,7 +860,14 @@ Skill gaugeSql = Skill(
     iconAssetPath: "lib/assets/bubble_content/skill/sql.png",
     nbYearsPractice: 7.06,
     dateLastUsed: DateTime(2024, 9),
-    experiences: [badgeLeWagon, badgeAmiltonePowerBI, badgeLeCnam, badgeGreta]);
+    experiences: [
+      badgeLeWagon,
+      badgeAmiltonePowerBI,
+      badgeEvolucareImaging,
+      badgeEvolucareMobile,
+      badgeLeCnam,
+      badgeGreta
+    ]);
 
 Skill gaugeSqlserver = Skill(
     key: SkillKey.gaugeSqlserver,
