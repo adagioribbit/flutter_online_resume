@@ -48,7 +48,11 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   late List<Widget> carouselContent;
   late ToolbarMenu preButton, originButton;
   late EdgeInsets marginBubble;
-  late double animatedBubbleMargin, bubbleHeight, bubbleWidth, hailerSize;
+  late double animatedBubbleMargin,
+      bubbleOffsetX,
+      bubbleHeight,
+      bubbleWidth,
+      hailerSize;
   late Offset bubbleOffset, bubbleOrigin, hailerOffset;
   late bool isPortrait;
   late Size screenSize, containerSize;
@@ -61,6 +65,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   void initState() {
     super.initState();
     carouselIndex.value = 0;
+    bubbleOffsetX = 0.0;
 
     _animationController = AnimationController(
         vsync: this, duration: BubbleCarousel.animationDuration);
@@ -146,29 +151,48 @@ class _BubbleCarouselState extends State<BubbleCarousel>
 
   Future<void> toggleInflation(ToolbarMenu? value) async {
     originButton = value!;
+    // On tap outside
     if (originButton == ToolbarMenu.none) {
       originButton = preButton;
       await _animationController.reverse();
-    } else {
+    }
+    // On tap toolbarButton
+    else {
       originButton = value;
       bool isMenuSwitch = preButton != originButton;
 
+      // Rewind carousel on menu change towards Education or WorkExperience
       if (isMenuSwitch && preButton != ToolbarMenu.btnSkillsSet) {
         carouselIndex.value = 0;
       }
 
+      // If bubble is opened
       if (_animationController.isCompleted) {
         await _animationController.reverse().then((value) async {
           if (isMenuSwitch) {
+            if (originButton != ToolbarMenu.none) {
+              bubbleOrigin = (GlobalKeyRing
+                      .toolbar[originButton]?.currentContext
+                      ?.findRenderObject() as RenderBox)
+                  .localToGlobal(Offset(Constants.TOOLBAR_HEIGHT * 0.3,
+                      Constants.TOOLBAR_HEIGHT * 0.8));
+            }
+
             preButton = originButton;
-            await _animationController.forward();
+            _animationController.forward();
           }
-        }).then((value) => setState(() {}));
+        });
       } else {
         if (isMenuSwitch) {
+          if (originButton != ToolbarMenu.none) {
+            bubbleOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
+                    ?.findRenderObject() as RenderBox)
+                .localToGlobal(Offset(Constants.TOOLBAR_HEIGHT * 0.3,
+                    Constants.TOOLBAR_HEIGHT * 0.8));
+          }
           preButton = originButton;
         }
-        await _animationController.forward().then((value) => setState(() {}));
+        await _animationController.forward();
       }
     }
   }
@@ -187,13 +211,6 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             : 50.0) *
         _animationInflate.value;
 
-    if (originButton != ToolbarMenu.none) {
-      bubbleOrigin = (GlobalKeyRing.toolbar[originButton]?.currentContext
-              ?.findRenderObject() as RenderBox)
-          .localToGlobal(Offset(
-              Constants.TOOLBAR_HEIGHT * 0.3, Constants.TOOLBAR_HEIGHT * 0.8));
-    }
-
     hailerOffset = Offset(bubbleOrigin.dx - (hailerSize / 2.0),
         bubbleOrigin.dy - hailerSize - Constants.TOOLBAR_HEIGHT);
 
@@ -208,10 +225,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
             marginBubble.horizontal)
         .clamp(50, BubbleCarousel.bubbleMaxWidth);
 
-    double bubbleOffsetX =
-        bubbleOrigin.dx - (bubbleOrigin.dx * _animationInflate.value);
     if (screenSize.width > BubbleCarousel.bubbleMaxWidth) {
-      if (originButton != preButton && _animationController.isDismissed) {
+      if (originButton != preButton &&
+          !_animationController.isForwardOrCompleted) {
         if (preButton == ToolbarMenu.btnSkillsSet) {
           bubbleOffsetX = (bubbleOrigin.dx - bubbleWidth / 2);
         } else if (preButton == ToolbarMenu.btnWorkExperience) {
@@ -230,6 +246,9 @@ class _BubbleCarouselState extends State<BubbleCarousel>
           bubbleOffsetX = max(0, (bubbleOrigin.dx - bubbleWidth / 3));
         }
       }
+    } else {
+      bubbleOffsetX =
+          bubbleOrigin.dx - (bubbleOrigin.dx * _animationInflate.value);
     }
     bubbleOffset = Offset(bubbleOffsetX, hailerOffset.dy - bubbleHeight);
 
