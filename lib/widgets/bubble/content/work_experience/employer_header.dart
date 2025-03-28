@@ -4,10 +4,9 @@ import 'package:dossier_de_competences_web/helpers/globals.dart'
     show carouselController, carouselIndex;
 import 'package:flutter/material.dart';
 
-import '../../../../helpers/constants.dart';
 import '../../../../helpers/utils.dart';
 
-class EmployerHeader extends StatefulWidget implements PreferredSizeWidget {
+class EmployerHeader extends StatefulWidget {
   static const int indexMinPrastelContent = 1;
   static const int indexMinAmiltoneContent = 4;
   static const int indexMinEvolucareContent = 9;
@@ -15,11 +14,6 @@ class EmployerHeader extends StatefulWidget implements PreferredSizeWidget {
   final String employerLogoAssetPath;
 
   const EmployerHeader({required this.employerLogoAssetPath, super.key});
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
 
   @override
   State<EmployerHeader> createState() => _EmployerHeaderState();

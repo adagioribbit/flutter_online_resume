@@ -1,9 +1,8 @@
+import 'package:flutter/widgets.dart' show Widget;
 import 'package:dossier_de_competences_web/helpers/globals.dart'
     show SkillKey, SkillType, SkillUsage;
 import 'package:dossier_de_competences_web/widgets/bubble/content/education/education_badges.dart'
     show badgeLeCnam, badgeUpec, badgeGreta, badgeLeWagon;
-import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_list_item.dart'
-    show SkillListItem;
 import 'package:dossier_de_competences_web/widgets/bubble/content/work_experience/work_experience_badges.dart'
     show
         badgeAmiltoneAndroid,
@@ -19,8 +18,47 @@ import 'package:dossier_de_competences_web/widgets/bubble/content/work_experienc
         badgePrastelSiteInterne,
         badgeYardStick;
 
-SkillListItem gaugeAccess = SkillListItem(
-    skillKey: SkillKey.gaugeAccess,
+class Skill {
+  final SkillKey key;
+  final SkillType type;
+  final SkillUsage usage;
+  final String iconAssetPath, title;
+  final double nbYearsPractice;
+  final DateTime dateLastUsed;
+  final List<Widget> experiences;
+
+  const Skill(
+      {required this.key,
+      required this.type,
+      required this.usage,
+      required this.iconAssetPath,
+      required this.title,
+      required this.nbYearsPractice,
+      required this.dateLastUsed,
+      required this.experiences});
+
+  Map<String, dynamic> _toSortMap() {
+    return {
+      "key": key,
+      "title": title,
+      "type": type,
+      "usage": usage,
+      "nbYearsPractice": nbYearsPractice,
+      "dateLastUsed": dateLastUsed,
+    };
+  }
+
+  dynamic get(String propName) {
+    var objMap = _toSortMap();
+    if (objMap.containsKey(propName)) {
+      return objMap[propName];
+    }
+    throw ArgumentError('Propery name not found in Skill object');
+  }
+}
+
+Skill gaugeAccess = Skill(
+    key: SkillKey.gaugeAccess,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Microsoft Access",
@@ -29,8 +67,8 @@ SkillListItem gaugeAccess = SkillListItem(
     dateLastUsed: DateTime(2022, 4),
     experiences: [badgeAmiltoneMigration]);
 
-SkillListItem gaugeAndroid = SkillListItem(
-    skillKey: SkillKey.gaugeAndroid,
+Skill gaugeAndroid = Skill(
+    key: SkillKey.gaugeAndroid,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Android",
@@ -45,8 +83,8 @@ SkillListItem gaugeAndroid = SkillListItem(
       badgeLeCnam
     ]);
 
-SkillListItem gaugeAndroidStudio = SkillListItem(
-    skillKey: SkillKey.gaugeAndroidStudio,
+Skill gaugeAndroidStudio = Skill(
+    key: SkillKey.gaugeAndroidStudio,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Android Studio",
@@ -61,8 +99,8 @@ SkillListItem gaugeAndroidStudio = SkillListItem(
       badgeLeCnam
     ]);
 
-SkillListItem gaugeAngular = SkillListItem(
-    skillKey: SkillKey.gaugeAngular,
+Skill gaugeAngular = Skill(
+    key: SkillKey.gaugeAngular,
     usage: SkillUsage.webDevelopment,
     type: SkillType.language,
     title: "Angular",
@@ -71,8 +109,8 @@ SkillListItem gaugeAngular = SkillListItem(
     dateLastUsed: DateTime(2020, 10),
     experiences: [badgeEvolucareBorne]);
 
-SkillListItem gaugeApacheServer = SkillListItem(
-    skillKey: SkillKey.gaugeApacheServer,
+Skill gaugeApacheServer = Skill(
+    key: SkillKey.gaugeApacheServer,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "Apache Server",
@@ -87,8 +125,8 @@ SkillListItem gaugeApacheServer = SkillListItem(
       badgeGreta
     ]);
 
-SkillListItem gaugeAppstore = SkillListItem(
-    skillKey: SkillKey.gaugeAppstore,
+Skill gaugeAppstore = Skill(
+    key: SkillKey.gaugeAppstore,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "App Store",
@@ -97,8 +135,8 @@ SkillListItem gaugeAppstore = SkillListItem(
     dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT, badgeEvolucareMobile]);
 
-SkillListItem gaugeBash = SkillListItem(
-    skillKey: SkillKey.gaugeBash,
+Skill gaugeBash = Skill(
+    key: SkillKey.gaugeBash,
     usage: SkillUsage.devops,
     type: SkillType.language,
     title: "Bash",
@@ -107,8 +145,8 @@ SkillListItem gaugeBash = SkillListItem(
     dateLastUsed: DateTime(2021, 9),
     experiences: [badgeEvolucareImaging, badgeLeCnam]);
 
-SkillListItem gaugeBlender = SkillListItem(
-    skillKey: SkillKey.gaugeBlender,
+Skill gaugeBlender = Skill(
+    key: SkillKey.gaugeBlender,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Blender",
@@ -117,8 +155,8 @@ SkillListItem gaugeBlender = SkillListItem(
     dateLastUsed: DateTime(2023, 8),
     experiences: [badgePrastelBT]);
 
-SkillListItem gaugeBluetooth = SkillListItem(
-    skillKey: SkillKey.gaugeBluetooth,
+Skill gaugeBluetooth = Skill(
+    key: SkillKey.gaugeBluetooth,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Bluetooth",
@@ -127,8 +165,8 @@ SkillListItem gaugeBluetooth = SkillListItem(
     dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
-SkillListItem gaugeBootstrap = SkillListItem(
-    skillKey: SkillKey.gaugeBootstrap,
+Skill gaugeBootstrap = Skill(
+    key: SkillKey.gaugeBootstrap,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "Bootstrap",
@@ -141,8 +179,8 @@ SkillListItem gaugeBootstrap = SkillListItem(
       badgeEvolucareBorne
     ]);
 
-SkillListItem gaugeChrome = SkillListItem(
-    skillKey: SkillKey.gaugeChrome,
+Skill gaugeChrome = Skill(
+    key: SkillKey.gaugeChrome,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "Chrome",
@@ -157,8 +195,8 @@ SkillListItem gaugeChrome = SkillListItem(
       badgeGreta
     ]);
 
-SkillListItem gaugeColaboratory = SkillListItem(
-    skillKey: SkillKey.gaugeColaboratory,
+Skill gaugeColaboratory = Skill(
+    key: SkillKey.gaugeColaboratory,
     usage: SkillUsage.artificielIntelligence,
     type: SkillType.tool,
     title: "Colaboratory",
@@ -167,8 +205,8 @@ SkillListItem gaugeColaboratory = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeConfluence = SkillListItem(
-    skillKey: SkillKey.gaugeConfluence,
+Skill gaugeConfluence = Skill(
+    key: SkillKey.gaugeConfluence,
     usage: SkillUsage.teamWork,
     type: SkillType.tool,
     title: "Confluence",
@@ -181,8 +219,8 @@ SkillListItem gaugeConfluence = SkillListItem(
       badgeEvolucareBorne,
     ]);
 
-SkillListItem gaugeCordova = SkillListItem(
-    skillKey: SkillKey.gaugeCordova,
+Skill gaugeCordova = Skill(
+    key: SkillKey.gaugeCordova,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Cordova",
@@ -193,8 +231,8 @@ SkillListItem gaugeCordova = SkillListItem(
       badgeEvolucareMobile,
     ]);
 
-SkillListItem gaugeCplusplus = SkillListItem(
-    skillKey: SkillKey.gaugeCplusplus,
+Skill gaugeCplusplus = Skill(
+    key: SkillKey.gaugeCplusplus,
     usage: SkillUsage.other,
     type: SkillType.language,
     title: "C++",
@@ -203,8 +241,8 @@ SkillListItem gaugeCplusplus = SkillListItem(
     dateLastUsed: DateTime(2021, 9),
     experiences: [badgeLeCnam]);
 
-SkillListItem gaugeCsharp = SkillListItem(
-    skillKey: SkillKey.gaugeCsharp,
+Skill gaugeCsharp = Skill(
+    key: SkillKey.gaugeCsharp,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.language,
     title: "C#",
@@ -216,8 +254,8 @@ SkillListItem gaugeCsharp = SkillListItem(
       badgeEvolucareImaging,
     ]);
 
-SkillListItem gaugeCss3 = SkillListItem(
-    skillKey: SkillKey.gaugeCss3,
+Skill gaugeCss3 = Skill(
+    key: SkillKey.gaugeCss3,
     usage: SkillUsage.webDevelopment,
     type: SkillType.language,
     title: "CSS 3",
@@ -234,8 +272,8 @@ SkillListItem gaugeCss3 = SkillListItem(
       badgeGreta
     ]);
 
-SkillListItem gaugeDart = SkillListItem(
-    skillKey: SkillKey.gaugeDart,
+Skill gaugeDart = Skill(
+    key: SkillKey.gaugeDart,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.language,
     title: "Dart",
@@ -244,8 +282,8 @@ SkillListItem gaugeDart = SkillListItem(
     dateLastUsed: DateTime(2025, 3),
     experiences: [badgeYardStick]);
 
-SkillListItem gaugeDbeaver = SkillListItem(
-    skillKey: SkillKey.gaugeDbeaver,
+Skill gaugeDbeaver = Skill(
+    key: SkillKey.gaugeDbeaver,
     usage: SkillUsage.businessIntelligence,
     type: SkillType.tool,
     title: "DBeaver",
@@ -254,8 +292,8 @@ SkillListItem gaugeDbeaver = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeDebian = SkillListItem(
-    skillKey: SkillKey.gaugeDebian,
+Skill gaugeDebian = Skill(
+    key: SkillKey.gaugeDebian,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Debian",
@@ -270,8 +308,8 @@ SkillListItem gaugeDebian = SkillListItem(
       badgeLeCnam
     ]);
 
-SkillListItem gaugeDocker = SkillListItem(
-    skillKey: SkillKey.gaugeDocker,
+Skill gaugeDocker = Skill(
+    key: SkillKey.gaugeDocker,
     usage: SkillUsage.devops,
     type: SkillType.tool,
     title: "Docker",
@@ -280,8 +318,8 @@ SkillListItem gaugeDocker = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon, badgeLeCnam]);
 
-SkillListItem gaugeUkFlag = SkillListItem(
-    skillKey: SkillKey.gaugeUkFlag,
+Skill gaugeUkFlag = Skill(
+    key: SkillKey.gaugeUkFlag,
     usage: SkillUsage.other,
     type: SkillType.language,
     title: "English",
@@ -291,8 +329,8 @@ SkillListItem gaugeUkFlag = SkillListItem(
         (DateTime.now().difference(DateTime(2015, 9, 1)).inDays / 365),
     experiences: [badgeUpec]);
 
-SkillListItem gaugeExcel = SkillListItem(
-    skillKey: SkillKey.gaugeExcel,
+Skill gaugeExcel = Skill(
+    key: SkillKey.gaugeExcel,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Excel",
@@ -301,8 +339,8 @@ SkillListItem gaugeExcel = SkillListItem(
     dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
-SkillListItem gaugeFastapi = SkillListItem(
-    skillKey: SkillKey.gaugeFastapi,
+Skill gaugeFastapi = Skill(
+    key: SkillKey.gaugeFastapi,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "FastAPI",
@@ -311,8 +349,8 @@ SkillListItem gaugeFastapi = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeFlutter = SkillListItem(
-    skillKey: SkillKey.gaugeFlutter,
+Skill gaugeFlutter = Skill(
+    key: SkillKey.gaugeFlutter,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Flutter",
@@ -321,8 +359,8 @@ SkillListItem gaugeFlutter = SkillListItem(
     dateLastUsed: DateTime.now(),
     experiences: [badgeYardStick]);
 
-SkillListItem gaugeGit = SkillListItem(
-    skillKey: SkillKey.gaugeGit,
+Skill gaugeGit = Skill(
+    key: SkillKey.gaugeGit,
     usage: SkillUsage.devops,
     type: SkillType.tool,
     title: "Git",
@@ -334,8 +372,8 @@ SkillListItem gaugeGit = SkillListItem(
       badgePrastelSiteInterne,
     ]);
 
-SkillListItem gaugeGithub = SkillListItem(
-    skillKey: SkillKey.gaugeGithub,
+Skill gaugeGithub = Skill(
+    key: SkillKey.gaugeGithub,
     usage: SkillUsage.devops,
     type: SkillType.tool,
     title: "Github",
@@ -344,8 +382,8 @@ SkillListItem gaugeGithub = SkillListItem(
     dateLastUsed: DateTime.now(),
     experiences: [badgeYardStick, badgeLeWagon]);
 
-SkillListItem gaugeGitlab = SkillListItem(
-    skillKey: SkillKey.gaugeGitlab,
+Skill gaugeGitlab = Skill(
+    key: SkillKey.gaugeGitlab,
     usage: SkillUsage.devops,
     type: SkillType.tool,
     title: "Gitlab",
@@ -358,8 +396,8 @@ SkillListItem gaugeGitlab = SkillListItem(
       badgeEvolucareBorne,
     ]);
 
-SkillListItem gaugeGoogleDocs = SkillListItem(
-    skillKey: SkillKey.gaugeGoogleDocs,
+Skill gaugeGoogleDocs = Skill(
+    key: SkillKey.gaugeGoogleDocs,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Google Docs",
@@ -368,8 +406,8 @@ SkillListItem gaugeGoogleDocs = SkillListItem(
     dateLastUsed: DateTime.now(),
     experiences: [badgeAmiltoneMigration, badgeGreta]);
 
-SkillListItem gaugeGooglePlay = SkillListItem(
-    skillKey: SkillKey.gaugeGooglePlay,
+Skill gaugeGooglePlay = Skill(
+    key: SkillKey.gaugeGooglePlay,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Google Play",
@@ -378,8 +416,8 @@ SkillListItem gaugeGooglePlay = SkillListItem(
     dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT, badgePrastelCRN15M]);
 
-SkillListItem gaugeGradle = SkillListItem(
-    skillKey: SkillKey.gaugeGradle,
+Skill gaugeGradle = Skill(
+    key: SkillKey.gaugeGradle,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Gradle",
@@ -391,8 +429,8 @@ SkillListItem gaugeGradle = SkillListItem(
       badgeEvolucareMobile,
     ]);
 
-SkillListItem gaugeHtml5 = SkillListItem(
-    skillKey: SkillKey.gaugeHtml5,
+Skill gaugeHtml5 = Skill(
+    key: SkillKey.gaugeHtml5,
     usage: SkillUsage.webDevelopment,
     type: SkillType.language,
     title: "Html 5",
@@ -409,8 +447,8 @@ SkillListItem gaugeHtml5 = SkillListItem(
       badgeGreta
     ]);
 
-SkillListItem gaugeHuggingface = SkillListItem(
-    skillKey: SkillKey.gaugeHuggingface,
+Skill gaugeHuggingface = Skill(
+    key: SkillKey.gaugeHuggingface,
     usage: SkillUsage.artificielIntelligence,
     type: SkillType.tool,
     title: "Huggingface",
@@ -419,8 +457,8 @@ SkillListItem gaugeHuggingface = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeIos = SkillListItem(
-    skillKey: SkillKey.gaugeIos,
+Skill gaugeIos = Skill(
+    key: SkillKey.gaugeIos,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "iOS",
@@ -432,8 +470,8 @@ SkillListItem gaugeIos = SkillListItem(
       badgeEvolucareMobile,
     ]);
 
-SkillListItem gaugeJava = SkillListItem(
-    skillKey: SkillKey.gaugeJava,
+Skill gaugeJava = Skill(
+    key: SkillKey.gaugeJava,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.language,
     title: "Java",
@@ -448,8 +486,8 @@ SkillListItem gaugeJava = SkillListItem(
       badgeLeCnam
     ]);
 
-SkillListItem gaugeJavascript = SkillListItem(
-    skillKey: SkillKey.gaugeJavascript,
+Skill gaugeJavascript = Skill(
+    key: SkillKey.gaugeJavascript,
     usage: SkillUsage.webDevelopment,
     type: SkillType.language,
     title: "Javascript",
@@ -466,8 +504,8 @@ SkillListItem gaugeJavascript = SkillListItem(
       badgeGreta
     ]);
 
-SkillListItem gaugeJira = SkillListItem(
-    skillKey: SkillKey.gaugeJira,
+Skill gaugeJira = Skill(
+    key: SkillKey.gaugeJira,
     usage: SkillUsage.teamWork,
     type: SkillType.tool,
     title: "Jira",
@@ -482,8 +520,8 @@ SkillListItem gaugeJira = SkillListItem(
       badgeEvolucareBorne,
     ]);
 
-SkillListItem gaugeJquery = SkillListItem(
-    skillKey: SkillKey.gaugeJquery,
+Skill gaugeJquery = Skill(
+    key: SkillKey.gaugeJquery,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "JQuery",
@@ -496,8 +534,8 @@ SkillListItem gaugeJquery = SkillListItem(
       badgeEvolucareBorne,
     ]);
 
-SkillListItem gaugeJson = SkillListItem(
-    skillKey: SkillKey.gaugeJson,
+Skill gaugeJson = Skill(
+    key: SkillKey.gaugeJson,
     usage: SkillUsage.webDevelopment,
     type: SkillType.language,
     title: "Json",
@@ -514,8 +552,8 @@ SkillListItem gaugeJson = SkillListItem(
       badgeGreta
     ]);
 
-SkillListItem gaugeJupyter = SkillListItem(
-    skillKey: SkillKey.gaugeJupyter,
+Skill gaugeJupyter = Skill(
+    key: SkillKey.gaugeJupyter,
     usage: SkillUsage.businessIntelligence,
     type: SkillType.tool,
     title: "Jupyter",
@@ -524,8 +562,8 @@ SkillListItem gaugeJupyter = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeKaggle = SkillListItem(
-    skillKey: SkillKey.gaugeKaggle,
+Skill gaugeKaggle = Skill(
+    key: SkillKey.gaugeKaggle,
     usage: SkillUsage.artificielIntelligence,
     type: SkillType.tool,
     title: "Kaggle",
@@ -534,8 +572,8 @@ SkillListItem gaugeKaggle = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeKeras = SkillListItem(
-    skillKey: SkillKey.gaugeKeras,
+Skill gaugeKeras = Skill(
+    key: SkillKey.gaugeKeras,
     usage: SkillUsage.artificielIntelligence,
     type: SkillType.tool,
     title: "Keras",
@@ -544,8 +582,8 @@ SkillListItem gaugeKeras = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeLerobert = SkillListItem(
-    skillKey: SkillKey.gaugeLerobert,
+Skill gaugeLerobert = Skill(
+    key: SkillKey.gaugeLerobert,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Le Robert & Collins",
@@ -554,8 +592,8 @@ SkillListItem gaugeLerobert = SkillListItem(
     dateLastUsed: DateTime(2013, 9),
     experiences: [badgeUpec]);
 
-SkillListItem gaugeMacos = SkillListItem(
-    skillKey: SkillKey.gaugeMacos,
+Skill gaugeMacos = Skill(
+    key: SkillKey.gaugeMacos,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Macos",
@@ -568,8 +606,8 @@ SkillListItem gaugeMacos = SkillListItem(
       badgeEvolucareMobile,
     ]);
 
-SkillListItem gaugeMailchimp = SkillListItem(
-    skillKey: SkillKey.gaugeMailchimp,
+Skill gaugeMailchimp = Skill(
+    key: SkillKey.gaugeMailchimp,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "Mailchimp",
@@ -578,8 +616,8 @@ SkillListItem gaugeMailchimp = SkillListItem(
     dateLastUsed: DateTime(2016, 7),
     experiences: [badgeGreta]);
 
-SkillListItem gaugeMariadb = SkillListItem(
-    skillKey: SkillKey.gaugeMariadb,
+Skill gaugeMariadb = Skill(
+    key: SkillKey.gaugeMariadb,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "MariaDB",
@@ -590,8 +628,8 @@ SkillListItem gaugeMariadb = SkillListItem(
       badgeEvolucareImaging,
     ]);
 
-SkillListItem gaugeMatplotlib = SkillListItem(
-    skillKey: SkillKey.gaugeMatplotlib,
+Skill gaugeMatplotlib = Skill(
+    key: SkillKey.gaugeMatplotlib,
     usage: SkillUsage.businessIntelligence,
     type: SkillType.tool,
     title: "Matplotlib",
@@ -600,8 +638,8 @@ SkillListItem gaugeMatplotlib = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeMysql = SkillListItem(
-    skillKey: SkillKey.gaugeMysql,
+Skill gaugeMysql = Skill(
+    key: SkillKey.gaugeMysql,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "MySQL",
@@ -610,8 +648,8 @@ SkillListItem gaugeMysql = SkillListItem(
     dateLastUsed: DateTime(2023, 9),
     experiences: [badgePrastelSiteInterne, badgeLeCnam, badgeGreta]);
 
-SkillListItem gaugeNetbeans = SkillListItem(
-    skillKey: SkillKey.gaugeNetbeans,
+Skill gaugeNetbeans = Skill(
+    key: SkillKey.gaugeNetbeans,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "NetBeans",
@@ -620,8 +658,8 @@ SkillListItem gaugeNetbeans = SkillListItem(
     dateLastUsed: DateTime(2021, 9),
     experiences: [badgeEvolucareImaging, badgeLeCnam]);
 
-SkillListItem gaugeNetMaui = SkillListItem(
-    skillKey: SkillKey.gaugeNetMaui,
+Skill gaugeNetMaui = Skill(
+    key: SkillKey.gaugeNetMaui,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: ".NET MAUI",
@@ -630,8 +668,8 @@ SkillListItem gaugeNetMaui = SkillListItem(
     dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
-SkillListItem gaugeNpm = SkillListItem(
-    skillKey: SkillKey.gaugeNpm,
+Skill gaugeNpm = Skill(
+    key: SkillKey.gaugeNpm,
     usage: SkillUsage.devops,
     type: SkillType.tool,
     title: "NPM",
@@ -642,8 +680,8 @@ SkillListItem gaugeNpm = SkillListItem(
       badgeEvolucareMobile,
     ]);
 
-SkillListItem gaugeObjectivec = SkillListItem(
-    skillKey: SkillKey.gaugeObjectivec,
+Skill gaugeObjectivec = Skill(
+    key: SkillKey.gaugeObjectivec,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.language,
     title: "Objective C",
@@ -654,8 +692,8 @@ SkillListItem gaugeObjectivec = SkillListItem(
       badgeEvolucareMobile,
     ]);
 
-SkillListItem gaugePandas = SkillListItem(
-    skillKey: SkillKey.gaugePandas,
+Skill gaugePandas = Skill(
+    key: SkillKey.gaugePandas,
     usage: SkillUsage.businessIntelligence,
     type: SkillType.tool,
     title: "Pandas",
@@ -664,8 +702,8 @@ SkillListItem gaugePandas = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugePhp = SkillListItem(
-    skillKey: SkillKey.gaugePhp,
+Skill gaugePhp = Skill(
+    key: SkillKey.gaugePhp,
     usage: SkillUsage.webDevelopment,
     type: SkillType.language,
     title: "PHP 7",
@@ -680,8 +718,8 @@ SkillListItem gaugePhp = SkillListItem(
       badgeGreta
     ]);
 
-SkillListItem gaugePhpmyadmin = SkillListItem(
-    skillKey: SkillKey.gaugePhpmyadmin,
+Skill gaugePhpmyadmin = Skill(
+    key: SkillKey.gaugePhpmyadmin,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "PhpMyAdmin",
@@ -690,8 +728,8 @@ SkillListItem gaugePhpmyadmin = SkillListItem(
     dateLastUsed: DateTime(2023, 9),
     experiences: [badgeEvolucareImaging, badgeGreta]);
 
-SkillListItem gaugePhpstorm = SkillListItem(
-    skillKey: SkillKey.gaugePhpstorm,
+Skill gaugePhpstorm = Skill(
+    key: SkillKey.gaugePhpstorm,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "PhpStorm",
@@ -704,8 +742,8 @@ SkillListItem gaugePhpstorm = SkillListItem(
       badgeEvolucareBorne,
     ]);
 
-SkillListItem gaugePowerbi = SkillListItem(
-    skillKey: SkillKey.gaugePowerbi,
+Skill gaugePowerbi = Skill(
+    key: SkillKey.gaugePowerbi,
     usage: SkillUsage.businessIntelligence,
     type: SkillType.tool,
     title: "Power BI",
@@ -714,8 +752,8 @@ SkillListItem gaugePowerbi = SkillListItem(
     dateLastUsed: DateTime(2022, 3),
     experiences: [badgeAmiltonePowerBI]);
 
-SkillListItem gaugePowershell = SkillListItem(
-    skillKey: SkillKey.gaugePowershell,
+Skill gaugePowershell = Skill(
+    key: SkillKey.gaugePowershell,
     usage: SkillUsage.devops,
     type: SkillType.language,
     title: "PowerShell",
@@ -726,8 +764,8 @@ SkillListItem gaugePowershell = SkillListItem(
       badgeAmiltoneIot,
     ]);
 
-SkillListItem gaugePowerQuery = SkillListItem(
-    skillKey: SkillKey.gaugePowerQuery,
+Skill gaugePowerQuery = Skill(
+    key: SkillKey.gaugePowerQuery,
     usage: SkillUsage.businessIntelligence,
     type: SkillType.tool,
     title: "Power Query",
@@ -738,8 +776,8 @@ SkillListItem gaugePowerQuery = SkillListItem(
       badgeAmiltonePowerBI,
     ]);
 
-SkillListItem gaugePython = SkillListItem(
-    skillKey: SkillKey.gaugePython,
+Skill gaugePython = Skill(
+    key: SkillKey.gaugePython,
     usage: SkillUsage.artificielIntelligence,
     type: SkillType.language,
     title: "Python",
@@ -748,8 +786,8 @@ SkillListItem gaugePython = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon, badgeAmiltoneIot, badgeGreta]);
 
-SkillListItem gaugeQt = SkillListItem(
-    skillKey: SkillKey.gaugeQt,
+Skill gaugeQt = Skill(
+    key: SkillKey.gaugeQt,
     usage: SkillUsage.webDevelopment,
     type: SkillType.language,
     title: "Qt",
@@ -760,8 +798,8 @@ SkillListItem gaugeQt = SkillListItem(
       badgeEvolucareImaging,
     ]);
 
-SkillListItem gaugeReact = SkillListItem(
-    skillKey: SkillKey.gaugeReact,
+Skill gaugeReact = Skill(
+    key: SkillKey.gaugeReact,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "React",
@@ -770,8 +808,8 @@ SkillListItem gaugeReact = SkillListItem(
     dateLastUsed: DateTime(2024, 11),
     experiences: []);
 
-SkillListItem gaugeSafari = SkillListItem(
-    skillKey: SkillKey.gaugeSafari,
+Skill gaugeSafari = Skill(
+    key: SkillKey.gaugeSafari,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "Safari",
@@ -782,8 +820,8 @@ SkillListItem gaugeSafari = SkillListItem(
       badgeEvolucareImaging,
     ]);
 
-SkillListItem gaugeSeaborn = SkillListItem(
-    skillKey: SkillKey.gaugeSeaborn,
+Skill gaugeSeaborn = Skill(
+    key: SkillKey.gaugeSeaborn,
     usage: SkillUsage.businessIntelligence,
     type: SkillType.tool,
     title: "Seaborn",
@@ -792,8 +830,8 @@ SkillListItem gaugeSeaborn = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeSharepoint = SkillListItem(
-    skillKey: SkillKey.gaugeSharepoint,
+Skill gaugeSharepoint = Skill(
+    key: SkillKey.gaugeSharepoint,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "SharePoint",
@@ -804,8 +842,8 @@ SkillListItem gaugeSharepoint = SkillListItem(
       badgeAmiltoneMigration,
     ]);
 
-SkillListItem gaugeSlack = SkillListItem(
-    skillKey: SkillKey.gaugeSlack,
+Skill gaugeSlack = Skill(
+    key: SkillKey.gaugeSlack,
     usage: SkillUsage.teamWork,
     type: SkillType.tool,
     title: "Slack",
@@ -814,8 +852,8 @@ SkillListItem gaugeSlack = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeEvolucareImaging, badgeEvolucareMobile, badgeGreta]);
 
-SkillListItem gaugeSql = SkillListItem(
-    skillKey: SkillKey.gaugeSql,
+Skill gaugeSql = Skill(
+    key: SkillKey.gaugeSql,
     usage: SkillUsage.backend,
     type: SkillType.language,
     title: "SQL",
@@ -824,8 +862,8 @@ SkillListItem gaugeSql = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon, badgeAmiltonePowerBI, badgeLeCnam, badgeGreta]);
 
-SkillListItem gaugeSqlserver = SkillListItem(
-    skillKey: SkillKey.gaugeSqlserver,
+Skill gaugeSqlserver = Skill(
+    key: SkillKey.gaugeSqlserver,
     usage: SkillUsage.backend,
     type: SkillType.tool,
     title: "SQL Server",
@@ -838,8 +876,8 @@ SkillListItem gaugeSqlserver = SkillListItem(
       badgeAmiltonePowerBI,
     ]);
 
-SkillListItem gaugeSqlite = SkillListItem(
-    skillKey: SkillKey.gaugeSqlite,
+Skill gaugeSqlite = Skill(
+    key: SkillKey.gaugeSqlite,
     usage: SkillUsage.backend,
     type: SkillType.language,
     title: "SQLite",
@@ -848,8 +886,8 @@ SkillListItem gaugeSqlite = SkillListItem(
     dateLastUsed: DateTime(2021, 9),
     experiences: [badgeEvolucareMobile]);
 
-SkillListItem gaugeTensorflow = SkillListItem(
-    skillKey: SkillKey.gaugeTensorflow,
+Skill gaugeTensorflow = Skill(
+    key: SkillKey.gaugeTensorflow,
     usage: SkillUsage.artificielIntelligence,
     type: SkillType.tool,
     title: "Tensorflow",
@@ -858,8 +896,8 @@ SkillListItem gaugeTensorflow = SkillListItem(
     dateLastUsed: DateTime(2024, 9),
     experiences: [badgeLeWagon]);
 
-SkillListItem gaugeThingsboard = SkillListItem(
-    skillKey: SkillKey.gaugeThingsboard,
+Skill gaugeThingsboard = Skill(
+    key: SkillKey.gaugeThingsboard,
     usage: SkillUsage.backend,
     type: SkillType.tool,
     title: "Thingsboard",
@@ -868,8 +906,8 @@ SkillListItem gaugeThingsboard = SkillListItem(
     dateLastUsed: DateTime(2022, 4),
     experiences: [badgeAmiltoneIot]);
 
-SkillListItem gaugeTomcat = SkillListItem(
-    skillKey: SkillKey.gaugeTomcat,
+Skill gaugeTomcat = Skill(
+    key: SkillKey.gaugeTomcat,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "Tomcat",
@@ -878,8 +916,8 @@ SkillListItem gaugeTomcat = SkillListItem(
     dateLastUsed: DateTime(2017, 7),
     experiences: [badgeLeCnam]);
 
-SkillListItem gaugeTrello = SkillListItem(
-    skillKey: SkillKey.gaugeTrello,
+Skill gaugeTrello = Skill(
+    key: SkillKey.gaugeTrello,
     usage: SkillUsage.teamWork,
     type: SkillType.tool,
     title: "Trello",
@@ -888,8 +926,8 @@ SkillListItem gaugeTrello = SkillListItem(
     dateLastUsed: DateTime(2016, 7),
     experiences: [badgeGreta]);
 
-SkillListItem gaugeUml = SkillListItem(
-    skillKey: SkillKey.gaugeUml,
+Skill gaugeUml = Skill(
+    key: SkillKey.gaugeUml,
     usage: SkillUsage.teamWork,
     type: SkillType.language,
     title: "UML",
@@ -898,8 +936,8 @@ SkillListItem gaugeUml = SkillListItem(
     dateLastUsed: DateTime(2021, 9),
     experiences: [badgeEvolucareImaging, badgeEvolucareMobile, badgeLeCnam]);
 
-SkillListItem gaugeVisualStudio2022 = SkillListItem(
-    skillKey: SkillKey.gaugeVisualStudio2022,
+Skill gaugeVisualStudio2022 = Skill(
+    key: SkillKey.gaugeVisualStudio2022,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Visual Studio 2022",
@@ -908,8 +946,8 @@ SkillListItem gaugeVisualStudio2022 = SkillListItem(
     dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
-SkillListItem gaugeVscode = SkillListItem(
-    skillKey: SkillKey.gaugeVscode,
+Skill gaugeVscode = Skill(
+    key: SkillKey.gaugeVscode,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Visual Studio Code",
@@ -918,8 +956,8 @@ SkillListItem gaugeVscode = SkillListItem(
     dateLastUsed: DateTime.now(),
     experiences: [badgeYardStick, badgeLeWagon]);
 
-SkillListItem gaugeVmwareWorkstation = SkillListItem(
-    skillKey: SkillKey.gaugeVmwareWorkstation,
+Skill gaugeVmwareWorkstation = Skill(
+    key: SkillKey.gaugeVmwareWorkstation,
     usage: SkillUsage.devops,
     type: SkillType.tool,
     title: "VMWare Workstation",
@@ -928,8 +966,8 @@ SkillListItem gaugeVmwareWorkstation = SkillListItem(
     dateLastUsed: DateTime(2016, 7),
     experiences: [badgeGreta]);
 
-SkillListItem gaugeWikipedia = SkillListItem(
-    skillKey: SkillKey.gaugeWikipedia,
+Skill gaugeWikipedia = Skill(
+    key: SkillKey.gaugeWikipedia,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Wikipedia",
@@ -938,8 +976,8 @@ SkillListItem gaugeWikipedia = SkillListItem(
     dateLastUsed: DateTime(2024, 12),
     experiences: [badgeUpec]);
 
-SkillListItem gaugeWindows = SkillListItem(
-    skillKey: SkillKey.gaugeWindows,
+Skill gaugeWindows = Skill(
+    key: SkillKey.gaugeWindows,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Windows",
@@ -948,8 +986,8 @@ SkillListItem gaugeWindows = SkillListItem(
     dateLastUsed: DateTime.now(),
     experiences: [badgeLeWagon, badgeEvolucareBorne, badgeGreta]);
 
-SkillListItem gaugeWindowsserver = SkillListItem(
-    skillKey: SkillKey.gaugeWindowsserver,
+Skill gaugeWindowsserver = Skill(
+    key: SkillKey.gaugeWindowsserver,
     usage: SkillUsage.other,
     type: SkillType.tool,
     title: "Windows Server",
@@ -960,8 +998,8 @@ SkillListItem gaugeWindowsserver = SkillListItem(
       badgeAmiltoneMigration,
     ]);
 
-SkillListItem gaugeWordpress = SkillListItem(
-    skillKey: SkillKey.gaugeWordpress,
+Skill gaugeWordpress = Skill(
+    key: SkillKey.gaugeWordpress,
     usage: SkillUsage.webDevelopment,
     type: SkillType.tool,
     title: "Wordpress",
@@ -970,8 +1008,8 @@ SkillListItem gaugeWordpress = SkillListItem(
     dateLastUsed: DateTime(2016, 7),
     experiences: [badgeGreta]);
 
-SkillListItem gaugeWso2 = SkillListItem(
-    skillKey: SkillKey.gaugeWso2,
+Skill gaugeWso2 = Skill(
+    key: SkillKey.gaugeWso2,
     usage: SkillUsage.backend,
     type: SkillType.tool,
     title: "WSO2",
@@ -982,8 +1020,8 @@ SkillListItem gaugeWso2 = SkillListItem(
       badgeAmiltoneWSO2,
     ]);
 
-SkillListItem gaugeXamarin = SkillListItem(
-    skillKey: SkillKey.gaugeXamarin,
+Skill gaugeXamarin = Skill(
+    key: SkillKey.gaugeXamarin,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "Xamarin",
@@ -992,8 +1030,8 @@ SkillListItem gaugeXamarin = SkillListItem(
     dateLastUsed: DateTime(2024, 4),
     experiences: [badgePrastelBT]);
 
-SkillListItem gaugeXcode = SkillListItem(
-    skillKey: SkillKey.gaugeXcode,
+Skill gaugeXcode = Skill(
+    key: SkillKey.gaugeXcode,
     usage: SkillUsage.mobileDevelopment,
     type: SkillType.tool,
     title: "XCode",
@@ -1005,8 +1043,8 @@ SkillListItem gaugeXcode = SkillListItem(
       badgeEvolucareMobile,
     ]);
 
-SkillListItem gaugeXml = SkillListItem(
-    skillKey: SkillKey.gaugeXml,
+Skill gaugeXml = Skill(
+    key: SkillKey.gaugeXml,
     usage: SkillUsage.other,
     type: SkillType.language,
     title: "XML",
@@ -1017,3 +1055,91 @@ SkillListItem gaugeXml = SkillListItem(
       badgeAmiltoneWSO2,
       badgeEvolucareImaging,
     ]);
+
+List<Skill> skills = [
+  gaugeAccess,
+  gaugeAndroid,
+  gaugeAndroidStudio,
+  gaugeAngular,
+  gaugeApacheServer,
+  gaugeAppstore,
+  gaugeBash,
+  gaugeBlender,
+  gaugeBluetooth,
+  gaugeBootstrap,
+  gaugeChrome,
+  gaugeColaboratory,
+  gaugeConfluence,
+  gaugeCordova,
+  gaugeCplusplus,
+  gaugeCsharp,
+  gaugeCss3,
+  gaugeDart,
+  gaugeDbeaver,
+  gaugeDebian,
+  gaugeDocker,
+  gaugeUkFlag,
+  gaugeExcel,
+  gaugeFastapi,
+  gaugeFlutter,
+  gaugeGit,
+  gaugeGithub,
+  gaugeGitlab,
+  gaugeGoogleDocs,
+  gaugeGooglePlay,
+  gaugeGradle,
+  gaugeHtml5,
+  gaugeHuggingface,
+  gaugeIos,
+  gaugeJava,
+  gaugeJavascript,
+  gaugeJira,
+  gaugeJquery,
+  gaugeJson,
+  gaugeJupyter,
+  gaugeKaggle,
+  gaugeKeras,
+  gaugeLerobert,
+  gaugeMacos,
+  gaugeMailchimp,
+  gaugeMariadb,
+  gaugeMatplotlib,
+  gaugeMysql,
+  gaugeNetbeans,
+  gaugeNetMaui,
+  gaugeNpm,
+  gaugeObjectivec,
+  gaugePandas,
+  gaugePhp,
+  gaugePhpmyadmin,
+  gaugePhpstorm,
+  gaugePowerbi,
+  gaugePowershell,
+  gaugePowerQuery,
+  gaugePython,
+  gaugeQt,
+  gaugeReact,
+  gaugeSafari,
+  gaugeSeaborn,
+  gaugeSharepoint,
+  gaugeSlack,
+  gaugeSql,
+  gaugeSqlserver,
+  gaugeSqlite,
+  gaugeTensorflow,
+  gaugeThingsboard,
+  gaugeTomcat,
+  gaugeTrello,
+  gaugeUml,
+  gaugeVisualStudio2022,
+  gaugeVscode,
+  gaugeVmwareWorkstation,
+  gaugeWikipedia,
+  gaugeWindows,
+  gaugeWindowsserver,
+  gaugeWordpress,
+  gaugeWso2,
+  gaugeXamarin,
+  gaugeXcode,
+  gaugeXml,
+];

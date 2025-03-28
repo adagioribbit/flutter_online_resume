@@ -1,84 +1,24 @@
-import 'dart:async';
-
 import 'package:dossier_de_competences_web/helpers/colorchart.dart'
     show skillsSetButtonPalette;
 import 'package:dossier_de_competences_web/helpers/globals.dart'
-    show
-        SkillKey,
-        SkillType,
-        SkillUsage,
-        initialScrollSkillItem,
-        skillListScrollController;
+    show SkillKey, initialScrollSkillItem, skillListScrollController;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skill_gauge.dart';
+import 'package:dossier_de_competences_web/widgets/bubble/content/skills/skills.dart'
+    show Skill;
 import 'package:dossier_de_competences_web/widgets/bubble/content/skills/wrap_expansion_tile.dart'
     show WrapExpansionTile;
 import 'package:flutter/material.dart';
-import '../../../../helpers/constants.dart';
-import '../../../../helpers/global_streams.dart';
 
-class SkillListItem extends StatefulWidget implements PreferredSizeWidget {
-  final SkillKey skillKey;
-  final SkillType type;
-  final SkillUsage usage;
-  final String iconAssetPath, title;
-  final double nbYearsPractice;
-  final DateTime dateLastUsed;
-  final List<Widget> experiences;
+class SkillListItem extends StatefulWidget {
+  final Skill skill;
 
-  const SkillListItem(
-      {required this.skillKey,
-      required this.type,
-      required this.usage,
-      required this.iconAssetPath,
-      required this.title,
-      required this.nbYearsPractice,
-      required this.dateLastUsed,
-      required this.experiences,
-      super.key});
-
-  Map<String, dynamic> _toSortMap() {
-    return {
-      "title": title,
-      "type": type,
-      "usage": usage,
-      "nbYearsPractice": nbYearsPractice,
-      "dateLastUsed": dateLastUsed,
-    };
-  }
-
-  dynamic get(String propName) {
-    var objMap = _toSortMap();
-    if (objMap.containsKey(propName)) {
-      return objMap[propName];
-    }
-    throw ArgumentError('Propery name not found in SkillListItem object');
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
+  const SkillListItem({required this.skill, super.key});
 
   @override
   State<SkillListItem> createState() => _SkillListItemState();
 }
 
 class _SkillListItemState extends State<SkillListItem> {
-  late StreamSubscription subscription;
-
-  @override
-  void initState() {
-    super.initState();
-
-    subscription = globalStreams.eventSkillListItem.listen((value) async {});
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     SkillListItem thatSkillListItem = widget;
@@ -87,14 +27,14 @@ class _SkillListItemState extends State<SkillListItem> {
         builder: (BuildContext context, BoxConstraints constraints) {
       double titleFontSize = (constraints.maxWidth * 0.03).clamp(15, 18);
       bool isExpanded =
-          initialScrollSkillItem.value == thatSkillListItem.skillKey;
+          initialScrollSkillItem.value == thatSkillListItem.skill.key;
 
       return WrapExpansionTile(
           initiallyExpanded: isExpanded,
           onExpansionChanged: (isExpanded) {
             if (isExpanded) {
               int idx =
-                  (SkillKey.values.indexOf(thatSkillListItem.skillKey) - 3)
+                  (SkillKey.values.indexOf(thatSkillListItem.skill.key) - 3)
                       .clamp(0, SkillKey.values.length);
 
               /// Scroll skillList to item
@@ -114,9 +54,9 @@ class _SkillListItemState extends State<SkillListItem> {
             borderRadius: BorderRadius.circular(8),
           ),
           leading: Image(
-            image: AssetImage(thatSkillListItem.iconAssetPath),
+            image: AssetImage(thatSkillListItem.skill.iconAssetPath),
           ),
-          title: Text(thatSkillListItem.title,
+          title: Text(thatSkillListItem.skill.title,
               textAlign: TextAlign.center,
               style: TextStyle(
                   decoration: TextDecoration.none,
@@ -124,9 +64,9 @@ class _SkillListItemState extends State<SkillListItem> {
                   fontSize: titleFontSize,
                   fontFamily: "RussoOne",
                   fontWeight: FontWeight.bold)),
-          subtitle:
-              SkillGauge(nbYearsPractice: thatSkillListItem.nbYearsPractice),
-          children: thatSkillListItem.experiences);
+          subtitle: SkillGauge(
+              nbYearsPractice: thatSkillListItem.skill.nbYearsPractice),
+          children: thatSkillListItem.skill.experiences);
     });
   }
 }

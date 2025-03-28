@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html;
 import 'dart:math' show min;
 
-import '../helpers/constants.dart';
-import '../helpers/globals.dart' show GlobalKeyRing, appLanguage;
+import '../helpers/globals.dart' show GlobalKeyRing;
 
-class ExternalLink extends StatefulWidget implements PreferredSizeWidget {
+class ExternalLink extends StatefulWidget {
   final String assetImagePath, url;
   final Color? hoverColor;
   final String? tooltip;
@@ -18,11 +17,6 @@ class ExternalLink extends StatefulWidget implements PreferredSizeWidget {
       this.hoverColor,
       this.tooltip,
       this.constraints});
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
 
   @override
   State<ExternalLink> createState() => _ExternalLinkState();
@@ -47,7 +41,6 @@ class _ExternalLinkState extends State<ExternalLink> {
     RenderBox parent = (GlobalKeyRing.bubbleCarousel.currentContext!
         .findRenderObject() as RenderBox);
     imageHeight = min(parent.size.width, parent.size.height) * 0.1;
-    setState(() {});
   }
 
   @override

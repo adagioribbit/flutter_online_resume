@@ -4,14 +4,8 @@ import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart'
     show appLanguage, isVisibleSkillListFilters;
 
-class SkillListFilterForm extends StatefulWidget
-    implements PreferredSizeWidget {
+class SkillListFilterForm extends StatefulWidget {
   const SkillListFilterForm({super.key});
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
 
   @override
   State<SkillListFilterForm> createState() => _SkillListFilterFormState();
@@ -42,11 +36,6 @@ class _SkillListFilterFormState extends State<SkillListFilterForm>
         _animationToggleController.reverse();
       }
     });
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
   }
 
   @override

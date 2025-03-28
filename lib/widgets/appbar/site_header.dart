@@ -11,13 +11,8 @@ import '../../helpers/globals.dart' show appLanguage, isDarkMode, isFoldable;
 import '../../helpers/utils.dart';
 import 'content/social_networking.dart';
 
-class SiteHeader extends StatefulWidget implements PreferredSizeWidget {
+class SiteHeader extends StatefulWidget {
   const SiteHeader({super.key});
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.APPBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
 
   @override
   State<SiteHeader> createState() => _SiteHeaderState();
@@ -119,13 +114,13 @@ class _SiteHeaderState extends State<SiteHeader> with TickerProviderStateMixin {
       subtitleFontSize = 14.0;
       titlePaddingTop = 2.0;
     }
-
-    setState(() => {});
   }
 
   @override
   void dispose() {
     _animationController.dispose();
+    _toggleAppBarController.dispose();
+    subscription.cancel();
     super.dispose();
   }
 

@@ -81,6 +81,12 @@ class _SocialNetworkingState extends State<SocialNetworking> {
   }
 
   @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double rowSpacing = isFoldable ? 5 : 10;
 
@@ -93,8 +99,10 @@ class _SocialNetworkingState extends State<SocialNetworking> {
         child: IconButton(
           hoverColor: ColorChart.linkedInButtonShadowHovered,
           constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-          icon: Image(
-            image: AssetImage("lib/assets/appbar/linkedin.png"),
+          icon: Image.asset(
+            "lib/assets/appbar/linkedin.png",
+            height: 50,
+            cacheHeight: 50,
             fit: BoxFit.fill,
           ),
           tooltip: AppStrings.LINKEDIN_TOOLTIP[appLanguage.value],
@@ -112,8 +120,10 @@ class _SocialNetworkingState extends State<SocialNetworking> {
         child: IconButton(
           hoverColor: ColorChart.githubButtonShadowHovered,
           constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-          icon: Image(
-            image: AssetImage("lib/assets/appbar/github.png"),
+          icon: Image.asset(
+            "lib/assets/appbar/github.png",
+            height: 50,
+            cacheHeight: 50,
             fit: BoxFit.fill,
           ),
           tooltip: AppStrings.GITHUB_TOOLTIP[appLanguage.value],
@@ -131,8 +141,10 @@ class _SocialNetworkingState extends State<SocialNetworking> {
         child: IconButton(
           hoverColor: ColorChart.instagralButtonShadowHovered,
           constraints: Constants.APPBAR_ACTIONS_BOXCONTRAINTS,
-          icon: Image(
-            image: AssetImage("lib/assets/appbar/instagram.png"),
+          icon: Image.asset(
+            "lib/assets/appbar/instagram.png",
+            height: 50,
+            cacheHeight: 50,
             fit: BoxFit.fill,
           ),
           tooltip: AppStrings.INSTAGRAM_TOOLTIP[appLanguage.value],

@@ -4,16 +4,11 @@ import '../../../../helpers/colorchart.dart' show skillsSetButtonPalette;
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart' show appLanguage;
 
-class SkillGauge extends StatefulWidget implements PreferredSizeWidget {
+class SkillGauge extends StatefulWidget {
   static const Duration animationDuration = Duration(milliseconds: 1500);
   final double nbYearsPractice;
 
   const SkillGauge({required this.nbYearsPractice, super.key});
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
 
   @override
   State<SkillGauge> createState() => _SkillGaugeState();
@@ -40,12 +35,6 @@ class _SkillGaugeState extends State<SkillGauge> with TickerProviderStateMixin {
         (DateTime.now().difference(DateTime(2015, 9, 1)).inDays / 365);
     nbYearsPractice = widget.nbYearsPractice;
     _animationController.forward();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    setState(() {});
   }
 
   @override

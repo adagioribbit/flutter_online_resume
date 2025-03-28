@@ -43,6 +43,7 @@ class _CardAndTabAppState extends State<CardAndTabApp> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     isPortrait = Utils.isPortraitContext(context);
+    setState(() {});
   }
 
   @override
@@ -64,8 +65,9 @@ class _CardAndTabAppState extends State<CardAndTabApp> {
               ExcludeSemantics(
                   excluding: true,
                   child: SizedBox.expand(
-                      child: Image(
-                          image: AssetImage("lib/assets/wooden_floor.png"),
+                      child: Image.asset("lib/assets/wooden_floor.png",
+                          height: 450,
+                          cacheHeight: 450,
                           fit: isPortrait ? BoxFit.none : BoxFit.fitWidth,
                           repeat: ImageRepeat.repeat,
                           alignment: Alignment.center

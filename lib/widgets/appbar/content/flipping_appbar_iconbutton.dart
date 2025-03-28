@@ -69,10 +69,12 @@ class _FlippingAppBarIconButtonState extends State<FlippingAppBarIconButton>
                   alignment: Alignment.center,
                   child: _animationFlipping.value > 0.5 * pi
                       ? IconButton(
-                          icon: Image(
+                          icon: Image.asset(
+                            widget.frontImageFilePath!,
+                            height: 50,
+                            cacheHeight: 50,
                             isAntiAlias: true,
                             filterQuality: FilterQuality.high,
-                            image: AssetImage(widget.frontImageFilePath!),
                             fit: BoxFit.contain,
                           ),
                           tooltip: widget.frontTooltip,
@@ -90,11 +92,12 @@ class _FlippingAppBarIconButtonState extends State<FlippingAppBarIconButton>
                                 ..rotateY(pi - _animationFlipping.value),
                               alignment: Alignment.center,
                               child: IconButton(
-                                  icon: Image(
+                                  icon: Image.asset(
+                                    widget.backImageFilePath!,
+                                    height: 50,
+                                    cacheHeight: 50,
                                     isAntiAlias: true,
                                     filterQuality: FilterQuality.high,
-                                    image:
-                                        AssetImage(widget.backImageFilePath!),
                                     fit: BoxFit.contain,
                                   ),
                                   tooltip: widget.backTooltip,

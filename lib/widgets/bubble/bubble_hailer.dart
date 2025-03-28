@@ -5,7 +5,7 @@ class BubbleHailerPainter extends CustomPainter {
   final Color strokeColor, fillColor;
   final double strokeWidth;
 
-  BubbleHailerPainter(
+  const BubbleHailerPainter(
       {this.strokeColor = const ui.Color.fromARGB(31, 0, 0, 0),
       this.fillColor = Colors.white,
       this.strokeWidth = 1});

@@ -12,8 +12,7 @@ import 'package:flutter/material.dart';
 import '../../../../helpers/constants.dart';
 import 'employer_header.dart';
 
-class WorkExperienceContent extends StatefulWidget
-    implements PreferredSizeWidget {
+class WorkExperienceContent extends StatefulWidget {
   final Color boxShadowColor, boxBorderColor;
   final EmployerHeader employerHeader;
   final String? periodDescription, projectDescription;
@@ -34,11 +33,6 @@ class WorkExperienceContent extends StatefulWidget
       super.key});
 
   @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
-
-  @override
   State<WorkExperienceContent> createState() => _WorkExperienceContentState();
 }
 
@@ -47,15 +41,10 @@ class _WorkExperienceContentState extends State<WorkExperienceContent> {
   void initState() {
     super.initState();
 
-    /// Autoscroll skillList
+    /// Autoscroll carousel
     WidgetsBinding.instance.addPostFrameCallback((_) {
       carouselController.jumpToPage(carouselIndex.value);
     });
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
   }
 
   @override

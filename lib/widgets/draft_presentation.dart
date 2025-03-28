@@ -53,9 +53,9 @@ class _DraftPresentationState extends State<DraftPresentation> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    setState(() => {});
+  void dispose() {
+    subscriptionToggleAppBar.cancel();
+    super.dispose();
   }
 
   List<Widget> buildContent(

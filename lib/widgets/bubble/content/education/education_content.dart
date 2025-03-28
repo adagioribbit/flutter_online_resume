@@ -2,13 +2,13 @@ import 'package:dossier_de_competences_web/widgets/bubble/badge.dart'
     show SkillBadge;
 import 'package:dossier_de_competences_web/widgets/external_link.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart' show SemanticsBinding, SemanticsHandle;
+import 'package:flutter/semantics.dart' show SemanticsBinding;
 
 import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart'
     show appLanguage, educationContentScrollController;
 
-class EducationContent extends StatefulWidget implements PreferredSizeWidget {
+class EducationContent extends StatefulWidget {
   final Color boxShadowColor, boxBorderColor;
   final List<SkillBadge> languages, tools;
   final String academicLogoAssetPath;
@@ -28,11 +28,6 @@ class EducationContent extends StatefulWidget implements PreferredSizeWidget {
       super.key});
 
   @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
-
-  @override
   State<EducationContent> createState() => _EducationContentState();
 }
 
@@ -41,11 +36,6 @@ class _EducationContentState extends State<EducationContent> {
   void initState() {
     super.initState();
     SemanticsBinding.instance.ensureSemantics().dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
   }
 
   @override

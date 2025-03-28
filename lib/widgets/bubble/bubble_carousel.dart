@@ -29,16 +29,11 @@ import 'content/work_experience/data/bubble_content_workexperience.dart'
     show buildWorkExperienceBubbleContent;
 import 'content/skills/skill_sets_content.dart';
 
-class BubbleCarousel extends StatefulWidget implements PreferredSizeWidget {
+class BubbleCarousel extends StatefulWidget {
   static const Duration animationDuration = Duration(milliseconds: 300);
   static const double bubbleMaxWidth = 700.0;
 
   const BubbleCarousel({super.key});
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
 
   @override
   State<BubbleCarousel> createState() => _BubbleCarouselState();
@@ -148,6 +143,7 @@ class _BubbleCarouselState extends State<BubbleCarousel>
   @override
   void dispose() {
     _animationController.dispose();
+    subscription.cancel();
     super.dispose();
   }
 

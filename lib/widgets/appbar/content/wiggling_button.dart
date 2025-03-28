@@ -91,8 +91,10 @@ class _WigglingButtonState extends State<WigglingButton>
   }
 
   Widget buildButtonText() {
-    Widget buttonContent = Image(
-      image: AssetImage(getIcon()),
+    Widget buttonContent = Image.asset(
+      getIcon(),
+      height: 50,
+      cacheHeight: 50,
       fit: BoxFit.contain,
     );
 

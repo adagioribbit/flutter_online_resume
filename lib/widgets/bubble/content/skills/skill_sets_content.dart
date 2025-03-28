@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart'
     show ScrollablePositionedList;
 
-import '../../../../helpers/constants.dart';
 import '../../../../helpers/globals.dart'
     show SkillKey, initialScrollSkillItem, skillListScrollController;
-import 'skill_list.dart' show skillList;
+import 'skill_list_item.dart' show SkillListItem;
+import 'skills.dart' show skills;
 
-class SkillSetsContent extends StatefulWidget implements PreferredSizeWidget {
+class SkillSetsContent extends StatefulWidget {
   const SkillSetsContent({super.key});
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
 
   @override
   State<SkillSetsContent> createState() => _SkillSetsContentState();
@@ -29,7 +24,7 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
       if (initialScrollSkillItem.value != SkillKey.none) {
         int targetIdx =
             (SkillKey.values.indexOf(initialScrollSkillItem.value) - 2)
-                .clamp(0, skillList.length);
+                .clamp(0, skills.length);
 
         if (targetIdx > 3) {
           Future.delayed(const Duration(milliseconds: 150), () {
@@ -45,11 +40,6 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   void dispose() {
     super.dispose();
     initialScrollSkillItem.value = SkillKey.none;
@@ -62,12 +52,15 @@ class _SkillSetsContentState extends State<SkillSetsContent> {
       double listItemSpacing = constraints.maxWidth * 0.0125;
 
       ScrollablePositionedList list = ScrollablePositionedList.builder(
-          itemCount: skillList.length,
+          initialScrollIndex:
+              (SkillKey.values.indexOf(initialScrollSkillItem.value) - 10)
+                  .clamp(0, skills.length),
+          itemCount: skills.length,
           itemScrollController: skillListScrollController,
           itemBuilder: (context, index) {
             return Container(
                 margin: EdgeInsets.fromLTRB(0, 0, 0, listItemSpacing),
-                child: skillList[index]);
+                child: SkillListItem(skill: skills[index]));
           });
 
       double settingsButtonSize = (constraints.maxWidth * 0.08).clamp(0.5, 40);

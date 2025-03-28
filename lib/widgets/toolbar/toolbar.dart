@@ -11,30 +11,14 @@ import '../../helpers/colorchart.dart'
         ColorChart;
 import 'toolbar_button.dart';
 
-class Toolbar extends StatefulWidget implements PreferredSizeWidget {
+class Toolbar extends StatefulWidget {
   const Toolbar({super.key});
-
-  @override
-  Size get preferredSize => Size.fromHeight(Constants.TOOLBAR_HEIGHT);
-
-  Size getPreferredSize() => preferredSize;
 
   @override
   State<Toolbar> createState() => _ToolbarState();
 }
 
 class _ToolbarState extends State<Toolbar> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    setState(() => {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(

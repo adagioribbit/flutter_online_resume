@@ -79,10 +79,14 @@ class _ToolbarButtonState extends State<ToolbarButton> {
             minWidth: Constants.TOOLBAR_HEIGHT * 0.8,
             maxWidth: Constants.TOOLBAR_HEIGHT * 0.8,
           ),
-          icon: Image(
-              key: GlobalKeyRing.toolbar[idMenu],
-              color: palette.icon,
-              image: AssetImage(imageAssetPath)),
+          icon: Image.asset(
+            key: GlobalKeyRing.toolbar[idMenu],
+            color: palette.icon,
+            imageAssetPath,
+            height: 50,
+            cacheHeight: 50,
+            fit: BoxFit.fill,
+          ),
           tooltip: widget.tooltip,
           onPressed: () {
             globalStreams.triggerBubbleCarousel(idMenu);
